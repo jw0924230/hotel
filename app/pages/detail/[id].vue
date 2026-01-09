@@ -122,7 +122,7 @@ const { defaultImage, cities } = useHotelData()
 
 const hotelId = route.params.id as string
 
-const { data: hotel } = await useFetch<any>(`/api/hotel/${hotelId}`)
+const { data: hotel } = await useFetch<any>(`/api/detail/${hotelId}`)
 
 const currentTab = ref('intro')
 

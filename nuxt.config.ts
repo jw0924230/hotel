@@ -36,7 +36,7 @@ export default defineNuxtConfig({
       // 1. Generate Hotel Routes
       const hotelsPath = path.resolve(__dirname, 'app/data/hotels/hotels_details.json')
       const hotels = loadJSON(hotelsPath)
-      const hotelRoutes = hotels.map(h => `/hotel/${h.id}`)
+      const hotelRoutes = hotels.map(h => `/detail/${h.id}`)
 
       // 2. Generate Area Routes
       const cityIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]

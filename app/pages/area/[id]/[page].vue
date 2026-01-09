@@ -10,7 +10,7 @@
 
       <div class="hotel-grid" v-if="finalHotels.length > 0">
         <div v-for="h in finalHotels" :key="h.id" class="h-card">
-           <NuxtLink :to="`/hotel/${h.id}`" class="card-link">
+           <NuxtLink :to="`/detail/${h.id}`" class="card-link">
              <div class="h-img-wrapper">
                <img :src="h.image" :alt="h.name" loading="lazy" @error="handleImageError">
                <div class="price-tag">{{ h.price }}</div>

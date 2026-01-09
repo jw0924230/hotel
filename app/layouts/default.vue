@@ -10,10 +10,6 @@
                <div class="slogan">全國最大的汽車旅館入口網站</div>
              </NuxtLink>
           </div>
-          <!-- Header Banner (Desktop) -->
-          <div class="header-banner d-none d-md-block">
-             <img src="https://placehold.co/468x60/dcdcdc/333333?text=全台毛小孩住宿懶人包" alt="Banner">
-          </div>
         </div>
       </div>
     </header>
