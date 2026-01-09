@@ -1,4 +1,4 @@
-import hotelDetailsData from '~/app/data/hotels/hotels_details.json'
+import hotelDetailsData from '~/data/hotels/hotels_details.json'
 
 export default defineEventHandler((event) => {
     const id = getRouterParam(event, 'id')
