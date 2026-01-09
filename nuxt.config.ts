@@ -6,6 +6,10 @@ export default defineNuxtConfig({
   nitro: {
     output: {
       publicDir: 'dist'
+    },
+    prerender: {
+      failOnError: false,
+      concurrency: 4
     }
   },
   app: {

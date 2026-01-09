@@ -118,32 +118,28 @@ import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const { getHotelById, defaultImage, cities } = useHotelData()
+const { defaultImage, cities } = useHotelData()
 
 const hotelId = route.params.id as string
-const hotel = computed(() => getHotelById(hotelId))
+
+const { data: hotel } = await useFetch<any>(`/api/hotel/${hotelId}`)
 
 const currentTab = ref('intro')
 
 // Image Logic
-const hotelImages = import.meta.glob('~/data/images/*.jpg', { eager: true, import: 'default' })
 const processedImage = computed(() => {
-    if (!hotel.value) return defaultImage
-    const imagePath = Object.keys(hotelImages).find(key => key.endsWith(`/${hotelId}.jpg`))
-    return imagePath ? (hotelImages[imagePath] as string) : defaultImage
+    if (!hotelId) return defaultImage
+    return `/data/images/${hotelId}.jpg`
 })
 
 const handleImageError = (e: Event) => {
     (e.target as HTMLImageElement).src = defaultImage
 }
 
-// City Name Logic (Optional, finding which city this hotel belongs to might be hard if not in JSON detail)
-// Hotels JSON has 'area' field but it might be empty or text.
-// We can guess or leave generic.
+// City Name Logic
 const cityName = computed(() => {
-    // Attempt to match address to known cities if needed, or just use general logic
     if(!hotel.value) return ''
-    return hotel.value.address.substring(0, 3) // Simple substring for Taiwan addresses usually works (e.g. 台北市)
+    return (hotel.value as any).address.substring(0, 3)
 })
 
 // Format helpers
@@ -156,11 +152,7 @@ const formattedDesc = computed(() => formatText(hotel.value?.description || '尚
 const googleMapUrl = computed(() => {
     if (!hotel.value?.address) return ''
     const query = encodeURIComponent(hotel.value.address)
-    return `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${query}` 
-    // NOTE: User probably doesn't have a key provided in env yet. 
-    // Fallback to simple link or simple iframe if no key.
-    // Actually safe way without key is hard for embed API. 
-    // Using output=embed with query is older method.
+    // Using embed API without key (restricted mode) or simple link
     return `https://maps.google.com/maps?q=${query}&output=embed`
 })
 
