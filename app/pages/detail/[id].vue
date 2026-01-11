@@ -7,7 +7,8 @@
             <h1 class="hotel-title">{{ hotel.name }}</h1>
             <div class="breadcrumbs">
                <NuxtLink to="/">首頁</NuxtLink> &gt; 
-               <span>{{ cityName || '地區' }}</span> &gt; 
+               <NuxtLink v-if="cityId" :to="`/area/${cityId}/1`">{{ cityName }}</NuxtLink>
+               <span v-else>{{ cityName || '地區' }}</span> &gt; 
                <span class="active">{{ hotel.name }}</span>
             </div>
         </div>
@@ -39,7 +40,7 @@
                         <span class="label">價格：</span>
                         <span class="price-text">{{ hotel.price }}</span>
                     </div>
-                         <div class="info-row" v-if="hotel.rest_info">
+                    <div class="info-row" v-if="hotel.rest_info">
                         <span class="label">休息：</span>
                         <span class="text">{{ hotel.rest_info }}</span>
                     </div>
@@ -117,7 +118,11 @@
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 
+import { joinURL } from 'ufo'
+
 const route = useRoute()
+const config = useRuntimeConfig()
+const baseURL = config.app.baseURL
 const { defaultImage, cities } = useHotelData()
 
 const hotelId = route.params.id as string
@@ -129,31 +134,65 @@ const currentTab = ref('intro')
 // Image Logic
 const processedImage = computed(() => {
     if (!hotelId) return defaultImage
-    return `/data/images/${hotelId}.jpg`
+    return joinURL(baseURL, `data/images/${hotelId}.jpg`)
 })
 
 const handleImageError = (e: Event) => {
     (e.target as HTMLImageElement).src = defaultImage
 }
 
-// City Name Logic
-const cityName = computed(() => {
-    if(!hotel.value) return ''
-    return (hotel.value as any).address.substring(0, 3)
+// City Logic
+const cityData = computed(() => {
+    if(!hotel.value?.address) return null
+    // Extract first 2-3 chars as city name usually
+    const addr = hotel.value.address
+    const name = addr.substring(0, 3).replace('台', '臺') // normalize if needed, but data seems to use 台/臺 mixed?
+    // Actually cities list has '台北', '新北'. Address might be '台北市...'
+    // Lets try to match
+    const found = cities.find(c => addr.includes(c.name))
+    return found
 })
+
+const cityName = computed(() => cityData.value?.name || hotel.value?.address?.substring(0, 3) || '')
+const cityId = computed(() => cityData.value?.id)
+
 
 // Format helpers
 const formatText = (text: string) => {
     if(!text) return ''
-    return text.replace(/\n/g, '<br>')
+    let cleaned = text
+    
+    // Remove adsbygoogle
+    cleaned = cleaned.replace(/\(adsbygoogle\s*=\s*window\.adsbygoogle\s*\|\|\s*\[\]\)\.push\(\{\}\);/g, '')
+    
+    // Remove HTML comments
+    cleaned = cleaned.replace(/<!--[\s\S]*?-->/g, '')
+
+    // Remove window.___gcfg
+    cleaned = cleaned.replace(/window\.___gcfg\s*=\s*\{.*?\};/g, '')
+    cleaned = cleaned.replace(/\(function\(\)\s*\{[\s\S]*?\}\)\(\);/g, '')
+
+    // Remove repeated header-like text often found in scraping
+    // e.g. "最新消息", "優惠活動" repeated
+    const rubbish = ['簡　　介', '最新消息', '優惠活動', '住房介紹', '附近景點', '交通指南', '相關連結', '連鎖分館', '精選相簿', '店家資訊 QRCode', '本站聲明：本網站上所刊登之業者圖片及文字皆為業者自行上傳，本站不負任何責任，如有侵權請來信告知。']
+    rubbish.forEach(r => {
+        cleaned = cleaned.replace(new RegExp(r, 'g'), '')
+    })
+
+    // Trim and normalize newlines
+    cleaned = cleaned.replace(/\n\s*\n/g, '\n') // collapse multiple newlines
+    cleaned = cleaned.trim()
+
+    return cleaned.replace(/\n/g, '<br>')
 }
-const formattedDesc = computed(() => formatText(hotel.value?.description || '尚無簡介'))
+
+const formattedDesc = computed(() => formatText(hotel.value?.description || hotel.value?.stay_info || '尚無簡介')) // Use stay_info if description is empty, as per user's json it seems stay_info has the 'intro'
 
 const googleMapUrl = computed(() => {
     if (!hotel.value?.address) return ''
     const query = encodeURIComponent(hotel.value.address)
-    // Using embed API without key (restricted mode) or simple link
-    return `https://maps.google.com/maps?q=${query}&output=embed`
+    // Using simple output=embed
+    return `https://maps.google.com/maps?q=${query}&output=embed&z=16`
 })
 
 </script>
@@ -167,25 +206,50 @@ const googleMapUrl = computed(() => {
 .hotel-title { font-size: 32px; color: #2C3E50; margin: 0 0 10px 0; font-weight: 700; }
 .breadcrumbs { color: #7f8c8d; font-size: 14px; }
 .breadcrumbs a { color: #2C3E50; text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
 .breadcrumbs .active { color: #E74C3C; }
 
-.detail-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 30px; margin-bottom: 40px; }
+/* Adjusted Grid */
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; align-items: stretch; }
 @media(max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
 
 .main-img { 
-    width: 100%; height: 400px; 
+    width: 100%; 
+    height: 100%;
+    min-height: 400px;
     border-radius: 12px; overflow: hidden; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+    background: #eee;
+    position: relative;
 }
-.main-img img { width: 100%; height: 100%; object-fit: cover; }
+.main-img img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
-.info-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-.info-row { margin-bottom: 15px; display: flex; align-items: baseline; }
-.info-row .label { width: 60px; font-weight: bold; color: #7f8c8d; flex-shrink: 0; }
-.info-row .text { color: #2C3E50; font-size: 16px; }
+.detail-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-card { 
+    background: white; padding: 30px; border-radius: 12px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+    flex: 1; /* Fill height */
+    display: flex; flex-direction: column; justify-content: center;
+}
+
+.info-row { margin-bottom: 18px; display: flex; align-items: baseline; }
+.info-row:last-child { margin-bottom: 0; }
+.info-row .label { width: 70px; font-weight: bold; color: #7f8c8d; flex-shrink: 0; }
+.info-row .text { color: #2C3E50; font-size: 16px; line-height: 1.5; }
 .info-row .text-link { color: #3498DB; text-decoration: none; word-break: break-all; }
 .info-row .text-link:hover { text-decoration: underline; }
-.price-text { color: #E74C3C; font-size: 24px; font-weight: 700; }
+.price-text { color: #E74C3C; font-size: 28px; font-weight: 700; }
 
 /* Tabs */
 .tabs-container { background: white; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); overflow: hidden; }
@@ -199,10 +263,11 @@ const googleMapUrl = computed(() => {
 .tab-btn:hover { background: #f0f0f0; color: #2C3E50; }
 .tab-btn.active { color: #E74C3C; border-bottom-color: #E74C3C; background: white; }
 
-.tab-content { padding: 30px; }
+.tab-content { padding: 40px; }
 .content-pane { animation: fadeIn 0.3s; }
-.long-text { line-height: 1.8; color: #555; white-space: pre-line; }
-.rule-block { margin-bottom: 25px; }
+.long-text { line-height: 1.8; color: #444; font-size: 15px; }
+.rule-block { margin-bottom: 30px; border-bottom: 1px dashed #eee; padding-bottom: 20px; }
+.rule-block:last-child { border-bottom: none; }
 .rule-block h3 { color: #2C3E50; margin-bottom: 15px; border-left: 4px solid #E74C3C; padding-left: 10px; font-size: 18px; }
 
 .map-container { border-radius: 8px; overflow: hidden; border: 1px solid #ddd; }

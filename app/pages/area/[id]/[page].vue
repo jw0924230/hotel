@@ -51,9 +51,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { joinURL } from 'ufo'
 
 const route = useRoute()
+const config = useRuntimeConfig()
+const baseURL = config.app.baseURL
 const { getCityDataById, defaultImage, cities } = useHotelData()
+
 
 const areaId = computed(() => route.params.id as string)
 const currentPage = computed(() => parseInt(route.params.page as string) || 1)
@@ -74,16 +78,17 @@ const finalHotels = computed(() => {
     const end = start + pageSize
     
     return rawData.value.slice(start, end).map(item => {
+        if (!item || !item.link) return null
         const id = item.link.split('n=')[1] || ''
         return {
             id,
             name: item.name,
-            image: `/data/images/${id}.jpg`,
+            image: joinURL(baseURL, `data/images/${id}.jpg`),
             price: item.price,
             address: item.address,
             link: item.link
         }
-    })
+    }).filter(i => i !== null)
 })
 
 const handleImageError = (e: Event) => {

@@ -33,10 +33,19 @@ export default defineNuxtConfig({
   },
   hooks: {
     async 'nitro:config'(nitroConfig) {
+      if (process.env.NODE_ENV === 'development') {
+        return
+      }
       // 1. Generate Hotel Routes
-      const hotelsPath = path.resolve(__dirname, 'app/data/hotels/hotels_details.json')
-      const hotels = loadJSON(hotelsPath)
-      const hotelRoutes = hotels.map(h => `/detail/${h.id}`)
+      const detailsDir = path.resolve(__dirname, 'data_json/hotels/details')
+      let hotelRoutes: string[] = []
+
+      if (fs.existsSync(detailsDir)) {
+        const files = fs.readdirSync(detailsDir)
+        hotelRoutes = files
+          .filter(file => file.endsWith('.json'))
+          .map(file => `/detail/${file.replace('.json', '')}`)
+      }
 
       // 2. Generate Area Routes
       const cityIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
@@ -53,9 +62,24 @@ export default defineNuxtConfig({
         }
       }
 
+      // 3. Generate Blog Routes
+      const blogPath = path.resolve(__dirname, 'data_json/blog/articles.json')
+      const blogRoutes = ['/blog']
+      if (fs.existsSync(blogPath)) {
+        const articles = JSON.parse(fs.readFileSync(blogPath, 'utf-8'))
+        articles.forEach(a => blogRoutes.push(`/blog/${a.id}`))
+      }
+
       // Add to prerender routes
       nitroConfig.prerender.routes = nitroConfig.prerender.routes || []
-      nitroConfig.prerender.routes.push(...hotelRoutes, ...areaRoutes)
+      nitroConfig.prerender.routes.push(...hotelRoutes, ...areaRoutes, ...blogRoutes)
+    }
+  },
+  vite: {
+    server: {
+      watch: {
+        ignored: ['**/data_json/**']
+      }
     }
   }
 })

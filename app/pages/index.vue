@@ -42,7 +42,7 @@
             <div class="h-card" v-for="h in cityData.hotels" :key="h.id">
                <NuxtLink :to="`/detail/${h.id}`" class="card-link">
                    <div class="h-img-wrapper">
-                     <img :src="h.image" :alt="h.name" loading="lazy" @error="(e) => (e.target as HTMLImageElement).src = './data/images/default.jpg'">
+                     <img :src="h.image" :alt="h.name" loading="lazy" @error="(e) => (e.target as HTMLImageElement).src = defaultImage">
                      <div class="price-tag" v-if="h.price">{{ h.price }}</div>
                    </div>
                    <div class="h-info">

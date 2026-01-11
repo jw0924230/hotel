@@ -10,6 +10,9 @@
                <div class="slogan">全國最大的汽車旅館入口網站</div>
              </NuxtLink>
           </div>
+          <nav class="main-nav">
+             <NuxtLink to="/blog" class="nav-link">部落格</NuxtLink>
+          </nav>
         </div>
       </div>
     </header>
@@ -57,6 +60,11 @@ ul { list-style: none; padding: 0; margin: 0; }
 .qk { font-size: 48px; font-weight: 800; color: #E74C3C; letter-spacing: -2px; }
 .text { font-size: 28px; color: #2C3E50; font-weight: 700; margin-left: 5px; }
 .slogan { font-size: 13px; color: #7F8C8D; letter-spacing: 2px; margin-top: 5px; text-transform: uppercase; }
+
+.main-nav { display: flex; align-items: center; }
+.nav-link { font-size: 16px; font-weight: 700; color: #2C3E50; margin-left: 30px; padding: 5px 0; border-bottom: 2px solid transparent; transition: all 0.2s; }
+.nav-link:hover { color: #E74C3C; border-bottom-color: #E74C3C; }
+.nav-link.router-link-active { color: #E74C3C; }
 
 .content-wrapper { flex: 1; }
 

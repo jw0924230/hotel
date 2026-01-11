@@ -1,12 +1,21 @@
-import hotelDetailsData from '~/data/hotels/hotels_details.json'
+import fs from 'fs'
+import path from 'path'
 
 export default defineEventHandler((event) => {
     const id = getRouterParam(event, 'id')
-    const hotel = (hotelDetailsData as any[]).find(h => String(h.id) === String(id))
+    if (!id) return null
 
-    if (!hotel) {
+    const filePath = path.resolve(process.cwd(), 'data_json/hotels/details', `${id}.json`)
+
+    if (!fs.existsSync(filePath)) {
         return null
     }
 
-    return hotel
+    try {
+        const data = fs.readFileSync(filePath, 'utf-8')
+        return JSON.parse(data)
+    } catch (e) {
+        console.error(`Error reading hotel data for ID ${id}:`, e)
+        return null
+    }
 })
