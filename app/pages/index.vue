@@ -1,6 +1,12 @@
 <template>
   <div class="portal-page">
     <div class="container container-wide">
+      <!-- SEO Header -->
+      <div class="home-intro">
+          <h1 class="main-title">全台飯店、商旅、汽車旅館住宿與休息推薦</h1>
+          <p class="main-desc">不論是臨時需要假日休息、平日休息，還是規劃一趟輕旅行的假日住宿、平日住宿，這裡一次整理全台熱門的飯店、商旅與汽車旅館推薦清單，滿足不同族群與使用情境需求。從適合短暫放鬆的2小時、3小時休息方案，到高 CP 值的過夜住宿選擇，完整比較地點、價格與彈性時段，協助你快速找到最適合的住宿或休息空間，無論情侶約會、商務出差或臨時歇腳，都能安心入住、輕鬆選擇。</p>
+      </div>
+
       <!-- Quick Area Menu (Grouped + Drag Scroll) -->
       <div 
          class="area-menu-wrapper"
@@ -29,9 +35,9 @@
       <div class="cities-container">
         <section v-for="cityData in selectedCitiesData" :key="cityData.name" class="city-section">
           <div class="sec-header">
-            <h3 class="city-title">
+            <h2 class="city-title">
                <span class="icon">📍</span> {{ cityData.name }}嚴選住宿
-            </h3>
+            </h2>
             <div class="sec-tags">
                <NuxtLink :to="`/area/${cityData.id}/1`" class="more-link">
                  查看全部 <span class="arrow">→</span>
@@ -46,7 +52,7 @@
                      <div class="price-tag" v-if="h.price">{{ h.price }}</div>
                    </div>
                    <div class="h-info">
-                     <div class="h-name">{{ h.name }}</div>
+                     <h3 class="h-name">{{ h.name }}</h3>
                      <div class="h-address">{{ h.address }}</div>
                    </div>
                </NuxtLink>
@@ -96,6 +102,11 @@ const onDrag = (e: MouseEvent) => {
 .portal-page { padding: 40px 0; background: #f8f9fa; }
 .container { padding: 0 15px; margin: 0 auto; }
 .container-wide { max-width: 1200px; }
+
+/* Intro */
+.home-intro { margin-bottom: 30px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; }
+.main-title { font-size: 28px; font-weight: 800; color: #2C3E50; margin-bottom: 15px; }
+.main-desc { font-size: 15px; color: #555; line-height: 1.6; }
 
 /* Area Menu Wrapper */
 .area-menu-wrapper {

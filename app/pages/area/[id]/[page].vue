@@ -5,7 +5,9 @@
         <h1 class="city-title">
            <span class="icon">📍</span> {{ currentCityName }} 住宿推薦 (第 {{ currentPage }} 頁)
         </h1>
-        <NuxtLink to="/" class="btn-back">返回首頁</NuxtLink>
+        <div class="breadcrumbs">
+           <NuxtLink to="/">首頁</NuxtLink> &gt; <span class="active">{{ currentCityName }}</span>
+        </div>
       </div>
 
       <div class="hotel-grid" v-if="finalHotels.length > 0">
@@ -101,7 +103,7 @@ const finalHotels = computed(() => {
 .sec-header { 
   display: flex; 
   justify-content: space-between; 
-  align-items: center; 
+  align-items: flex-end; 
   margin-bottom: 25px; 
   border-bottom: 1px solid #ddd;
   padding-bottom: 15px;
@@ -109,11 +111,10 @@ const finalHotels = computed(() => {
 .city-title { margin: 0; font-size: 24px; font-weight: 700; color: #2C3E50; display: flex; align-items: center; }
 .city-title .icon { margin-right: 8px; }
 
-.btn-back { 
-    background: #95A5A6; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 14px; 
-    transition: background 0.2s;
-}
-.btn-back:hover { background: #7f8c8d; }
+.breadcrumbs { color: #7f8c8d; font-size: 14px; margin-bottom: 5px; }
+.breadcrumbs a { color: #2C3E50; text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs .active { color: #E74C3C; }
 
 /* Grid */
 .hotel-grid { 
