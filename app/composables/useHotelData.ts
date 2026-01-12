@@ -28,7 +28,7 @@ import { joinURL } from 'ufo'
 export const useHotelData = () => {
     const config = useRuntimeConfig()
     const baseURL = config.app.baseURL
-    const defaultImage = joinURL(baseURL, 'data/images/default.jpg')
+    const defaultImage = joinURL(baseURL, 'data/images/_default.jpg')
 
     // Correct Mapping based on scripts/extract_city_names.js
     const cities = [
@@ -137,11 +137,18 @@ export const useHotelData = () => {
         processCityData(16, '高雄', area16)  // Was 14
     ]
 
+    const handleImageError = (e: Event) => {
+        const img = (e.target as HTMLImageElement)
+        if (img.src.includes('_default.jpg')) return
+        img.src = defaultImage
+    }
+
     return {
         cities,
         selectedCitiesData,
         regionCities,
         defaultImage,
-        getCityDataById
+        getCityDataById,
+        handleImageError
     }
 }

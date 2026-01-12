@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 
 // Helper to load JSON
-const loadJSON = (filePath) => {
+const loadJSON = (filePath: fs.PathOrFileDescriptor) => {
   try {
     return JSON.parse(fs.readFileSync(filePath, 'utf-8'))
   } catch (e) {
@@ -67,7 +67,7 @@ export default defineNuxtConfig({
       const blogRoutes = ['/blog']
       if (fs.existsSync(blogPath)) {
         const articles = JSON.parse(fs.readFileSync(blogPath, 'utf-8'))
-        articles.forEach(a => blogRoutes.push(`/blog/${a.id}`))
+        articles.forEach((a: { id: any }) => blogRoutes.push(`/blog/${a.id}`))
       }
 
       // Add to prerender routes

@@ -123,7 +123,7 @@ import { joinURL } from 'ufo'
 const route = useRoute()
 const config = useRuntimeConfig()
 const baseURL = config.app.baseURL
-const { defaultImage, cities } = useHotelData()
+const { defaultImage, cities, handleImageError } = useHotelData()
 
 const hotelId = route.params.id as string
 
@@ -137,9 +137,6 @@ const processedImage = computed(() => {
     return joinURL(baseURL, `data/images/${hotelId}.jpg`)
 })
 
-const handleImageError = (e: Event) => {
-    (e.target as HTMLImageElement).src = defaultImage
-}
 
 // City Logic
 const cityData = computed(() => {

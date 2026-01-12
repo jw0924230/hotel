@@ -10,18 +10,16 @@
 
         <article class="article-detail">
             <header class="article-header">
+                <h1 class="main-title">{{ article.title }}</h1>
                 <div class="meta-top">
                     <span class="category">{{ article.category }}</span>
                     <span class="date">{{ article.date }}</span>
                 </div>
-                <h1 class="main-title">{{ article.title }}</h1>
             </header>
 
-            <div class="featured-image">
-                <img :src="article.image" :alt="article.title">
-            </div>
 
-            <div class="article-body" v-html="article.content"></div>
+
+            <div class="article-body" v-html="parsedContent"></div>
             
             <div class="article-footer">
                 <NuxtLink to="/blog" class="btn-back">← 返回文章列表</NuxtLink>
@@ -41,12 +39,23 @@
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import articles from '~/../data_json/blog/articles.json'
+import MarkdownIt from 'markdown-it'
 
 const route = useRoute()
 const id = route.params.id as string
+const md = new MarkdownIt({
+    html: true,
+    linkify: true,
+    typographer: true
+})
 
 const article = computed(() => {
     return articles.find(a => a.id === id)
+})
+
+const parsedContent = computed(() => {
+    if (!article.value) return ''
+    return md.render(article.value.content)
 })
 </script>
 
@@ -61,11 +70,11 @@ const article = computed(() => {
 
 .article-detail { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
 
-.article-header { margin-bottom: 30px; text-align: center; }
-.meta-top { margin-bottom: 15px; display: flex; justify-content: center; gap: 15px; align-items: center; }
+.article-header { margin-bottom: 30px; text-align: left; }
+.meta-top { margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
 .category { background: #E74C3C; color: white; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; }
 .date { color: #95A5A6; font-size: 14px; }
-.main-title { font-size: 32px; color: #2C3E50; line-height: 1.4; margin: 0; }
+.main-title { font-size: 32px; color: #2C3E50; line-height: 1.4; margin: 0 0 15px 0; }
 
 .featured-image { margin-bottom: 40px; border-radius: 8px; overflow: hidden; }
 .featured-image img { width: 100%; height: auto; display: block; }
@@ -73,7 +82,7 @@ const article = computed(() => {
 .article-body { font-size: 18px; line-height: 1.8; color: #2c3e50; }
 .article-body :deep(h2), .article-body :deep(h3) { margin-top: 40px; margin-bottom: 20px; color: #2C3E50; font-weight: 700; }
 .article-body :deep(p) { margin-bottom: 20px; }
-.article-body :deep(img) { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; }
+.article-body :deep(img) { max-width: 100%; height: auto; border-radius: 8px; margin: 30px 0; display: block; }
 
 .article-footer { margin-top: 50px; padding-top: 30px; border-top: 1px solid #eee; text-align: center; }
 .btn-back { display: inline-block; padding: 10px 25px; border: 1px solid #ddd; border-radius: 30px; color: #7f8c8d; transition: all 0.2s; }

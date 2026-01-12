@@ -56,7 +56,7 @@ import { joinURL } from 'ufo'
 const route = useRoute()
 const config = useRuntimeConfig()
 const baseURL = config.app.baseURL
-const { getCityDataById, defaultImage, cities } = useHotelData()
+const { getCityDataById, defaultImage, cities, handleImageError } = useHotelData()
 
 
 const areaId = computed(() => route.params.id as string)
@@ -90,10 +90,6 @@ const finalHotels = computed(() => {
         }
     }).filter(i => i !== null)
 })
-
-const handleImageError = (e: Event) => {
-    (e.target as HTMLImageElement).src = defaultImage
-}
 
 </script>
 

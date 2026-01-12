@@ -29,18 +29,46 @@
         <p>Copyright © 2026 QK休閒網. All rights reserved.</p>
       </div>
     </footer>
+    <button 
+      v-show="showGoTop" 
+      class="go-top-btn" 
+      @click="scrollToTop"
+      aria-label="Go to Top"
+    >
+      ↑
+    </button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const showGoTop = ref(false)
+
+const handleScroll = () => {
+    showGoTop.value = window.scrollY > 100
+}
+
+const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style scoped>
 /* Reset & Base */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; padding: 0; margin: 0; }
-.layout-container { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; min-height: 100vh; }
+.layout-container { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
 .container { width: 100%; padding: 0 15px; margin: 0 auto; }
 .container-wide { max-width: 1200px; }
 
@@ -73,4 +101,30 @@ ul { list-style: none; padding: 0; margin: 0; }
 .footer-links { margin-bottom: 20px; }
 .footer-links a { color: #BDC3C7; margin: 0 10px; transition: color 0.3s; }
 .footer-links a:hover { color: white; text-decoration: none; }
+
+.go-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #E74C3C;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.go-top-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
 </style>
