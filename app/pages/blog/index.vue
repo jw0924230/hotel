@@ -14,7 +14,7 @@
         <article v-for="article in articles" :key="article.id" class="article-card">
            <NuxtLink :to="`/blog/${article.id}`" class="card-link">
              <div class="img-wrapper">
-               <img :src="article.image" :alt="article.title" loading="lazy">
+               <img :src="getImageUrl(article.image)" :alt="article.title" loading="lazy">
                <span class="category-tag">{{ article.category }}</span>
              </div>
              <div class="content">
@@ -32,11 +32,23 @@
 
 <script setup lang="ts">
 import articles from '~/../data_json/blog/articles.json'
+import { joinURL } from 'ufo'
+
+const config = useRuntimeConfig()
+const baseURL = config.app.baseURL
 
 // Helper to strip HTML and get excerpt
 const getExcerpt = (html: string) => {
     const tmp = html.replace(/<[^>]+>/g, '')
     return tmp.substring(0, 60)
+}
+
+const getImageUrl = (path: string) => {
+    if (!path) return ''
+    if (path.startsWith('/') && !path.startsWith('//')) {
+        return joinURL(baseURL, path)
+    }
+    return path
 }
 </script>
 
