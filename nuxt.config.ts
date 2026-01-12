@@ -11,10 +11,54 @@ const loadJSON = (filePath: fs.PathOrFileDescriptor) => {
   }
 }
 
+// Helper to generate dynamic routes
+const getDynamicRoutes = () => {
+  const routes: string[] = []
+
+  // 1. Hotel Routes
+  const detailsDir = path.resolve(__dirname, 'data_json/hotels/details')
+  if (fs.existsSync(detailsDir)) {
+    const files = fs.readdirSync(detailsDir)
+    files.filter(file => file.endsWith('.json'))
+      .forEach(file => routes.push(`/detail/${file.replace('.json', '')}`))
+  }
+
+  // 2. Area Routes
+  const cityIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+  for (const id of cityIds) {
+    const areaPath = path.resolve(__dirname, `app/data/areas/area_${id}.json`)
+    const areaData = loadJSON(areaPath)
+    if (areaData.length > 0) {
+      const totalPages = Math.ceil(areaData.length / 20)
+      for (let p = 1; p <= totalPages; p++) {
+        routes.push(`/area/${id}/${p}`)
+      }
+    }
+  }
+
+  // 3. Blog Routes
+  const blogPath = path.resolve(__dirname, 'data_json/blog/articles.json')
+  routes.push('/blog')
+  if (fs.existsSync(blogPath)) {
+    const articles = JSON.parse(fs.readFileSync(blogPath, 'utf-8'))
+    articles.forEach((a: { id: any }) => routes.push(`/blog/${a.id}`))
+  }
+
+  return routes
+}
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   ssr: true,
+  modules: ['@nuxtjs/sitemap'],
+  site: {
+    url: 'https://jw0924230.github.io/hotel/',
+    name: 'QK.to Clone'
+  },
+  sitemap: {
+    urls: getDynamicRoutes
+  },
   nitro: {
     output: {
       publicDir: 'dist'
@@ -36,43 +80,15 @@ export default defineNuxtConfig({
       if (process.env.NODE_ENV === 'development') {
         return
       }
-      // 1. Generate Hotel Routes
-      const detailsDir = path.resolve(__dirname, 'data_json/hotels/details')
-      let hotelRoutes: string[] = []
 
-      if (fs.existsSync(detailsDir)) {
-        const files = fs.readdirSync(detailsDir)
-        hotelRoutes = files
-          .filter(file => file.endsWith('.json'))
-          .map(file => `/detail/${file.replace('.json', '')}`)
-      }
-
-      // 2. Generate Area Routes
-      const cityIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
-      const areaRoutes = []
-
-      for (const id of cityIds) {
-        const areaPath = path.resolve(__dirname, `app/data/areas/area_${id}.json`)
-        const areaData = loadJSON(areaPath)
-        if (areaData.length > 0) {
-          const totalPages = Math.ceil(areaData.length / 20)
-          for (let p = 1; p <= totalPages; p++) {
-            areaRoutes.push(`/area/${id}/${p}`)
-          }
-        }
-      }
-
-      // 3. Generate Blog Routes
-      const blogPath = path.resolve(__dirname, 'data_json/blog/articles.json')
-      const blogRoutes = ['/blog']
-      if (fs.existsSync(blogPath)) {
-        const articles = JSON.parse(fs.readFileSync(blogPath, 'utf-8'))
-        articles.forEach((a: { id: any }) => blogRoutes.push(`/blog/${a.id}`))
-      }
+      const routes = getDynamicRoutes()
 
       // Add to prerender routes
-      nitroConfig.prerender.routes = nitroConfig.prerender.routes || []
-      nitroConfig.prerender.routes.push(...hotelRoutes, ...areaRoutes, ...blogRoutes)
+      // Add to prerender routes
+      if (nitroConfig.prerender) {
+        nitroConfig.prerender.routes = nitroConfig.prerender.routes || []
+        nitroConfig.prerender.routes.push(...routes)
+      }
     }
   },
   vite: {
