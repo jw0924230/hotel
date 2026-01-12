@@ -139,7 +139,6 @@ export const useHotelData = () => {
 
     const handleImageError = (e: Event) => {
         const img = (e.target as HTMLImageElement)
-        if (img.src.includes('_default.jpg')) return
         img.src = defaultImage
     }
 

@@ -40,14 +40,37 @@ import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import articles from '~/../data_json/blog/articles.json'
 import MarkdownIt from 'markdown-it'
+import { joinURL } from 'ufo'
 
 const route = useRoute()
+const config = useRuntimeConfig()
+const baseURL = config.app.baseURL
+
 const id = route.params.id as string
 const md = new MarkdownIt({
     html: true,
     linkify: true,
     typographer: true
 })
+
+// Custom image renderer to handle baseURL
+md.renderer.rules.image = (tokens, idx, options, env, self) => {
+    const token = tokens[idx]
+    if (!token || !token.attrs) return self.renderToken(tokens, idx, options)
+
+    const srcIndex = token.attrIndex('src')
+    if (srcIndex >= 0) {
+        const attr = token.attrs[srcIndex]
+        if (attr) {
+             const src = attr[1]
+             // If path is absolute (starts with /), prepend baseURL
+             if (src.startsWith('/') && !src.startsWith('//')) {
+                 attr[1] = joinURL(baseURL, src)
+             }
+        }
+    }
+    return self.renderToken(tokens, idx, options)
+}
 
 const article = computed(() => {
     return articles.find(a => a.id === id)
