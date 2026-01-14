@@ -1,6 +1,6 @@
 {
   "id": "1418",
-  "name": "简体 手機版beta城市花園精品旅館",
+  "name": "城市花園精品旅館",
   "area": "",
   "address": "新竹市東大路二段377號",
   "phone": "03-542-2989",
@@ -9,12 +9,9 @@
   "email": "cm.motel@msa.hinet.net",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "本館於東西向快速道路旁近國道.省道.市區更是咫尺間.都會叢林裡座...擁.唯美.浪漫的主題情境；多款不同的主題值得尊貴的您親自體驗，體貼的客房服務，出差洽公的不便，由我們爲您作定點接駁，如此全方位的服務豈能錯過。",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/1418_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=1418"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "本館於東西向快速道路旁近國道.省道.市區更是咫尺間.都會叢林裡座...擁.唯美.浪漫的主題情境；多款不同的主題值得尊貴的您親自體驗，體貼的客房服務，出差洽公的不便，由我們爲您作定點接駁，如此全方位的服務豈能錯過。"
 }

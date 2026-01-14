@@ -1,6 +1,6 @@
 {
   "id": "3434",
-  "name": "简体 手機版beta民橋大飯店",
+  "name": "民橋大飯店",
   "area": "",
   "address": "台東縣台東市知本路二段898號",
   "phone": "089-510-528",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3434"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "2599",
-  "name": "简体 手機版beta牡丹風情",
+  "name": "牡丹風情",
   "area": "",
   "address": "屏東縣車城鄉溫泉村溫泉路251-68號",
   "phone": "08-882-3588",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2599"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

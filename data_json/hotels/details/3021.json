@@ -1,6 +1,6 @@
 {
   "id": "3021",
-  "name": "简体 手機版beta怡和商旅大飯店",
+  "name": "怡和商旅大飯店",
   "area": "",
   "address": "桃園市桃園區民富九街96號",
   "phone": "03-355-5999",
@@ -9,10 +9,9 @@
   "email": "ehome@ehome168.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3021"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

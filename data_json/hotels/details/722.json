@@ -1,6 +1,6 @@
 {
   "id": "722",
-  "name": "简体 手機版beta清境家園景觀山莊",
+  "name": "清境家園景觀山莊",
   "area": "",
   "address": "南投縣仁愛鄉大同村仁和路206-2號",
   "phone": "049-280-3293",
@@ -9,10 +9,9 @@
   "email": "cose@mail.nantou.com.tw",
   "category": "渡假村/山莊",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=722"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

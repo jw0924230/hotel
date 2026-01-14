@@ -1,6 +1,6 @@
 {
   "id": "3031",
-  "name": "简体 手機版beta渴望會館",
+  "name": "渴望會館",
   "area": "",
   "address": "桃園市龍潭區渴望園區渴望路428號3樓",
   "phone": "03-407-2999",
@@ -9,10 +9,9 @@
   "email": "alrc@acer.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3031"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

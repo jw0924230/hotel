@@ -3,7 +3,7 @@
     <div class="container container-wide">
       <div class="sec-header">
         <h1 class="city-title">
-           <span class="icon">📍</span> {{ currentCityName }} 住宿推薦 (第 {{ currentPage }} 頁)
+           <span class="icon">📍</span> {{ currentCityName }} 住宿與休息推薦 (第 {{ currentPage }} 頁)
         </h1>
         <div class="breadcrumbs">
            <NuxtLink to="/">首頁</NuxtLink> &gt; <span class="active">{{ currentCityName }}</span>
@@ -18,7 +18,7 @@
                <div class="price-tag">{{ h.price }}</div>
              </div>
              <div class="h-info">
-               <div class="h-name">{{ h.name }}</div>
+               <h2 class="h-name">{{ h.name }}</h2>
                <div class="h-address">{{ h.address }}</div>
              </div>
            </NuxtLink>
@@ -93,6 +93,12 @@ const finalHotels = computed(() => {
     }).filter(i => i !== null)
 })
 
+useSeoMeta({
+  title: computed(() => `${currentCityName.value}飯店、商旅、汽車旅館住宿與休息推薦`),
+  description: computed(() => `${currentCityName.value} 臨時需要假日休息、平日休息，還是規劃一趟輕旅行的假日住宿、平日住宿，這裡一次整理${currentCityName.value} 熱門的飯店、商旅與汽車旅館推薦清單，滿足不同族群與使用情境需求。從適合短暫放鬆的2小時、3小時休息方案，到高 CP 值的過夜住宿選擇，完整比較地點、價格與彈性時段，協助你快速找到最適合的住宿或休息空間，無論情侶約會、商務出差或臨時歇腳，都能安心入住、輕鬆選擇。`)
+})
+
+
 </script>
 
 <style scoped>
@@ -136,7 +142,7 @@ const finalHotels = computed(() => {
 .price-tag { position: absolute; bottom: 0; right: 0; background: rgba(231, 76, 60, 0.9); color: white; padding: 5px 10px; font-size: 13px; font-weight: bold; border-top-left-radius: 8px; }
 
 .h-info { padding: 15px; }
-.h-name { font-weight: bold; font-size: 16px; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.h-name { font-weight: bold; font-size: 16px; margin: 0 0 5px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .h-address { font-size: 13px; color: #7f8c8d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .not-found { text-align: center; padding: 40px; color: #7f8c8d; }

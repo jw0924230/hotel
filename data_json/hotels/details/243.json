@@ -1,6 +1,6 @@
 {
   "id": "243",
-  "name": "简体 手機版beta愛的美汽車旅館",
+  "name": "愛的美汽車旅館",
   "area": "",
   "address": "新竹縣竹東鎮北興路二段265號",
   "phone": "03-595-1177",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "3小時",
   "housing_rules": "休息時間：3小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=243"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

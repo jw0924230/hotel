@@ -1,20 +1,17 @@
 {
   "id": "2131",
-  "name": "简体 手機版beta隱於野閒居旅店",
+  "name": "隱於野閒居旅店",
   "area": "",
   "address": "雲林縣古坑鄉華山村103號",
   "phone": "05-590-0370",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "http://www.yinyuye.tw",
   "email": "b2459.chen@msa.hinet.net",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "隱於野閒居旅店是一處屬於私人隱密的庭園獨棟別墅.... 位於華山，山區裡一棟60坪villa民宿，採整棟出租，含戶外烤肉休閒區步道區，屬於獨立自由空間，沒有其他房客，適合10人住宿或大家庭出遊公司聚餐，室內另有廚房設備可自己料理美食。\n\n    隱於野閒居旅店因位於華山咖啡園區，故您可以在此處眾多的咖啡餐飲店家找尋最道地的華山咖啡。如要來個登山健步之旅也是不錯的選擇，探訪深度的華山之旅，不僅可強身健體還可增廣見聞。\n    \n      隱於野離國內知名的劍湖山遊樂場也是非常的近，與其與別人一起擠大飯店，隱於野是您另外一個更好選擇。",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/2131_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=2131"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "隱於野閒居旅店是一處屬於私人隱密的庭園獨棟別墅.... 位於華山，山區裡一棟60坪villa民宿，採整棟出租，含戶外烤肉休閒區步道區，屬於獨立自由空間，沒有其他房客，適合10人住宿或大家庭出遊公司聚餐，室內另有廚房設備可自己料理美食。\n\n    隱於野閒居旅店因位於華山咖啡園區，故您可以在此處眾多的咖啡餐飲店家找尋最道地的華山咖啡。如要來個登山健步之旅也是不錯的選擇，探訪深度的華山之旅，不僅可強身健體還可增廣見聞。\n    \n      隱於野離國內知名的劍湖山遊樂場也是非常的近，與其與別人一起擠大飯店，隱於野是您另外一個更好選擇。"
 }

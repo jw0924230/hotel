@@ -1,6 +1,6 @@
 {
   "id": "3265",
-  "name": "简体 手機版beta國星大飯店",
+  "name": "國星大飯店",
   "area": "",
   "address": "高雄市三民區同愛街81號",
   "phone": "07-287-3101",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3265"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

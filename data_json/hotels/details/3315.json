@@ -1,6 +1,6 @@
 {
   "id": "3315",
-  "name": "简体 手機版beta墾丁悠活渡假村",
+  "name": "墾丁悠活渡假村",
   "area": "",
   "address": "屏東縣恆春鎮萬里路27-9號",
   "phone": "08-8869999",
@@ -9,10 +9,9 @@
   "email": "service@yoho.com.tw",
   "category": "渡假村/山莊",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3315"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

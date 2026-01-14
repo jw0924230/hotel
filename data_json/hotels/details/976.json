@@ -1,6 +1,6 @@
 {
   "id": "976",
-  "name": "简体 手機版beta望海軒民宿",
+  "name": "望海軒民宿",
   "area": "",
   "address": "台東縣綠島鄉公館柴口33號",
   "phone": "089-672-838",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=976"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

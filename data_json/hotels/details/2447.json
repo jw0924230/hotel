@@ -1,6 +1,6 @@
 {
   "id": "2447",
-  "name": "简体 手機版beta太子大飯店",
+  "name": "太子大飯店",
   "area": "",
   "address": "宜蘭縣礁溪鄉礁溪路五段67號",
   "phone": "03-988-2006",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2447"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

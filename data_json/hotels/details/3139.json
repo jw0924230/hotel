@@ -1,6 +1,6 @@
 {
   "id": "3139",
-  "name": "简体 手機版beta綠原渡假旅社",
+  "name": "綠原渡假旅社",
   "area": "",
   "address": "雲林縣古坑鄉草嶺里草嶺路42-1號",
   "phone": "05-583-1153",
@@ -9,10 +9,9 @@
   "email": "joolajim@ms31.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3139"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

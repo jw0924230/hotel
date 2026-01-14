@@ -1,6 +1,6 @@
 {
   "id": "3158",
-  "name": "简体 手機版beta兆品酒店",
+  "name": "兆品酒店",
   "area": "",
   "address": "嘉義市西區文化路257號",
   "phone": "05-229-3998",
@@ -9,10 +9,9 @@
   "email": "cy-fi@chinatrust-hotel.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3158"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "3009",
-  "name": "简体 手機版beta中信大飯店-桃園館",
+  "name": "中信大飯店-桃園館",
   "area": "",
   "address": "桃園市桃園區民生路107號",
   "phone": "03-337-0888",
@@ -9,10 +9,9 @@
   "email": "ty-fi@chinatrust-hotel.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3009"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

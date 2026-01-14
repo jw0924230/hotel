@@ -1,6 +1,6 @@
 {
   "id": "2431",
-  "name": "简体 手機版beta天然谷溫泉",
+  "name": "天然谷溫泉",
   "area": "",
   "address": "新竹縣尖石鄉錦屏村天然谷25號",
   "phone": "03-584-1321",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "民宿 / 溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2431"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

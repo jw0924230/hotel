@@ -1,18 +1,17 @@
 {
   "id": "3988",
-  "name": "简体 手機版beta台糖台北會館",
+  "name": "台糖台北會館",
   "area": "",
   "address": "台北市中正區中華路一段39號",
   "phone": "02-2388-5522",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "「台糖台北會館」以現代化亮麗的外觀，坐落於台北市中華路一段，緊鄰西門鬧區及台灣行政中樞博愛特區，鄰近台北市南來北往三鐵共構的台北車站，基地營業樓層為地上1~5樓，總房間數68間客房。\n會館以台糖企業形象及旅館貼心的服務，讓「是生活也是享受，是旅館也是你家」的經營理念，真誠地讓每位入住的朋友感受幸福。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3988"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "「台糖台北會館」以現代化亮麗的外觀，坐落於台北市中華路一段，緊鄰西門鬧區及台灣行政中樞博愛特區，鄰近台北市南來北往三鐵共構的台北車站，基地營業樓層為地上1~5樓，總房間數68間客房。\n會館以台糖企業形象及旅館貼心的服務，讓「是生活也是享受，是旅館也是你家」的經營理念，真誠地讓每位入住的朋友感受幸福。"
 }

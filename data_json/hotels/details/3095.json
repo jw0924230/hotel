@@ -1,6 +1,6 @@
 {
   "id": "3095",
-  "name": "简体 手機版beta鷺江大飯店",
+  "name": "鷺江大飯店",
   "area": "",
   "address": "台中市北區大雅路30號",
   "phone": "04-2201-4300",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3095"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "3301",
-  "name": "简体 手機版beta坤園大飯店",
+  "name": "坤園大飯店",
   "area": "",
   "address": "屏東縣屏東市杭州街39之6號",
   "phone": "08-7331300",
@@ -9,10 +9,9 @@
   "email": "kuenyuan@kuenyuan.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3301"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

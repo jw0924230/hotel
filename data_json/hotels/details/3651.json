@@ -1,6 +1,6 @@
 {
   "id": "3651",
-  "name": "简体 手機版beta佛羅倫斯別墅汽車旅館",
+  "name": "佛羅倫斯別墅汽車旅館",
   "area": "",
   "address": "台中市沙鹿區中山路121-1號",
   "phone": "04-2665-2938",
@@ -9,10 +9,9 @@
   "email": "cyj570930@yahoo.com.tw",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3651"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

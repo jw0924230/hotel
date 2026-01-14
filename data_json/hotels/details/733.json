@@ -1,6 +1,6 @@
 {
   "id": "733",
-  "name": "简体 手機版beta保記茶工房民宿",
+  "name": "保記茶工房民宿",
   "area": "",
   "address": "南投縣鹿谷鄉清水村永豐巷36號",
   "phone": "049-267-1979",
@@ -9,10 +9,9 @@
   "email": "paoji@nantou.com.tw",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=733"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

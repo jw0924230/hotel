@@ -1,6 +1,6 @@
 {
   "id": "3420",
-  "name": "简体 手機版beta麗格休閒飯店",
+  "name": "麗格休閒飯店",
   "area": "",
   "address": "花蓮縣花蓮市商校街258號",
   "phone": "03-834-9922",
@@ -9,12 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3420_l_image_avv9y.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3420"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

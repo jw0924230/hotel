@@ -1,6 +1,6 @@
 {
   "id": "2190",
-  "name": "简体 手機版beta東之旅民宿",
+  "name": "東之旅民宿",
   "area": "",
   "address": "花蓮縣吉安鄉福興路366巷7號",
   "phone": "03-852-3623",
@@ -9,10 +9,9 @@
   "email": "mel.a66@msa.hinet.net",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2190"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

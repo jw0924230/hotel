@@ -1,6 +1,6 @@
 {
   "id": "1220",
-  "name": "简体 手機版beta杜拜汽車旅館",
+  "name": "杜拜汽車旅館",
   "area": "",
   "address": "高雄市苓雅區武廟路215號",
   "phone": "07-225-5333",
@@ -9,12 +9,9 @@
   "email": "karohotel@hotmail.com",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "平日2小時，假日3小時",
-  "housing_rules": "休息時間：平日2小時，假日3小時\n2小時６００元, ３小時８００元\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t 注意事項：\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t進房時間以現場為準! 情人節恕不接受訂房!",
+  "housing_rules": "休息時間：平日2小時，假日3小時\n2小時６００元, ３小時８００元\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "進房時間以現場為準! 情人節恕不接受訂房!",
-  "description": "驚爆特惠價,休息2小時600元起,住宿2300元起,貴賓專屬直達電梯, 挑高樓中樓....讓杜拜夢幻汽車旅館見證您倆的愛情吧!!\n杜拜的官方網站  http://www.dubai.com.tw/html/",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/1220_l_image_fi50x.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=1220"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "驚爆特惠價,休息2小時600元起,住宿2300元起,貴賓專屬直達電梯, 挑高樓中樓....讓杜拜夢幻汽車旅館見證您倆的愛情吧!!\n杜拜的官方網站  http://www.dubai.com.tw/html/"
 }

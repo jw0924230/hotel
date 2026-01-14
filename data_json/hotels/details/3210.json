@@ -1,6 +1,6 @@
 {
   "id": "3210",
-  "name": "简体 手機版beta墾丁統茂高山青飯店",
+  "name": "墾丁統茂高山青飯店",
   "area": "",
   "address": "屏東縣恆春鎮墾丁路271號",
   "phone": "08-886-1234",
@@ -9,12 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3210_l_image_0330m.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3210"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

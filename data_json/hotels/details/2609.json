@@ -1,6 +1,6 @@
 {
   "id": "2609",
-  "name": "简体 手機版beta加賀屋溫泉山莊",
+  "name": "加賀屋溫泉山莊",
   "area": "",
   "address": "花蓮縣玉里鎮溫泉41-2號",
   "phone": "03-888-2686",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "渡假村/山莊 / 溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2609"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

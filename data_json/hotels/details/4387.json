@@ -1,18 +1,17 @@
 {
   "id": "4387",
-  "name": "简体 手機版beta逢甲二五行館",
+  "name": "逢甲二五行館",
   "area": "",
   "address": "台中市西屯區逢甲路301巷22弄1號",
   "phone": "04-2452-4315",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "距離台中最無可取代的逢甲夜市商圈僅10分鐘步程，\n坐享夜市美食購物的繁華，也遠離繁雜與喧囂，\n坐鎮叢林小學樹林旁，傾聽至善河畔風景，\n朝馬的呼喚聲，是今日夜宿台中最美的選擇。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=4387"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "距離台中最無可取代的逢甲夜市商圈僅10分鐘步程，\n坐享夜市美食購物的繁華，也遠離繁雜與喧囂，\n坐鎮叢林小學樹林旁，傾聽至善河畔風景，\n朝馬的呼喚聲，是今日夜宿台中最美的選擇。"
 }

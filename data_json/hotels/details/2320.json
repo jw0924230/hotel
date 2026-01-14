@@ -1,6 +1,6 @@
 {
   "id": "2320",
-  "name": "简体 手機版beta東南溫泉大飯店",
+  "name": "東南溫泉大飯店",
   "area": "",
   "address": "台北市北投區中山路26號",
   "phone": "02-2896-9797",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2320"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

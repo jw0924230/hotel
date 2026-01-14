@@ -1,6 +1,6 @@
 {
   "id": "3725",
-  "name": "简体 手機版beta康橋商旅-後驛九如館",
+  "name": "康橋商旅-後驛九如館",
   "area": "",
   "address": "高雄市三民區九如二路339號",
   "phone": "07-315-3366",
@@ -9,10 +9,9 @@
   "email": "h017.hotel@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3725"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

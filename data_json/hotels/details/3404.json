@@ -1,6 +1,6 @@
 {
   "id": "3404",
-  "name": "简体 手機版beta凱悅精典旅店",
+  "name": "凱悅精典旅店",
   "area": "",
   "address": "花蓮縣花蓮市福建街516號",
   "phone": "03-831-5877",
@@ -9,10 +9,9 @@
   "email": "kaiyue8313516@yahoo.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3404"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

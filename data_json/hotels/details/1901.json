@@ -1,6 +1,6 @@
 {
   "id": "1901",
-  "name": "简体 手機版beta遠雄悅來大飯店",
+  "name": "遠雄悅來大飯店",
   "area": "",
   "address": "花蓮縣壽豐鄉鹽寮村山嶺18號",
   "phone": "07-330-6889",
@@ -9,10 +9,9 @@
   "email": "katecnac@hotmail.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1901"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

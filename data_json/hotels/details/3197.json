@@ -1,6 +1,6 @@
 {
   "id": "3197",
-  "name": "简体 手機版beta英代大飯店",
+  "name": "英代大飯店",
   "area": "",
   "address": "台南市中西區觀亭街81號",
   "phone": "06-222-1161",
@@ -9,10 +9,9 @@
   "email": "ying-dai@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3197"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

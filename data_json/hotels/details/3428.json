@@ -1,6 +1,6 @@
 {
   "id": "3428",
-  "name": "简体 手機版beta大地飯店",
+  "name": "大地飯店",
   "area": "",
   "address": "台東縣池上鄉福原村忠孝路210號",
   "phone": "089-864-330",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3428"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

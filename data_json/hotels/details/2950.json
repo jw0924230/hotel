@@ -1,6 +1,6 @@
 {
   "id": "2950",
-  "name": "简体 手機版beta台北西門町意舍",
+  "name": "台北西門町意舍",
   "area": "",
   "address": "台北市萬華區武昌街二段77號",
   "phone": "02-2375-5111",
@@ -9,10 +9,9 @@
   "email": "ximending@ambahotel.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2950"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

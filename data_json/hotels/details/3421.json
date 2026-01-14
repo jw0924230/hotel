@@ -1,6 +1,6 @@
 {
   "id": "3421",
-  "name": "简体 手機版beta麗軒國際飯店",
+  "name": "麗軒國際飯店",
   "area": "",
   "address": "花蓮縣花蓮市中美路99之1號",
   "phone": "03-824-6898",
@@ -9,12 +9,9 @@
   "email": "services.box@sweethome.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3421_l_image_e9ejf.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3421"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

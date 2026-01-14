@@ -1,6 +1,6 @@
 {
   "id": "2998",
-  "name": "简体 手機版beta豪麗HOTEL",
+  "name": "豪麗HOTEL",
   "area": "",
   "address": "台北市大安區大安路一段81號",
   "phone": "02-2776-6599",
@@ -9,10 +9,9 @@
   "email": "rovalpal@ms15.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2998"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

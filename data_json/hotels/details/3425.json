@@ -1,6 +1,6 @@
 {
   "id": "3425",
-  "name": "简体 手機版beta亞灣飯店",
+  "name": "亞灣飯店",
   "area": "",
   "address": "台東縣卑南鄉溫泉村鎮樂路1號",
   "phone": "089-510-007",
@@ -9,10 +9,9 @@
   "email": "ya.wan@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3425"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

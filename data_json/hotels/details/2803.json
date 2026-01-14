@@ -1,6 +1,6 @@
 {
   "id": "2803",
-  "name": "简体 手機版beta國眾大飯店",
+  "name": "國眾大飯店",
   "area": "",
   "address": "高雄市三民區建國二路268號",
   "phone": "07-237-0117",
@@ -9,10 +9,9 @@
   "email": "service@nice-hotel.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2803"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

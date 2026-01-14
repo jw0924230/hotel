@@ -1,20 +1,17 @@
 {
   "id": "3509",
-  "name": "简体 手機版beta綠島大旅社",
+  "name": "綠島大旅社",
   "area": "",
   "address": "桃園市桃園區廣文街15號",
   "phone": "03-334-4121",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "eh010100@yahoo.com.tw",
   "category": "旅社",
   "stay_info": "",
-  "rest_info": "3小時",
   "housing_rules": "休息時間：3小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "桃園市 綠島大旅社《 Green Island Hotel 》為合法立案並通過消防安檢合格的優質旅館，附設免費停車場、免費無線寬頻網路供使用及備有電梯，步行約6~8分鐘可到桃園市火車站、客運站及新光三越百貨、遠東百貨、觀光夜市；距離慈湖兩蔣陵寢及大溪老街車程約30~40分鐘，桃園機場車程約20~30分鐘，鄰近桃園巨蛋體育館，位處市中心，交通便利，費用非常經濟實惠並提供您安靜、乾淨休憩環境。\n休息：250元\n住宿：500、600、700元\n電話：(03)3344121\n地址：桃園市廣文街15號",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3509_l_image_140gb.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3509"
+  "price_accommodation": null,
+  "price_rest": "250元",
+  "description": "桃園市 綠島大旅社《 Green Island Hotel 》為合法立案並通過消防安檢合格的優質旅館，附設免費停車場、免費無線寬頻網路供使用及備有電梯，步行約6~8分鐘可到桃園市火車站、客運站及新光三越百貨、遠東百貨、觀光夜市；距離慈湖兩蔣陵寢及大溪老街車程約30~40分鐘，桃園機場車程約20~30分鐘，鄰近桃園巨蛋體育館，位處市中心，交通便利，費用非常經濟實惠並提供您安靜、乾淨休憩環境。\n休息：250元\n住宿：500、600、700元\n電話：(03)3344121\n地址：桃園市廣文街15號"
 }

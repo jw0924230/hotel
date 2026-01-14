@@ -1,6 +1,6 @@
 {
   "id": "3359",
-  "name": "简体 手機版beta晶樺商務飯店",
+  "name": "晶樺商務飯店",
   "area": "",
   "address": "宜蘭縣羅東鎮中正北路42號7樓",
   "phone": "03-957-5110",
@@ -9,10 +9,9 @@
   "email": "service@jin-hua.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3359"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

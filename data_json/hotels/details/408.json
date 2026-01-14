@@ -1,6 +1,6 @@
 {
   "id": "408",
-  "name": "简体 手機版beta綠園汽車旅館",
+  "name": "綠園汽車旅館",
   "area": "",
   "address": "南投縣南投市文化路46號",
   "phone": "049-220-0169",
@@ -9,10 +9,9 @@
   "email": "we0707we@yahoo.com.tw",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "3小時",
   "housing_rules": "休息時間：3小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=408"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

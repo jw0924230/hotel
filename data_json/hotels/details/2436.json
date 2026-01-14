@@ -1,6 +1,6 @@
 {
   "id": "2436",
-  "name": "简体 手機版beta會來尖石溫泉渡假村",
+  "name": "會來尖石溫泉渡假村",
   "area": "",
   "address": "新竹縣尖石鄉嘉樂村3鄰177-1號",
   "phone": "03-584-1000",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2436"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

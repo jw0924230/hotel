@@ -1,6 +1,6 @@
 {
   "id": "2113",
-  "name": "简体 手機版beta仙雲閣",
+  "name": "仙雲閣",
   "area": "",
   "address": "花蓮縣壽豐鄉池南村池南路一段42號",
   "phone": "03-864-1252",
@@ -9,10 +9,9 @@
   "email": "g9308316@yahoo.com.tw",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2113"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

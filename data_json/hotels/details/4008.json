@@ -1,18 +1,17 @@
 {
   "id": "4008",
-  "name": "简体 手機版betaA22微旅HOTEL",
+  "name": "A22微旅HOTEL",
   "area": "",
   "address": "桃園市中壢區永嘉街98號",
   "phone": "03-422-7111",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "『A22城市商旅』位於中壢市最繁榮的市中心地段， 鄰近內壢交流道、高鐵中壢站、中壢火車站， 交通便利，是您商務出差、桃園旅遊的住宿優質選擇。\n環境優雅，鬧中取靜，住宿在此無論是洽商或渡假， 都能享受如家一般自在舒適的恬靜空間，給您賓至如歸的感受。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=4008"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "『A22城市商旅』位於中壢市最繁榮的市中心地段， 鄰近內壢交流道、高鐵中壢站、中壢火車站， 交通便利，是您商務出差、桃園旅遊的住宿優質選擇。\n環境優雅，鬧中取靜，住宿在此無論是洽商或渡假， 都能享受如家一般自在舒適的恬靜空間，給您賓至如歸的感受。"
 }

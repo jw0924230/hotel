@@ -1,20 +1,17 @@
 {
   "id": "917",
-  "name": "简体 手機版beta馥華飯店",
+  "name": "馥華飯店",
   "area": "",
   "address": "新北市板橋區民生路二段251號",
   "phone": "02-2250-1717",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "http://www.forward-hotel.com.tw",
   "email": "forward@forward-hotel.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "新北市板橋推薦住宿首選馥華飯店，在民國89年10月份正式進軍新北市旅館市場，並在董事長徐陳坤領軍之下，短短幾年間『馥華飯店』已成為商務人士及國內外旅遊人士下榻新北市的不二選擇!! 『馥華飯店』秉持著熱情、專業、整潔、貼心為服務4大核心，並將「滿足消費者」為經營標的，也相信透過完整而功能性的設備、整潔而明亮的空間以及誠摰 的服務便能留住每位來到板橋住宿旅客的心！所以我們將努力的做到提供最優質的新北市飯店住宿體驗，期待您的光臨。 本飯店共有精緻客房60間：包括八間馥華家庭客房、十二間馥華套房，以及豪華 商務套房、豪華客房、商務客房、經濟客房各十間；所有客房均配備有獨立的影音 播放系統﹝DVD 放影機﹞、可自行設定的保險箱、二支以上的客房分機、29吋重 低音直角電視、冰箱、煮水器、吹風機、控溫空調、網際網路專用插座﹝透過我們 的網路裝置，您可免費的撥接網際網路﹞。 每一間客房都經過精心的設計，我們放棄了 傳統爭取空間的觀念，讓每一間客房空間都維持在9坪以上，雖然僅有六十間，間間細緻的規劃與擺設必能滿足您優質的需求。",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/917_l_image_e3nj7.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=917"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "新北市板橋推薦住宿首選馥華飯店，在民國89年10月份正式進軍新北市旅館市場，並在董事長徐陳坤領軍之下，短短幾年間『馥華飯店』已成為商務人士及國內外旅遊人士下榻新北市的不二選擇!! 『馥華飯店』秉持著熱情、專業、整潔、貼心為服務4大核心，並將「滿足消費者」為經營標的，也相信透過完整而功能性的設備、整潔而明亮的空間以及誠摰 的服務便能留住每位來到板橋住宿旅客的心！所以我們將努力的做到提供最優質的新北市飯店住宿體驗，期待您的光臨。 本飯店共有精緻客房60間：包括八間馥華家庭客房、十二間馥華套房，以及豪華 商務套房、豪華客房、商務客房、經濟客房各十間；所有客房均配備有獨立的影音 播放系統﹝DVD 放影機﹞、可自行設定的保險箱、二支以上的客房分機、29吋重 低音直角電視、冰箱、煮水器、吹風機、控溫空調、網際網路專用插座﹝透過我們 的網路裝置，您可免費的撥接網際網路﹞。 每一間客房都經過精心的設計，我們放棄了 傳統爭取空間的觀念，讓每一間客房空間都維持在9坪以上，雖然僅有六十間，間間細緻的規劃與擺設必能滿足您優質的需求。"
 }

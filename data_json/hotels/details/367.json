@@ -1,6 +1,6 @@
 {
   "id": "367",
-  "name": "简体 手機版beta東之港汽車旅館",
+  "name": "東之港汽車旅館",
   "area": "",
   "address": "屏東縣東港鎮水源二街139號",
   "phone": "08-8352-2229",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "3小時",
   "housing_rules": "休息時間：3小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=367"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

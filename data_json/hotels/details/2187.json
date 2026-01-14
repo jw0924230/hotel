@@ -1,6 +1,6 @@
 {
   "id": "2187",
-  "name": "简体 手機版beta村上春宿",
+  "name": "村上春宿",
   "area": "",
   "address": "花蓮縣壽豐鄉志學村中正路240號",
   "phone": "03-866-2382",
@@ -9,10 +9,9 @@
   "email": "wkl.murakami@gmail.com",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2187"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "2441",
-  "name": "简体 手機版beta員山溫泉養生會館",
+  "name": "員山溫泉養生會館",
   "area": "",
   "address": "宜蘭縣員山鄉永和村溫泉路92-36號",
   "phone": "03-922-8818",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2441"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

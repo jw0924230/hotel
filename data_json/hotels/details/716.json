@@ -1,6 +1,6 @@
 {
   "id": "716",
-  "name": "简体 手機版beta見晴花園渡假山莊",
+  "name": "見晴花園渡假山莊",
   "area": "",
   "address": "南投縣仁愛鄉大同村定遠新村18-1號",
   "phone": "049-280-3162",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "渡假村/山莊",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=716"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

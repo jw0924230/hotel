@@ -1,6 +1,6 @@
 {
   "id": "2487",
-  "name": "简体 手機版beta汶山大飯店",
+  "name": "汶山大飯店",
   "area": "",
   "address": "台中市和平區東關路一段溫泉巷16號",
   "phone": "04-2595-1265",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2487"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

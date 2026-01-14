@@ -1,6 +1,6 @@
 {
   "id": "1607",
-  "name": "简体 手機版beta阿里山竺園山莊民宿",
+  "name": "阿里山竺園山莊民宿",
   "area": "",
   "address": "嘉義縣竹崎鄉中和村石桌18鄰2-7號",
   "phone": "05-256-2565",
@@ -9,10 +9,9 @@
   "email": "chuyuan0320@yahoo.com.tw",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1607"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

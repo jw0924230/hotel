@@ -1,6 +1,6 @@
 {
   "id": "1022",
-  "name": "简体 手機版beta福隆大飯店",
+  "name": "福隆大飯店",
   "area": "",
   "address": "花蓮縣花蓮市大同街29號",
   "phone": "03-835-3366",
@@ -9,10 +9,9 @@
   "email": "fulonghotel@yahoo.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "踏入福隆，您就是我們的貴賓，我們將提供無微不至的服務，讓您深深體驗賓至如歸的感受。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1022"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "踏入福隆，您就是我們的貴賓，我們將提供無微不至的服務，讓您深深體驗賓至如歸的感受。"
 }

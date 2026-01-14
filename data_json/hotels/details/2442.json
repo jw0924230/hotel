@@ -1,6 +1,6 @@
 {
   "id": "2442",
-  "name": "简体 手機版beta山泉大飯店",
+  "name": "山泉大飯店",
   "area": "",
   "address": "宜蘭縣礁溪鄉礁溪路六段36號",
   "phone": "03-988-7979",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2442"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

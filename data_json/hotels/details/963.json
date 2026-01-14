@@ -1,6 +1,6 @@
 {
   "id": "963",
-  "name": "简体 手機版beta彩雲居觀景民宿",
+  "name": "彩雲居觀景民宿",
   "area": "",
   "address": "台中市和平區中坑里中坑巷2-17號",
   "phone": "04-2597-1275",
@@ -9,12 +9,9 @@
   "email": "cyj@cyjhouse.com",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "彩雲居位於往大雪山15公里處、為一日本特殊風格建築、海拔約1000公尺、空氣清新、舒適涼爽、居高臨下的彩雲居、視野無限寬廣、可遠眺大甲溪、大安溪、台中港、大度山脈、火焰山等。春天的花朵、夏天的夕陽、秋天的夜空、冬天的雲海、盡收眼底。",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/963_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=963"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "彩雲居位於往大雪山15公里處、為一日本特殊風格建築、海拔約1000公尺、空氣清新、舒適涼爽、居高臨下的彩雲居、視野無限寬廣、可遠眺大甲溪、大安溪、台中港、大度山脈、火焰山等。春天的花朵、夏天的夕陽、秋天的夜空、冬天的雲海、盡收眼底。"
 }

@@ -1,6 +1,6 @@
 {
   "id": "518",
-  "name": "简体 手機版beta墾丁荷園冷泉休閒農莊",
+  "name": "墾丁荷園冷泉休閒農莊",
   "area": "",
   "address": "屏東縣恆春鎮南灣路鞍山巷35號",
   "phone": "08-888-0553",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "休閒農場",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=518"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

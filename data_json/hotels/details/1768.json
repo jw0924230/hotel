@@ -1,6 +1,6 @@
 {
   "id": "1768",
-  "name": "简体 手機版beta美麗春天大飯店",
+  "name": "美麗春天大飯店",
   "area": "",
   "address": "新北市新店區太平路8號",
   "phone": "02-8666-9999",
@@ -9,10 +9,9 @@
   "email": "beautifulhotelsales1@gmail.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1768"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

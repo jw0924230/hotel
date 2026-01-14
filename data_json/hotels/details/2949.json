@@ -1,6 +1,6 @@
 {
   "id": "2949",
-  "name": "简体 手機版beta古山園旅社",
+  "name": "古山園旅社",
   "area": "",
   "address": "台北市萬華區華西街40巷16號",
   "phone": "02-2306-7408",
@@ -9,10 +9,9 @@
   "email": "a2306a7408@msa.hinet.net",
   "category": "旅社",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2949"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "925",
-  "name": "简体 手機版beta八煙溫泉會館",
+  "name": "八煙溫泉會館",
   "area": "",
   "address": "新北市金山區重和里林口35號",
   "phone": "02-2408-0103",
@@ -9,10 +9,9 @@
   "email": "ba-ian@ba-ian.com.tw",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=925"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

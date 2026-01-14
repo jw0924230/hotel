@@ -1,6 +1,6 @@
 {
   "id": "2929",
-  "name": "简体 手機版beta詩泊溫旅",
+  "name": "詩泊溫旅",
   "area": "",
   "address": "新北市八里區下罟里1鄰下罟子1之6號",
   "phone": "02-2610-5218",
@@ -9,10 +9,9 @@
   "email": "tangspa@yahoo.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2929"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

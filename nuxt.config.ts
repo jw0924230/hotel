@@ -54,7 +54,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/sitemap'],
   site: {
     url: 'https://jw0924230.github.io/hotel/',
-    name: 'QK.to Clone'
+    name: '休息3小時'
   },
   sitemap: {
     urls: getDynamicRoutes

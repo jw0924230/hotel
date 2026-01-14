@@ -1,6 +1,6 @@
 {
   "id": "1811",
-  "name": "简体 手機版beta臨海居特色民宿",
+  "name": "臨海居特色民宿",
   "area": "",
   "address": "澎湖縣馬公市臨海路10-6號",
   "phone": "06-926-5830",
@@ -9,12 +9,9 @@
   "email": "poho.service@msa.hinet.net",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "2009澎湖花火節開始嘍!(5月2日~5月30日)\n5月花火節期間，臨海居推出免費專車賞花火活動\n房間有限，請提早預定喔~\n\n訂房＋機票套裝方案：\n五：澎湖機票＋住宿臨海居特色民宿最低只要３０００元起。\n復興假期活動優惠方案\nhttp://package.ezfly.com/taiwan/common/promoproduct.asp?tour_sn=10574\n立榮假期活動優惠方案\nhttp://package.ezfly.com/taiwan/common/promoproduct.asp?tour_sn=10479\n\n～挑戰澎湖最低價～",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/1811_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=1811"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "2009澎湖花火節開始嘍!(5月2日~5月30日)\n5月花火節期間，臨海居推出免費專車賞花火活動\n房間有限，請提早預定喔~\n\n訂房＋機票套裝方案：\n五：澎湖機票＋住宿臨海居特色民宿最低只要３０００元起。\n復興假期活動優惠方案\nhttp://package.ezfly.com/taiwan/common/promoproduct.asp?tour_sn=10574\n立榮假期活動優惠方案\nhttp://package.ezfly.com/taiwan/common/promoproduct.asp?tour_sn=10479\n\n～挑戰澎湖最低價～"
 }

@@ -1,6 +1,6 @@
 {
   "id": "2483",
-  "name": "简体 手機版beta雅筑居民宿",
+  "name": "雅筑居民宿",
   "area": "",
   "address": "苗栗縣泰安鄉錦水村圓墩63-3號",
   "phone": "037-941-582",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "民宿 / 溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2483"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

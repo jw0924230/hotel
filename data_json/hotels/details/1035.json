@@ -1,6 +1,6 @@
 {
   "id": "1035",
-  "name": "简体 手機版beta凱悅飯店",
+  "name": "凱悅飯店",
   "area": "",
   "address": "馬祖南竿鄉介壽村47之3號",
   "phone": "0836-26-555",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1035"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

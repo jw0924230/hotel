@@ -1,6 +1,6 @@
 {
   "id": "2855",
-  "name": "简体 手機版beta麗都賓館",
+  "name": "麗都賓館",
   "area": "",
   "address": "台中市西屯區中康街81號",
   "phone": "04-2425-0016",
@@ -9,10 +9,9 @@
   "email": "sppalex@gmail.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2855"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

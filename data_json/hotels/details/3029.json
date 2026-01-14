@@ -1,6 +1,6 @@
 {
   "id": "3029",
-  "name": "简体 手機版beta揚昇山莊",
+  "name": "揚昇山莊",
   "area": "",
   "address": "桃園市楊梅區楊昇路256號1樓",
   "phone": "03-478-0099",
@@ -9,10 +9,9 @@
   "email": "sunrise@sunrise-golf.com.tw",
   "category": "渡假村/山莊",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3029"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

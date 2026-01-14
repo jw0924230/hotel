@@ -6,8 +6,7 @@
         <div class="container container-wide header-inner">
           <div class="logo-area">
              <NuxtLink to="/" class="logo-text">
-               <span class="qk">QK</span><span class="text">休閒網</span>
-               <div class="slogan">全國最大的汽車旅館入口網站</div>
+               <span class="qk">休息</span><span class="text">3小時</span>
              </NuxtLink>
           </div>
           <nav class="main-nav">
@@ -23,10 +22,7 @@
 
     <footer class="site-footer">
       <div class="container">
-        <div class="footer-links">
-          <a href="#">關於我們</a> | <a href="#">隱私權聲明</a> | <a href="#">免責條款</a> | <a href="#">聯絡我們</a>
-        </div>
-        <p>Copyright © 2026 QK休閒網. All rights reserved.</p>
+        <p>Copyright © 2026 休息3小時. All rights reserved.</p>
       </div>
     </footer>
     <button 

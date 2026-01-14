@@ -1,6 +1,6 @@
 {
   "id": "2996",
-  "name": "简体 手機版beta舞衣新宿南京館",
+  "name": "舞衣新宿南京館",
   "area": "",
   "address": "台北市中山區南京東路二段163號",
   "phone": "02-2503-5511",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2996"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

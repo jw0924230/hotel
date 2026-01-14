@@ -1,6 +1,6 @@
 {
   "id": "2387",
-  "name": "简体 手機版beta台車棧溫泉山莊",
+  "name": "台車棧溫泉山莊",
   "area": "",
   "address": "新北市烏來區溫泉街118巷9號",
   "phone": "其他連絡電話：02-2661-7734",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "渡假村/山莊 / 溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2387"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

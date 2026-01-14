@@ -1,6 +1,6 @@
 {
   "id": "3591",
-  "name": "简体 手機版beta大湖風景生態園區",
+  "name": "大湖風景生態園區",
   "area": "",
   "address": "宜蘭縣員山鄉湖前路185號",
   "phone": "03-922-8080",
@@ -9,12 +9,9 @@
   "email": "d039228080@gmail.com",
   "category": "遊樂區",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3591_l_image_v1ma1.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3591"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

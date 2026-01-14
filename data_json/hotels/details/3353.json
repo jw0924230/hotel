@@ -1,6 +1,6 @@
 {
   "id": "3353",
-  "name": "简体 手機版beta香格里拉休閒農場",
+  "name": "香格里拉休閒農場",
   "area": "",
   "address": "宜蘭縣冬山鄉大進村梅山路168號",
   "phone": "03-951-1456",
@@ -9,10 +9,9 @@
   "email": "s515736@ms33.hinet.net",
   "category": "休閒農場",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3353"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

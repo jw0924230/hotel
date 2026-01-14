@@ -1,6 +1,6 @@
 {
   "id": "2015",
-  "name": "简体 手機版beta梅林親水岸渡假村",
+  "name": "梅林親水岸渡假村",
   "area": "",
   "address": "台中市新社區協成里南華街28-1號",
   "phone": "04-2593-1234",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2015"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

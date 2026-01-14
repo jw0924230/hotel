@@ -1,6 +1,6 @@
 {
   "id": "2473",
-  "name": "简体 手機版beta湖畔花時間溫泉會館",
+  "name": "湖畔花時間溫泉會館",
   "area": "",
   "address": "苗栗縣大湖鄉義和村淋漓坪126號",
   "phone": "037-996-795",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2473"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "713",
-  "name": "简体 手機版beta若茵農場",
+  "name": "若茵農場",
   "area": "",
   "address": "台中市和平區中坑里雪山路1號",
   "phone": "04-2597-1218",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "休閒農場",
   "stay_info": "",
-  "rest_info": "",
-  "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t 注意事項：\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t*非農場住宿客人,請勿攜帶外食入場.\n*農場內嚴禁煙火...謝謝合作.\n*住宿客人禁帶寵物(狗..貓........等)入園住宿.\n*暫不提供刷卡.\n房間設備：沒有電視、冰箱、空調、電話。\n只有窗景、蟲鳴、鳥叫、微風. . .",
+  "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "*非農場住宿客人,請勿攜帶外食入場.\n*農場內嚴禁煙火...謝謝合作.\n*住宿客人禁帶寵物(狗..貓........等)入園住宿.\n*暫不提供刷卡.\n房間設備：沒有電視、冰箱、空調、電話。\n只有窗景、蟲鳴、鳥叫、微風. . .",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=713"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

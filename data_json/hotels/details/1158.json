@@ -1,6 +1,6 @@
 {
   "id": "1158",
-  "name": "简体 手機版beta龍珠灣渡假中心",
+  "name": "龍珠灣渡假中心",
   "area": "",
   "address": "桃園市大溪區復興里湳仔溝20-1號",
   "phone": "03-388-4545",
@@ -9,10 +9,9 @@
   "email": "s092489@hotmail.com",
   "category": "渡假村/山莊",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1158"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "808",
-  "name": "简体 手機版beta肯特商務飯店",
+  "name": "肯特商務飯店",
   "area": "",
   "address": "新北市三重區成功路75號",
   "phone": "02-2976-8686",
@@ -9,12 +9,9 @@
   "email": "nisus.hotel@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "3小時",
   "housing_rules": "休息時間：3小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "肯特飯店位於連接臺北、三重的中興橋頭 一個『隱身西門商圈後花園的精品商務旅館』，\n圓融簡潔的後現代美學空間，沒有吵嚷喧囂，\n有的是玲瓏精緻及獨特品味。\n是大臺北地區首屈一指之商務飯店，\n內部均以商務需求設計，\n讓出差、洽商、休閒的旅客，\n能感受五星級的禮遇。",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/808_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=808"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "肯特飯店位於連接臺北、三重的中興橋頭 一個『隱身西門商圈後花園的精品商務旅館』，\n圓融簡潔的後現代美學空間，沒有吵嚷喧囂，\n有的是玲瓏精緻及獨特品味。\n是大臺北地區首屈一指之商務飯店，\n內部均以商務需求設計，\n讓出差、洽商、休閒的旅客，\n能感受五星級的禮遇。"
 }

@@ -1,6 +1,6 @@
 {
   "id": "2641",
-  "name": "简体 手機版beta濠景溫泉大飯店",
+  "name": "濠景溫泉大飯店",
   "area": "",
   "address": "台東縣卑南鄉知本溫泉富貴街69號",
   "phone": "089-511-511",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館 / 溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2641"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

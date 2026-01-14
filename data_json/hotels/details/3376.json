@@ -1,6 +1,6 @@
 {
   "id": "3376",
-  "name": "简体 手機版beta七星潭渡假飯店",
+  "name": "七星潭渡假飯店",
   "area": "",
   "address": "花蓮縣新城鄉大漢村明潭街10號",
   "phone": "03-823-2345",
@@ -9,10 +9,9 @@
   "email": "hotelbayview@gmail.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3376"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

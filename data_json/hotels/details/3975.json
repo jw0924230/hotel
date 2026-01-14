@@ -1,18 +1,17 @@
 {
   "id": "3975",
-  "name": "简体 手機版beta楓林商務飯店",
+  "name": "楓林商務飯店",
   "area": "",
   "address": "桃園市龍潭區中正路206號",
   "phone": "03-479-2364",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "桃園市龍潭住宿首選楓林商務飯店座落桃園市龍潭區的區中心並位於龍潭戶政事務所(原區公所)旁，飯店已有30多年經營歷史，雖然在2011年重新裝修，更於今年4月中即將再次做設備上部份之更新，提供即將到來的您絕佳桃園住宿享受，敬請期待。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3975"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "桃園市龍潭住宿首選楓林商務飯店座落桃園市龍潭區的區中心並位於龍潭戶政事務所(原區公所)旁，飯店已有30多年經營歷史，雖然在2011年重新裝修，更於今年4月中即將再次做設備上部份之更新，提供即將到來的您絕佳桃園住宿享受，敬請期待。"
 }

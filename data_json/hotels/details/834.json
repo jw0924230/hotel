@@ -1,6 +1,6 @@
 {
   "id": "834",
-  "name": "简体 手機版beta新上海商務汽車旅館",
+  "name": "新上海商務汽車旅館",
   "area": "",
   "address": "嘉義市蘭州二街36號",
   "phone": "05-283-0737",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "3小時",
   "housing_rules": "休息時間：3小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=834"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

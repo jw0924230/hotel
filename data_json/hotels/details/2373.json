@@ -1,6 +1,6 @@
 {
   "id": "2373",
-  "name": "简体 手機版beta美虹園渡假村",
+  "name": "美虹園渡假村",
   "area": "",
   "address": "新北市金山區五湖里龜子山60-2號",
   "phone": "02-2498-1188",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2373"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

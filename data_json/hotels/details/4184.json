@@ -1,18 +1,17 @@
 {
   "id": "4184",
-  "name": "简体 手機版beta聖禾大飯店",
+  "name": "聖禾大飯店",
   "area": "",
   "address": "台南市中西區西門路二段23號(小西門圓環)",
   "phone": "06-220-0988",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "HOTELA客房以現代簡約的設計傳達對旅人溫暖關懷。\n\n基於溫馨簡約的理念設計，在重視質感的同時，也創造了現代的氛圍與高品質。\n\n窗外是台南小西門的城市景觀，這裡是府城美食與古都文化交匯的中心，\n\n踏出腳步，您能在10分鐘內觸及城市精粹。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=4184"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "HOTELA客房以現代簡約的設計傳達對旅人溫暖關懷。\n\n基於溫馨簡約的理念設計，在重視質感的同時，也創造了現代的氛圍與高品質。\n\n窗外是台南小西門的城市景觀，這裡是府城美食與古都文化交匯的中心，\n\n踏出腳步，您能在10分鐘內觸及城市精粹。"
 }

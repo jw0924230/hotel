@@ -1,6 +1,6 @@
 {
   "id": "3048",
-  "name": "简体 手機版beta煙波大飯店-溫莎館",
+  "name": "煙波大飯店-溫莎館",
   "area": "",
   "address": "新竹市東區明湖路775巷51號",
   "phone": "03-520-3181",
@@ -9,10 +9,9 @@
   "email": "service@lakeshore.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3048"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

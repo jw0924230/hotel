@@ -1,6 +1,6 @@
 {
   "id": "2379",
-  "name": "简体 手機版beta磺興溫泉休閒山莊",
+  "name": "磺興溫泉休閒山莊",
   "area": "",
   "address": "新北市萬里區磺潭里員潭54號",
   "phone": "02-2498-5683",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "渡假村/山莊 / 溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2379"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

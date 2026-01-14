@@ -1,6 +1,6 @@
 {
   "id": "2951",
-  "name": "简体 手機版beta台北商旅大安館",
+  "name": "台北商旅大安館",
   "area": "",
   "address": "台北市大安區大安路一段135號",
   "phone": "02-8773-3668",
@@ -9,10 +9,9 @@
   "email": "info.da@suitetpe.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2951"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

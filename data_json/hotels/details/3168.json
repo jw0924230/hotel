@@ -1,6 +1,6 @@
 {
   "id": "3168",
-  "name": "简体 手機版beta宏盛鑫商務飯店",
+  "name": "宏盛鑫商務飯店",
   "area": "",
   "address": "台南市東區崇明路239號",
   "phone": "06-335-0888",
@@ -9,10 +9,9 @@
   "email": "hcs.hotel@gmail.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3168"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

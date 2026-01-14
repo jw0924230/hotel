@@ -1,6 +1,6 @@
 {
   "id": "2345",
-  "name": "简体 手機版beta澎園溫泉農莊",
+  "name": "澎園溫泉農莊",
   "area": "",
   "address": "台北市北投區行義路155巷38號",
   "phone": "其他連絡電話：02-2872-9173",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2345"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

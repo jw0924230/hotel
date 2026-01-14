@@ -1,6 +1,6 @@
 {
   "id": "3237",
-  "name": "简体 手機版beta西子灣大飯店(愛河館)",
+  "name": "西子灣大飯店(愛河館)",
   "area": "",
   "address": "高雄市前金區大同二路23號",
   "phone": "07-201-3456",
@@ -9,12 +9,9 @@
   "email": "kh2013456@hotmail.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3237_l_image_0e8j5.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3237"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

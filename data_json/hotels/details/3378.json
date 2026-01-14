@@ -1,6 +1,6 @@
 {
   "id": "3378",
-  "name": "简体 手機版beta大新精緻商旅",
+  "name": "大新精緻商旅",
   "area": "",
   "address": "花蓮縣花蓮市中山路101號",
   "phone": "03-833-3152",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3378"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

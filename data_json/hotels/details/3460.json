@@ -1,6 +1,6 @@
 {
   "id": "3460",
-  "name": "简体 手機版beta元裕渡假旅館",
+  "name": "元裕渡假旅館",
   "area": "",
   "address": "澎湖縣馬公市陽明路92巷1號",
   "phone": "06-926-4901",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3460"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

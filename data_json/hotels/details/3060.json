@@ -1,6 +1,6 @@
 {
   "id": "3060",
-  "name": "简体 手機版beta智選假日飯店",
+  "name": "智選假日飯店",
   "area": "",
   "address": "台中市中區自由路二段94號",
   "phone": "04-3505-9898",
@@ -9,10 +9,9 @@
   "email": "service@hiexpresstc.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3060"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

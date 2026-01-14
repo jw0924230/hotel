@@ -1,6 +1,6 @@
 {
   "id": "2185",
-  "name": "简体 手機版beta山緹庭園民宿",
+  "name": "山緹庭園民宿",
   "area": "",
   "address": "花蓮縣吉安鄉南華(村)福昌路801巷12號",
   "phone": "03-854-7782",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2185"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

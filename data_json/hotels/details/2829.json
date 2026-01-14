@@ -1,6 +1,6 @@
 {
   "id": "2829",
-  "name": "简体 手機版beta台北集賢商旅",
+  "name": "台北集賢商旅",
   "area": "",
   "address": "新北市蘆洲區集賢路372號",
   "phone": "02-8281-3888",
@@ -9,12 +9,9 @@
   "email": "andrewmom1225@yahoo.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/2829_l_image_y9jst.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=2829"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

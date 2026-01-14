@@ -1,6 +1,6 @@
 {
   "id": "2920",
-  "name": "简体 手機版beta金弘旅店",
+  "name": "金弘旅店",
   "area": "",
   "address": "台北市大同區南京西路316號4樓",
   "phone": "02-2969-5066",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2920"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "2171",
-  "name": "简体 手機版beta花蓮民宿-小熊森林",
+  "name": "花蓮民宿-小熊森林",
   "area": "",
   "address": "花蓮縣花蓮市南京街57巷7號",
   "phone": "03-835-0808",
@@ -9,10 +9,9 @@
   "email": "bearbea.bear@msa.hinet.net",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2171"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

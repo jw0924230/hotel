@@ -1,6 +1,6 @@
 {
   "id": "3287",
-  "name": "简体 手機版beta義大天悅飯店",
+  "name": "義大天悅飯店",
   "area": "",
   "address": "高雄市大樹區義大八街100號",
   "phone": "07-656-8010",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3287"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

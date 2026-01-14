@@ -1,6 +1,6 @@
 {
   "id": "1727",
-  "name": "简体 手機版beta松芸軒咖啡莊",
+  "name": "松芸軒咖啡莊",
   "area": "",
   "address": "新竹縣峨嵋鄉湖光村12寮12鄰1-2號",
   "phone": "03-760-3317",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "美食",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1727"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

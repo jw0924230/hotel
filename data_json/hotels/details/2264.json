@@ -1,6 +1,6 @@
 {
   "id": "2264",
-  "name": "简体 手機版beta夏都別館",
+  "name": "夏都別館",
   "area": "",
   "address": "宜蘭縣頭城鎮濱海路五段477號",
   "phone": "03-978-3338",
@@ -9,10 +9,9 @@
   "email": "a039783338@yahoo.com.tw",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2264"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

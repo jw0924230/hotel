@@ -1,6 +1,6 @@
 {
   "id": "3783",
-  "name": "简体 手機版beta萬事達旅店-西門店",
+  "name": "萬事達旅店-西門店",
   "area": "",
   "address": "台北市萬華區西寧南路105號",
   "phone": "02-2371-1118",
@@ -9,10 +9,9 @@
   "email": "service@wonstar.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "十多年來致力於提供旅客最舒適及高品質的服務和住宿體驗，萬事達西門店座於台北市最便利的交通樞紐，位在西門町美食與流行文化商圈的正中心，全館客房皆設有對外窗戶，讓每一位旅客都能舒適地去體驗西門町特有的文化。成為您旅行途中安全舒適的避風港，是萬事達多年不變的初衷。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3783"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "十多年來致力於提供旅客最舒適及高品質的服務和住宿體驗，萬事達西門店座於台北市最便利的交通樞紐，位在西門町美食與流行文化商圈的正中心，全館客房皆設有對外窗戶，讓每一位旅客都能舒適地去體驗西門町特有的文化。成為您旅行途中安全舒適的避風港，是萬事達多年不變的初衷。"
 }

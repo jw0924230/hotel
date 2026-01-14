@@ -1,6 +1,6 @@
 {
   "id": "274",
-  "name": "简体 手機版beta愛之船花園汽車旅館",
+  "name": "愛之船花園汽車旅館",
   "area": "",
   "address": "屏東縣潮州鎮四維路601號",
   "phone": "08-780-0391",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "3小時",
   "housing_rules": "休息時間：3小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=274"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

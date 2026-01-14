@@ -1,6 +1,6 @@
 {
   "id": "3350",
-  "name": "简体 手機版beta泉鄉風華休閒會館",
+  "name": "泉鄉風華休閒會館",
   "area": "",
   "address": "宜蘭縣礁溪鄉德陽村德陽路95號",
   "phone": "03-988-0979",
@@ -9,10 +9,9 @@
   "email": "j9880979@gmail.com",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3350"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

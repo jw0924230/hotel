@@ -1,6 +1,6 @@
 {
   "id": "3298",
-  "name": "简体 手機版beta小墾丁渡假村",
+  "name": "小墾丁渡假村",
   "area": "",
   "address": "屏東縣滿州鄉滿州村中山路205號",
   "phone": "08-8802880",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3298"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

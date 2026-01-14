@@ -1,6 +1,6 @@
 {
   "id": "3285",
-  "name": "简体 手機版beta楓墅汽車商務旅館",
+  "name": "楓墅汽車商務旅館",
   "area": "",
   "address": "高雄市岡山區本洲里本工三路1號",
   "phone": "07-624-2255",
@@ -9,10 +9,9 @@
   "email": "mv.motel@msa.hinet.net",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3285"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

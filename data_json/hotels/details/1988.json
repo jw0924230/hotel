@@ -1,6 +1,6 @@
 {
   "id": "1988",
-  "name": "简体 手機版beta泰安湯唯溫泉民宿",
+  "name": "泰安湯唯溫泉民宿",
   "area": "",
   "address": "苗栗縣泰安鄉錦水村橫龍山72-2號",
   "phone": "037-941-885",
@@ -9,10 +9,9 @@
   "email": "service@tangwei.com.tw",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1988"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

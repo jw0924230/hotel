@@ -1,6 +1,6 @@
 {
   "id": "1828",
-  "name": "简体 手機版beta國王陛下渡假民宿",
+  "name": "國王陛下渡假民宿",
   "area": "",
   "address": "花蓮縣花蓮市節約街13號",
   "phone": "03-832-2666",
@@ -9,10 +9,9 @@
   "email": "joe.hl@msa.hinet.net",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1828"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

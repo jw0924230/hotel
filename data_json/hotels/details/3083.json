@@ -1,6 +1,6 @@
 {
   "id": "3083",
-  "name": "简体 手機版beta金奇易果快捷旅店",
+  "name": "金奇易果快捷旅店",
   "area": "",
   "address": "台中市中區中正路253號",
   "phone": "04-2229-4466",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3083"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

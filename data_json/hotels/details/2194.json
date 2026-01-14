@@ -1,6 +1,6 @@
 {
   "id": "2194",
-  "name": "简体 手機版beta大山休閒民宿",
+  "name": "大山休閒民宿",
   "area": "",
   "address": "花蓮縣吉安鄉太昌村明義六街69巷10號",
   "phone": "03-858-0678",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2194"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

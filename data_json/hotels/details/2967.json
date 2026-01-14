@@ -1,6 +1,6 @@
 {
   "id": "2967",
-  "name": "简体 手機版beta老爺商務會館",
+  "name": "老爺商務會館",
   "area": "",
   "address": "台北市中山區南京西路1號8樓",
   "phone": "02-2531-6171",
@@ -9,10 +9,9 @@
   "email": "reservation@royal-inn-taipei.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2967"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

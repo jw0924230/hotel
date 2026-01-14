@@ -1,6 +1,6 @@
 {
   "id": "3244",
-  "name": "简体 手機版beta河堤國際商旅(機場館)",
+  "name": "河堤國際商旅(機場館)",
   "area": "",
   "address": "高雄市小港區宏平路447號",
   "phone": "07-803-8881",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3244"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

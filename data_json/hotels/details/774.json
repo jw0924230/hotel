@@ -1,6 +1,6 @@
 {
   "id": "774",
-  "name": "简体 手機版beta華谷民宿",
+  "name": "華谷民宿",
   "area": "",
   "address": "花蓮縣花蓮市國聯五路42-1號",
   "phone": "03-833-9229",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
-  "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t 注意事項：\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t房間型態     平日  價格   假日價格 春節價格  \n精緻雙人套房 1200  1500   2500  \n精緻三人套房 1500  1800   3000  \n精緻四人套房 1800  2200   3600  \n\n＊平日價格：週日至週四  \n＊假日價格：週五、週六及連續假日  \n＊春節價格：農曆初一～初五  \n＊客房設備：獨立空調系統、衛浴設施、有線電視、冰箱、熱水壺、吹風機、盥洗用品。  \n＊住房時間：當日中午11點30分    \n＊退房時間：隔日中午12點  \n＊機場、火車站免費接送（需事先告知）。  \n＊提供代辦各項賞鯨、泛舟旅遊行程。  \n＊住宿房客至摩莉莎卡餐廳用餐，均可享優惠折扣。",
+  "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "房間型態     平日  價格   假日價格 春節價格  \n精緻雙人套房 1200  1500   2500  \n精緻三人套房 1500  1800   3000  \n精緻四人套房 1800  2200   3600  \n\n＊平日價格：週日至週四  \n＊假日價格：週五、週六及連續假日  \n＊春節價格：農曆初一～初五  \n＊客房設備：獨立空調系統、衛浴設施、有線電視、冰箱、熱水壺、吹風機、盥洗用品。  \n＊住房時間：當日中午11點30分    \n＊退房時間：隔日中午12點  \n＊機場、火車站免費接送（需事先告知）。  \n＊提供代辦各項賞鯨、泛舟旅遊行程。  \n＊住宿房客至摩莉莎卡餐廳用餐，均可享優惠折扣。",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=774"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

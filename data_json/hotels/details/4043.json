@@ -1,6 +1,6 @@
 {
   "id": "4043",
-  "name": "简体 手機版beta玩客棧",
+  "name": "玩客棧",
   "area": "",
   "address": "台北市中山區南京東路二段11號7樓",
   "phone": "02-2522-3939",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "玩客棧（玩客青年會館），全新的青年旅館，以夜店風格為特色，充滿互動有趣與溫暖的休閒住宿空間，接待來自世界各地青年旅客。 \n備有調酒吧台，咖啡休閒區等機能，活潑有趣。歡迎喜愛與世界各地旅人交流，充滿熱情與創意的你，與我們一起實現夢想，飛躍人生。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=4043"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "玩客棧（玩客青年會館），全新的青年旅館，以夜店風格為特色，充滿互動有趣與溫暖的休閒住宿空間，接待來自世界各地青年旅客。 \n備有調酒吧台，咖啡休閒區等機能，活潑有趣。歡迎喜愛與世界各地旅人交流，充滿熱情與創意的你，與我們一起實現夢想，飛躍人生。"
 }

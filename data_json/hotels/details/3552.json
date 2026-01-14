@@ -1,6 +1,6 @@
 {
   "id": "3552",
-  "name": "简体 手機版beta麗雅精品旅館",
+  "name": "麗雅精品旅館",
   "area": "",
   "address": "台北市中山區長春路62號8樓",
   "phone": "02-2541-1123",
@@ -9,10 +9,9 @@
   "email": "dearhotel111123@yahoo.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3552"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

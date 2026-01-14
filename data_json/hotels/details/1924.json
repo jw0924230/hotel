@@ -1,6 +1,6 @@
 {
   "id": "1924",
-  "name": "简体 手機版beta艾萊汽車旅館",
+  "name": "艾萊汽車旅館",
   "area": "",
   "address": "高雄市小港區中安路616號",
   "phone": "07-791-6060",
@@ -9,12 +9,9 @@
   "email": "m7916060@yahoo.com.tw",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "平日3小時，假日3小時",
   "housing_rules": "休息時間：平日3小時，假日3小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/1924_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=1924"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

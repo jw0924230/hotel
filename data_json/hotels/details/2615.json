@@ -1,6 +1,6 @@
 {
   "id": "2615",
-  "name": "简体 手機版beta蝴蝶谷溫泉渡假村",
+  "name": "蝴蝶谷溫泉渡假村",
   "area": "",
   "address": "花蓮縣瑞穗鄉富源村廣東路161號",
   "phone": "03-881-2377",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2615"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

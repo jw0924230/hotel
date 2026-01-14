@@ -1,6 +1,6 @@
 {
   "id": "1469",
-  "name": "简体 手機版beta布洛尼精緻民宿",
+  "name": "布洛尼精緻民宿",
   "area": "",
   "address": "屏東縣恆春鎮南灣路鞍山巷50-5號",
   "phone": "0920-232525",
@@ -9,10 +9,9 @@
   "email": "hothotkt@gmail.com",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1469"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "342",
-  "name": "简体 手機版beta時常汽車旅館",
+  "name": "時常汽車旅館",
   "area": "",
   "address": "台中市霧峰區中正路573-11號",
   "phone": "04-2331-2055",
@@ -9,10 +9,9 @@
   "email": "oftenmotel@yahoo.com.tw",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "3小時",
   "housing_rules": "休息時間：3小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "本旅館正位於中二高交流道旁５０公尺處近鄰省議會與地震博物館、林家花園等遊覽勝地，學區則有朝陽大學、亞洲大學等大學，更由於位於省道往來台中、南投、埔里相當便利。本旅館平日定期消毒，衛生清潔要求嚴格，旅客可安心住宿使用。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=342"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "本旅館正位於中二高交流道旁５０公尺處近鄰省議會與地震博物館、林家花園等遊覽勝地，學區則有朝陽大學、亞洲大學等大學，更由於位於省道往來台中、南投、埔里相當便利。本旅館平日定期消毒，衛生清潔要求嚴格，旅客可安心住宿使用。"
 }

@@ -1,6 +1,6 @@
 {
   "id": "734",
-  "name": "简体 手機版beta帝綸溫泉大飯店",
+  "name": "帝綸溫泉大飯店",
   "area": "",
   "address": "南投縣信義鄉東埔村開高巷86號",
   "phone": "049-270-1616",
@@ -9,10 +9,9 @@
   "email": "a87297@ms19.hinet.net",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=734"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

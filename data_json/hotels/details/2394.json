@@ -1,6 +1,6 @@
 {
   "id": "2394",
-  "name": "简体 手機版beta岸之湯",
+  "name": "岸之湯",
   "area": "",
   "address": "新北市烏來區堰堤37號",
   "phone": "02-2661-6868",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2394"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

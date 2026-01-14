@@ -1,6 +1,6 @@
 {
   "id": "3392",
-  "name": "简体 手機版beta松石旅館",
+  "name": "松石旅館",
   "area": "",
   "address": "花蓮縣吉安鄉勝安村自強路21號",
   "phone": "03-852-5106",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3392"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

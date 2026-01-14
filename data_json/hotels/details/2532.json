@@ -1,6 +1,6 @@
 {
   "id": "2532",
-  "name": "简体 手機版beta五福園溫泉美食館",
+  "name": "五福園溫泉美食館",
   "area": "",
   "address": "台南市白河區關子嶺31-15號",
   "phone": "06-682-2199",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2532"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

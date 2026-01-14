@@ -1,6 +1,6 @@
 {
   "id": "515",
-  "name": "简体 手機版beta愛伊堡汽車旅館",
+  "name": "愛伊堡汽車旅館",
   "area": "",
   "address": "苗栗縣頭份市興隆里興隆路一段176號",
   "phone": "037-691-166",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "3小時",
   "housing_rules": "休息時間：3小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=515"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

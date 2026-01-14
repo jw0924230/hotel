@@ -1,6 +1,6 @@
 {
   "id": "1865",
-  "name": "简体 手機版beta玫瑰森林時尚旅館",
+  "name": "玫瑰森林時尚旅館",
   "area": "",
   "address": "高雄市苓雅區青年二路95號",
   "phone": "07-537-3737",
@@ -9,12 +9,9 @@
   "email": "rose3142009@yahoo.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "浪漫精緻的時尚旅館，不但擁有玫瑰森林風格亦有自己特色，館內充滿歐式莊園的舒適溫馨，典雅精緻的手工原木家俱搭配浪漫的玫瑰鍛造，柔和的色調及燈光，以手工打造地中海式木質拱門、拱窗及精緻歐式原木傢俱，旅館內每一個細節的安排，都意味著我們對您的用心。",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/1865_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=1865"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "浪漫精緻的時尚旅館，不但擁有玫瑰森林風格亦有自己特色，館內充滿歐式莊園的舒適溫馨，典雅精緻的手工原木家俱搭配浪漫的玫瑰鍛造，柔和的色調及燈光，以手工打造地中海式木質拱門、拱窗及精緻歐式原木傢俱，旅館內每一個細節的安排，都意味著我們對您的用心。"
 }

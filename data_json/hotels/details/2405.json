@@ -1,6 +1,6 @@
 {
   "id": "2405",
-  "name": "简体 手機版beta烏來名湯溫泉會館",
+  "name": "烏來名湯溫泉會館",
   "area": "",
   "address": "新北市烏來區啦卡路38號",
   "phone": "02-2661-6161",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2405"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

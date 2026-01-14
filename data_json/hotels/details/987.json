@@ -1,6 +1,6 @@
 {
   "id": "987",
-  "name": "简体 手機版beta山芙蓉渡假大酒店",
+  "name": "山芙蓉渡假大酒店",
   "area": "",
   "address": "台南市楠西區密枝里102-5號",
   "phone": "06-575-3333",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=987"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

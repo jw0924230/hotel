@@ -1,6 +1,6 @@
 {
   "id": "3175",
-  "name": "简体 手機版beta太子大飯店",
+  "name": "太子大飯店",
   "area": "",
   "address": "台南市中西區友愛街349號",
   "phone": "06-228-9171",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3175"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

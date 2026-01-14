@@ -25,24 +25,30 @@
             <div class="detail-right">
                 <div class="info-card">
                     <div class="info-row" v-if="hotel.address">
-                        <span class="label">地址：</span>
+                        <h2 class="label">地址：</h2>
                         <span class="text">{{ hotel.address }}</span>
                     </div>
                     <div class="info-row" v-if="hotel.phone">
-                        <span class="label">電話：</span>
-                        <span class="text">{{ hotel.phone }}</span>
+                        <h2 class="label">電話：</h2>
+                        <a :href="`tel:${hotel.phone}`" class="text-link text-phone">{{ hotel.phone }}</a>
                     </div>
                     <div class="info-row" v-if="hotel.website">
-                        <span class="label">網站：</span>
+                        <h2 class="label">網站：</h2>
                         <a :href="hotel.website" target="_blank" class="text-link">{{ hotel.website }}</a>
                     </div>
-                    <div class="info-row" v-if="hotel.price">
-                        <span class="label">價格：</span>
-                        <span class="price-text">{{ hotel.price }}</span>
+                </div>
+
+                <!-- Independent Pricing Block -->
+                <!-- Independent Pricing Block -->
+                <div class="pricing-card">
+                    <div class="pricing-row-single">
+                        <span class="pricing-label">住宿價格</span>
+                        <span class="pricing-val">{{ hotel.price_accommodation ? hotel.price_accommodation + '起' : '請電洽' }}</span>
                     </div>
-                    <div class="info-row" v-if="hotel.rest_info">
-                        <span class="label">休息：</span>
-                        <span class="text">{{ hotel.rest_info }}</span>
+                    
+                    <div class="pricing-row-single">
+                        <span class="pricing-label">休息價格</span>
+                        <span class="pricing-val">{{ hotel.price_rest ? hotel.price_rest + '起' : '請電洽' }}</span>
                     </div>
                 </div>
             </div>
@@ -55,19 +61,19 @@
                     :class="['tab-btn', { active: currentTab === 'intro' }]" 
                     @click="currentTab = 'intro'"
                 >
-                    簡介
+                    <h3>簡介</h3>
                 </button>
                 <button 
                     :class="['tab-btn', { active: currentTab === 'rules' }]" 
                     @click="currentTab = 'rules'"
                 >
-                    須知與規定
+                    <h3>須知與規定</h3>
                 </button>
                  <button 
                     :class="['tab-btn', { active: currentTab === 'map' }]" 
                     @click="currentTab = 'map'"
                 >
-                    地圖導航
+                    <h3>地圖導航</h3>
                 </button>
             </div>
 
@@ -188,9 +194,13 @@ const formattedDesc = computed(() => formatText(hotel.value?.description || hote
 const googleMapUrl = computed(() => {
     if (!hotel.value?.address) return ''
     const query = encodeURIComponent(hotel.value.address)
-    // Using simple output=embed
-    return `https://maps.google.com/maps?q=${query}&output=embed&z=16`
 })
+
+useSeoMeta({
+    title: computed(() => `${hotel.value?.name || '旅館'}休息與住宿價格一覽｜電話、地址、交通方式完整整理`),
+    description: computed(() => `${hotel.value?.name || '本旅館'}提供彈性多元的休息與住宿選擇，無論是2 小時、3 小時休息，或是平日、假日住宿需求，都能快速掌握最新價格方案。本頁整理 ${hotel.value?.name || '旅館'}休息與住宿價格、訂房電話、詳細地址與交通資訊，協助你在規劃行程或臨時住宿時，快速做出最合適的選擇。`)
+})
+
 
 </script>
 
@@ -236,27 +246,55 @@ const googleMapUrl = computed(() => {
 .info-card { 
     background: white; padding: 30px; border-radius: 12px; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-    flex: 1; /* Fill height */
     display: flex; flex-direction: column; justify-content: center;
+    margin-bottom: 25px;
 }
 
 .info-row { margin-bottom: 18px; display: flex; align-items: baseline; }
 .info-row:last-child { margin-bottom: 0; }
-.info-row .label { width: 70px; font-weight: bold; color: #7f8c8d; flex-shrink: 0; }
+.info-row .label { 
+    width: 70px; font-weight: bold; color: #7f8c8d; flex-shrink: 0; 
+    margin: 0; font-size: 16px; /* Reset H2 defaults */
+}
 .info-row .text { color: #2C3E50; font-size: 16px; line-height: 1.5; }
 .info-row .text-link { color: #3498DB; text-decoration: none; word-break: break-all; }
 .info-row .text-link:hover { text-decoration: underline; }
+.text-phone { font-weight: bold; }
+
 .price-text { color: #E74C3C; font-size: 28px; font-weight: 700; }
+
+/* Pricing Card Styles */
+.pricing-card {
+    background: white; padding: 25px; border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+}
+.pricing-row-single {
+     display: flex; justify-content: space-between; align-items: center;
+     margin-bottom: 12px; padding-bottom: 12px;
+     border-bottom: 1px dashed #eee;
+}
+.pricing-row-single:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.pricing-label {
+    font-size: 18px; font-weight: 700; color: #2C3E50;
+    margin: 0; 
+}
+
+.pricing-val { color: #E74C3C; font-weight: 700; font-size: 18px; }
 
 /* Tabs */
 .tabs-container { background: white; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); overflow: hidden; }
 .tabs-nav { display: flex; border-bottom: 1px solid #eee; background: #fdfdfd; }
 .tab-btn { 
     flex: 1; padding: 15px; border: none; background: none; 
-    font-size: 16px; cursor: pointer; color: #7f8c8d; font-weight: 600;
+    cursor: pointer; color: #7f8c8d;
     transition: all 0.2s;
     border-bottom: 3px solid transparent;
 }
+/* Reset H3 inside button */
+.tab-btn h3 { margin: 0; font-size: 16px; font-weight: 600; }
+
 .tab-btn:hover { background: #f0f0f0; color: #2C3E50; }
 .tab-btn.active { color: #E74C3C; border-bottom-color: #E74C3C; background: white; }
 

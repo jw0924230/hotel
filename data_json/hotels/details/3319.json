@@ -1,6 +1,6 @@
 {
   "id": "3319",
-  "name": "简体 手機版beta山水旅館",
+  "name": "山水旅館",
   "area": "",
   "address": "宜蘭縣羅東鎮和平路75號",
   "phone": "03-956-8755",
@@ -9,10 +9,9 @@
   "email": "usyd25@yahoo.com.tw",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3319"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

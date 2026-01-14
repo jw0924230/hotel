@@ -1,6 +1,6 @@
 {
   "id": "3010",
-  "name": "简体 手機版beta住都大飯店",
+  "name": "住都大飯店",
   "area": "",
   "address": "桃園市桃園區桃鶯路398號",
   "phone": "03-376-5077",
@@ -9,10 +9,9 @@
   "email": "chuto@ms38.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3010"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

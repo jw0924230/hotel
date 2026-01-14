@@ -1,6 +1,6 @@
 {
   "id": "2432",
-  "name": "简体 手機版beta石上湯屋渡假村",
+  "name": "石上湯屋渡假村",
   "area": "",
   "address": "新竹縣尖石鄉嘉樂村7鄰45號",
   "phone": "03-584-2605",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2432"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

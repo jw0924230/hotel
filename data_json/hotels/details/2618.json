@@ -1,6 +1,6 @@
 {
   "id": "2618",
-  "name": "简体 手機版beta虎爺溫泉會館",
+  "name": "虎爺溫泉會館",
   "area": "",
   "address": "花蓮縣瑞穗鄉瑞祥村101號",
   "phone": "其他連絡電話：03-887-6606",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2618"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

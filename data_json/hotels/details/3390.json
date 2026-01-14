@@ -1,6 +1,6 @@
 {
   "id": "3390",
-  "name": "简体 手機版beta函園旅店",
+  "name": "函園旅店",
   "area": "",
   "address": "花蓮縣吉安鄉勝安村自強路25號",
   "phone": "03-853-9098",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3390"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

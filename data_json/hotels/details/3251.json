@@ -1,6 +1,6 @@
 {
   "id": "3251",
-  "name": "简体 手機版beta金暉商務大飯店",
+  "name": "金暉商務大飯店",
   "area": "",
   "address": "高雄市三民區建國三路185號",
   "phone": "07-286-5151",
@@ -9,10 +9,9 @@
   "email": "sunwise.tw@gmail.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3251"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "3205",
-  "name": "简体 手機版beta華都商務飯店",
+  "name": "華都商務飯店",
   "area": "",
   "address": "台南市北區文賢路1192號",
   "phone": "06-259-8822",
@@ -9,10 +9,9 @@
   "email": "hwadu014@yahoo.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3205"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

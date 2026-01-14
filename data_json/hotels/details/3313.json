@@ -1,6 +1,6 @@
 {
   "id": "3313",
-  "name": "简体 手機版beta墾丁天鵝湖飯店",
+  "name": "墾丁天鵝湖飯店",
   "area": "",
   "address": "屏東縣恆春鎮南灣路500號",
   "phone": "08-8891234",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3313"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

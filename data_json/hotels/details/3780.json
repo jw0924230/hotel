@@ -1,18 +1,17 @@
 {
   "id": "3780",
-  "name": "简体 手機版beta天閣酒店-復興館",
+  "name": "天閣酒店-復興館",
   "area": "",
   "address": "台北市松山區復興北路147號",
   "phone": "02-8712-8000",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "時光飛逝如梭，科技瞬息萬變，顛覆了人們的思維與行為。科技拉進了地理的距離，卻加深了心理的疏離。人們在網路上與未曾謀面的人熱絡互動，卻忽略了身旁有溫度、有能量的幸福，甚至也陌生了自己。\n\n\n當生活節奏越來越快，工作、旅行於世界各地，忙於各種形式的追逐時，如何能放緩腳步、放下繁複，讓時間暫停、讓心情定格，安定疲累驛動的心？\n\n\n想像Tango 台北復興，是人們在地球跨境旅行的恆定棲息之所。當仰望宇宙，以我們有形的身軀，無限的想像，向浩瀚的星宇，尋求智慧的引領，身心的安頓。Tango為旅人安置一個靜謐的泊岸，讓時間停格、讓心靈自在飛翔，無盡的探索，遨遊在沒有邊際的宇宙舞台。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3780"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "時光飛逝如梭，科技瞬息萬變，顛覆了人們的思維與行為。科技拉進了地理的距離，卻加深了心理的疏離。人們在網路上與未曾謀面的人熱絡互動，卻忽略了身旁有溫度、有能量的幸福，甚至也陌生了自己。\n\n\n當生活節奏越來越快，工作、旅行於世界各地，忙於各種形式的追逐時，如何能放緩腳步、放下繁複，讓時間暫停、讓心情定格，安定疲累驛動的心？\n\n\n想像Tango 台北復興，是人們在地球跨境旅行的恆定棲息之所。當仰望宇宙，以我們有形的身軀，無限的想像，向浩瀚的星宇，尋求智慧的引領，身心的安頓。Tango為旅人安置一個靜謐的泊岸，讓時間停格、讓心靈自在飛翔，無盡的探索，遨遊在沒有邊際的宇宙舞台。"
 }

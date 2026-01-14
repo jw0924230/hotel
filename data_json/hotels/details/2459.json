@@ -1,6 +1,6 @@
 {
   "id": "2459",
-  "name": "简体 手機版beta御泉山莊",
+  "name": "御泉山莊",
   "area": "",
   "address": "宜蘭縣礁溪鄉忠孝路97巷16號",
   "phone": "03-987-5869",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "民宿 / 溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2459"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

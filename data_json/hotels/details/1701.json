@@ -1,6 +1,6 @@
 {
   "id": "1701",
-  "name": "简体 手機版beta馥華大觀商旅",
+  "name": "馥華大觀商旅",
   "area": "",
   "address": "新北市新莊區大觀街60號",
   "phone": "02-8991-1278",
@@ -9,12 +9,9 @@
   "email": "hotelpurity@hotmail.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "新莊馥華大觀商務旅館位於新莊中正路上，日前全新落成完工，備有免費停車場，靠近輔仁大學、新莊體育場、湯城園區，是您新莊住宿的最佳選擇。\n\n馥華大觀商旅不只是一個短暫的居所，更是一個充滿無限延伸的可能性，邀請您前來享有最舒適自在的心靈純淨旅程。",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/1701_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=1701"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "新莊馥華大觀商務旅館位於新莊中正路上，日前全新落成完工，備有免費停車場，靠近輔仁大學、新莊體育場、湯城園區，是您新莊住宿的最佳選擇。\n\n馥華大觀商旅不只是一個短暫的居所，更是一個充滿無限延伸的可能性，邀請您前來享有最舒適自在的心靈純淨旅程。"
 }

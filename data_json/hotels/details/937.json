@@ -1,6 +1,6 @@
 {
   "id": "937",
-  "name": "简体 手機版beta川湯溫泉養生餐廳",
+  "name": "川湯溫泉養生餐廳",
   "area": "",
   "address": "台北市北投區行義路300巷10號",
   "phone": "02-2874-7979",
@@ -9,10 +9,9 @@
   "email": "kawayu@kawayu-spa.com.tw",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=937"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "3459",
-  "name": "简体 手機版beta今海岸渡假飯店",
+  "name": "今海岸渡假飯店",
   "area": "",
   "address": "澎湖縣白沙鄉吉貝村8-7號",
   "phone": "06-991-1293",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3459"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

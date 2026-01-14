@@ -1,6 +1,6 @@
 {
   "id": "2153",
-  "name": "简体 手機版beta墾丁青年活動中心",
+  "name": "墾丁青年活動中心",
   "area": "",
   "address": "屏東縣恆春鎮墾丁路17號",
   "phone": "08-886-1221",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2153"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

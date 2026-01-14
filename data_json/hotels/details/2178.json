@@ -1,6 +1,6 @@
 {
   "id": "2178",
-  "name": "简体 手機版beta走過虹橋民宿",
+  "name": "走過虹橋民宿",
   "area": "",
   "address": "花蓮縣秀林鄉崇德村三鄰210號",
   "phone": "03-862-1328",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2178"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

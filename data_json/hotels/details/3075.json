@@ -1,6 +1,6 @@
 {
   "id": "3075",
-  "name": "简体 手機版beta日月千禧酒店",
+  "name": "日月千禧酒店",
   "area": "",
   "address": "台中市西屯區市政路77號",
   "phone": "04-2311-2178",
@@ -9,10 +9,9 @@
   "email": "sales@millenniumtaichung.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3075"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

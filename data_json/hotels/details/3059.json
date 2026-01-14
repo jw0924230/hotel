@@ -1,6 +1,6 @@
 {
   "id": "3059",
-  "name": "简体 手機版beta福泰桔子商務旅館",
+  "name": "福泰桔子商務旅館",
   "area": "",
   "address": "台中市中區公園路17號",
   "phone": "04-2226-2323",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3059"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

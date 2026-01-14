@@ -1,6 +1,6 @@
 {
   "id": "228",
-  "name": "简体 手機版beta愛之星汽車旅館",
+  "name": "愛之星汽車旅館",
   "area": "",
   "address": "桃園市龜山區文化二路50號",
   "phone": "03-318-0888",
@@ -9,10 +9,9 @@
   "email": "service@lovestarmotel.com",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "2小時",
   "housing_rules": "休息時間：2小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=228"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

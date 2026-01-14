@@ -1,6 +1,6 @@
 {
   "id": "3332",
-  "name": "简体 手機版beta伯斯飯店",
+  "name": "伯斯飯店",
   "area": "",
   "address": "宜蘭縣宜蘭市宜興路一段366號",
   "phone": "03-931-2999",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3332"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,18 +1,17 @@
 {
   "id": "1802",
-  "name": "简体 手機版beta小島民宿-花蓮海景民宿",
+  "name": "小島民宿-花蓮海景民宿",
   "area": "",
   "address": "花蓮縣壽豐鄉鹽寮村鹽寮111號",
   "phone": "0933-317-202",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "http://www.islebnb.com/",
   "email": "sally641006@gmail.com",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "小島民宿，與原日不落島同樣的一個味道…\n在這一樣找不到華麗的視覺，一樣沒有VILLA與VIP空間，一樣不會有阿曼飯店的淋漓盡致。\n\n但…一樣的有很藍的海、很好喝的海尼根，一樣南島夏日的悠閒，當然囉，很重要地……同樣也有很快樂的陽光，來小島渡個假吧…..",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1802"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "小島民宿，與原日不落島同樣的一個味道…\n在這一樣找不到華麗的視覺，一樣沒有VILLA與VIP空間，一樣不會有阿曼飯店的淋漓盡致。\n\n但…一樣的有很藍的海、很好喝的海尼根，一樣南島夏日的悠閒，當然囉，很重要地……同樣也有很快樂的陽光，來小島渡個假吧….."
 }

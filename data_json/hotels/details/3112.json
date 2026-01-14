@@ -1,6 +1,6 @@
 {
   "id": "3112",
-  "name": "简体 手機版beta天水蓮大飯店",
+  "name": "天水蓮大飯店",
   "area": "",
   "address": "南投縣埔里鎮鯉魚二巷20號",
   "phone": "049-290-3411",
@@ -9,12 +9,9 @@
   "email": "the_solas@hotmail.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3112_l_image_mo2up.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3112"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

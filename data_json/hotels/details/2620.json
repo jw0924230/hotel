@@ -1,6 +1,6 @@
 {
   "id": "2620",
-  "name": "简体 手機版beta原鄉溫泉民宿",
+  "name": "原鄉溫泉民宿",
   "area": "",
   "address": "花蓮縣瑞穗鄉瑞祥村五福路325號",
   "phone": "其他連絡電話：03-887-6308",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "民宿 / 溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2620"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

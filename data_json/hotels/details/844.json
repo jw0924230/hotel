@@ -1,6 +1,6 @@
 {
   "id": "844",
-  "name": "简体 手機版beta福華大飯店",
+  "name": "福華大飯店",
   "area": "",
   "address": "高雄市新興區七賢一路311號",
   "phone": "07-236-2323",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "高雄福華大飯店，座落在市區商業中心，距離火車站及高速公路交流道只需五分鐘路程，至小港國際機場只需十五分鐘，交通便捷，讓每一位嘉賓盡享地利之便。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=844"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "高雄福華大飯店，座落在市區商業中心，距離火車站及高速公路交流道只需五分鐘路程，至小港國際機場只需十五分鐘，交通便捷，讓每一位嘉賓盡享地利之便。"
 }

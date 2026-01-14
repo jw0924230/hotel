@@ -1,6 +1,6 @@
 {
   "id": "1003",
-  "name": "简体 手機版beta花蓮那魯灣旅店",
+  "name": "花蓮那魯灣旅店",
   "area": "",
   "address": "花蓮縣花蓮市國聯五路7-3號",
   "phone": "03-836-0103",
@@ -9,10 +9,9 @@
   "email": "naluwan@naluwan-hotel.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1003"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

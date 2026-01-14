@@ -1,6 +1,6 @@
 {
   "id": "3132",
-  "name": "简体 手機版beta漢光樓 (立德溪頭飯店)",
+  "name": "漢光樓 (立德溪頭飯店)",
   "area": "",
   "address": "南投縣鹿谷鄉內湖村森林巷12號",
   "phone": "049-261-2588",
@@ -9,10 +9,9 @@
   "email": "chitou@leaderhotel.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3132"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

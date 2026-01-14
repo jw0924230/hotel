@@ -1,6 +1,6 @@
 {
   "id": "2496",
-  "name": "简体 手機版beta泰雅渡假村--泰雅皇宮",
+  "name": "泰雅渡假村--泰雅皇宮",
   "area": "",
   "address": "南投縣仁愛鄉互助村清風路45號",
   "phone": "049-246-1311",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2496"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

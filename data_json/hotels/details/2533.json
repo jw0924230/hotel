@@ -1,6 +1,6 @@
 {
   "id": "2533",
-  "name": "简体 手機版beta仁惠皇家溫泉山莊",
+  "name": "仁惠皇家溫泉山莊",
   "area": "",
   "address": "台南市白河區關子嶺10-1號",
   "phone": "06-682-2313",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "渡假村/山莊 / 溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2533"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "28",
-  "name": "简体 手機版beta加州汽車旅館",
+  "name": "加州汽車旅館",
   "area": "",
   "address": "彰化縣彰化市中山路一段332號",
   "phone": "04-711-8600",
@@ -9,12 +9,9 @@
   "email": "",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/28_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=28"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

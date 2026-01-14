@@ -1,6 +1,6 @@
 {
   "id": "2495",
-  "name": "简体 手機版beta玉門關泥溫泉山莊",
+  "name": "玉門關泥溫泉山莊",
   "area": "",
   "address": "南投縣國姓鄉北山村種瓜巷29號",
   "phone": "049-245-0199",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2495"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

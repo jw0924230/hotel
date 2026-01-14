@@ -1,6 +1,6 @@
 {
   "id": "3185",
-  "name": "简体 手機版beta君館商務大旅店",
+  "name": "君館商務大旅店",
   "area": "",
   "address": "台南市新營區民權路25-3號",
   "phone": "06-635-8889",
@@ -9,10 +9,9 @@
   "email": "ckhotel@pchome.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3185"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "535",
-  "name": "简体 手機版beta龍之脈汽車旅館",
+  "name": "龍之脈汽車旅館",
   "area": "",
   "address": "新竹縣竹北市中華路340-17號",
   "phone": "03-551-9261",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "3小時",
   "housing_rules": "休息時間：3小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=535"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

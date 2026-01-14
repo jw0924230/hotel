@@ -1,6 +1,6 @@
 {
   "id": "2986",
-  "name": "简体 手機版beta神旺商務酒店",
+  "name": "神旺商務酒店",
   "area": "",
   "address": "台北市中山區南京東路一段128號",
   "phone": "02-2511-5185",
@@ -9,10 +9,9 @@
   "email": "service@swresidences.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2986"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "879",
-  "name": "简体 手機版beta碧山閣溫泉飯店",
+  "name": "碧山閣溫泉飯店",
   "area": "",
   "address": "新北市烏來區烏來里烏來街79號",
   "phone": "02-2661-6342",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=879"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

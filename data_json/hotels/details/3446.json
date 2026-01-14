@@ -1,6 +1,6 @@
 {
   "id": "3446",
-  "name": "简体 手機版beta凱薪大飯店",
+  "name": "凱薪大飯店",
   "area": "",
   "address": "台東縣綠島鄉南寮村南寮102-12號",
   "phone": "089-672-033",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3446"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

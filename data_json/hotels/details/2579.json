@@ -1,6 +1,6 @@
 {
   "id": "2579",
-  "name": "简体 手機版beta扇平山莊民宿",
+  "name": "扇平山莊民宿",
   "area": "",
   "address": "高雄市六龜區中興里尾庄路45-3號",
   "phone": "07-689-5882",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "民宿 / 溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2579"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

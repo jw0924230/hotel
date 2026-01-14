@@ -1,6 +1,6 @@
 {
   "id": "3399",
-  "name": "简体 手機版beta洄瀾客棧",
+  "name": "洄瀾客棧",
   "area": "",
   "address": "花蓮縣花蓮市海岸路11號",
   "phone": "03-822-7188",
@@ -9,10 +9,9 @@
   "email": "olahotel@ms58.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3399"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

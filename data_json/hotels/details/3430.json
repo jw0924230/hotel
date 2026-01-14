@@ -1,6 +1,6 @@
 {
   "id": "3430",
-  "name": "简体 手機版beta山水居飯店",
+  "name": "山水居飯店",
   "area": "",
   "address": "台東縣關山鎮博愛路1-6號",
   "phone": "089-814-787",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3430"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

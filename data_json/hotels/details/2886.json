@@ -1,6 +1,6 @@
 {
   "id": "2886",
-  "name": "简体 手機版beta璞麗商務旅館",
+  "name": "璞麗商務旅館",
   "area": "",
   "address": "台北市萬華區成都路27巷6號",
   "phone": "02-2371-8616",
@@ -9,10 +9,9 @@
   "email": "resv@hotel-puri.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2886"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

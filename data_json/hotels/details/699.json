@@ -1,6 +1,6 @@
 {
   "id": "699",
-  "name": "简体 手機版beta和田飯店",
+  "name": "和田飯店",
   "area": "",
   "address": "澎湖縣馬公市民權路2號",
   "phone": "06-926-3936",
@@ -9,12 +9,9 @@
   "email": "hotel.mongfun@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "歡迎您到菊島，享受夏日的陽光、海水與沙灘。",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/699_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=699"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "歡迎您到菊島，享受夏日的陽光、海水與沙灘。"
 }

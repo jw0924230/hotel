@@ -1,6 +1,6 @@
 {
   "id": "3196",
-  "name": "简体 手機版beta致穩商旅",
+  "name": "致穩商旅",
   "area": "",
   "address": "台南市永康區中正北路56-20號",
   "phone": "06-242-6677",
@@ -9,10 +9,9 @@
   "email": "service@justwin-hotel.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3196"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

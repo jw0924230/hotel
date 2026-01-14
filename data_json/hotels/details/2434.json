@@ -1,6 +1,6 @@
 {
   "id": "2434",
-  "name": "简体 手機版beta峇里森林溫泉渡假村",
+  "name": "峇里森林溫泉渡假村",
   "area": "",
   "address": "新竹縣尖石鄉嘉樂村14鄰160號",
   "phone": "03-584-2268",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2434"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

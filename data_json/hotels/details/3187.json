@@ -1,6 +1,6 @@
 {
   "id": "3187",
-  "name": "简体 手機版beta亞伯大飯店",
+  "name": "亞伯大飯店",
   "area": "",
   "address": "台南市東區大同路二段615號",
   "phone": "06-268-6911",
@@ -9,12 +9,9 @@
   "email": "abbahl@ms49.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3187_l_image_lajhl.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3187"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

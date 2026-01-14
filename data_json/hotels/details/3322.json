@@ -1,6 +1,6 @@
 {
   "id": "3322",
-  "name": "简体 手機版beta友愛大飯店",
+  "name": "友愛大飯店",
   "area": "",
   "address": "宜蘭縣宜蘭市舊城東路50號11-16樓",
   "phone": "03-936-3456",
@@ -9,10 +9,9 @@
   "email": "hotel@yoai.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3322"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

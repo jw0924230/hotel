@@ -1,6 +1,6 @@
 {
   "id": "907",
-  "name": "简体 手機版beta北關休閒農場",
+  "name": "北關休閒農場",
   "area": "",
   "address": "宜蘭縣頭城鎮更新路205號",
   "phone": "03-977-2168",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "休閒農場",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=907"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

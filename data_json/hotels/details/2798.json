@@ -1,6 +1,6 @@
 {
   "id": "2798",
-  "name": "简体 手機版beta花蓮非凡假期大飯店",
+  "name": "花蓮非凡假期大飯店",
   "area": "",
   "address": "花蓮縣花蓮市民國路153號",
   "phone": "03-831-1757",
@@ -9,12 +9,9 @@
   "email": "u038311757@yahoo.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "非凡假期大飯店位於花蓮市中心，交通便捷；同時擁有傳統與都會風格的精品格調，巧妙的結合了舒適、便捷、藝術及古典高感精華的飯店。",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/2798_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=2798"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "非凡假期大飯店位於花蓮市中心，交通便捷；同時擁有傳統與都會風格的精品格調，巧妙的結合了舒適、便捷、藝術及古典高感精華的飯店。"
 }

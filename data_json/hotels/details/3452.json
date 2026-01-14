@@ -1,6 +1,6 @@
 {
   "id": "3452",
-  "name": "简体 手機版beta綠島之星大飯店",
+  "name": "綠島之星大飯店",
   "area": "",
   "address": "台東縣綠島鄉公館村柴口55號",
   "phone": "089-671-355",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3452"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

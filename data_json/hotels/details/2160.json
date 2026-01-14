@@ -1,6 +1,6 @@
 {
   "id": "2160",
-  "name": "简体 手機版beta澎湖青年活動中心",
+  "name": "澎湖青年活動中心",
   "area": "",
   "address": "澎湖縣馬公市介壽路11號",
   "phone": "06-927-1124",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2160"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

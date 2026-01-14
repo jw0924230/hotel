@@ -1,6 +1,6 @@
 {
   "id": "3068",
-  "name": "简体 手機版beta中科大飯店",
+  "name": "中科大飯店",
   "area": "",
   "address": "台中市北屯區旅順路二段7號",
   "phone": "04-2246-5599",
@@ -9,12 +9,9 @@
   "email": "zk.hotel@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3068_l_image_awv3v.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3068"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

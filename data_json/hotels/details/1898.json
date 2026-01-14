@@ -1,6 +1,6 @@
 {
   "id": "1898",
-  "name": "简体 手機版beta洄瀾灣民宿",
+  "name": "洄瀾灣民宿",
   "area": "",
   "address": "花蓮縣吉安鄉仁安村海濱15號",
   "phone": "03-852-0280",
@@ -9,10 +9,9 @@
   "email": "c6737sn@yahoo.com.tw",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1898"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

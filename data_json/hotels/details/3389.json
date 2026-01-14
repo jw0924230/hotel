@@ -1,6 +1,6 @@
 {
   "id": "3389",
-  "name": "简体 手機版beta邑采精緻旅店",
+  "name": "邑采精緻旅店",
   "area": "",
   "address": "花蓮縣花蓮市富安路90號",
   "phone": "03-856-8877",
@@ -9,10 +9,9 @@
   "email": "camelot@inn88.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3389"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

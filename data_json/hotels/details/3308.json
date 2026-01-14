@@ -1,6 +1,6 @@
 {
   "id": "3308",
-  "name": "简体 手機版beta富悅大飯店",
+  "name": "富悅大飯店",
   "area": "",
   "address": "屏東縣恆春鎮恆南路117巷18號",
   "phone": "08-8898888",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3308"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

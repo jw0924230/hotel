@@ -1,6 +1,6 @@
 {
   "id": "2485",
-  "name": "简体 手機版beta清新溫泉度假飯店",
+  "name": "清新溫泉度假飯店",
   "area": "",
   "address": "台中市烏日區成功西路298號",
   "phone": "04-2382-9888",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2485"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

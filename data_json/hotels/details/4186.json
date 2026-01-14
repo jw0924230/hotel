@@ -1,6 +1,6 @@
 {
   "id": "4186",
-  "name": "简体 手機版beta聖旺商旅",
+  "name": "聖旺商旅",
   "area": "",
   "address": "台南市中西區西門路一段576號",
   "phone": "06-213-0789",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=4186"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

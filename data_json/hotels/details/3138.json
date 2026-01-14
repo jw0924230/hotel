@@ -1,6 +1,6 @@
 {
   "id": "3138",
-  "name": "简体 手機版beta草嶺山莊",
+  "name": "草嶺山莊",
   "area": "",
   "address": "雲林縣古坑鄉草嶺村草嶺路56號",
   "phone": "05-583-1121",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "渡假村/山莊",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3138"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

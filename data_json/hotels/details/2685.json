@@ -1,20 +1,17 @@
 {
   "id": "2685",
-  "name": "简体 手機版beta知本樂山溫泉露營區",
+  "name": "知本樂山溫泉露營區",
   "area": "",
   "address": "台東縣卑南鄉溫泉村龍泉路113巷29號",
   "phone": "089-515-870",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "losunwang@yahoo.com.tw",
   "category": "露營區",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "2014/6/1日起可無線上網.全年360天露營自備一頂帳600元.租帳篷一頂700元.農曆新年初一自初5價格不同調漲.另炊室帳.與10人帳另外記價\n\n.",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/2685_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=2685"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "2014/6/1日起可無線上網.全年360天露營自備一頂帳600元.租帳篷一頂700元.農曆新年初一自初5價格不同調漲.另炊室帳.與10人帳另外記價\n\n."
 }

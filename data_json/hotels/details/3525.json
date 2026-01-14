@@ -1,6 +1,6 @@
 {
   "id": "3525",
-  "name": "简体 手機版beta勝友商務旅館",
+  "name": "勝友商務旅館",
   "area": "",
   "address": "屏東縣東港鎮中正路56號",
   "phone": "08-832-2119",
@@ -9,10 +9,9 @@
   "email": "kiy2158@yahoo.com.tw",
   "category": "旅社",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3525"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

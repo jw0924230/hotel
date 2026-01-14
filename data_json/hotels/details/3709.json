@@ -1,6 +1,6 @@
 {
   "id": "3709",
-  "name": "简体 手機版beta水緹商務精品旅館",
+  "name": "水緹商務精品旅館",
   "area": "",
   "address": "台南市東區裕信路500號",
   "phone": "06-331-5378",
@@ -9,10 +9,9 @@
   "email": "reservations.shuiti@gmail.com",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3709"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

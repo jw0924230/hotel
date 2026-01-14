@@ -1,6 +1,6 @@
 {
   "id": "3444",
-  "name": "简体 手機版beta統祥大飯店",
+  "name": "統祥大飯店",
   "area": "",
   "address": "台東縣綠島鄉中寮村中寮6-6號",
   "phone": "089-672-828",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3444"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

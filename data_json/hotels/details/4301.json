@@ -1,18 +1,17 @@
 {
   "id": "4301",
-  "name": "简体 手機版beta旅人蕉露營區",
+  "name": "旅人蕉露營區",
   "area": "",
   "address": "南投縣仁愛鄉互助村明月巷1附8號",
   "phone": "0928-001-602",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "露營區",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "位於仁愛鄉清流部落內，這裡有與世隔絕的美麗風與原住民文化特色建築\n\n清流部落內的原住民文化保存皆相當完善，「霧社事件餘生紀念館」，紅黑交雜的圖騰裝飾出特色建築。\n\n這裡是個週末踏青的好去處，適合親子共遊，可以欣賞多元的原住民文化，歡迎來了解歷史的過去和未來，所綻放出的獨特美麗。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=4301"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "位於仁愛鄉清流部落內，這裡有與世隔絕的美麗風與原住民文化特色建築\n\n清流部落內的原住民文化保存皆相當完善，「霧社事件餘生紀念館」，紅黑交雜的圖騰裝飾出特色建築。\n\n這裡是個週末踏青的好去處，適合親子共遊，可以欣賞多元的原住民文化，歡迎來了解歷史的過去和未來，所綻放出的獨特美麗。"
 }

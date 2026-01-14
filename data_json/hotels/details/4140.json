@@ -1,6 +1,6 @@
 {
   "id": "4140",
-  "name": "简体 手機版beta花蓮亞士都飯店",
+  "name": "花蓮亞士都飯店",
   "area": "",
   "address": "花蓮縣花蓮市海濱大道民權路6-1號",
   "phone": "03-832-6111",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=4140"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

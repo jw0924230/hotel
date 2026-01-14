@@ -1,18 +1,17 @@
 {
   "id": "1719",
-  "name": "简体 手機版beta溪頭逍遙居民宿",
+  "name": "溪頭逍遙居民宿",
   "area": "",
   "address": "南投縣鹿谷鄉鹿谷村中正路二段211巷15號",
   "phone": "049-275-5336",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "http://www.leisure.tw/",
   "email": "",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "「溪頭住宿-逍遙居」為南投合法溪頭民宿，座落於溪頭風景區，鄰近桃太郎村、溪頭森林遊樂區、麒麟潭、溪頭妖怪村、杉林溪森林遊樂區等知名旅遊景點，交通十分便捷。\n\n由於民宿的房內檜木香氣四溢，因此成為網友極為推薦的香氛民宿。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1719"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "「溪頭住宿-逍遙居」為南投合法溪頭民宿，座落於溪頭風景區，鄰近桃太郎村、溪頭森林遊樂區、麒麟潭、溪頭妖怪村、杉林溪森林遊樂區等知名旅遊景點，交通十分便捷。\n\n由於民宿的房內檜木香氣四溢，因此成為網友極為推薦的香氛民宿。"
 }

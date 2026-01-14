@@ -1,6 +1,6 @@
 {
   "id": "2756",
-  "name": "简体 手機版beta玫瑰精品會館",
+  "name": "玫瑰精品會館",
   "area": "",
   "address": "台北市大安區新生南路一段103巷37號",
   "phone": "02-2752-2077",
@@ -9,10 +9,9 @@
   "email": "rose.hotel@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2756"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "3396",
-  "name": "简体 手機版beta洄瀾窩青年旅舍",
+  "name": "洄瀾窩青年旅舍",
   "area": "",
   "address": "花蓮縣花蓮市國聯一路83號",
   "phone": "03-833-0186",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3396"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

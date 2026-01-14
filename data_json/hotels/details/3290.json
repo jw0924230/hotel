@@ -1,6 +1,6 @@
 {
   "id": "3290",
-  "name": "简体 手機版beta龍翔飯店",
+  "name": "龍翔飯店",
   "area": "",
   "address": "高雄市左營區立文路75號",
   "phone": "07-557-4769",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3290"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

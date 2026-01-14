@@ -1,6 +1,6 @@
 {
   "id": "606",
-  "name": "简体 手機版beta豪悅大飯店",
+  "name": "豪悅大飯店",
   "area": "",
   "address": "台北市中山區松江路97巷18號",
   "phone": "02-2517-7272",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=606"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

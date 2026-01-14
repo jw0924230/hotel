@@ -1,6 +1,6 @@
 {
   "id": "2499",
-  "name": "简体 手機版beta達谷蘭溫泉農場",
+  "name": "達谷蘭溫泉農場",
   "area": "",
   "address": "南投縣信義鄉東埔村溫泉110-1號",
   "phone": "049-270-1000",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2499"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

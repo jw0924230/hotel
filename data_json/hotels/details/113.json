@@ -1,6 +1,6 @@
 {
   "id": "113",
-  "name": "简体 手機版beta群登商務飯店",
+  "name": "群登商務飯店",
   "area": "",
   "address": "高雄市鹽埕區府北路50號",
   "phone": "07-532-5901",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=113"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

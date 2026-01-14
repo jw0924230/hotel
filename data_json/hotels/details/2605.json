@@ -1,6 +1,6 @@
 {
   "id": "2605",
-  "name": "简体 手機版beta新溫泉渡假旅館",
+  "name": "新溫泉渡假旅館",
   "area": "",
   "address": "屏東縣車城鄉溫泉村文化路1-10號",
   "phone": "08-882-1597",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2605"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "1717",
-  "name": "简体 手機版beta八方美學HOTEL",
+  "name": "八方美學HOTEL",
   "area": "",
   "address": "台北市中正區金山南路一段8號",
   "phone": "02-2358-3500",
@@ -9,10 +9,9 @@
   "email": "rick@hotel8zone.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1717"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

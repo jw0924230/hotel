@@ -1,6 +1,6 @@
 {
   "id": "3025",
-  "name": "简体 手機版beta桃企大飯店",
+  "name": "桃企大飯店",
   "area": "",
   "address": "桃園市中壢區中正路51號",
   "phone": "03-426-6628",
@@ -9,12 +9,9 @@
   "email": "park.hotel@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3025_l_image_jg3uh.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3025"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

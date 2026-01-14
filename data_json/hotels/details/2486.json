@@ -1,6 +1,6 @@
 {
   "id": "2486",
-  "name": "简体 手機版beta四季溫泉會館",
+  "name": "四季溫泉會館",
   "area": "",
   "address": "台中市和平區東關路溫泉巷8-1號",
   "phone": "04-2595-1235",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2486"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

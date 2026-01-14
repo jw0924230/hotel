@@ -1,6 +1,6 @@
 {
   "id": "3104",
-  "name": "简体 手機版beta明山森林會館",
+  "name": "明山森林會館",
   "area": "",
   "address": "南投縣鹿谷鄉內湖村興產路2-3號",
   "phone": "049-2612121-3",
@@ -9,10 +9,9 @@
   "email": "mingshan@mingshan.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3104"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

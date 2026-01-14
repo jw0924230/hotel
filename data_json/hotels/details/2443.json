@@ -1,6 +1,6 @@
 {
   "id": "2443",
-  "name": "简体 手機版beta川湯春天溫泉飯店",
+  "name": "川湯春天溫泉飯店",
   "area": "",
   "address": "宜蘭縣礁溪鄉德陽路43號",
   "phone": "03-988-9889",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2443"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

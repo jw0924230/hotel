@@ -1,20 +1,17 @@
 {
   "id": "1033",
-  "name": "简体 手機版beta拉拉山玫瑰渡假山莊",
+  "name": "拉拉山玫瑰渡假山莊",
   "area": "",
   "address": "桃園市復興區華凌村9鄰62號",
   "phone": "03-391-2322",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "http://www.rosehotel.com.tw/",
   "email": "rosehoteltw@yahoo.com.tw",
   "category": "渡假村/山莊",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "玫瑰渡假山莊  -- 拉拉山最好的歐式渡假山莊  \n落於北橫公路~上巴陵，在海拔1500公尺群山之中，蒼翠油綠的林野、清新恬靜的空氣，使渡假旅客輕鬆忘卻繁華塵囂。",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/1033_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=1033"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "玫瑰渡假山莊  -- 拉拉山最好的歐式渡假山莊  \n落於北橫公路~上巴陵，在海拔1500公尺群山之中，蒼翠油綠的林野、清新恬靜的空氣，使渡假旅客輕鬆忘卻繁華塵囂。"
 }

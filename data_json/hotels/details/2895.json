@@ -1,6 +1,6 @@
 {
   "id": "2895",
-  "name": "简体 手機版beta大華大旅社",
+  "name": "大華大旅社",
   "area": "",
   "address": "基隆市仁愛區精一路15號6樓",
   "phone": "02-24246391-2",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2895"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

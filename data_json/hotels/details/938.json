@@ -1,6 +1,6 @@
 {
   "id": "938",
-  "name": "简体 手機版beta椰林溫泉美食餐廳",
+  "name": "椰林溫泉美食餐廳",
   "area": "",
   "address": "台北市北投區行義路269號",
   "phone": "02-2875-1234",
@@ -9,10 +9,9 @@
   "email": "yelin@yelin-spa.com.tw",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=938"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

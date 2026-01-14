@@ -1,18 +1,17 @@
 {
   "id": "4095",
-  "name": "简体 手機版beta樂居．微風",
+  "name": "樂居．微風",
   "area": "",
   "address": "台北市中山區中山北路二段77巷17-3號",
   "phone": "02-2563-3369",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "想要盡情體驗台北市的精彩，HotelleHome絕對是您的最佳旅伴。這裡距離市中心僅1Km，\n\n離機場也不過15分鐘的路程。住宿位置優越讓旅客前往市區內的熱門景點變得方便快捷。\n\n相信HotelleHome的周到服務和一流設施會讓您此行終生難忘。\n\n住宿內能享受到房內免費Wi-Fi，可寄放行李，公共區域Wi-Fi，電梯，保險箱等一系列頂級設施。\n\n此外，這裡的所有客房皆配有各種舒適的房內設施。許多房間甚至還提供了浴巾，室內拖鞋，寢具用品，煙霧偵測器，免費Wi-Fi以滿足客人的需求。\n\n除此之外，住宿的各種娛樂設施一定會讓您在留宿期間享受更多樂趣。不管您是來台北市出差還是旅行，HotelleHome都能讓您在留宿期間擁有一段難忘的回憶。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=4095"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "想要盡情體驗台北市的精彩，HotelleHome絕對是您的最佳旅伴。這裡距離市中心僅1Km，\n\n離機場也不過15分鐘的路程。住宿位置優越讓旅客前往市區內的熱門景點變得方便快捷。\n\n相信HotelleHome的周到服務和一流設施會讓您此行終生難忘。\n\n住宿內能享受到房內免費Wi-Fi，可寄放行李，公共區域Wi-Fi，電梯，保險箱等一系列頂級設施。\n\n此外，這裡的所有客房皆配有各種舒適的房內設施。許多房間甚至還提供了浴巾，室內拖鞋，寢具用品，煙霧偵測器，免費Wi-Fi以滿足客人的需求。\n\n除此之外，住宿的各種娛樂設施一定會讓您在留宿期間享受更多樂趣。不管您是來台北市出差還是旅行，HotelleHome都能讓您在留宿期間擁有一段難忘的回憶。"
 }

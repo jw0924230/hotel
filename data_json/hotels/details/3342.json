@@ -1,6 +1,6 @@
 {
   "id": "3342",
-  "name": "简体 手機版beta東方商務大飯店",
+  "name": "東方商務大飯店",
   "area": "",
   "address": "宜蘭縣羅東鎮和平路109號",
   "phone": "03-956-8858",
@@ -9,10 +9,9 @@
   "email": "east@east-hotel.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3342"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

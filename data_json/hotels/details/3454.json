@@ -1,6 +1,6 @@
 {
   "id": "3454",
-  "name": "简体 手機版beta樂知旅店",
+  "name": "樂知旅店",
   "area": "",
   "address": "台東縣台東市復興路145號",
   "phone": "089-322-100",
@@ -9,10 +9,9 @@
   "email": "service@yeshotel.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3454"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

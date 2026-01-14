@@ -1,6 +1,6 @@
 {
   "id": "2908",
-  "name": "简体 手機版beta正點旅店",
+  "name": "正點旅店",
   "area": "",
   "address": "新北市板橋區文化路一段55號",
   "phone": "02-2968-4152",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2908"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

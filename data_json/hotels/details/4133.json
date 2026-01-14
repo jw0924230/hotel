@@ -1,6 +1,6 @@
 {
   "id": "4133",
-  "name": "简体 手機版betaF HOTEL知本館",
+  "name": "F HOTEL知本館",
   "area": "",
   "address": "台東縣台東市大順路33路",
   "phone": "089-511-555",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=4133"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

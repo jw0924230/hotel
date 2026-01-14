@@ -1,18 +1,17 @@
 {
   "id": "3985",
-  "name": "简体 手機版beta雲都商務飯店",
+  "name": "雲都商務飯店",
   "area": "",
   "address": "雲林縣麥寮鄉中華路25號",
   "phone": "05-693-3371",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "雲都商務飯店於2014年2月14日情人節正式營運。 交通要道近台17線、快速道61線、156縣道相通，與市區相臨，具備 極佳的生活機能。\n寬敞的大廳設計、明亮潔淨的落地窗，讓居住空間，心境悠閑、視野廣闊。 親切的櫃檯服務，讓入住的您自在、自由、愜意。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3985"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "雲都商務飯店於2014年2月14日情人節正式營運。 交通要道近台17線、快速道61線、156縣道相通，與市區相臨，具備 極佳的生活機能。\n寬敞的大廳設計、明亮潔淨的落地窗，讓居住空間，心境悠閑、視野廣闊。 親切的櫃檯服務，讓入住的您自在、自由、愜意。"
 }

@@ -1,6 +1,6 @@
 {
   "id": "3288",
-  "name": "简体 手機版beta維多利亞大飯店",
+  "name": "維多利亞大飯店",
   "area": "",
   "address": "高雄市三民區安寧街454號",
   "phone": "07-323-1031",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3288"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

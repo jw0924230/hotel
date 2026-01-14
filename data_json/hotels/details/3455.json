@@ -1,6 +1,6 @@
 {
   "id": "3455",
-  "name": "简体 手機版beta蘋果商務旅店",
+  "name": "蘋果商務旅店",
   "area": "",
   "address": "台東縣台東市中華路一段857號",
   "phone": "089-318-928",
@@ -9,12 +9,9 @@
   "email": "apple@apple-hotel.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3455_l_image_70tff.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3455"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

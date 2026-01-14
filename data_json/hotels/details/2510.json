@@ -1,6 +1,6 @@
 {
   "id": "2510",
-  "name": "简体 手機版beta春陽溫泉山莊",
+  "name": "春陽溫泉山莊",
   "area": "",
   "address": "南投縣仁愛鄉春陽村虎門巷62號",
   "phone": "049-280-1259",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2510"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

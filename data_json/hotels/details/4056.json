@@ -1,18 +1,17 @@
 {
   "id": "4056",
-  "name": "简体 手機版betaHOLA 商務旅館",
+  "name": "HOLA 商務旅館",
   "area": "",
   "address": "台中市西屯區朝馬路21號",
   "phone": "04-2255-5633",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "和樂商務旅館位於台中市西屯區朝馬路，\n高速公路於中港交流道下，往台中市方向約莫5分鐘即可抵達。\n與國光客運、和欣客運及統聯客運朝馬站比臨，\n與台中新地標秋紅谷離本館不到50公尺距離，地理位置極佳。\n\n逢甲夜市商圈、大遠百、新光三越百貨公司、老虎城(TigerCity)、\n精明購物商圈等知名景點亦環繞在周圍，是您洽商、全家旅遊、休閒的好地方。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=4056"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "和樂商務旅館位於台中市西屯區朝馬路，\n高速公路於中港交流道下，往台中市方向約莫5分鐘即可抵達。\n與國光客運、和欣客運及統聯客運朝馬站比臨，\n與台中新地標秋紅谷離本館不到50公尺距離，地理位置極佳。\n\n逢甲夜市商圈、大遠百、新光三越百貨公司、老虎城(TigerCity)、\n精明購物商圈等知名景點亦環繞在周圍，是您洽商、全家旅遊、休閒的好地方。"
 }

@@ -1,6 +1,6 @@
 {
   "id": "2626",
-  "name": "简体 手機版beta瑞穗溫泉旅社",
+  "name": "瑞穗溫泉旅社",
   "area": "",
   "address": "花蓮縣萬榮鄉紅葉村23號",
   "phone": "其他連絡電話：03-887-0824",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2626"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "1702",
-  "name": "简体 手機版beta馨園商務旅館",
+  "name": "馨園商務旅館",
   "area": "",
   "address": "台東縣台東市中山路402號",
   "phone": "089-325-102",
@@ -9,10 +9,9 @@
   "email": "more.less@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1702"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

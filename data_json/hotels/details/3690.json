@@ -1,20 +1,17 @@
 {
   "id": "3690",
-  "name": "简体 手機版beta璞園民宿",
+  "name": "璞園民宿",
   "area": "",
   "address": "宜蘭縣壯圍鄉永美路二段1巷120號",
   "phone": "0933-923-899",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "pure.farm@msa.hinet.net",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "民宿主人為了圓年輕時的夢想~就是擁有一座農場，在尋尋覓覓中終於找到屬於心中的淨土，打造自己的夢想田園，然後分享自己所擁有的環境和生活。建築外觀完全由屋主一手打造設計是一棟優雅帶有日式風格的建築大廳呈現出舒適現代風的氛圍，臥室佈置出渡假悠閒風，屋後則有300坪寬闊的有機蔬菜園在閒暇之餘，滿足了農園樂趣並也提供有蔬菜給住宿的旅客栽取，多餘的客房自然就成了民宿的房間，雖然沒有旅館的大規模與豪華，但有的是朋友般的熱情和家的溫馨。宜蘭合法民宿856號.",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3690_l_image_1mm5v.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3690"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "民宿主人為了圓年輕時的夢想~就是擁有一座農場，在尋尋覓覓中終於找到屬於心中的淨土，打造自己的夢想田園，然後分享自己所擁有的環境和生活。建築外觀完全由屋主一手打造設計是一棟優雅帶有日式風格的建築大廳呈現出舒適現代風的氛圍，臥室佈置出渡假悠閒風，屋後則有300坪寬闊的有機蔬菜園在閒暇之餘，滿足了農園樂趣並也提供有蔬菜給住宿的旅客栽取，多餘的客房自然就成了民宿的房間，雖然沒有旅館的大規模與豪華，但有的是朋友般的熱情和家的溫馨。宜蘭合法民宿856號."
 }

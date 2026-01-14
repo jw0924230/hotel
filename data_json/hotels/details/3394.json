@@ -1,6 +1,6 @@
 {
   "id": "3394",
-  "name": "简体 手機版beta花蓮馥麗生活旅店",
+  "name": "花蓮馥麗生活旅店",
   "area": "",
   "address": "花蓮縣花蓮市三民街46-1號",
   "phone": "03-832-0000",
@@ -9,12 +9,9 @@
   "email": "quality.inn@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3394_l_image_0l3lx.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3394"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

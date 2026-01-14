@@ -1,6 +1,6 @@
 {
   "id": "3039",
-  "name": "简体 手機版beta福泰商務酒店",
+  "name": "福泰商務酒店",
   "area": "",
   "address": "新竹市北區中央路106號",
   "phone": "03-521-2323",
@@ -9,10 +9,9 @@
   "email": "reservation-hc@fortehotels-hc.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3039"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

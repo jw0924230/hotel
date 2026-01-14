@@ -1,6 +1,6 @@
 {
   "id": "2624",
-  "name": "简体 手機版beta瑞雄溫泉旅館",
+  "name": "瑞雄溫泉旅館",
   "area": "",
   "address": "花蓮縣瑞穗鄉溫泉路三段185號",
   "phone": "03-887-2254",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2624"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "3086",
-  "name": "简体 手機版beta帝寶大飯店",
+  "name": "帝寶大飯店",
   "area": "",
   "address": "台中市中區柳川西路三段22號",
   "phone": "04-2227-3456",
@@ -9,12 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3086_l_image_q5i25.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3086"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

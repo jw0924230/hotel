@@ -1,6 +1,6 @@
 {
   "id": "856",
-  "name": "简体 手機版beta西華大飯店",
+  "name": "西華大飯店",
   "area": "",
   "address": "台北市中山區民生東路三段111號",
   "phone": "02-2718-1188",
@@ -9,10 +9,9 @@
   "email": "sherwood@sherwood.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=856"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

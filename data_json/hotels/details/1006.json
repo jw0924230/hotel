@@ -1,6 +1,6 @@
 {
   "id": "1006",
-  "name": "简体 手機版beta京都商務旅館",
+  "name": "京都商務旅館",
   "area": "",
   "address": "台北市中山區長春路38號",
   "phone": "02-2567-3366",
@@ -9,10 +9,9 @@
   "email": "kyoto.hotel@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1006"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "2947",
-  "name": "简体 手機版beta王朝大酒店",
+  "name": "王朝大酒店",
   "area": "",
   "address": "台北市松山區敦化北路100號",
   "phone": "02-2719-8399",
@@ -9,10 +9,9 @@
   "email": "bc@sunworlddynasty.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2947"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

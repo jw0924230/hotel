@@ -1,6 +1,6 @@
 {
   "id": "3238",
-  "name": "简体 手機版beta我家飯店",
+  "name": "我家飯店",
   "area": "",
   "address": "高雄市前金區文武二街18號",
   "phone": "07-201-5605",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3238"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

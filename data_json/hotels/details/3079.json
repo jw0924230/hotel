@@ -1,6 +1,6 @@
 {
   "id": "3079",
-  "name": "简体 手機版beta禾康商務旅館",
+  "name": "禾康商務旅館",
   "area": "",
   "address": "台中市北屯區四平路35號",
   "phone": "04-2295-7333",
@@ -9,10 +9,9 @@
   "email": "herkanghotel@gmail.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3079"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

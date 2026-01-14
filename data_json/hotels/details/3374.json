@@ -1,6 +1,6 @@
 {
   "id": "3374",
-  "name": "简体 手機版beta百悅休閒飯店",
+  "name": "百悅休閒飯店",
   "area": "",
   "address": "花蓮縣花蓮市國威里中山路361號",
   "phone": "03-832-5185",
@@ -9,10 +9,9 @@
   "email": "byeyer@byryer.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3374"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "2945",
-  "name": "简体 手機版beta太平洋溫泉會館",
+  "name": "太平洋溫泉會館",
   "area": "",
   "address": "台北市北投區奇岩路1號",
   "phone": "02-2893-1668",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2945"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

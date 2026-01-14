@@ -1,6 +1,6 @@
 {
   "id": "2498",
-  "name": "简体 手機版beta梅庄休閒渡假中心",
+  "name": "梅庄休閒渡假中心",
   "area": "",
   "address": "南投縣國姓鄉北港村長北路46號",
   "phone": "049-246-2238",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2498"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "3198",
-  "name": "简体 手機版beta首相大飯店",
+  "name": "首相大飯店",
   "area": "",
   "address": "台南市北區公園路128號",
   "phone": "06-225-2141",
@@ -9,10 +9,9 @@
   "email": "premierh@seed.net.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3198"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "3330",
-  "name": "简体 手機版beta自然風會館",
+  "name": "自然風會館",
   "area": "",
   "address": "宜蘭縣礁溪鄉忠孝路97巷26號",
   "phone": "03-987-6161",
@@ -9,10 +9,9 @@
   "email": "039876161jc@gmail.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3330"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "3204",
-  "name": "简体 手機版beta華光國際商務大飯店",
+  "name": "華光國際商務大飯店",
   "area": "",
   "address": "台南市中西區民族路二段143號",
   "phone": "06-222-1123",
@@ -9,10 +9,9 @@
   "email": "tnoriental@pchome.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3204"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

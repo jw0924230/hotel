@@ -1,6 +1,6 @@
 {
   "id": "111",
-  "name": "简体 手機版beta大益大飯店",
+  "name": "大益大飯店",
   "area": "",
   "address": "高雄市新興區大同一路177號",
   "phone": "07-231-2141",
@@ -9,10 +9,9 @@
   "email": "service@t-hotel.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=111"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

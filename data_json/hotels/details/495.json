@@ -1,6 +1,6 @@
 {
   "id": "495",
-  "name": "简体 手機版beta戀戀溫泉汽車旅館",
+  "name": "戀戀溫泉汽車旅館",
   "area": "",
   "address": "宜蘭縣礁溪鄉仁愛路9號",
   "phone": "03-988-2882",
@@ -9,12 +9,9 @@
   "email": "",
   "category": "汽車旅館 / 溫泉泡湯",
   "stay_info": "",
-  "rest_info": "2小時",
-  "housing_rules": "休息時間：2小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t 注意事項：\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t以下價格加 1 成服務費　 \n平日 5 折．價日 9 折 \n本館偶有推出”淡季感恩回饋案”請來電洽詢",
+  "housing_rules": "休息時間：2小時\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\n\n\n\n(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "以下價格加 1 成服務費　 \n平日 5 折．價日 9 折 \n本館偶有推出”淡季感恩回饋案”請來電洽詢",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/495_l_image.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=495"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

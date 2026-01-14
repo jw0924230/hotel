@@ -1,6 +1,6 @@
 {
   "id": "3343",
-  "name": "简体 手機版beta東寶複合式旅館",
+  "name": "東寶複合式旅館",
   "area": "",
   "address": "宜蘭縣羅東鎮青潭路154號",
   "phone": "03-954-4186",
@@ -9,10 +9,9 @@
   "email": "oj.hotel@gamil.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3343"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

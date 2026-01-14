@@ -1,6 +1,6 @@
 {
   "id": "880",
-  "name": "简体 手機版beta卡爾登飯店",
+  "name": "卡爾登飯店",
   "area": "",
   "address": "新竹市北大路225號",
   "phone": "03-525-9999",
@@ -9,10 +9,9 @@
   "email": "webmaster@carton-hotel.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=880"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

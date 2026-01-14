@@ -1,6 +1,6 @@
 {
   "id": "2999",
-  "name": "简体 手機版beta豪麗旺商務旅館",
+  "name": "豪麗旺商務旅館",
   "area": "",
   "address": "台北市信義區基隆路二段15-2號",
   "phone": "02-2345-3511",
@@ -9,10 +9,9 @@
   "email": "holy.pro@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2999"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "2629",
-  "name": "简体 手機版beta知本桃花園",
+  "name": "知本桃花園",
   "area": "",
   "address": "台東縣台東市建興里建興路99號",
   "phone": "其他連絡電話：089-511-173",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2629"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

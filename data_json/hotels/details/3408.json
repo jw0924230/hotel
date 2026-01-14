@@ -1,6 +1,6 @@
 {
   "id": "3408",
-  "name": "简体 手機版beta新光兆豐花蓮旅館",
+  "name": "新光兆豐花蓮旅館",
   "area": "",
   "address": "花蓮縣鳳林鎮永福街20號",
   "phone": "03-877-2666",
@@ -9,10 +9,9 @@
   "email": "east.net@msa.hinet.net",
   "category": "休閒農場",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3408"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

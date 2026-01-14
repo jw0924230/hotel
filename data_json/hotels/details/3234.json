@@ -1,6 +1,6 @@
 {
   "id": "3234",
-  "name": "简体 手機版beta米朵花園旅店",
+  "name": "米朵花園旅店",
   "area": "",
   "address": "高雄市新興區五福二路77號",
   "phone": "07-221-3377",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3234"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

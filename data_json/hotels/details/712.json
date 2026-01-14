@@ -1,6 +1,6 @@
 {
   "id": "712",
-  "name": "简体 手機版beta哈哈王國休閒農場",
+  "name": "哈哈王國休閒農場",
   "area": "",
   "address": "台中市大里區西湖路359-3號",
   "phone": "04-2496-2438",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "休閒農場",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=712"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

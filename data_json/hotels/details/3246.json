@@ -1,6 +1,6 @@
 {
   "id": "3246",
-  "name": "简体 手機版beta花季度假飯店",
+  "name": "花季度假飯店",
   "area": "",
   "address": "高雄市田寮區崗北路111號",
   "phone": "07-636-2288",
@@ -9,10 +9,9 @@
   "email": "service@springhill.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3246"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

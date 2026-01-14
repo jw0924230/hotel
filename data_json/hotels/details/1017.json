@@ -1,18 +1,17 @@
 {
   "id": "1017",
-  "name": "简体 手機版beta溪頭竹軒渡假木屋",
+  "name": "溪頭竹軒渡假木屋",
   "area": "",
   "address": "南投縣鹿谷鄉內湖村興產路24-2號",
   "phone": "049-275-3565",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "http://www.lugu.com.tw/resort/",
   "email": "",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "溪頭竹軒渡假木屋鄰近森林遊樂區，提供優雅精緻的住宿環境，讓您享受綠色森林芬多精的滋潤。\n每間套房都採取天然原木建材，其芳香讓您忍不住再多睡片刻！出門遠遊不一定要住五星級飯店，不妨來體驗一下純樸農村的濃濃人情味，在這邊，您將體驗不同於都市的喧囂，只有蟲鳴鳥叫，還有綠色森林的聲聲呼喚。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1017"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "溪頭竹軒渡假木屋鄰近森林遊樂區，提供優雅精緻的住宿環境，讓您享受綠色森林芬多精的滋潤。\n每間套房都採取天然原木建材，其芳香讓您忍不住再多睡片刻！出門遠遊不一定要住五星級飯店，不妨來體驗一下純樸農村的濃濃人情味，在這邊，您將體驗不同於都市的喧囂，只有蟲鳴鳥叫，還有綠色森林的聲聲呼喚。"
 }

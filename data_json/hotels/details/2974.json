@@ -1,6 +1,6 @@
 {
   "id": "2974",
-  "name": "简体 手機版beta城市商旅南東館",
+  "name": "城市商旅南東館",
   "area": "",
   "address": "台北市松山區南京東路五段411號",
   "phone": "02-2742-5798",
@@ -9,10 +9,9 @@
   "email": "information@citysuites.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2974"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

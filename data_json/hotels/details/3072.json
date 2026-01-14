@@ -1,6 +1,6 @@
 {
   "id": "3072",
-  "name": "简体 手機版beta仁美商務飯店",
+  "name": "仁美商務飯店",
   "area": "",
   "address": "台中市北區健行路585號",
   "phone": "04-2208-2299",
@@ -9,12 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": [
-    "https://www.qk.to/imgs/hotel_images/3072_l_image_gto3t.jpg"
-  ],
-  "source_link": "https://www.qk.to/inquiry.asp?n=3072"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

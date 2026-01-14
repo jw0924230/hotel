@@ -1,6 +1,6 @@
 {
   "id": "2333",
-  "name": "简体 手機版beta湯世代溫泉餐廳",
+  "name": "湯世代溫泉餐廳",
   "area": "",
   "address": "台北市北投區行義路298號",
   "phone": "02-2877-1511~3",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2333"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

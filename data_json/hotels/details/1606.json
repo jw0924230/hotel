@@ -1,6 +1,6 @@
 {
   "id": "1606",
-  "name": "简体 手機版beta南洋豐緻休閒旅店",
+  "name": "南洋豐緻休閒旅店",
   "area": "",
   "address": "屏東縣恆春鎮墾丁里墾丁路312號",
   "phone": "08-885-6168",
@@ -9,10 +9,9 @@
   "email": "js167788@yahoo.com.tw",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1606"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

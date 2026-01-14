@@ -1,6 +1,6 @@
 {
   "id": "1104",
-  "name": "简体 手機版beta鳳凰山農場",
+  "name": "鳳凰山農場",
   "area": "",
   "address": "台中市后里區仁里里圳寮路47巷7號",
   "phone": "04-2556-5994",
@@ -9,10 +9,9 @@
   "email": "youwei.tw@yahoo.com.tw",
   "category": "渡假村/山莊",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=1104"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

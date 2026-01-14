@@ -1,6 +1,6 @@
 {
   "id": "3458",
-  "name": "简体 手機版beta乙統大飯店",
+  "name": "乙統大飯店",
   "area": "",
   "address": "澎湖縣馬公市經國路113巷36號",
   "phone": "06-921-2166",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3458"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "3202",
-  "name": "简体 手機版beta康橋商旅-台南館",
+  "name": "康橋商旅-台南館",
   "area": "",
   "address": "台南市中西區民生路二段299號",
   "phone": "06-224-5566",
@@ -9,10 +9,9 @@
   "email": "kindness.hotel@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3202"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

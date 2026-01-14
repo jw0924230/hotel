@@ -1,6 +1,6 @@
 {
   "id": "3156",
-  "name": "简体 手機版beta皇爵大飯店",
+  "name": "皇爵大飯店",
   "area": "",
   "address": "嘉義市西區新榮路234號",
   "phone": "05-223-3411",
@@ -9,10 +9,9 @@
   "email": "kinghotelchiayi@yahoo.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3156"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

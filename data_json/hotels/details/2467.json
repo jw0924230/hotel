@@ -1,6 +1,6 @@
 {
   "id": "2467",
-  "name": "简体 手機版beta蘭陽溫泉大飯店",
+  "name": "蘭陽溫泉大飯店",
   "area": "",
   "address": "宜蘭縣礁溪鄉德陽路24巷8號",
   "phone": "03-988-1110",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2467"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

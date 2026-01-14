@@ -1,6 +1,6 @@
 {
   "id": "3294",
-  "name": "简体 手機版beta福容大飯店 墾丁",
+  "name": "福容大飯店 墾丁",
   "area": "",
   "address": "屏東縣恆春鎮鵝鑾里船帆路1000號",
   "phone": "08-8856688",
@@ -9,10 +9,9 @@
   "email": "kd@fullon-hotels.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3294"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

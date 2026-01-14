@@ -1,18 +1,17 @@
 {
   "id": "4064",
-  "name": "简体 手機版beta台灣7天精品旅店",
+  "name": "台灣7天精品旅店",
   "area": "",
   "address": "台北市萬華區環河南路二段282號",
   "phone": "02-2308-5222",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "“精彩人生路，從TAIWAN7DAYS起步!!!”\n為什麼選擇台灣7天精品旅店呢？如果您在台灣旅遊，需要尋找一家交通便利停車方便的台北市住宿旅館，那台灣7天精品旅店是一個非常好的選擇。旅客可輕鬆前往台北西門町商圈、龍山寺參拜台北世貿展覽場、東門永康街商圈、台北101購物中心、行天宮、桃園中正國際機場等交通往來皆十分便利。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=4064"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "“精彩人生路，從TAIWAN7DAYS起步!!!”\n為什麼選擇台灣7天精品旅店呢？如果您在台灣旅遊，需要尋找一家交通便利停車方便的台北市住宿旅館，那台灣7天精品旅店是一個非常好的選擇。旅客可輕鬆前往台北西門町商圈、龍山寺參拜台北世貿展覽場、東門永康街商圈、台北101購物中心、行天宮、桃園中正國際機場等交通往來皆十分便利。"
 }

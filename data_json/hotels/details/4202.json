@@ -1,18 +1,17 @@
 {
   "id": "4202",
-  "name": "简体 手機版beta優仕大飯店",
+  "name": "優仕大飯店",
   "area": "",
   "address": "嘉義市西區八德路40號1-10樓",
   "phone": "05-233-2030",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "嘉義市優仕大飯店位於八德路上地理位置相當優越....\n\n離開辦公室，生活不只是家庭，優仕創造優勢—懂得為您卸下緊湊的工作天，預留了寬敞舒適的套房 ；  \n\n全方位的服務品質；—以專業的效率爭取時間商務自然暢達成功，無論是洽商、旅遊、住宿、休息的優先選擇。 本飯店設備有停車場、會議廳、讓生活在繁忙步調中的您，身心靈能得到真正的釋放與抒解，在這裡您將會有一個浪漫逍遙的假期。",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=4202"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "嘉義市優仕大飯店位於八德路上地理位置相當優越....\n\n離開辦公室，生活不只是家庭，優仕創造優勢—懂得為您卸下緊湊的工作天，預留了寬敞舒適的套房 ；  \n\n全方位的服務品質；—以專業的效率爭取時間商務自然暢達成功，無論是洽商、旅遊、住宿、休息的優先選擇。 本飯店設備有停車場、會議廳、讓生活在繁忙步調中的您，身心靈能得到真正的釋放與抒解，在這裡您將會有一個浪漫逍遙的假期。"
 }

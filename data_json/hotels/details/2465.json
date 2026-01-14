@@ -1,6 +1,6 @@
 {
   "id": "2465",
-  "name": "简体 手機版beta礁溪龍泉溫泉客棧",
+  "name": "礁溪龍泉溫泉客棧",
   "area": "",
   "address": "宜蘭縣礁溪鄉礁溪路六段10號",
   "phone": "03-988-2268",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "溫泉泡湯",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2465"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

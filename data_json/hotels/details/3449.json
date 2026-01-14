@@ -1,6 +1,6 @@
 {
   "id": "3449",
-  "name": "简体 手機版beta愛馨會館",
+  "name": "愛馨會館",
   "area": "",
   "address": "台東縣台東市中興路一段110號",
   "phone": "089-228-288",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3449"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

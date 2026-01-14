@@ -1,6 +1,6 @@
 {
   "id": "3451",
-  "name": "简体 手機版beta綠山飯店",
+  "name": "綠山飯店",
   "area": "",
   "address": "台東縣綠島鄉南寮村南寮102-6號",
   "phone": "089-672-243",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3451"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

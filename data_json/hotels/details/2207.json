@@ -1,6 +1,6 @@
 {
   "id": "2207",
-  "name": "简体 手機版beta半月灣小築",
+  "name": "半月灣小築",
   "area": "",
   "address": "花蓮縣豐濱鄉磯崎村磯崎98號",
   "phone": "03-871-1159",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2207"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

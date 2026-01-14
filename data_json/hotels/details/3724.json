@@ -1,6 +1,6 @@
 {
   "id": "3724",
-  "name": "简体 手機版beta康橋商旅-赤崁樓館",
+  "name": "康橋商旅-赤崁樓館",
   "area": "",
   "address": "台南市中西區民權路二段97號",
   "phone": "06-225-3377",
@@ -9,10 +9,9 @@
   "email": "h018.hotel@msa.hinet.net",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3724"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

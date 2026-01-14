@@ -1,6 +1,6 @@
 {
   "id": "3127",
-  "name": "简体 手機版beta晶澤別館",
+  "name": "晶澤別館",
   "area": "",
   "address": "南投縣魚池鄉日月村文化街110號",
   "phone": "049-285-0097",
@@ -9,10 +9,9 @@
   "email": "service@thecrystal.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3127"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

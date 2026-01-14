@@ -1,6 +1,6 @@
 {
   "id": "2989",
-  "name": "简体 手機版beta紫園旅社",
+  "name": "紫園旅社",
   "area": "",
   "address": "台北市大同區南京西路18巷30號",
   "phone": "02-2555-7170",
@@ -9,10 +9,9 @@
   "email": "alexsu56@yahoo.com.tw",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2989"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

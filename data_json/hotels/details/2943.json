@@ -1,6 +1,6 @@
 {
   "id": "2943",
-  "name": "简体 手機版beta大倉久和大飯店",
+  "name": "大倉久和大飯店",
   "area": "",
   "address": "台北市中山區南京東路一段9號",
   "phone": "02-2181-5111",
@@ -9,10 +9,9 @@
   "email": "",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2943"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

@@ -1,6 +1,6 @@
 {
   "id": "2265",
-  "name": "简体 手機版beta桂花村汽車旅館",
+  "name": "桂花村汽車旅館",
   "area": "",
   "address": "台南市安定區海寮里7-83號",
   "phone": "06-593-2097",
@@ -9,10 +9,9 @@
   "email": "a-bin2121@yahoo.com.tw",
   "category": "汽車旅館",
   "stay_info": "",
-  "rest_info": "",
-  "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t 注意事項：\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t全新設施/42吋液晶電視/spa按摩浴柱/免費無線上網/住宿送消夜與早餐/休息送點心",
+  "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "全新設施/42吋液晶電視/spa按摩浴柱/免費無線上網/住宿送消夜與早餐/休息送點心",
-  "description": "99年5月全新開幕/隱密安靜/42吋液晶電視/SPA按摩淋浴柱/免費無線上網/休息附點心/住宿附宵夜早餐/享受身心靈的完全放鬆/離塵不離城(近台南市)的住宿選擇/近國道一二高國道8號下僅一分鐘/南來北往交通便利",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=2265"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": "99年5月全新開幕/隱密安靜/42吋液晶電視/SPA按摩淋浴柱/免費無線上網/休息附點心/住宿附宵夜早餐/享受身心靈的完全放鬆/離塵不離城(近台南市)的住宿選擇/近國道一二高國道8號下僅一分鐘/南來北往交通便利"
 }

@@ -1,18 +1,17 @@
 {
   "id": "768",
-  "name": "简体 手機版beta海濱民宿",
+  "name": "海濱民宿",
   "area": "",
   "address": "花蓮縣花蓮市福建街271號",
   "phone": "03-832-1060",
-  "fax": "//<![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]>\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
+  "fax": "//\u003c![CDATA[\n  var tlJsHost = ((window.location.protocol == \"https:\") ? \"https://secure.trust-provider.com/\" : \"http://www.trustlogo.com/\");\n  document.write(unescape(\"%3Cscript src='\" + tlJsHost + \"trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E\"));\n//]]\u003e\n\n  TrustLogo(\"https://ssl.comodo.com/images/seals/sectigo_trust_seal_sm_2x.png\", \"SECDV\", \"none\");\n\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\tQK休閒網 版權所有  Copyright © 2004 QK Network Leisure All Rights Reserved傳真：04-735-8949    EMail：Service@Qk.to   隱私權   粉絲團   聯絡我們",
   "website": "",
   "email": "",
   "category": "民宿",
   "stay_info": "",
-  "rest_info": "",
-  "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t 注意事項：\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t＊週休二日及例假日之房間價另計。\n＊均附盥洗用具。\n＊九人以上免費接送機場、車站。\n＊代辦賞鯨、泛舟、山地歌舞。\n＊本民宿採電話預約訂房。\n＊匯款資訊：\n   戶名：陳美鑾 \n   花蓮二信(營業部)216-0016 \n   帳號：01000400186623\n＊為確保匯款人之權益，請於匯款後將收據傳真到本民宿。\n傳真電話：03-8355080\n＊訂房前請先詢問是否尚有空房。\n＊預約訂房專線：\n    03-8321060\n    0925-112989\n＊聯絡人：陳小姐",
+  "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "＊週休二日及例假日之房間價另計。\n＊均附盥洗用具。\n＊九人以上免費接送機場、車站。\n＊代辦賞鯨、泛舟、山地歌舞。\n＊本民宿採電話預約訂房。\n＊匯款資訊：\n   戶名：陳美鑾 \n   花蓮二信(營業部)216-0016 \n   帳號：01000400186623\n＊為確保匯款人之權益，請於匯款後將收據傳真到本民宿。\n傳真電話：03-8355080\n＊訂房前請先詢問是否尚有空房。\n＊預約訂房專線：\n    03-8321060\n    0925-112989\n＊聯絡人：陳小姐",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=768"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }

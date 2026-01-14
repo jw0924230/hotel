@@ -1,18 +1,17 @@
 {
   "id": "3256",
-  "name": "简体 手機版beta美王大飯店",
+  "name": "美王大飯店",
   "area": "",
   "address": "高雄市新興區八德二路94號",
   "phone": "07-288-5111",
   "fax": "07-288-5110",
-  "website": "http://www.milord-hotel.com/?ID=38&ID2=1&idno=38",
+  "website": "http://www.milord-hotel.com/?ID=38\u0026ID2=1\u0026idno=38",
   "email": "Service@milord-hotel.com",
   "category": "飯店/旅館",
   "stay_info": "",
-  "rest_info": "",
   "housing_rules": "(adsbygoogle = window.adsbygoogle || []).push({});",
   "precautions": "",
-  "description": "",
-  "images": null,
-  "source_link": "https://www.qk.to/inquiry.asp?n=3256"
+  "price_accommodation": null,
+  "price_rest": null,
+  "description": ""
 }
