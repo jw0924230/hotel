@@ -42,12 +42,12 @@
                 <!-- Independent Pricing Block -->
                 <div class="pricing-card">
                     <div class="pricing-row-single">
-                        <span class="pricing-label">住宿價格</span>
+                        <h2 class="pricing-label">住宿價格</h2>
                         <span class="pricing-val">{{ hotel.price_accommodation ? hotel.price_accommodation + '起' : '請電洽' }}</span>
                     </div>
                     
                     <div class="pricing-row-single">
-                        <span class="pricing-label">休息價格</span>
+                        <h2 class="pricing-label">休息價格</h2>
                         <span class="pricing-val">{{ hotel.price_rest ? hotel.price_rest + '起' : '請電洽' }}</span>
                     </div>
                 </div>
