@@ -53,7 +53,7 @@ export default defineNuxtConfig({
   ssr: true,
   modules: ['@nuxtjs/sitemap'],
   site: {
-    url: 'https://jw0924230.github.io/hotel/',
+    url: 'https://jw0924230.github.io/',
     name: '休息3小時'
   },
   sitemap: {
@@ -73,7 +73,7 @@ export default defineNuxtConfig({
     // If deploying to https://<username>.github.io/<repo-name>/
     // You MUST set baseURL to '/<repo-name>/'
     // The user's repo is 'hotel', so '/hotel/'
-    baseURL: process.env.NODE_ENV === 'production' ? '/hotel/' : '/'
+    baseURL: '/'
   },
   hooks: {
     async 'nitro:config'(nitroConfig) {
