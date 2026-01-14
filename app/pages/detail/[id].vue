@@ -197,7 +197,7 @@ const googleMapUrl = computed(() => {
 })
 
 useSeoMeta({
-    title: computed(() => `${hotel.value?.name || '旅館'}休息與住宿價格一覽｜電話、地址、交通方式完整整理`),
+    title: computed(() => `${hotel.value?.name || '旅館'}休息與住宿價格｜電話、地址、交通方式整理`),
     description: computed(() => `${hotel.value?.name || '本旅館'}提供彈性多元的休息與住宿選擇，無論是2 小時、3 小時休息，或是平日、假日住宿需求，都能快速掌握最新價格方案。本頁整理 ${hotel.value?.name || '旅館'}休息與住宿價格、訂房電話、詳細地址與交通資訊，協助你在規劃行程或臨時住宿時，快速做出最合適的選擇。`)
 })
 
