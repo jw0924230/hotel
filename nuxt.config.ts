@@ -53,7 +53,7 @@ export default defineNuxtConfig({
   ssr: true,
   modules: ['@nuxtjs/sitemap'],
   site: {
-    url: 'https://jw0924230.github.io/',
+    url: 'https://www.qk3houronline.com/',
     name: '休息3小時'
   },
   sitemap: {
