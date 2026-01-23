@@ -5,8 +5,11 @@
       <div class="main-header">
         <div class="container container-wide header-inner">
           <div class="logo-area">
-             <NuxtLink to="/" class="logo-text">
-               <span class="qk">休息</span><span class="text">3小時</span>
+             <NuxtLink to="/" class="logo-container">
+               <img src="/logo.png" alt="休息3小時" class="logo-img" />
+               <div class="logo-text-group">
+                 <span class="qk">休息</span><span class="text">3小時</span>
+               </div>
              </NuxtLink>
           </div>
           <nav class="main-nav">
@@ -20,11 +23,7 @@
        <slot />
     </div>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p>Copyright © 2026 休息3小時. All rights reserved.</p>
-      </div>
-    </footer>
+    <AppFooter />
     <button 
       v-show="showGoTop" 
       class="go-top-btn" 
@@ -80,9 +79,11 @@ ul { list-style: none; padding: 0; margin: 0; }
 /* Main Header */
 .main-header { padding: 20px 0; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
 .header-inner { display: flex; justify-content: space-between; align-items: center; }
-.logo-text { display: block; line-height: 1; text-decoration: none; }
-.qk { font-size: 48px; font-weight: 800; color: #E74C3C; letter-spacing: -2px; }
-.text { font-size: 28px; color: #2C3E50; font-weight: 700; margin-left: 5px; }
+.logo-container { display: flex; align-items: center; text-decoration: none; }
+.logo-img { height: 50px; width: 50px; object-fit: contain; margin-right: 10px; }
+.logo-text-group { display: flex; align-items: flex-end; line-height: 1; }
+.qk { font-size: 40px; font-weight: 800; color: #E74C3C; letter-spacing: -2px; line-height: 1; }
+.text { font-size: 28px; color: #2C3E50; font-weight: 700; margin-left: 5px; line-height: 1; margin-bottom: 3px; }
 .slogan { font-size: 13px; color: #7F8C8D; letter-spacing: 2px; margin-top: 5px; text-transform: uppercase; }
 
 .main-nav { display: flex; align-items: center; }
@@ -92,11 +93,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 .content-wrapper { flex: 1; }
 
-/* Footer */
-.site-footer { background: #2C3E50; color: #ECF0F1; padding: 40px 0; margin-top: 60px; font-size: 14px; text-align: center; }
-.footer-links { margin-bottom: 20px; }
-.footer-links a { color: #BDC3C7; margin: 0 10px; transition: color 0.3s; }
-.footer-links a:hover { color: white; text-decoration: none; }
+
 
 .go-top-btn {
     position: fixed;
