@@ -26,7 +26,7 @@
                 <div class="info-card">
                     <div class="info-row" v-if="hotel.address">
                         <h2 class="label">地址：</h2>
-                        <span class="text">{{ hotel.address }}</span>
+                        <a :href="`https://www.google.com/maps/search/?api=1&query=${hotel.address}`" class="text-link" target="_blank">{{ hotel.address }}</a>
                     </div>
                     <div class="info-row" v-if="hotel.phone">
                         <h2 class="label">電話：</h2>
@@ -38,7 +38,6 @@
                     </div>
                 </div>
 
-                <!-- Independent Pricing Block -->
                 <!-- Independent Pricing Block -->
                 <div class="pricing-card">
                     <div class="pricing-row-single">
@@ -69,12 +68,6 @@
                 >
                     <h3>須知與規定</h3>
                 </button>
-                 <button 
-                    :class="['tab-btn', { active: currentTab === 'map' }]" 
-                    @click="currentTab = 'map'"
-                >
-                    <h3>地圖導航</h3>
-                </button>
             </div>
 
             <div class="tab-content">
@@ -92,20 +85,6 @@
                     <div class="rule-block" v-if="hotel.precautions">
                         <h3>注意事項</h3>
                         <div class="long-text" v-html="formatText(hotel.precautions)"></div>
-                    </div>
-                </div>
-
-                <!-- Map -->
-                <div v-show="currentTab === 'map'" class="content-pane">
-                    <div class="map-container">
-                        <iframe 
-                            width="100%" 
-                            height="450" 
-                            style="border:0" 
-                            loading="lazy" 
-                            allowfullscreen 
-                            :src="googleMapUrl">
-                        </iframe>
                     </div>
                 </div>
             </div>

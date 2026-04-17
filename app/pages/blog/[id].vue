@@ -20,6 +20,7 @@
 
 
             <div class="article-body" v-html="parsedContent"></div>
+            <div class="article-ad" v-html="parsedAdLink"></div>
             
             <div class="article-footer">
                 <NuxtLink to="/blog" class="btn-back">← 返回文章列表</NuxtLink>
@@ -79,6 +80,11 @@ const article = computed(() => {
 const parsedContent = computed(() => {
     if (!article.value) return ''
     return md.render(article.value.content)
+})
+
+const parsedAdLink = computed(() => {
+    if (!article.value) return ''
+    return md.render(article.value.adLink)
 })
 </script>
 
