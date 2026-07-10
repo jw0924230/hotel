@@ -65,10 +65,9 @@ jobs:
           service: ${{ env.GCP_SERVICE_NAME }}
           region: ${{ env.GCP_REGION }}
           image: ${{ env.IMAGE_TAG }}
-          # You can specify env variables for the container here or configure them in Cloud Run console
-          # env_vars: |
-          #   APP_ENV=production
-          #   DATABASE_URL=${{ secrets.SUPABASE_DB_URL }}
+          env_vars: |
+            APP_ENV=production
+            DATABASE_URL=${{ secrets.SUPABASE_DB_URL }}
 
       # ---- 4. Supabase DB Migration (Optional) ----
       - name: Run Supabase Migrations
