@@ -31,6 +31,7 @@ jobs:
       - name: Generate Static Site
         env:
           BACKEND_API_URL: ${{ secrets.BACKEND_API_URL }}
+          NEXT_PUBLIC_SSG_BUILD_TOKEN: ${{ secrets.API_BUILD_TOKEN }}
         run: npm run generate
 
       - name: Upload artifact
