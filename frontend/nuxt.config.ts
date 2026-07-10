@@ -3,12 +3,17 @@ import { defineNuxtConfig } from 'nuxt/config'
 const getDynamicRoutes = async () => {
   const routes = ['/blog']
   const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:8080'
+  const buildToken = process.env.NEXT_PUBLIC_SSG_BUILD_TOKEN
+  const headers: Record<string, string> = {}
+  if (buildToken) {
+    headers['x-github-build-token'] = buildToken
+  }
 
   try {
     const [hotelsResponse, citiesResponse, postsResponse] = await Promise.all([
-      fetch(`${backendUrl}/api/hotels?limit=10000`),
-      fetch(`${backendUrl}/api/categories?type=city`),
-      fetch(`${backendUrl}/api/posts?limit=10000`)
+      fetch(`${backendUrl}/api/hotels?limit=10000`, { headers }),
+      fetch(`${backendUrl}/api/categories?type=city`, { headers }),
+      fetch(`${backendUrl}/api/posts?limit=10000`, { headers })
     ])
 
     if (hotelsResponse.ok) {
@@ -23,7 +28,8 @@ const getDynamicRoutes = async () => {
       for (const city of cities) {
         const cityId = city.sort_order || city.id
         const response = await fetch(
-          `${backendUrl}/api/hotels?limit=1&area=${encodeURIComponent(city.name)}`
+          `${backendUrl}/api/hotels?limit=1&area=${encodeURIComponent(city.name)}`,
+          { headers }
         )
         if (!response.ok) continue
         const result = await response.json()
@@ -53,7 +59,8 @@ export default defineNuxtConfig({
   ssr: true,
   runtimeConfig: {
     public: {
-      backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:8080'
+      backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:8080',
+      ssgBuildToken: process.env.NEXT_PUBLIC_SSG_BUILD_TOKEN || ''
     }
   },
   css: ['~/assets/css/reset.css'],
