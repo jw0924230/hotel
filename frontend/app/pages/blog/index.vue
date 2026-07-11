@@ -35,11 +35,9 @@ import { joinURL } from 'ufo'
 
 const config = useRuntimeConfig()
 const baseURL = config.app.baseURL
-const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:8080'
-
 // Fetch posts exclusively from the Go API.
 const { data: articles } = await useAsyncData('blog-posts', async () => {
-  const result = await $fetch<any>(`${backendUrl}/api/posts?limit=100`)
+  const result = await $fetch<any>(`${config.public.backendApiUrl}/api/posts?limit=100`)
   return (result.data || []).map((post: any) => ({
     id: String(post.id),
     title: post.title,

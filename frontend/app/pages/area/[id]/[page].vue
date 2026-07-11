@@ -73,9 +73,8 @@ const getImageUrl = (imgName: string) => {
   return joinURL(baseURL, `data/images/${imgName}`)
 }
 
-const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:8080'
 const { data: cities } = await useAsyncData('city-categories', () =>
-  $fetch<any[]>(`${backendUrl}/api/categories?type=city`)
+  $fetch<any[]>(`${config.public.backendApiUrl}/api/categories?type=city`)
 )
 
 const currentCityName = computed(() => {
@@ -85,10 +84,15 @@ const currentCityName = computed(() => {
 
 // Fetch city data exclusively from the API.
 const { data: fetchResult } = await useAsyncData(`area-${areaId.value}-${currentPage.value}`, async () => {
-  const cityName = currentCityName.value
+  let citiesList = cities.value
+  if (!citiesList) {
+    citiesList = await $fetch<any[]>(`${config.public.backendApiUrl}/api/categories?type=city`)
+  }
+  const c = (citiesList || []).find(city => String(city.sort_order || city.id) === areaId.value)
+  const cityName = c ? c.name : ''
   
-  if (cityName && cityName !== '其他' && cityName !== '未知地區') {
-    const result = await $fetch<any>(`${backendUrl}/api/hotels?page=${currentPage.value}&limit=${pageSize}&area=${encodeURIComponent(cityName)}`)
+  if (cityName && cityName !== '其他') {
+    const result = await $fetch<any>(`${config.public.backendApiUrl}/api/hotels?page=${currentPage.value}&limit=${pageSize}&area=${encodeURIComponent(cityName)}`)
     return {
       hotels: (result.data || []).map((hotel: any) => ({
         id: hotel.id,

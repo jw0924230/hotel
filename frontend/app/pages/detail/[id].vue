@@ -204,10 +204,11 @@ const { defaultImage, handleImageError } = useHotelData();
 
 const hotelId = route.params.id as string;
 
-const { data: hotel } = await useFetch<any>(`/api/detail/${hotelId}`);
-const backendUrl = process.env.BACKEND_API_URL || "http://localhost:8080";
+const { data: hotel } = await useAsyncData(`detail-hotel-${hotelId}`, () =>
+  $fetch<any>(`${config.public.backendApiUrl}/api/hotels/${hotelId}`)
+);
 const { data: cities } = await useAsyncData("detail-city-categories", () =>
-  $fetch<any[]>(`${backendUrl}/api/categories?type=city`),
+  $fetch<any[]>(`${config.public.backendApiUrl}/api/categories?type=city`),
 );
 
 const currentTab = ref("intro");

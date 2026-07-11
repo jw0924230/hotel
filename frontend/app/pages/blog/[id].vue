@@ -45,8 +45,6 @@ import { joinURL } from 'ufo'
 const route = useRoute()
 const config = useRuntimeConfig()
 const baseURL = config.app.baseURL
-const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:8080'
-
 const id = route.params.id as string
 const md = new MarkdownIt({
     html: true,
@@ -75,7 +73,7 @@ md.renderer.rules.image = (tokens, idx, options, env, self) => {
 
 // Fetch single article exclusively from the Go API.
 const { data: article } = await useAsyncData(`blog-post-${id}`, async () => {
-  const post = await $fetch<any>(`${backendUrl}/api/posts/${id}`)
+  const post = await $fetch<any>(`${config.public.backendApiUrl}/api/posts/${id}`)
   return {
     id: String(post.id),
     title: post.title,

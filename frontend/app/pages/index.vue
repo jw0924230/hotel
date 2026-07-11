@@ -83,12 +83,10 @@ const getImageUrl = (imgName: string) => {
   return joinURL(baseURL, `data/images/${imgName}`)
 }
 
-const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:8080'
-
 const { data: locationData } = await useAsyncData('locations', async () => {
   const [categories, regions] = await Promise.all([
-    $fetch<any[]>(`${backendUrl}/api/categories?type=city`),
-    $fetch<any[]>(`${backendUrl}/api/regions`)
+    $fetch<any[]>(`${config.public.backendApiUrl}/api/categories?type=city`),
+    $fetch<any[]>(`${config.public.backendApiUrl}/api/regions`)
   ])
   const cityMap = new Map(categories.map(city => [city.name, {
     id: city.sort_order || city.id,
@@ -110,14 +108,24 @@ const { data: locationData } = await useAsyncData('locations', async () => {
 const regionCities = computed(() => locationData.value?.regions || [])
 
 const { data: selectedCitiesData } = await useAsyncData('home-cities', async () => {
+  let cities = locationData.value?.cities
+  if (!cities) {
+    // Fetch fallback categories to prevent race condition during hydration
+    const categories = await $fetch<any[]>(`${config.public.backendApiUrl}/api/categories?type=city`)
+    cities = categories.map(city => ({
+      id: city.sort_order || city.id,
+      name: city.name
+    }))
+  }
+
   const featuredCityNames = ['台北', '新北', '桃園', '台中', '台南', '高雄']
-  const cityByName = new Map((locationData.value?.cities || []).map(city => [city.name, city]))
+  const cityByName = new Map((cities || []).map(city => [city.name, city]))
   const citiesToFetch = featuredCityNames
     .map(name => cityByName.get(name))
     .filter(Boolean) as Array<{ id: number, name: string }>
   
   const promises = citiesToFetch.map(async (city) => {
-    const result = await $fetch<any>(`${backendUrl}/api/hotels?limit=6&area=${encodeURIComponent(city.name)}`)
+    const result = await $fetch<any>(`${config.public.backendApiUrl}/api/hotels?limit=6&area=${encodeURIComponent(city.name)}`)
     return {
       id: city.id,
       name: city.name,
