@@ -2,11 +2,7 @@ package handlers
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
-	"os"
-	"path/filepath"
-	"runtime"
 
 	"github.com/gofiber/fiber/v2"
 
@@ -157,23 +153,91 @@ type RegionResponse struct {
 	Cities []string `json:"cities"`
 }
 
-// Regions serves the static regions.json file.
+// StaticRegions hardcodes regions.json content as a static backend parameter.
+var StaticRegions = []RegionResponse{
+	{"北部", []string{"基隆", "台北", "新北", "桃園", "新竹", "宜蘭"}},
+	{"中部", []string{"苗栗", "台中", "彰化", "南投", "雲林"}},
+	{"南部", []string{"嘉義", "台南", "高雄", "屏東"}},
+	{"東部", []string{"花蓮", "台東"}},
+	{"海外 / 外島", []string{"澎湖", "金門", "馬祖", "其他"}},
+}
+
+// Regions serves the static regions definition directly from memory.
 // GET /api/regions
 func (h *CategoryHandler) Regions(c *fiber.Ctx) error {
-	// Resolve path relative to the binary's source file location
-	_, filename, _, _ := runtime.Caller(0)
-	basePath := filepath.Dir(filepath.Dir(filepath.Dir(filename)))
-	jsonPath := filepath.Join(basePath, "data", "regions.json")
+	return c.JSON(StaticRegions)
+}
 
-	data, err := os.ReadFile(jsonPath)
+type CombinedCityInfo struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+type CombinedRegionInfo struct {
+	Name   string             `json:"name"`
+	Cities []CombinedCityInfo `json:"cities"`
+}
+
+type CombinedLocationsResponse struct {
+	Cities  []CombinedCityInfo   `json:"cities"`
+	Regions []CombinedRegionInfo `json:"regions"`
+}
+
+// CombinedRegions combines categories from DB and static regions to serve a single locations API.
+// GET /api/regions/combined
+func (h *CategoryHandler) CombinedRegions(c *fiber.Ctx) error {
+	ctx := context.Background()
+
+	// 1. Fetch categories (cities) from database
+	query := `SELECT id, name, sort_order FROM categories WHERE type = 'city' ORDER BY sort_order ASC, id ASC`
+	rows, err := h.DB.Pool.Query(ctx, query)
 	if err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to read regions.json: %v", err)})
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to query categories: %v", err)})
+	}
+	defer rows.Close()
+
+	var cities []CombinedCityInfo
+	cityMap := make(map[string]CombinedCityInfo)
+
+	for rows.Next() {
+		var id int
+		var name string
+		var sortOrder int
+		if err := rows.Scan(&id, &name, &sortOrder); err != nil {
+			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to scan category: %v", err)})
+		}
+
+		// Use sort_order if it exists/non-zero, otherwise fallback to id
+		finalID := sortOrder
+		if finalID == 0 {
+			finalID = id
+		}
+
+		cityInfo := CombinedCityInfo{
+			ID:   finalID,
+			Name: name,
+		}
+		cities = append(cities, cityInfo)
+		cityMap[name] = cityInfo
 	}
 
-	var regions []RegionResponse
-	if err := json.Unmarshal(data, &regions); err != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to parse regions.json: %v", err)})
+	// 2. Combine with StaticRegions
+	var combinedRegions []CombinedRegionInfo
+	for _, reg := range StaticRegions {
+		var regCities []CombinedCityInfo
+		for _, cityName := range reg.Cities {
+			if cityInfo, found := cityMap[cityName]; found {
+				regCities = append(regCities, cityInfo)
+			}
+		}
+		combinedRegions = append(combinedRegions, CombinedRegionInfo{
+			Name:   reg.Name,
+			Cities: regCities,
+		})
 	}
 
-	return c.JSON(regions)
+	return c.JSON(CombinedLocationsResponse{
+		Cities:  cities,
+		Regions: combinedRegions,
+	})
 }

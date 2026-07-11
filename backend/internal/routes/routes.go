@@ -35,6 +35,7 @@ func Setup(app *fiber.App, db *database.DB) {
 	categoryHandler := handlers.NewCategoryHandler(db)
 	api.Get("/categories", categoryHandler.List)
 	api.Get("/regions", categoryHandler.Regions)
+	api.Get("/regions/combined", categoryHandler.CombinedRegions)
 	api.Post("/categories", middleware.JWTMiddleware(), categoryHandler.Create)
 	api.Put("/categories/:id", middleware.JWTMiddleware(), categoryHandler.Update)
 	api.Delete("/categories/:id", middleware.JWTMiddleware(), categoryHandler.Delete)

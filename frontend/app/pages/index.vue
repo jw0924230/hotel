@@ -83,27 +83,9 @@ const getImageUrl = (imgName: string) => {
   return joinURL(baseURL, `data/images/${imgName}`)
 }
 
-const { data: locationData } = await useAsyncData('locations', async () => {
-  const [categories, regions] = await Promise.all([
-    $fetch<any[]>(`${config.public.backendApiUrl}/api/categories?type=city`),
-    $fetch<any[]>(`${config.public.backendApiUrl}/api/regions`)
-  ])
-  const cityMap = new Map(categories.map(city => [city.name, {
-    id: city.sort_order || city.id,
-    name: city.name
-  }]))
-
-  return {
-    cities: categories.map(city => ({
-      id: city.sort_order || city.id,
-      name: city.name
-    })),
-    regions: regions.map(region => ({
-      name: region.name,
-      cities: region.cities.map((name: string) => cityMap.get(name)).filter(Boolean)
-    }))
-  }
-})
+const { data: locationData } = await useAsyncData('locations', () =>
+  $fetch<any>(`${config.public.backendApiUrl}/api/regions/combined`)
+)
 
 const regionCities = computed(() => locationData.value?.regions || [])
 
