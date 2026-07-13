@@ -449,6 +449,7 @@
                     {{ saving ? "儲存中..." : "儲存變更" }}
                   </button>
                 </div>
+              </div>
 
               <div
                 class="hotel-editor-tabs"
