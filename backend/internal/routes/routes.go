@@ -57,6 +57,10 @@ func Setup(app *fiber.App, db *database.DB) {
 	api.Post("/users", middleware.JWTMiddleware(), middleware.AdminOnly(), userHandler.Create)
 	api.Put("/users/:id", middleware.JWTMiddleware(), middleware.AdminOnly(), userHandler.Update)
 	api.Delete("/users/:id", middleware.JWTMiddleware(), middleware.AdminOnly(), userHandler.Delete)
+
+	// Frontend deploy trigger route (admin only)
+	deployHandler := handlers.NewDeployHandler()
+	api.Post("/deploy", middleware.JWTMiddleware(), middleware.AdminOnly(), deployHandler.TriggerDeploy)
 }
 
 

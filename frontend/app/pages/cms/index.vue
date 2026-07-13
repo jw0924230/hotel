@@ -22,6 +22,7 @@
               userRole === "admin" ? "系統管理員" : "廠商帳號"
             }})
           </span>
+
           <button v-if="token" class="btn-logout" @click="logout">登出</button>
           <NuxtLink to="/" class="btn-home" v-if="userRole !== 'admin'"
             >回前台首頁</NuxtLink
@@ -174,6 +175,28 @@
           </button>
         </nav>
         <div class="nav-footer">
+          <button
+            v-if="userRole === 'admin'"
+            class="btn-deploy"
+            :disabled="isDeploying"
+            @click="openDeployModal"
+          >
+            <svg
+              class="deploy-btn-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              style="width: 16px; height: 16px;"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+              />
+            </svg>
+            <span>部署前端網站</span>
+          </button>
           <button
             class="btn-theme-toggle"
             @click="toggleDarkMode"
@@ -1077,6 +1100,14 @@
                   >
                     刪除文章
                   </button>
+                  <a
+                    v-if="postEditForm.id"
+                    :href="`${baseURL.replace(/\/$/, '')}/blog/${postEditForm.id}`"
+                    target="_blank"
+                    class="btn-preview"
+                  >
+                    預覽頁面
+                  </a>
                   <button
                     class="btn-save"
                     :disabled="postSaving"
@@ -1477,6 +1508,76 @@
         </button>
       </div>
     </div>
+
+    <!-- Frontend Deployment Modal Overlay -->
+    <div class="modal-overlay" v-if="showDeployConfirmModal">
+      <div class="modal-content" style="max-width: 500px">
+        <div class="modal-header">
+          <h3>部署前端網站</h3>
+          <button
+            class="btn-close-modal"
+            @click="closeDeployModal"
+            :disabled="isDeploying"
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal-body" style="padding: 20px 0; text-align: center;">
+          <div v-if="deployStatus === 'idle'">
+            <div style="font-size: 40px; margin-bottom: 12px;">🚀</div>
+            <p style="font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #1e293b;">
+              您確定要觸發前端網站部署嗎？
+            </p>
+            <p style="color: #64748b; font-size: 14px; line-height: 1.5; padding: 0 16px;">
+              這將觸發 GitHub Actions。系統會從後端重新抓取最新資料並編譯產生靜態網站，整個過程通常需要 3~5 分鐘。
+            </p>
+          </div>
+          <div v-else-if="deployStatus === 'deploying'">
+            <div class="deploy-spinner" style="margin: 20px auto;"></div>
+            <p style="font-size: 16px; font-weight: 600; color: #3b82f6;">
+              正在發送部署請求...
+            </p>
+          </div>
+          <div v-else-if="deployStatus === 'success'">
+            <div style="font-size: 40px; margin-bottom: 12px; color: #10b981;">✓</div>
+            <p style="font-size: 16px; font-weight: 600; color: #10b981; margin-bottom: 8px;">
+              已成功觸發部署！
+            </p>
+            <p style="color: #64748b; font-size: 14px; line-height: 1.5; padding: 0 16px;">
+              {{ deployMessage }}
+            </p>
+          </div>
+          <div v-else-if="deployStatus === 'error'">
+            <div style="font-size: 40px; margin-bottom: 12px; color: #ef4444;">⚠️</div>
+            <p style="font-size: 16px; font-weight: 600; color: #ef4444; margin-bottom: 8px;">
+              部署發送失敗
+            </p>
+            <p style="color: #ef4444; font-size: 14px; line-height: 1.5; padding: 0 16px;">
+              {{ deployMessage }}
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer" style="justify-content: center; gap: 12px;">
+          <button
+            type="button"
+            class="btn-cancel"
+            @click="closeDeployModal"
+            v-if="deployStatus === 'idle' || deployStatus === 'success' || deployStatus === 'error'"
+          >
+            {{ deployStatus === 'idle' ? '取消' : '關閉' }}
+          </button>
+          <button
+            type="button"
+            class="btn-submit"
+            @click="executeFrontendDeploy"
+            v-if="deployStatus === 'idle'"
+            style="background-color: #3b82f6; color: white;"
+          >
+            確定部署
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -1655,6 +1756,52 @@ const toggleDarkMode = () => {
     localStorage.setItem("cms-theme", isDarkMode.value ? "dark" : "light");
   }
 };
+
+const isDeploying = ref(false);
+const showDeployConfirmModal = ref(false);
+const deployStatus = ref<"idle" | "deploying" | "success" | "error">("idle");
+const deployMessage = ref("");
+
+const openDeployModal = () => {
+  deployStatus.value = "idle";
+  deployMessage.value = "";
+  isDeploying.value = false;
+  showDeployConfirmModal.value = true;
+};
+
+const closeDeployModal = () => {
+  if (isDeploying.value) return;
+  showDeployConfirmModal.value = false;
+};
+
+const executeFrontendDeploy = async () => {
+  isDeploying.value = true;
+  deployStatus.value = "deploying";
+  try {
+    const res = await fetch(`${backendAPI}/api/deploy`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token.value}`,
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    if (res.ok) {
+      deployStatus.value = "success";
+      deployMessage.value = data.message || "已成功觸發部署！";
+    } else {
+      deployStatus.value = "error";
+      deployMessage.value = data.error || "未知錯誤";
+    }
+  } catch (err: any) {
+    console.error("Failed to deploy:", err);
+    deployStatus.value = "error";
+    deployMessage.value = "觸發部署時發生錯誤，請檢查網路連線或伺服器狀態";
+  } finally {
+    isDeploying.value = false;
+  }
+};
+
 // Posts Management States (Admin Only)
 const posts = ref<any[]>([]);
 const postCurrentPage = ref(1);
@@ -2854,6 +3001,50 @@ textarea::-webkit-scrollbar {
   background-color: #2563eb;
 }
 
+.btn-deploy {
+  background-color: #3b82f6; /* Blue background */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.btn-deploy:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.btn-deploy:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Spinner and Animation for Deploying state */
+.deploy-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin-deploy 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin-deploy {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* ------------------- MAIN WRAPPER ------------------- */
 .admin-main-wrapper {
   flex: 1;
@@ -3606,6 +3797,28 @@ textarea::-webkit-scrollbar {
 
 .btn-save:hover {
   background-color: #2563eb;
+}
+
+.btn-preview {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  margin-left: 12px;
+}
+
+.btn-preview:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
 }
 
 /* Vertical Form Cards */
@@ -4432,6 +4645,17 @@ textarea::-webkit-scrollbar {
   background-color: rgba(239, 68, 68, 0.1);
   border-color: #ef4444;
   color: #f87171;
+}
+
+.dark-mode .btn-preview {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+.dark-mode .btn-preview:hover {
+  background-color: #334155;
+  color: #ffffff;
 }
 
 .dark-mode .admin-nav {
