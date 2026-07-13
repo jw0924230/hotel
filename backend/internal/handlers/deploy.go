@@ -23,22 +23,13 @@ func NewDeployHandler() *DeployHandler {
 // TriggerDeploy triggers the GitHub Actions workflow to build and deploy the frontend.
 // POST /api/deploy
 func (h *DeployHandler) TriggerDeploy(c *fiber.Ctx) error {
-	pat := os.Getenv("GITHUB_PAT")
-	if pat == "" {
-		pat = os.Getenv("GH_PAT")
-	}
-	owner := os.Getenv("GITHUB_OWNER")
-	if owner == "" {
-		owner = os.Getenv("GH_OWNER")
-	}
-	repo := os.Getenv("GITHUB_REPO")
-	if repo == "" {
-		repo = os.Getenv("GH_REPO")
-	}
+	pat := os.Getenv("GH_PAT")
+	owner := os.Getenv("GH_OWNER")
+	repo := os.Getenv("GH_REPO")
 
 	if pat == "" || owner == "" || repo == "" {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"error": "伺服器端未配置必要的環境變數 (GITHUB_PAT/GH_PAT, GITHUB_OWNER/GH_OWNER, GITHUB_REPO/GH_REPO)",
+			"error": "伺服器端未配置必要的環境變數 (GH_PAT, GH_OWNER, GH_REPO)",
 		})
 	}
 

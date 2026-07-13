@@ -176,7 +176,7 @@
         </nav>
         <div class="nav-footer">
           <button
-            v-if="userRole === 'admin'"
+            v-if="token && userRole === 'admin'"
             class="btn-deploy"
             :disabled="isDeploying"
             @click="openDeployModal"
@@ -436,10 +436,19 @@
                   {{ editForm.name }}
                   <span class="id-tag">ID: {{ editForm.id }}</span>
                 </h2>
-                <button class="btn-save" :disabled="saving" @click="saveHotel">
-                  {{ saving ? "儲存中..." : "儲存變更" }}
-                </button>
-              </div>
+                <div class="actions" style="display: flex; gap: 8px; align-items: center;">
+                  <button
+                    type="button"
+                    class="btn-preview"
+                    @click="openHotelPreviewModal"
+                    style="margin: 0;"
+                  >
+                    預覽頁面
+                  </button>
+                  <button class="btn-save" :disabled="saving" @click="saveHotel" style="margin: 0;">
+                    {{ saving ? "儲存中..." : "儲存變更" }}
+                  </button>
+                </div>
 
               <div
                 class="hotel-editor-tabs"
@@ -1100,14 +1109,13 @@
                   >
                     刪除文章
                   </button>
-                  <a
-                    v-if="postEditForm.id"
-                    :href="`${baseURL.replace(/\/$/, '')}/blog/${postEditForm.id}`"
-                    target="_blank"
+                  <button
+                    type="button"
                     class="btn-preview"
+                    @click="openPostPreviewModal"
                   >
                     預覽頁面
-                  </a>
+                  </button>
                   <button
                     class="btn-save"
                     :disabled="postSaving"
@@ -1578,6 +1586,163 @@
         </div>
       </div>
     </div>
+
+    <!-- Post CSR Preview Modal Overlay -->
+    <div class="modal-overlay" v-if="showPostPreviewModal" @click.self="showPostPreviewModal = false">
+      <div class="modal-content" style="max-width: 850px; width: 95%; max-height: 85vh; display: flex; flex-direction: column; padding: 0;">
+        <div class="modal-header" style="padding: 16px 24px; border-bottom: 1px solid #e2e8f0;">
+          <h3 style="margin: 0; font-size: 18px;">文章前台模擬預覽 (CSR 畫面)</h3>
+          <button class="btn-close-modal" @click="showPostPreviewModal = false">×</button>
+        </div>
+        <div class="modal-body" style="padding: 30px; overflow-y: auto; background: #f8f9fa; flex: 1;">
+          <div style="max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+            <div style="margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">
+              首頁 &gt; 部落格 &gt; <span style="color: #95a5a6;">{{ postEditForm.title || "未命名文章" }}</span>
+            </div>
+            
+            <header style="margin-bottom: 30px; text-align: left; border-bottom: 1px solid #f1f5f9; padding-bottom: 20px;">
+              <h1 style="font-size: 32px; color: #2C3E50; line-height: 1.4; margin: 0 0 15px 0; font-weight: 700;">
+                {{ postEditForm.title || "請輸入文章標題" }}
+              </h1>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="background: #E74C3C; color: white; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">
+                  {{ postEditForm.tags && postEditForm.tags.length > 0 ? postEditForm.tags[0] : '精選專欄' }}
+                </span>
+                <span style="color: #95A5A6; font-size: 14px;">
+                  {{ new Date().toISOString().split('T')[0] }}
+                </span>
+              </div>
+            </header>
+
+            <div style="margin-bottom: 30px; border-radius: 8px; overflow: hidden;" v-if="postEditForm.image">
+              <img :src="postEditForm.image" alt="Featured Image" style="width: 100%; height: auto; display: block;" />
+            </div>
+
+            <div class="article-preview-body" v-html="parsedPostContent" style="font-size: 18px; line-height: 1.8; color: #2c3e50;"></div>
+            
+            <div v-if="postEditForm.ad_link" style="margin-top: 30px; padding: 20px; background: #f8fafc; border-left: 4px solid #3b82f6; border-radius: 4px;" v-html="parsedAdLink"></div>
+          </div>
+        </div>
+        <div class="modal-footer" style="padding: 16px 24px; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end;">
+          <button type="button" class="btn-cancel" @click="showPostPreviewModal = false" style="margin: 0;">關閉預覽</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hotel CSR Preview Modal Overlay -->
+    <div class="modal-overlay" v-if="showHotelPreviewModal" @click.self="showHotelPreviewModal = false">
+      <div class="modal-content" style="max-width: 950px; width: 95%; max-height: 85vh; display: flex; flex-direction: column; padding: 0;">
+        <div class="modal-header" style="padding: 16px 24px; border-bottom: 1px solid #e2e8f0;">
+          <h3 style="margin: 0; font-size: 18px;">旅館前台模擬預覽 (CSR 畫面)</h3>
+          <button class="btn-close-modal" @click="showHotelPreviewModal = false">×</button>
+        </div>
+        <div class="modal-body" style="padding: 30px; overflow-y: auto; background: #f8f9fa; flex: 1;">
+          <div style="max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+            
+            <div style="margin-bottom: 25px;">
+              <h1 style="font-size: 28px; color: #1e293b; font-weight: 700; margin: 0 0 10px 0;">{{ editForm.name || "未命名旅館" }}</h1>
+              <div style="color: #64748b; font-size: 14px;">
+                首頁 &gt; {{ editForm.area || "地區" }} &gt; <span style="color: #94a3b8;">{{ editForm.name || "未命名旅館" }}</span>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+              <div>
+                <div style="background: #f1f5f9; border-radius: 8px; overflow: hidden; height: 300px; display: flex; align-items: center; justify-content: center; position: relative;">
+                  <img
+                    v-if="editForm.images && editForm.images.length > 0"
+                    :src="editForm.images[0]"
+                    alt="Hotel Main Image"
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                  />
+                  <div v-else style="color: #94a3b8; font-size: 14px;">暫無圖片</div>
+                </div>
+                <div style="display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; padding-bottom: 5px;" v-if="editForm.images && editForm.images.length > 1">
+                  <div
+                    v-for="(img, idx) in editForm.images.slice(1)"
+                    :key="idx"
+                    style="width: 60px; height: 45px; border-radius: 4px; overflow: hidden; flex-shrink: 0; background: #e2e8f0;"
+                  >
+                    <img :src="img" style="width: 100%; height: 100%; object-fit: cover;" />
+                  </div>
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+                  <div v-if="editForm.address" style="display: flex; font-size: 15px;">
+                    <span style="color: #64748b; font-weight: 600; width: 60px; flex-shrink: 0;">地址：</span>
+                    <span style="color: #334155;">{{ editForm.address }}</span>
+                  </div>
+                  <div v-if="editForm.phone" style="display: flex; font-size: 15px;">
+                    <span style="color: #64748b; font-weight: 600; width: 60px; flex-shrink: 0;">電話：</span>
+                    <span style="color: #3b82f6; font-weight: 600;">{{ editForm.phone }}</span>
+                  </div>
+                  <div v-if="editForm.website" style="display: flex; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                    <span style="color: #64748b; font-weight: 600; width: 60px; flex-shrink: 0;">網站：</span>
+                    <span style="color: #3b82f6;">{{ editForm.website }}</span>
+                  </div>
+                  <div v-if="editForm.email" style="display: flex; font-size: 15px;">
+                    <span style="color: #64748b; font-weight: 600; width: 60px; flex-shrink: 0;">信箱：</span>
+                    <span style="color: #334155;">{{ editForm.email }}</span>
+                  </div>
+                </div>
+
+                <div style="background: #fdf2f2; border: 1px solid #fde2e2; border-radius: 8px; padding: 20px;">
+                  <h3 style="font-size: 16px; color: #9b1c1c; font-weight: 700; margin: 0 0 12px 0; border-bottom: 1px solid #fcd2d2; padding-bottom: 8px;">價格資訊</h3>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div>
+                      <div style="font-size: 13px; color: #7f8c8d;">平日住宿</div>
+                      <div style="font-size: 18px; font-weight: 700; color: #e74c3c;" v-if="editForm.pricing.weekday_stay">NT$ {{ editForm.pricing.weekday_stay }}</div>
+                      <div style="font-size: 16px; color: #95a5a6; font-weight: 600;" v-else>無資訊</div>
+                    </div>
+                    <div>
+                      <div style="font-size: 13px; color: #7f8c8d;">假日住宿</div>
+                      <div style="font-size: 18px; font-weight: 700; color: #e74c3c;" v-if="editForm.pricing.holiday_stay">NT$ {{ editForm.pricing.holiday_stay }}</div>
+                      <div style="font-size: 16px; color: #95a5a6; font-weight: 600;" v-else>無資訊</div>
+                    </div>
+                    <div>
+                      <div style="font-size: 13px; color: #7f8c8d;">平日休息</div>
+                      <div style="font-size: 16px; font-weight: 700; color: #2c3e50;" v-if="editForm.pricing.weekday_rest">
+                        NT$ {{ editForm.pricing.weekday_rest }} <span style="font-size: 12px; font-weight: normal; color: #7f8c8d;">({{ editForm.pricing.weekday_rest_hours }}小時)</span>
+                      </div>
+                      <div style="font-size: 16px; color: #95a5a6; font-weight: 600;" v-else>無資訊</div>
+                    </div>
+                    <div>
+                      <div style="font-size: 13px; color: #7f8c8d;">假日休息</div>
+                      <div style="font-size: 16px; font-weight: 700; color: #2c3e50;" v-if="editForm.pricing.holiday_rest">
+                        NT$ {{ editForm.pricing.holiday_rest }} <span style="font-size: 12px; font-weight: normal; color: #7f8c8d;">({{ editForm.pricing.holiday_rest_hours }}小時)</span>
+                      </div>
+                      <div style="font-size: 16px; color: #95a5a6; font-weight: 600;" v-else>無資訊</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+              <h3 style="font-size: 18px; color: #2c3e50; font-weight: 700; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; margin-bottom: 15px;">入住及退房資訊</h3>
+              <p style="font-size: 15px; color: #475569; line-height: 1.6; white-space: pre-line; margin: 0 0 20px 0;" v-if="editForm.stay_info">{{ editForm.stay_info }}</p>
+              <p style="font-size: 15px; color: #94a3b8; font-style: italic;" v-else>未設定入住退房資訊</p>
+
+              <h3 style="font-size: 18px; color: #2c3e50; font-weight: 700; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; margin-bottom: 15px;">住宿須知</h3>
+              <p style="font-size: 15px; color: #475569; line-height: 1.6; white-space: pre-line; margin: 0;" v-if="editForm.housing_rules">{{ editForm.housing_rules }}</p>
+              <p style="font-size: 15px; color: #94a3b8; font-style: italic;" v-else>未設定住宿須知</p>
+            </div>
+
+            <div style="background: #f8fafc; padding: 25px; border-radius: 8px; border: 1px dashed #cbd5e1;">
+              <h3 style="font-size: 18px; color: #2c3e50; font-weight: 700; margin: 0 0 12px 0;">旅館簡介</h3>
+              <p style="font-size: 15px; color: #334155; line-height: 1.7; white-space: pre-line; margin: 0;" v-if="editForm.description">{{ editForm.description }}</p>
+              <p style="font-size: 15px; color: #94a3b8; font-style: italic; margin: 0;" v-else>未輸入旅館簡介</p>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer" style="padding: 16px 24px; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end;">
+          <button type="button" class="btn-cancel" @click="showHotelPreviewModal = false" style="margin: 0;">關閉預覽</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -1587,6 +1752,13 @@ definePageMeta({
 });
 import { ref, onMounted, watch, computed } from "vue";
 import { joinURL } from "ufo";
+import MarkdownIt from "markdown-it";
+
+const md = new MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: true,
+});
 
 const config = useRuntimeConfig();
 const baseURL = config.app.baseURL;
@@ -1801,6 +1973,43 @@ const executeFrontendDeploy = async () => {
     isDeploying.value = false;
   }
 };
+
+const showPostPreviewModal = ref(false);
+const showHotelPreviewModal = ref(false);
+
+const openPostPreviewModal = () => {
+  showPostPreviewModal.value = true;
+};
+
+const openHotelPreviewModal = () => {
+  showHotelPreviewModal.value = true;
+};
+
+const parsedPostContent = computed(() => {
+  const content = postEditForm.value.content || "";
+  const isHtml = content.includes("<p>") || content.includes("<h3>") || content.includes("<ul") || content.includes("<ol>");
+  let rendered = isHtml ? content : md.render(content);
+  
+  // Replace naked Imgur links converted to anchors by linkify
+  rendered = rendered.replace(/<a href="(https:\/\/i\.imgur\.com\/[^"]+)">[^<]+<\/a>/g, (match, url) => {
+    return `<img src="${url}" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0;" />`;
+  });
+  
+  // Replace remaining naked Imgur links not in attributes
+  rendered = rendered.replace(/(?<!["'(\/])(https:\/\/i\.imgur\.com\/[a-zA-Z0-9.]+)(?!["'])/g, (match) => {
+    return `<img src="${match}" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0;" />`;
+  });
+  
+  return rendered;
+});
+
+const parsedAdLink = computed(() => {
+  const ad = postEditForm.value.ad_link || "";
+  if (ad.includes("<a") || ad.includes("<p") || ad.includes("<span")) {
+    return ad;
+  }
+  return md.render(ad);
+});
 
 // Posts Management States (Admin Only)
 const posts = ref<any[]>([]);
@@ -2825,6 +3034,35 @@ onMounted(() => {
     if (savedTheme === "dark") {
       isDarkMode.value = true;
     }
+
+    // Intercept fetch for token refreshing and authorization error handling (kick out)
+    const originalFetch = window.fetch;
+    window.fetch = async (input, init) => {
+      const res = await originalFetch(input, init);
+      
+      // Auto-extract refresh token from X-Refresh-Token header if available
+      if (res.headers && typeof res.headers.get === "function") {
+        const refreshToken = res.headers.get("x-refresh-token") || res.headers.get("X-Refresh-Token");
+        if (refreshToken) {
+          token.value = refreshToken;
+          localStorage.setItem("admin_token", refreshToken);
+        }
+      }
+      
+      // If 401 Unauthorized or 403 Forbidden is returned, kick the user out to login screen
+      if (res.status === 401 || res.status === 403) {
+        // Skip for the login page itself to avoid alerting on incorrect credentials
+        const isLoginUrl = typeof input === "string" && input.includes("/api/auth/login");
+        if (!isLoginUrl) {
+          token.value = "";
+          userRole.value = "vendor";
+          localStorage.removeItem("admin_token");
+          localStorage.removeItem("admin_user");
+          alert("您的登入狀態已過期或權限不足，系統已自動將您登出。");
+        }
+      }
+      return res;
+    };
   }
   token.value = localStorage.getItem("admin_token") || "";
 

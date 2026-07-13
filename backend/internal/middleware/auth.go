@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"
@@ -49,6 +50,18 @@ func JWTMiddleware() fiber.Handler {
 		c.Locals("userId", claims["sub"])
 		c.Locals("email", claims["email"])
 		c.Locals("role", claims["role"])
+
+		// Generate refreshed token with sliding 24h expiration
+		newToken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+			"sub":   claims["sub"],
+			"email": claims["email"],
+			"role":  claims["role"],
+			"exp":   time.Now().Add(24 * time.Hour).Unix(),
+		})
+		newTokenString, err := newToken.SignedString([]byte(jwtSecret))
+		if err == nil {
+			c.Set("X-Refresh-Token", newTokenString)
+		}
 
 		return c.Next()
 	}

@@ -12,6 +12,7 @@ func CORSConfig() fiber.Handler {
 		AllowOrigins:     "http://localhost:3000, http://localhost:3001, http://localhost:3002, https://www.qk3houronline.com, https://qk3houronline.com, https://jw0924230.github.io",
 		AllowMethods:     "GET,POST,PUT,PATCH,DELETE,OPTIONS",
 		AllowHeaders:     "Origin,Content-Type,Accept,Authorization,x-github-build-token",
+		ExposeHeaders:    "X-Refresh-Token",
 		AllowCredentials: true,
 	})
 }
