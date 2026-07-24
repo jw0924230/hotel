@@ -302,11 +302,11 @@ func (h *HotelHandler) Upsert(c *fiber.Ctx) error {
 	}
 	hotel.ID = id // Ensure ID in struct matches route param
 
-	// Validate image links (only allow imgur.com)
+	// Validate image links (only allow meee.com.tw)
 	for _, img := range hotel.Images {
 		imgTrimmed := strings.TrimSpace(img)
-		if imgTrimmed != "" && !strings.Contains(strings.ToLower(imgTrimmed), "imgur.com") {
-			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "只允許使用 Imgur 的圖床連結 (例如: https://i.imgur.com/xxxx.jpg)"})
+		if imgTrimmed != "" && !strings.Contains(strings.ToLower(imgTrimmed), "meee.com.tw") {
+			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "只允許使用 meee 的圖床連結 (例如: https://i.meee.com.tw/xxxx.jpg)"})
 		}
 	}
 

@@ -54,6 +54,9 @@ const getDynamicRoutes = async () => {
 }
 
 export default defineNuxtConfig({
+  devServer: {
+    port: 3002
+  },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   ssr: true,

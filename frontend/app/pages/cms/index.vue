@@ -760,7 +760,7 @@
 
                 <!-- Card 7: Images Manager -->
                 <div v-show="activeHotelTab === 'images'" class="card">
-                  <h3>圖片管理 (Imgur 圖床連結，最多 10 張)</h3>
+                  <h3>圖片管理 (meee 圖床連結，最多 10 張)</h3>
                   <div class="image-editor-section">
                     <div
                       v-if="!editForm.images || editForm.images.length === 0"
@@ -831,7 +831,7 @@
                           <input
                             v-model="editForm.images[idx]"
                             type="text"
-                            placeholder="請輸入 imgur 圖片網址 (例如: https://i.imgur.com/xxxx.jpg)"
+                            placeholder="請輸入 meee 圖片網址 (例如: https://i.meee.com.tw/xxxx.jpg)"
                             @blur="validateAndFormatImgur(idx)"
                             class="input-image-url"
                             style="flex: 1; margin: 0; min-width: 0"
@@ -1145,7 +1145,7 @@
                     <input
                       v-model="postEditForm.image"
                       type="text"
-                      placeholder="請輸入 Imgur 圖片連結，例如: https://i.imgur.com/xxxx.jpg"
+                      placeholder="請輸入 meee 圖片連結，例如: https://i.meee.com.tw/xxxx.jpg"
                     />
                     <div class="url-preview" v-if="postEditForm.image">
                       <img
@@ -1991,13 +1991,13 @@ const parsedPostContent = computed(() => {
   const isHtml = content.includes("<p>") || content.includes("<h3>") || content.includes("<ul") || content.includes("<ol>");
   let rendered = isHtml ? content : md.render(content);
   
-  // Replace naked Imgur links converted to anchors by linkify
-  rendered = rendered.replace(/<a href="(https:\/\/i\.imgur\.com\/[^"]+)">[^<]+<\/a>/g, (match, url) => {
+  // Replace naked image links converted to anchors by linkify
+  rendered = rendered.replace(/<a href="(https:\/\/(?:i\.imgur\.com|i\.meee\.com\.tw)\/[^"]+)">[^<]+<\/a>/g, (match, url) => {
     return `<img src="${url}" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0;" />`;
   });
   
-  // Replace remaining naked Imgur links not in attributes
-  rendered = rendered.replace(/(?<!["'(\/])(https:\/\/i\.imgur\.com\/[a-zA-Z0-9.]+)(?!["'])/g, (match) => {
+  // Replace remaining naked image links not in attributes
+  rendered = rendered.replace(/(?<!["'(\/])(https:\/\/(?:i\.imgur\.com|i\.meee\.com\.tw)\/[a-zA-Z0-9._-]+)(?!["'])/g, (match) => {
     return `<img src="${match}" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0;" />`;
   });
   
@@ -2459,29 +2459,21 @@ const handleThumbnailError = (e: Event) => {
 
 const isImgurLink = (url: string) => {
   if (!url) return false;
-  return url.toLowerCase().includes("imgur.com");
+  return url.toLowerCase().includes("meee.com.tw") || url.toLowerCase().includes("imgur.com");
 };
 
 const validateAndFormatImgur = (index: number) => {
   let url = editForm.value.images[index].trim();
   if (!url) return;
 
-  if (!url.toLowerCase().includes("imgur.com")) {
-    alert("圖片連結僅支援 Imgur 圖床 (imgur.com)！");
+  if (!url.toLowerCase().includes("meee.com.tw") && !url.toLowerCase().includes("imgur.com")) {
+    alert("圖片連結僅支援 meee 圖床 (i.meee.com.tw)！");
     editForm.value.images[index] = "";
     return;
   }
 
-  // Convert imgur page url to direct image link
-  if (!url.match(/\.(jpeg|jpg|gif|png|webp)$/i)) {
-    const match = url.match(/imgur\.com\/(?:gallery\/|a\/)?([a-zA-Z0-9]+)/);
-    if (match && match[1]) {
-      url = `https://i.imgur.com/${match[1]}.jpg`;
-    } else {
-      alert("請輸入有效的 Imgur 圖片網址！");
-      editForm.value.images[index] = "";
-      return;
-    }
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    url = `https://${url}`;
   }
 
   editForm.value.images[index] = url;
@@ -2546,8 +2538,8 @@ const saveHotel = async () => {
     for (let i = 0; i < editForm.value.images.length; i++) {
       const url = editForm.value.images[i].trim();
       if (!url) continue;
-      if (!url.toLowerCase().includes("imgur.com")) {
-        errorMsg.value = `第 ${i + 1} 張圖片連結非 Imgur 網址，請確認！`;
+      if (!url.toLowerCase().includes("meee.com.tw") && !url.toLowerCase().includes("imgur.com")) {
+        errorMsg.value = `第 ${i + 1} 張圖片連結非 meee 圖床網址，請確認！`;
         return;
       }
     }

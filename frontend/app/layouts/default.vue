@@ -13,6 +13,7 @@
              </NuxtLink>
           </div>
           <nav class="main-nav">
+             <a href="https://lin.ee/wEBqja8" target="_blank" rel="noopener noreferrer" class="nav-link">聯繫客服</a>
              <NuxtLink to="/blog" class="nav-link">部落格</NuxtLink>
           </nav>
         </div>

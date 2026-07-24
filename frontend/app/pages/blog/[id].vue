@@ -100,13 +100,13 @@ const parsedContent = computed(() => {
     
     let rendered = isHtml ? content : md.render(content)
     
-    // Replace naked Imgur links converted to anchors by linkify
-    rendered = rendered.replace(/<a href="(https:\/\/i\.imgur\.com\/[^"]+)">[^<]+<\/a>/g, (match, url) => {
+    // Replace naked image links converted to anchors by linkify
+    rendered = rendered.replace(/<a href="(https:\/\/(?:i\.imgur\.com|i\.meee\.com\.tw)\/[^"]+)">[^<]+<\/a>/g, (match, url) => {
         return `<img src="${url}" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0;" />`
     })
     
-    // Replace remaining naked Imgur links not in attributes
-    rendered = rendered.replace(/(?<!["'(\/])(https:\/\/i\.imgur\.com\/[a-zA-Z0-9.]+)(?!["'])/g, (match) => {
+    // Replace remaining naked image links not in attributes
+    rendered = rendered.replace(/(?<!["'(\/])(https:\/\/(?:i\.imgur\.com|i\.meee\.com\.tw)\/[a-zA-Z0-9._-]+)(?!["'])/g, (match) => {
         return `<img src="${match}" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0;" />`
     })
     

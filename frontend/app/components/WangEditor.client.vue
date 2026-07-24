@@ -95,6 +95,9 @@ const toolbarConfig: Partial<IToolbarConfig> = {
     'italic',
     'through',
     '|',
+    'color',
+    'bgColor',
+    '|',
     'insertLink'
   ]
 }
@@ -115,6 +118,8 @@ const editorConfig: Partial<IEditorConfig> = {
         'bold',
         'italic',
         'through',
+        'color',
+        'bgColor',
         'insertLink'
       ]
     },
