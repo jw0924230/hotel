@@ -6,6 +6,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev --port 3002",
     "generate": "nuxt generate",
+    "validate:ssg": "node scripts/validate_ssg.js",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },

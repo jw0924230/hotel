@@ -24,15 +24,20 @@ func NewCategoryHandler(db *database.DB) *CategoryHandler {
 // GET /api/categories?type=city
 func (h *CategoryHandler) List(c *fiber.Ctx) error {
 	categoryType := c.Query("type", "")
+	parentID := c.Query("parent_id", "")
 
 	ctx := context.Background()
 
-	query := `SELECT id, type, name, sort_order, created_at FROM categories`
+	query := `SELECT id, type, name, parent_id, COALESCE(external_code, ''), sort_order, created_at FROM categories WHERE 1=1`
 	var args []interface{}
 
 	if categoryType != "" {
-		query += ` WHERE type = $1`
+		query += fmt.Sprintf(` AND type = $%d`, len(args)+1)
 		args = append(args, categoryType)
+	}
+	if parentID != "" {
+		query += fmt.Sprintf(` AND parent_id = $%d`, len(args)+1)
+		args = append(args, parentID)
 	}
 
 	query += ` ORDER BY sort_order ASC, id ASC`
@@ -46,7 +51,7 @@ func (h *CategoryHandler) List(c *fiber.Ctx) error {
 	categories := []models.Category{}
 	for rows.Next() {
 		var cat models.Category
-		if err := rows.Scan(&cat.ID, &cat.Type, &cat.Name, &cat.SortOrder, &cat.CreatedAt); err != nil {
+		if err := rows.Scan(&cat.ID, &cat.Type, &cat.Name, &cat.ParentID, &cat.ExternalCode, &cat.SortOrder, &cat.CreatedAt); err != nil {
 			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to scan category: %v", err)})
 		}
 		categories = append(categories, cat)
@@ -61,6 +66,7 @@ func (h *CategoryHandler) Create(c *fiber.Ctx) error {
 	var input struct {
 		Type      string `json:"type"`
 		Name      string `json:"name"`
+		ParentID  *int   `json:"parent_id"`
 		SortOrder int    `json:"sort_order"`
 	}
 
@@ -76,9 +82,10 @@ func (h *CategoryHandler) Create(c *fiber.Ctx) error {
 	var cat models.Category
 
 	err := h.DB.Pool.QueryRow(ctx,
-		`INSERT INTO categories (type, name, sort_order) VALUES ($1, $2, $3) RETURNING id, type, name, sort_order, created_at`,
-		input.Type, input.Name, input.SortOrder,
-	).Scan(&cat.ID, &cat.Type, &cat.Name, &cat.SortOrder, &cat.CreatedAt)
+		`INSERT INTO categories (type, name, parent_id, sort_order) VALUES ($1, $2, $3, $4)
+		 RETURNING id, type, name, parent_id, COALESCE(external_code, ''), sort_order, created_at`,
+		input.Type, input.Name, input.ParentID, input.SortOrder,
+	).Scan(&cat.ID, &cat.Type, &cat.Name, &cat.ParentID, &cat.ExternalCode, &cat.SortOrder, &cat.CreatedAt)
 
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to create category: %v", err)})
@@ -169,8 +176,17 @@ func (h *CategoryHandler) Regions(c *fiber.Ctx) error {
 }
 
 type CombinedCityInfo struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
+	ID        int                    `json:"id"`
+	Name      string                 `json:"name"`
+	Townships []CombinedTownshipInfo `json:"townships"`
+}
+
+type CombinedTownshipInfo struct {
+	ID         int    `json:"id"`
+	Name       string `json:"name"`
+	ParentID   int    `json:"parent_id"`
+	SortOrder  int    `json:"sort_order"`
+	HotelCount int    `json:"hotel_count"`
 }
 
 type CombinedRegionInfo struct {
@@ -198,6 +214,7 @@ func (h *CategoryHandler) CombinedRegions(c *fiber.Ctx) error {
 
 	var cities []CombinedCityInfo
 	cityMap := make(map[string]CombinedCityInfo)
+	cityCategoryIDs := make(map[string]int)
 
 	for rows.Next() {
 		var id int
@@ -213,15 +230,49 @@ func (h *CategoryHandler) CombinedRegions(c *fiber.Ctx) error {
 			finalID = id
 		}
 
-		cityInfo := CombinedCityInfo{
-			ID:   finalID,
-			Name: name,
-		}
+		cityInfo := CombinedCityInfo{ID: finalID, Name: name, Townships: []CombinedTownshipInfo{}}
 		cities = append(cities, cityInfo)
 		cityMap[name] = cityInfo
+		cityCategoryIDs[name] = id
+	}
+	if err := rows.Err(); err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to iterate city categories: %v", err)})
 	}
 
-	// 2. Combine with StaticRegions
+	// 2. Attach township children and active-hotel counts to their public city IDs.
+	townshipRows, err := h.DB.Pool.Query(ctx, `
+		SELECT t.id, t.name, t.parent_id, t.sort_order, COUNT(h.id)
+		FROM categories t
+		LEFT JOIN hotels h ON h.township_category_id = t.id AND h.is_disabled = FALSE
+		WHERE t.type = 'township'
+		GROUP BY t.id, t.name, t.parent_id, t.sort_order
+		ORDER BY t.parent_id, t.sort_order, t.id`)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to query townships: %v", err)})
+	}
+	defer townshipRows.Close()
+
+	townshipsByParent := make(map[int][]CombinedTownshipInfo)
+	for townshipRows.Next() {
+		var township CombinedTownshipInfo
+		if err := townshipRows.Scan(&township.ID, &township.Name, &township.ParentID, &township.SortOrder, &township.HotelCount); err != nil {
+			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to scan township: %v", err)})
+		}
+		townshipsByParent[township.ParentID] = append(townshipsByParent[township.ParentID], township)
+	}
+	if err := townshipRows.Err(); err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to iterate townships: %v", err)})
+	}
+
+	for index := range cities {
+		categoryID := cityCategoryIDs[cities[index].Name]
+		cities[index].Townships = townshipsByParent[categoryID]
+		cityInfo := cityMap[cities[index].Name]
+		cityInfo.Townships = cities[index].Townships
+		cityMap[cities[index].Name] = cityInfo
+	}
+
+	// 3. Combine with StaticRegions
 	var combinedRegions []CombinedRegionInfo
 	for _, reg := range StaticRegions {
 		var regCities []CombinedCityInfo

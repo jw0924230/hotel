@@ -25,6 +25,9 @@ func Setup(app *fiber.App, db *database.DB) {
 	hotelHandler := handlers.NewHotelHandler(db)
 	api.Get("/hotels", hotelHandler.List)
 	api.Get("/hotels/:id", hotelHandler.Get)
+	townshipHandler := handlers.NewTownshipHandler(db)
+	api.Post("/hotels/analyze-township", middleware.JWTMiddleware(), townshipHandler.Analyze)
+	api.Post("/hotels/backfill-townships", middleware.JWTMiddleware(), middleware.AdminOnly(), townshipHandler.Backfill)
 
 	// Homepage featured hotels routes
 	homepageHandler := handlers.NewHomepageHotelHandler(db)
@@ -62,5 +65,3 @@ func Setup(app *fiber.App, db *database.DB) {
 	deployHandler := handlers.NewDeployHandler()
 	api.Post("/deploy", middleware.JWTMiddleware(), middleware.AdminOnly(), deployHandler.TriggerDeploy)
 }
-
-

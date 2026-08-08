@@ -1,6 +1,7 @@
 <template>
   <AreaResultsPage
     :city="currentCity"
+    :township="currentTownship"
     :page="currentPage"
     :initial-hotels="result.hotels"
     :initial-total="result.total"
@@ -17,6 +18,7 @@ const route = useRoute();
 const config = useRuntimeConfig();
 const baseURL = config.app.baseURL;
 const areaId = computed(() => String(route.params.id));
+const townshipId = computed(() => String(route.params.townshipId));
 const currentPage = computed(() => Number(route.params.page) || 1);
 const liveCache = useState<any>("area-live-result", () => null);
 
@@ -27,8 +29,12 @@ const currentCity = computed(() =>
   (locations.value?.cities || []).find((city: any) => String(city.id) === areaId.value) ||
   { id: Number(areaId.value), name: "未知地區", townships: [] },
 );
+const currentTownship = computed(() =>
+  (currentCity.value.townships || []).find((township: any) => String(township.id) === townshipId.value) ||
+  { id: Number(townshipId.value), name: "未知鄉鎮市區" },
+);
 
-const key = computed(() => `area-${areaId.value}-${currentPage.value}`);
+const key = computed(() => `area-${areaId.value}-${townshipId.value}-${currentPage.value}`);
 const mapHotels = (items: any[]) => items.map((hotel: any) => ({
   id: hotel.id,
   name: hotel.name,
@@ -41,9 +47,13 @@ const mapHotels = (items: any[]) => items.map((hotel: any) => ({
 
 const { data: fetched } = await useAsyncData(key.value, async () => {
   if (liveCache.value?.key === key.value) return liveCache.value;
-  if (!currentCity.value.name || currentCity.value.name === "未知地區") return { hotels: [], total: 0 };
   const response = await $fetch<any>(`${config.public.backendApiUrl}/api/hotels`, {
-    query: { page: currentPage.value, limit: 20, area: currentCity.value.name },
+    query: {
+      page: currentPage.value,
+      limit: 20,
+      area: currentCity.value.name,
+      township_id: currentTownship.value.id,
+    },
   });
   return { hotels: mapHotels(response.data || []), total: response.total || 0 };
 }, {
@@ -55,7 +65,7 @@ const { data: fetched } = await useAsyncData(key.value, async () => {
 const result = computed(() => fetched.value || { hotels: [], total: 0 });
 
 useSeoMeta({
-  title: computed(() => `${currentCity.value.name}飯店、商旅、汽車旅館住宿與休息推薦`),
-  description: computed(() => `${currentCity.value.name}飯店、商旅與汽車旅館推薦，依鄉鎮市區快速篩選住宿及休息方案。`),
+  title: computed(() => `${currentCity.value.name}${currentTownship.value.name}飯店、商旅、汽車旅館住宿與休息推薦`),
+  description: computed(() => `${currentCity.value.name}${currentTownship.value.name}飯店、商旅與汽車旅館推薦，整理住宿及休息方案、地址與價格資訊。`),
 });
 </script>

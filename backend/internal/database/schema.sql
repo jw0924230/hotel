@@ -200,10 +200,24 @@ CREATE TABLE IF NOT EXISTS categories (
     id SERIAL PRIMARY KEY,
     type VARCHAR(50) NOT NULL,        -- 'city', 'hotel_category', etc.
     name TEXT NOT NULL,
+    parent_id INT REFERENCES categories(id) ON DELETE RESTRICT,
+    external_code VARCHAR(20),
     sort_order INT DEFAULT 0,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(type, name)
 );
+
+ALTER TABLE categories ADD COLUMN IF NOT EXISTS parent_id INT REFERENCES categories(id) ON DELETE RESTRICT;
+ALTER TABLE categories ADD COLUMN IF NOT EXISTS external_code VARCHAR(20);
+
+-- Township names repeat between cities, so uniqueness must include the parent.
+ALTER TABLE categories DROP CONSTRAINT IF EXISTS categories_type_name_key;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_categories_root_type_name
+ON categories(type, name) WHERE parent_id IS NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_categories_child_type_parent_name
+ON categories(type, parent_id, name) WHERE parent_id IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_categories_external_code
+ON categories(external_code) WHERE external_code IS NOT NULL;
 
 CREATE INDEX IF NOT EXISTS idx_categories_type ON categories(type);
 
@@ -220,7 +234,12 @@ INSERT INTO categories (type, name, sort_order) VALUES
 ('city', '台南', 14), ('city', '高雄', 16), ('city', '屏東', 18),
 ('city', '花蓮', 19), ('city', '台東', 20), ('city', '澎湖', 21),
 ('city', '金門', 22), ('city', '馬祖', 23), ('city', '其他', 24)
-ON CONFLICT (type, name) DO UPDATE SET sort_order = EXCLUDED.sort_order;
+ON CONFLICT (type, name) WHERE parent_id IS NULL
+DO UPDATE SET sort_order = EXCLUDED.sort_order;
+
+-- A hotel references the normalized township category while retaining the legacy area text.
+ALTER TABLE hotels ADD COLUMN IF NOT EXISTS township_category_id INT REFERENCES categories(id) ON DELETE SET NULL;
+CREATE INDEX IF NOT EXISTS idx_hotels_township_category_id ON hotels(township_category_id);
 
 -- Seed hotel category data
 DELETE FROM categories
@@ -231,7 +250,8 @@ INSERT INTO categories (type, name, sort_order) VALUES
 ('hotel_category', '汽車旅館', 1),
 ('hotel_category', '精品商旅', 2),
 ('hotel_category', '溫泉會館', 3)
-ON CONFLICT (type, name) DO UPDATE SET sort_order = EXCLUDED.sort_order;
+ON CONFLICT (type, name) WHERE parent_id IS NULL
+DO UPDATE SET sort_order = EXCLUDED.sort_order;
 
 -- Blog Posts table for article publishing and SEO management
 CREATE TABLE IF NOT EXISTS posts (

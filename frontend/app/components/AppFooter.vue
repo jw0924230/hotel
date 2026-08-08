@@ -3,7 +3,7 @@
     <div class="container container-wide">
       <div class="footer-grid">
         <div v-for="region in regionGroups" :key="region.name" class="region-column">
-          <h3 class="region-title">{{ region.name }}</h3>
+          <div class="region-title">{{ region.name }}</div>
           <div class="region-links">
             <NuxtLink 
               v-for="area in region.areas" 

@@ -11,6 +11,9 @@
               cityName
             }}</NuxtLink>
             <span v-else>{{ cityName || "地區" }}</span> &gt;
+            <template v-if="hotel.township_id && hotel.township && cityId">
+              <NuxtLink :to="`/area/${cityId}/${hotel.township_id}/1`">{{ hotel.township }}</NuxtLink> &gt;
+            </template>
             <span class="active">{{ hotel.name }}</span>
           </div>
         </div>
@@ -84,9 +87,7 @@
               </div>
               <div class="info-row" v-if="hotel.website">
                 <h2 class="label">網站：</h2>
-                <a :href="hotel.website" target="_blank" class="text-link">{{
-                  hotel.website
-                }}</a>
+                <a :href="hotel.website" target="_blank" class="text-link">官網連結</a>
               </div>
             </div>
 
@@ -137,7 +138,7 @@
           <div class="tab-content">
             <!-- Intro -->
             <div v-show="currentTab === 'intro'" class="content-pane">
-              <div class="long-text" v-html="formattedDesc"></div>
+              <div class="long-text rich-html-content" v-html="formattedDesc"></div>
             </div>
 
             <!-- Rules -->
@@ -148,7 +149,7 @@
                 class="rule-block"
               >
                 <h3>{{ section.title }}</h3>
-                <div class="long-text" v-html="section.content"></div>
+                <div class="long-text rich-html-content" v-html="section.content"></div>
               </div>
             </div>
           </div>
@@ -207,8 +208,8 @@ const hotelId = route.params.id as string;
 const { data: hotel } = await useAsyncData(`detail-hotel-${hotelId}`, () =>
   $fetch<any>(`${config.public.backendApiUrl}/api/hotels/${hotelId}`)
 );
-const { data: cities } = await useAsyncData("detail-city-categories", () =>
-  $fetch<any[]>(`${config.public.backendApiUrl}/api/categories?type=city`),
+const { data: locations } = await useAsyncData("locations", () =>
+  $fetch<any>(`${config.public.backendApiUrl}/api/regions/combined`),
 );
 
 const currentTab = ref("intro");
@@ -298,10 +299,13 @@ const formatRestPricing = (hotelData: any) => {
 
 // City Logic
 const cityData = computed(() => {
+  const allCities = locations.value?.cities || [];
+  if (hotel.value?.area) {
+    const byArea = allCities.find((city: any) => city.name === hotel.value.area);
+    if (byArea) return byArea;
+  }
   if (!hotel.value?.address) return null;
-  const addr = hotel.value.address;
-  const found = (cities.value || []).find((city) => addr.includes(city.name));
-  return found;
+  return allCities.find((city: any) => hotel.value.address.includes(city.name));
 });
 
 const cityName = computed(
@@ -319,7 +323,8 @@ const formatText = (text: string) => {
     text.includes("<h2>") ||
     text.includes("<h3>") ||
     text.includes("<b>") ||
-    text.includes("<br>")
+    text.includes("<br>") ||
+    /<table\b/i.test(text)
   ) {
     return text;
   }

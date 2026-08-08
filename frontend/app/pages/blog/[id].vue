@@ -17,9 +17,15 @@
                 </div>
             </header>
 
-
-
-            <div class="article-body" v-html="parsedContent"></div>
+            <ArticleTableOfContents
+              :items="parsedArticle.items"
+              :content-root="articleBodyRoot"
+            />
+            <div
+              ref="articleBodyRoot"
+              class="article-body rich-html-content"
+              v-html="parsedArticle.html"
+            ></div>
             <div class="article-ad" v-html="parsedAdLink"></div>
             
             <div class="article-footer">
@@ -38,9 +44,10 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import MarkdownIt from 'markdown-it'
 import { joinURL } from 'ufo'
+import { buildArticleToc } from '~/utils/articleToc'
 
 const route = useRoute()
 const config = useRuntimeConfig()
@@ -93,10 +100,12 @@ function formatDate(dateStr: string) {
   return dateStr.split('T')[0]
 }
 
-const parsedContent = computed(() => {
-    if (!article.value) return ''
+const articleBodyRoot = ref<HTMLElement | null>(null)
+
+const parsedArticle = computed(() => {
+    if (!article.value) return buildArticleToc('')
     const content = article.value.content || ''
-    const isHtml = content.includes('<p>') || content.includes('<h3>') || content.includes('<ul') || content.includes('<ol')
+    const isHtml = /<(?:p|h[1-6]|ul|ol|table)\b/i.test(content)
     
     let rendered = isHtml ? content : md.render(content)
     
@@ -110,7 +119,7 @@ const parsedContent = computed(() => {
         return `<img src="${match}" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0;" />`
     })
     
-    return rendered
+    return buildArticleToc(rendered)
 })
 
 const parsedAdLink = computed(() => {

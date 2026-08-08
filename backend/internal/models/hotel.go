@@ -18,6 +18,8 @@ type Hotel struct {
 	ID           string     `json:"id"`
 	Name         string     `json:"name"`
 	Area         string     `json:"area"`
+	TownshipID   *int       `json:"township_id"`
+	Township     string     `json:"township"`
 	Address      string     `json:"address"`
 	Phone        string     `json:"phone"`
 	Fax          string     `json:"fax"`

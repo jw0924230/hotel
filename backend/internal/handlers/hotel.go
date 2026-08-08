@@ -36,6 +36,7 @@ func (h *HotelHandler) List(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 	limit, _ := strconv.Atoi(c.Query("limit", "10"))
 	areaRaw := c.Query("area", "")
+	townshipRaw := c.Query("township_id", "")
 	query := c.Query("query", "")
 	showDisabled := c.Query("show_disabled", "false") == "true"
 
@@ -46,6 +47,15 @@ func (h *HotelHandler) List(c *fiber.Ctx) error {
 		limit = 10
 	}
 	offset := (page - 1) * limit
+
+	var townshipID *int
+	if townshipRaw != "" {
+		parsed, err := strconv.Atoi(townshipRaw)
+		if err != nil || parsed < 1 {
+			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "invalid township_id"})
+		}
+		townshipID = &parsed
+	}
 
 	ctx := context.Background()
 
@@ -61,7 +71,7 @@ func (h *HotelHandler) List(c *fiber.Ctx) error {
 	}
 
 	// Intercept homepage queries to return custom selected hotels
-	if len(areas) == 1 && limit == 6 && !showDisabled && query == "" {
+	if len(areas) == 1 && townshipID == nil && limit == 6 && !showDisabled && query == "" {
 		cityName := areas[0]
 		checkQuery := `SELECT COUNT(*) FROM homepage_hotels WHERE city = $1`
 		var customCount int
@@ -69,7 +79,8 @@ func (h *HotelHandler) List(c *fiber.Ctx) error {
 
 		if customCount > 0 {
 			selectCustomQuery := `
-				SELECT h.id, h.name, COALESCE(h.area, ''), COALESCE(h.address, ''),
+				SELECT h.id, h.name, COALESCE(h.area, ''), h.township_category_id,
+				       COALESCE(t.name, ''), COALESCE(h.address, ''),
 				       COALESCE(h.phone, ''), COALESCE(h.category, ''),
 				       COALESCE(hp.weekday_stay, 0), COALESCE(hp.holiday_stay, 0),
 				       COALESCE(hp.weekday_rest_hours, 0), COALESCE(hp.weekday_rest, 0),
@@ -82,6 +93,7 @@ func (h *HotelHandler) List(c *fiber.Ctx) error {
 				FROM homepage_hotels hh
 				JOIN hotels h ON h.id = hh.hotel_id
 				LEFT JOIN hotel_prices hp ON hp.hotel_id = h.id
+				LEFT JOIN categories t ON t.id = h.township_category_id AND t.type = 'township'
 				WHERE hh.city = $1 AND h.is_disabled = FALSE
 				ORDER BY hh.sort_order ASC`
 
@@ -93,7 +105,8 @@ func (h *HotelHandler) List(c *fiber.Ctx) error {
 					var hotel models.Hotel
 					var imagesJSON []byte
 					err := rows.Scan(
-						&hotel.ID, &hotel.Name, &hotel.Area, &hotel.Address, &hotel.Phone,
+						&hotel.ID, &hotel.Name, &hotel.Area, &hotel.TownshipID, &hotel.Township,
+						&hotel.Address, &hotel.Phone,
 						&hotel.Category, &hotel.Pricing.WeekdayStay, &hotel.Pricing.HolidayStay,
 						&hotel.Pricing.WeekdayRestHours, &hotel.Pricing.WeekdayRest,
 						&hotel.Pricing.HolidayRestHours, &hotel.Pricing.HolidayRest,
@@ -124,20 +137,25 @@ func (h *HotelHandler) List(c *fiber.Ctx) error {
 	}
 
 	// Base count query
-	countQuery := `SELECT COUNT(*) FROM hotels WHERE 1=1`
+	countQuery := `SELECT COUNT(*) FROM hotels h WHERE 1=1`
 	if !showDisabled {
-		countQuery += ` AND is_disabled = FALSE`
+		countQuery += ` AND h.is_disabled = FALSE`
 	}
 	var countArgs []interface{}
 	argCount := 1
 
 	if len(areas) > 0 {
-		countQuery += fmt.Sprintf(" AND area = ANY($%d)", argCount)
+		countQuery += fmt.Sprintf(" AND h.area = ANY($%d)", argCount)
 		countArgs = append(countArgs, areas)
 		argCount++
 	}
+	if townshipID != nil {
+		countQuery += fmt.Sprintf(" AND h.township_category_id = $%d", argCount)
+		countArgs = append(countArgs, *townshipID)
+		argCount++
+	}
 	if query != "" {
-		countQuery += fmt.Sprintf(" AND (name ILIKE $%d OR address ILIKE $%d)", argCount, argCount)
+		countQuery += fmt.Sprintf(" AND (h.name ILIKE $%d OR h.address ILIKE $%d)", argCount, argCount)
 		countArgs = append(countArgs, "%"+query+"%")
 		argCount++
 	}
@@ -150,7 +168,8 @@ func (h *HotelHandler) List(c *fiber.Ctx) error {
 
 	// Base select query
 	selectQuery := `
-		SELECT h.id, h.name, COALESCE(h.area, ''), COALESCE(h.address, ''),
+		SELECT h.id, h.name, COALESCE(h.area, ''), h.township_category_id,
+		       COALESCE(t.name, ''), COALESCE(h.address, ''),
 		       COALESCE(h.phone, ''), COALESCE(h.category, ''),
 		       COALESCE(hp.weekday_stay, 0), COALESCE(hp.holiday_stay, 0),
 		       COALESCE(hp.weekday_rest_hours, 0), COALESCE(hp.weekday_rest, 0),
@@ -162,6 +181,7 @@ func (h *HotelHandler) List(c *fiber.Ctx) error {
 		       h.is_disabled, h.created_at, h.updated_at
 		FROM hotels h
 		LEFT JOIN hotel_prices hp ON hp.hotel_id = h.id
+		LEFT JOIN categories t ON t.id = h.township_category_id AND t.type = 'township'
 		WHERE 1=1`
 	if !showDisabled {
 		selectQuery += ` AND h.is_disabled = FALSE`
@@ -171,18 +191,23 @@ func (h *HotelHandler) List(c *fiber.Ctx) error {
 	argSelectCount := 1
 
 	if len(areas) > 0 {
-		selectQuery += fmt.Sprintf(" AND area = ANY($%d)", argSelectCount)
+		selectQuery += fmt.Sprintf(" AND h.area = ANY($%d)", argSelectCount)
 		selectArgs = append(selectArgs, areas)
 		argSelectCount++
 	}
+	if townshipID != nil {
+		selectQuery += fmt.Sprintf(" AND h.township_category_id = $%d", argSelectCount)
+		selectArgs = append(selectArgs, *townshipID)
+		argSelectCount++
+	}
 	if query != "" {
-		selectQuery += fmt.Sprintf(" AND (name ILIKE $%d OR address ILIKE $%d)", argSelectCount, argSelectCount)
+		selectQuery += fmt.Sprintf(" AND (h.name ILIKE $%d OR h.address ILIKE $%d)", argSelectCount, argSelectCount)
 		selectArgs = append(selectArgs, "%"+query+"%")
 		argSelectCount++
 	}
 
 	// Add order, limit, offset
-	selectQuery += fmt.Sprintf(" ORDER BY id ASC LIMIT $%d OFFSET $%d", argSelectCount, argSelectCount+1)
+	selectQuery += fmt.Sprintf(" ORDER BY h.id ASC LIMIT $%d OFFSET $%d", argSelectCount, argSelectCount+1)
 	selectArgs = append(selectArgs, limit, offset)
 
 	rows, err := h.DB.Pool.Query(ctx, selectQuery, selectArgs...)
@@ -196,7 +221,8 @@ func (h *HotelHandler) List(c *fiber.Ctx) error {
 		var hotel models.Hotel
 		var imagesJSON []byte
 		err := rows.Scan(
-			&hotel.ID, &hotel.Name, &hotel.Area, &hotel.Address, &hotel.Phone,
+			&hotel.ID, &hotel.Name, &hotel.Area, &hotel.TownshipID, &hotel.Township,
+			&hotel.Address, &hotel.Phone,
 			&hotel.Category, &hotel.Pricing.WeekdayStay, &hotel.Pricing.HolidayStay,
 			&hotel.Pricing.WeekdayRestHours, &hotel.Pricing.WeekdayRest,
 			&hotel.Pricing.HolidayRestHours, &hotel.Pricing.HolidayRest,
@@ -240,7 +266,8 @@ func (h *HotelHandler) Get(c *fiber.Ctx) error {
 	var imagesJSON []byte
 
 	query := `
-		SELECT h.id, h.name, COALESCE(h.area, ''), COALESCE(h.address, ''),
+		SELECT h.id, h.name, COALESCE(h.area, ''), h.township_category_id,
+		       COALESCE(t.name, ''), COALESCE(h.address, ''),
 		       COALESCE(h.phone, ''), COALESCE(h.fax, ''), COALESCE(h.website, ''),
 		       COALESCE(h.email, ''), COALESCE(h.category, ''),
 		       COALESCE(h.stay_info, ''), COALESCE(h.housing_rules, ''),
@@ -255,10 +282,12 @@ func (h *HotelHandler) Get(c *fiber.Ctx) error {
 		       h.is_disabled, h.created_at, h.updated_at
 		FROM hotels h
 		LEFT JOIN hotel_prices hp ON hp.hotel_id = h.id
+		LEFT JOIN categories t ON t.id = h.township_category_id AND t.type = 'township'
 		WHERE h.id = $1`
 
 	err := h.DB.Pool.QueryRow(ctx, query, id).Scan(
-		&hotel.ID, &hotel.Name, &hotel.Area, &hotel.Address, &hotel.Phone, &hotel.Fax,
+		&hotel.ID, &hotel.Name, &hotel.Area, &hotel.TownshipID, &hotel.Township,
+		&hotel.Address, &hotel.Phone, &hotel.Fax,
 		&hotel.Website, &hotel.Email, &hotel.Category, &hotel.StayInfo, &hotel.HousingRules,
 		&hotel.Description, &hotel.BookingLink, &hotel.Pricing.WeekdayStay,
 		&hotel.Pricing.HolidayStay, &hotel.Pricing.WeekdayRestHours, &hotel.Pricing.WeekdayRest,
@@ -311,6 +340,19 @@ func (h *HotelHandler) Upsert(c *fiber.Ctx) error {
 	}
 
 	ctx := context.Background()
+	if hotel.TownshipID != nil {
+		var valid bool
+		err := h.DB.Pool.QueryRow(ctx, `
+			SELECT EXISTS (
+				SELECT 1 FROM categories t
+				JOIN categories city ON city.id = t.parent_id
+				WHERE t.id = $1 AND t.type = 'township'
+				  AND city.type = 'city' AND city.name = $2
+			)`, *hotel.TownshipID, hotel.Area).Scan(&valid)
+		if err != nil || !valid {
+			return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "鄉鎮市區分類與地區不相符"})
+		}
+	}
 	tx, err := h.DB.Pool.Begin(ctx)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to begin transaction: %v", err)})
@@ -319,14 +361,15 @@ func (h *HotelHandler) Upsert(c *fiber.Ctx) error {
 
 	query := `
 		INSERT INTO hotels (
-			id, name, area, address, phone, fax, website, email, category, 
+			id, name, area, township_category_id, address, phone, fax, website, email, category,
 			stay_info, housing_rules, description, booking_link, is_disabled, updated_at
 		) VALUES (
-			$1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, CURRENT_TIMESTAMP
+			$1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, CURRENT_TIMESTAMP
 		)
 		ON CONFLICT (id) DO UPDATE SET
 			name = EXCLUDED.name,
 			area = EXCLUDED.area,
+			township_category_id = EXCLUDED.township_category_id,
 			address = EXCLUDED.address,
 			phone = EXCLUDED.phone,
 			fax = EXCLUDED.fax,
@@ -342,7 +385,7 @@ func (h *HotelHandler) Upsert(c *fiber.Ctx) error {
 		RETURNING created_at, updated_at`
 
 	err = tx.QueryRow(ctx, query,
-		hotel.ID, hotel.Name, hotel.Area, hotel.Address, hotel.Phone, hotel.Fax,
+		hotel.ID, hotel.Name, hotel.Area, hotel.TownshipID, hotel.Address, hotel.Phone, hotel.Fax,
 		hotel.Website, hotel.Email, hotel.Category, hotel.StayInfo, hotel.HousingRules,
 		hotel.Description, hotel.BookingLink, hotel.IsDisabled,
 	).Scan(&hotel.CreatedAt, &hotel.UpdatedAt)
@@ -397,6 +440,11 @@ func (h *HotelHandler) Upsert(c *fiber.Ctx) error {
 
 	if err = tx.Commit(ctx); err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to commit hotel changes: %v", err)})
+	}
+	if hotel.TownshipID != nil {
+		_ = h.DB.Pool.QueryRow(ctx, `SELECT name FROM categories WHERE id = $1`, *hotel.TownshipID).Scan(&hotel.Township)
+	} else {
+		hotel.Township = ""
 	}
 
 	hotel.Price = formatPriceLabel(hotel.Pricing)

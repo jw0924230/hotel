@@ -56,6 +56,80 @@ table {
   border-spacing: 0;
 }
 
+[data-article-toc-id] {
+  scroll-margin-top: 24px;
+}
+
+/* Shared rich-text tables: CMS preview and SSG pages use the same presentation. */
+.rich-html-content {
+  max-width: 100%;
+  overflow-x: visible;
+}
+
+.rich-html-content table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 24px 0;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid #d9e0e7;
+  border-top: 3px solid #e74c3c;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.06);
+}
+
+.rich-html-content th,
+.rich-html-content td {
+  min-width: 120px;
+  padding: 12px 14px;
+  border-right: 1px solid #d9e0e7;
+  border-bottom: 1px solid #d9e0e7;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.rich-html-content th {
+  background: #2c3e50;
+  color: #fff;
+  font-weight: 700;
+}
+
+.rich-html-content tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+.rich-html-content tr:last-child td,
+.rich-html-content tr:last-child th {
+  border-bottom: 0;
+}
+
+.rich-html-content td:last-child,
+.rich-html-content th:last-child {
+  border-right: 0;
+}
+
+.rich-html-content td > p,
+.rich-html-content th > p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .rich-html-content table {
+    margin: 18px 0;
+  }
+
+  .rich-html-content th,
+  .rich-html-content td {
+    min-width: 110px;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}
+
 ul,
 ol {
   list-style: none;

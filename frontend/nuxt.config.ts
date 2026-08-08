@@ -10,48 +10,62 @@ const getDynamicRoutes = async () => {
   }
 
   try {
-    const [hotelsResponse, citiesResponse, postsResponse] = await Promise.all([
+    const [hotelsResponse, locationsResponse, postsResponse] = await Promise.all([
       fetch(`${backendUrl}/api/hotels?limit=10000`, { headers }),
-      fetch(`${backendUrl}/api/categories?type=city`, { headers }),
+      fetch(`${backendUrl}/api/regions/combined`, { headers }),
       fetch(`${backendUrl}/api/posts?limit=10000`, { headers })
     ])
 
-    if (hotelsResponse.ok) {
-      const hotels = await hotelsResponse.json()
-      for (const hotel of hotels.data || []) {
-        routes.push(`/detail/${hotel.id}`)
-      }
+    const requiredResponses = [hotelsResponse, locationsResponse, postsResponse]
+    if (requiredResponses.some(response => !response.ok)) {
+      throw new Error(`Required API failed during SSG route discovery: ${requiredResponses.map(r => r.status).join(', ')}`)
     }
 
-    if (citiesResponse.ok) {
-      const cities = await citiesResponse.json()
-      for (const city of cities) {
-        const cityId = city.sort_order || city.id
-        const response = await fetch(
-          `${backendUrl}/api/hotels?limit=1&area=${encodeURIComponent(city.name)}`,
-          { headers }
-        )
-        if (!response.ok) continue
-        const result = await response.json()
-        const totalPages = Math.max(1, Math.ceil((result.total || 0) / 20))
-        for (let page = 1; page <= totalPages; page++) {
-          routes.push(`/area/${cityId}/${page}`)
+    const hotels = await hotelsResponse.json()
+    for (const hotel of hotels.data || []) {
+      routes.push(`/detail/${hotel.id}`)
+    }
+
+    const locations = await locationsResponse.json()
+    const townships = (locations.cities || []).flatMap((city: any) => city.townships || [])
+    if (townships.length !== 368) {
+      throw new Error(`Expected 368 township categories during SSG, received ${townships.length}`)
+    }
+
+    for (const city of locations.cities || []) {
+      const cityResponse = await fetch(
+        `${backendUrl}/api/hotels?limit=1&area=${encodeURIComponent(city.name)}`,
+        { headers }
+      )
+      if (!cityResponse.ok) throw new Error(`Failed to count hotels for city ${city.name}`)
+      const cityResult = await cityResponse.json()
+      const cityPages = Math.max(1, Math.ceil((cityResult.total || 0) / 20))
+      for (let page = 1; page <= cityPages; page++) {
+        routes.push(`/area/${city.id}/${page}`)
+      }
+
+      for (const township of city.townships || []) {
+        const townshipPages = Math.max(1, Math.ceil((township.hotel_count || 0) / 20))
+        for (let page = 1; page <= townshipPages; page++) {
+          routes.push(`/area/${city.id}/${township.id}/${page}`)
         }
       }
     }
 
-    if (postsResponse.ok) {
-      const posts = await postsResponse.json()
-      for (const post of posts.data || []) {
-        routes.push(`/blog/${post.id}`)
-      }
+    const posts = await postsResponse.json()
+    for (const post of posts.data || []) {
+      routes.push(`/blog/${post.id}`)
     }
   } catch (e) {
-    console.warn('Dynamic API routes unavailable during build:', e)
+    if (process.env.BACKEND_API_URL) throw e
+    console.warn('Dynamic API routes unavailable during local build:', e)
   }
 
-  return routes
+  return [...new Set(routes)]
 }
+
+let dynamicRoutesPromise: Promise<string[]> | undefined
+const resolveDynamicRoutes = () => dynamicRoutesPromise ||= getDynamicRoutes()
 
 export default defineNuxtConfig({
   devServer: {
@@ -73,14 +87,14 @@ export default defineNuxtConfig({
     name: '休息3小時'
   },
   sitemap: {
-    urls: ['/blog']
+    urls: () => resolveDynamicRoutes()
   },
   nitro: {
     output: {
       publicDir: 'dist'
     },
     prerender: {
-      failOnError: false,
+      failOnError: true,
       concurrency: 4,
       routes: ['/'] // explicit root
     }
@@ -108,7 +122,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         return
       }
 
-      const routes = await getDynamicRoutes()
+      const routes = await resolveDynamicRoutes()
 
       // Add to prerender routes
       // Add to prerender routes

@@ -177,6 +177,14 @@
         <div class="nav-footer">
           <button
             v-if="token && userRole === 'admin'"
+            class="btn-backfill"
+            :disabled="isBackfilling"
+            @click="openBackfillModal"
+          >
+            <span>{{ isBackfilling ? "分析中..." : "分析並回填鄉鎮市區" }}</span>
+          </button>
+          <button
+            v-if="token && userRole === 'admin'"
             class="btn-deploy"
             :disabled="isDeploying"
             @click="openDeployModal"
@@ -588,14 +596,35 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <label>完整地址 <span class="required">*</span></label>
-                    <input
-                      v-model="editForm.address"
-                      type="text"
-                      placeholder="例如: 台北市大安區信義路三段33號"
-                      required
-                    />
+                  <div class="form-grid-2">
+                    <div class="form-group">
+                      <label>完整地址 <span class="required">*</span></label>
+                      <input
+                        v-model="editForm.address"
+                        type="text"
+                        placeholder="例如: 台北市大安區信義路三段33號"
+                        required
+                        @blur="suggestTownship"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>鄉鎮市區分類</label>
+                      <select
+                        v-model="editForm.township_id"
+                        :disabled="!editForm.area"
+                        @change="markTownshipManual"
+                      >
+                        <option :value="null">{{ editForm.area ? "尚未設定" : "請先選擇地區" }}</option>
+                        <option
+                          v-for="township in availableTownships"
+                          :key="township.id"
+                          :value="township.id"
+                        >
+                          {{ township.name }}
+                        </option>
+                      </select>
+                      <small v-if="townshipSuggestion" class="field-hint">{{ townshipSuggestion }}</small>
+                    </div>
                   </div>
 
                   <div class="form-grid-3">
@@ -1518,6 +1547,47 @@
       </div>
     </div>
 
+    <!-- Township Backfill Modal Overlay -->
+    <div class="modal-overlay" v-if="showBackfillModal">
+      <div class="modal-content" style="max-width: 620px">
+        <div class="modal-header">
+          <h3>分析並回填鄉鎮市區</h3>
+          <button class="btn-close-modal" @click="closeBackfillModal" :disabled="isBackfilling">×</button>
+        </div>
+        <div class="modal-body" style="padding: 20px 0;">
+          <div v-if="backfillStatus === 'idle'" style="text-align: center; padding: 0 20px;">
+            <p style="font-weight: 600; margin-bottom: 8px;">只會處理鄉鎮市區尚未設定的旅館。</p>
+            <p style="color: #64748b; line-height: 1.6;">系統會依地區與完整地址判斷，既有人工設定不會被覆蓋；無法可靠辨識的資料會保持空白並列出。</p>
+          </div>
+          <div v-else-if="backfillStatus === 'loading'" style="text-align: center;">
+            <div class="deploy-spinner" style="margin: 20px auto;"></div>
+            <p>正在分析並寫入資料庫...</p>
+          </div>
+          <div v-else-if="backfillStatus === 'error'" class="alert-danger">{{ backfillError }}</div>
+          <div v-else-if="backfillResult" class="backfill-result">
+            <div class="backfill-stats">
+              <span>分析 {{ backfillResult.analyzed }}</span>
+              <span>更新 {{ backfillResult.updated }}</span>
+              <span>略過 {{ backfillResult.skipped }}</span>
+              <span>未辨識 {{ backfillResult.unmatched }}</span>
+            </div>
+            <div v-if="backfillResult.unmatched_hotels?.length" class="backfill-unmatched">
+              <strong>未辨識資料{{ backfillResult.details_truncated ? '（僅顯示前 100 筆）' : '' }}</strong>
+              <ul>
+                <li v-for="hotel in backfillResult.unmatched_hotels" :key="hotel.id">
+                  <b>{{ hotel.id }} · {{ hotel.name }}</b><br>{{ hotel.address || '無地址' }}（{{ hotel.reason }}）
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="justify-content: center; gap: 12px;">
+          <button type="button" class="btn-cancel" @click="closeBackfillModal" :disabled="isBackfilling">{{ backfillStatus === 'idle' ? '取消' : '關閉' }}</button>
+          <button v-if="backfillStatus === 'idle'" type="button" class="btn-submit" @click="executeTownshipBackfill">開始回填</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Frontend Deployment Modal Overlay -->
     <div class="modal-overlay" v-if="showDeployConfirmModal">
       <div class="modal-content" style="max-width: 500px">
@@ -1595,7 +1665,7 @@
           <h3 style="margin: 0; font-size: 18px;">文章前台模擬預覽 (CSR 畫面)</h3>
           <button class="btn-close-modal" @click="showPostPreviewModal = false">×</button>
         </div>
-        <div class="modal-body" style="padding: 30px; overflow-y: auto; background: #f8f9fa; flex: 1;">
+        <div ref="postPreviewScrollRoot" class="modal-body" style="padding: 30px; overflow-y: auto; background: #f8f9fa; flex: 1;">
           <div style="max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
             <div style="margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">
               首頁 &gt; 部落格 &gt; <span style="color: #95a5a6;">{{ postEditForm.title || "未命名文章" }}</span>
@@ -1619,7 +1689,18 @@
               <img :src="postEditForm.image" alt="Featured Image" style="width: 100%; height: auto; display: block;" />
             </div>
 
-            <div class="article-preview-body" v-html="parsedPostContent" style="font-size: 18px; line-height: 1.8; color: #2c3e50;"></div>
+            <ArticleTableOfContents
+              :items="parsedPostArticle.items"
+              :content-root="postPreviewContentRoot"
+              :scroll-root="postPreviewScrollRoot"
+              context="modal"
+            />
+            <div
+              ref="postPreviewContentRoot"
+              class="article-preview-body rich-html-content"
+              v-html="parsedPostArticle.html"
+              style="font-size: 18px; line-height: 1.8; color: #2c3e50;"
+            ></div>
             
             <div v-if="postEditForm.ad_link" style="margin-top: 30px; padding: 20px; background: #f8fafc; border-left: 4px solid #3b82f6; border-radius: 4px;" v-html="parsedAdLink"></div>
           </div>
@@ -1643,7 +1724,7 @@
             <div style="margin-bottom: 25px;">
               <h1 style="font-size: 28px; color: #1e293b; font-weight: 700; margin: 0 0 10px 0;">{{ editForm.name || "未命名旅館" }}</h1>
               <div style="color: #64748b; font-size: 14px;">
-                首頁 &gt; {{ editForm.area || "地區" }} &gt; <span style="color: #94a3b8;">{{ editForm.name || "未命名旅館" }}</span>
+                首頁 &gt; {{ editForm.area || "地區" }} <template v-if="selectedTownshipName">&gt; {{ selectedTownshipName }} </template>&gt; <span style="color: #94a3b8;">{{ editForm.name || "未命名旅館" }}</span>
               </div>
             </div>
 
@@ -1727,13 +1808,13 @@
               <p style="font-size: 15px; color: #94a3b8; font-style: italic;" v-else>未設定入住退房資訊</p>
 
               <h3 style="font-size: 18px; color: #2c3e50; font-weight: 700; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; margin-bottom: 15px;">住宿須知</h3>
-              <p style="font-size: 15px; color: #475569; line-height: 1.6; white-space: pre-line; margin: 0;" v-if="editForm.housing_rules">{{ editForm.housing_rules }}</p>
+              <div v-if="editForm.housing_rules" class="hotel-preview-richtext rich-html-content" v-html="editForm.housing_rules"></div>
               <p style="font-size: 15px; color: #94a3b8; font-style: italic;" v-else>未設定住宿須知</p>
             </div>
 
             <div style="background: #f8fafc; padding: 25px; border-radius: 8px; border: 1px dashed #cbd5e1;">
               <h3 style="font-size: 18px; color: #2c3e50; font-weight: 700; margin: 0 0 12px 0;">旅館簡介</h3>
-              <p style="font-size: 15px; color: #334155; line-height: 1.7; white-space: pre-line; margin: 0;" v-if="editForm.description">{{ editForm.description }}</p>
+              <div v-if="editForm.description" class="hotel-preview-richtext rich-html-content" v-html="editForm.description"></div>
               <p style="font-size: 15px; color: #94a3b8; font-style: italic; margin: 0;" v-else>未輸入旅館簡介</p>
             </div>
 
@@ -1754,6 +1835,7 @@ definePageMeta({
 import { ref, onMounted, watch, computed } from "vue";
 import { joinURL } from "ufo";
 import MarkdownIt from "markdown-it";
+import { buildArticleToc } from "~/utils/articleToc";
 
 const md = new MarkdownIt({
   html: true,
@@ -1789,6 +1871,7 @@ const showSnackbar = (
 
 const cities = ref<any[]>([]);
 const hotelCategories = ref<any[]>([]);
+const townships = ref<any[]>([]);
 
 // Homepage selector states
 const homepageSelections = ref<Record<string, string[]>>({
@@ -1935,6 +2018,44 @@ const showDeployConfirmModal = ref(false);
 const deployStatus = ref<"idle" | "deploying" | "success" | "error">("idle");
 const deployMessage = ref("");
 
+const isBackfilling = ref(false);
+const showBackfillModal = ref(false);
+const backfillStatus = ref<"idle" | "loading" | "success" | "error">("idle");
+const backfillResult = ref<any>(null);
+const backfillError = ref("");
+
+const openBackfillModal = () => {
+  backfillStatus.value = "idle";
+  backfillResult.value = null;
+  backfillError.value = "";
+  showBackfillModal.value = true;
+};
+
+const closeBackfillModal = () => {
+  if (!isBackfilling.value) showBackfillModal.value = false;
+};
+
+const executeTownshipBackfill = async () => {
+  isBackfilling.value = true;
+  backfillStatus.value = "loading";
+  try {
+    const res = await fetch(`${backendAPI}/api/hotels/backfill-townships`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token.value}`, "Content-Type": "application/json" },
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "回填失敗");
+    backfillResult.value = data;
+    backfillStatus.value = "success";
+    await Promise.all([fetchCategories(), fetchHotels()]);
+  } catch (error: any) {
+    backfillError.value = error?.message || "回填時發生錯誤";
+    backfillStatus.value = "error";
+  } finally {
+    isBackfilling.value = false;
+  }
+};
+
 const openDeployModal = () => {
   deployStatus.value = "idle";
   deployMessage.value = "";
@@ -1977,6 +2098,8 @@ const executeFrontendDeploy = async () => {
 
 const showPostPreviewModal = ref(false);
 const showHotelPreviewModal = ref(false);
+const postPreviewScrollRoot = ref<HTMLElement | null>(null);
+const postPreviewContentRoot = ref<HTMLElement | null>(null);
 
 const openPostPreviewModal = () => {
   showPostPreviewModal.value = true;
@@ -1986,9 +2109,9 @@ const openHotelPreviewModal = () => {
   showHotelPreviewModal.value = true;
 };
 
-const parsedPostContent = computed(() => {
+const parsedPostArticle = computed(() => {
   const content = postEditForm.value.content || "";
-  const isHtml = content.includes("<p>") || content.includes("<h3>") || content.includes("<ul") || content.includes("<ol>");
+  const isHtml = /<(?:p|h[1-6]|ul|ol|table)\b/i.test(content);
   let rendered = isHtml ? content : md.render(content);
   
   // Replace naked image links converted to anchors by linkify
@@ -2001,7 +2124,7 @@ const parsedPostContent = computed(() => {
     return `<img src="${match}" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0;" />`;
   });
   
-  return rendered;
+  return buildArticleToc(rendered);
 });
 
 const parsedAdLink = computed(() => {
@@ -2127,6 +2250,7 @@ interface EditForm {
   id: string;
   name: string;
   area: string;
+  township_id: number | null;
   address: string;
   phone: string;
   fax: string;
@@ -2153,6 +2277,7 @@ const editForm = ref<EditForm>({
   id: "",
   name: "",
   area: "",
+  township_id: null,
   address: "",
   phone: "",
   fax: "",
@@ -2175,12 +2300,62 @@ const editForm = ref<EditForm>({
   images: [],
 });
 
+const townshipManuallySelected = ref(false);
+const townshipSuggestion = ref("");
+const availableTownships = computed(() => {
+  const city = cities.value.find((item) => item.name === editForm.value.area);
+  if (!city) return [];
+  return townships.value.filter(
+    (township) => Number(township.parent_id) === Number(city.categoryId),
+  );
+});
+const selectedTownshipName = computed(() =>
+  townships.value.find((township) => Number(township.id) === Number(editForm.value.township_id))?.name || "",
+);
+
+const markTownshipManual = () => {
+  townshipManuallySelected.value = true;
+  townshipSuggestion.value = editForm.value.township_id
+    ? "已使用人工選擇的分類"
+    : "已選擇暫不設定";
+};
+
+const suggestTownship = async () => {
+  if (
+    townshipManuallySelected.value ||
+    !editForm.value.area ||
+    !editForm.value.address.trim() ||
+    !token.value
+  ) return;
+
+  try {
+    const res = await fetch(`${backendAPI}/api/hotels/analyze-township`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token.value}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ area: editForm.value.area, address: editForm.value.address }),
+    });
+    const data = await res.json();
+    if (res.ok && data.matched && data.township) {
+      editForm.value.township_id = Number(data.township.id);
+      townshipSuggestion.value = `已依地址建議：${data.township.name}`;
+    } else {
+      townshipSuggestion.value = "目前無法從地址可靠判斷，可由選單人工指定";
+    }
+  } catch (error) {
+    console.error("Failed to suggest township:", error);
+  }
+};
+
 // Fetch city and hotel category options from the unified categories API.
 const fetchCategories = async () => {
   try {
-    const [citiesRes, hotelCategoriesRes] = await Promise.all([
+    const [citiesRes, hotelCategoriesRes, townshipsRes] = await Promise.all([
       fetch(`${backendAPI}/api/categories?type=city`),
       fetch(`${backendAPI}/api/categories?type=hotel_category`),
+      fetch(`${backendAPI}/api/categories?type=township`),
     ]);
 
     if (citiesRes.ok) {
@@ -2188,6 +2363,7 @@ const fetchCategories = async () => {
       if (Array.isArray(cityData) && cityData.length > 0) {
         cities.value = cityData.map((category: any) => ({
           id: category.sort_order || category.id,
+          categoryId: category.id,
           name: category.name,
         }));
       }
@@ -2198,6 +2374,11 @@ const fetchCategories = async () => {
       if (Array.isArray(categoryData)) {
         hotelCategories.value = categoryData;
       }
+    }
+
+    if (townshipsRes.ok) {
+      const townshipData = await townshipsRes.json();
+      townships.value = Array.isArray(townshipData) ? townshipData : [];
     }
   } catch (e) {
     console.error("Failed to fetch categories from DB.", e);
@@ -2362,6 +2543,7 @@ const populateForm = (data: any) => {
     id: data.id || "",
     name: data.name || "",
     area: data.area || "",
+    township_id: data.township_id ?? null,
     address: data.address || "",
     phone: data.phone || "",
     fax: data.fax || "",
@@ -2387,6 +2569,8 @@ const populateForm = (data: any) => {
     is_disabled: !!data.is_disabled,
     images: data.images || [],
   };
+  townshipManuallySelected.value = editForm.value.township_id !== null;
+  townshipSuggestion.value = "";
 };
 
 // Image URL Management functions
@@ -2480,8 +2664,14 @@ const validateAndFormatImgur = (index: number) => {
 };
 
 const selectEditArea = (city: string) => {
+	if (editForm.value.area !== city) {
+		editForm.value.township_id = null;
+		townshipManuallySelected.value = false;
+		townshipSuggestion.value = "";
+	}
   editForm.value.area = city;
   showEditRegionPicker.value = false;
+  void suggestTownship();
 };
 
 const previewImage = (url: string) => {
@@ -2497,6 +2687,7 @@ const initNewHotel = () => {
     id: "",
     name: "未命名新旅館",
     area: "",
+    township_id: null,
     address: "",
     phone: "",
     fax: "",
@@ -2521,6 +2712,8 @@ const initNewHotel = () => {
   activeHotelTab.value = "basic";
   successMsg.value = "";
   errorMsg.value = "";
+  townshipManuallySelected.value = false;
+  townshipSuggestion.value = "";
 };
 
 const handleImgPreviewError = (e: Event) => {
@@ -3259,6 +3452,27 @@ textarea::-webkit-scrollbar {
   cursor: not-allowed;
   opacity: 0.6;
 }
+
+.btn-backfill {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 0;
+  border-radius: 6px;
+  background: #0f766e;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-backfill:hover:not(:disabled) { background: #115e59; }
+.btn-backfill:disabled { opacity: 0.6; cursor: not-allowed; }
+.backfill-result { padding: 0 20px; }
+.backfill-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+.backfill-stats span { padding: 10px; border-radius: 6px; background: #f1f5f9; text-align: center; font-size: 13px; font-weight: 700; }
+.backfill-unmatched ul { max-height: 260px; overflow-y: auto; margin-top: 10px; padding-left: 20px; }
+.backfill-unmatched li { margin-bottom: 10px; color: #475569; font-size: 13px; line-height: 1.5; }
 
 /* Spinner and Animation for Deploying state */
 .deploy-spinner {
@@ -4097,6 +4311,7 @@ textarea::-webkit-scrollbar {
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="password"],
+.form-group select,
 .form-group textarea,
 .select-field {
   width: 100%;
@@ -4111,6 +4326,7 @@ textarea::-webkit-scrollbar {
 }
 
 .form-group input:focus,
+.form-group select:focus,
 .form-group textarea:focus,
 .select-field:focus {
   outline: none;
@@ -4121,6 +4337,8 @@ textarea::-webkit-scrollbar {
 .form-group textarea {
   resize: vertical;
 }
+
+.field-hint { display: block; margin-top: 6px; color: #64748b; line-height: 1.4; }
 
 /* Grids */
 .form-grid-2 {
@@ -5155,6 +5373,7 @@ textarea::-webkit-scrollbar {
 .dark-mode .form-group input[type="text"],
 .dark-mode .form-group input[type="email"],
 .dark-mode .form-group input[type="password"],
+.dark-mode .form-group select,
 .dark-mode .form-group textarea,
 .dark-mode .select-field,
 .dark-mode .rich-editor {
@@ -5164,6 +5383,7 @@ textarea::-webkit-scrollbar {
 }
 
 .dark-mode .form-group input:focus,
+.dark-mode .form-group select:focus,
 .dark-mode .form-group textarea:focus,
 .dark-mode .select-field:focus,
 .dark-mode .rich-editor:focus {
@@ -5859,5 +6079,19 @@ textarea::-webkit-scrollbar {
 .dark-mode .btn-slot-remove:hover {
   background-color: #ef4444;
   color: white;
+}
+
+.hotel-preview-richtext {
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.hotel-preview-richtext :deep(p) {
+  margin-bottom: 14px;
+}
+
+.hotel-preview-richtext :deep(p:last-child) {
+  margin-bottom: 0;
 }
 </style>

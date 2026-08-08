@@ -55,7 +55,8 @@ const traditionalCharacters: Record<string, string> = {
   '屏': '螢', '查': '查', '看': '看', '代': '代', '码': '碼', '编': '編',
   '辑': '輯', '增': '增', '加': '加', '取': '取', '消': '消', '确': '確',
   '定': '定', '设': '設', '置': '置', '网': '網', '页': '頁', '预': '預',
-  '览': '覽', '文': '文', '本': '本', '块': '塊', '引': '引', '用': '用'
+  '览': '覽', '文': '文', '本': '本', '块': '塊', '引': '引', '用': '用',
+  '栏': '欄', '宽': '寬', '头': '頭'
 }
 
 const toTraditional = (value: unknown): unknown => {
@@ -98,7 +99,9 @@ const toolbarConfig: Partial<IToolbarConfig> = {
     'color',
     'bgColor',
     '|',
-    'insertLink'
+    'insertLink',
+    '|',
+    'insertTable'
   ]
 }
 
@@ -125,6 +128,17 @@ const editorConfig: Partial<IEditorConfig> = {
     },
     link: {
       menuKeys: ['editLink', 'unLink', 'viewLink']
+    },
+    table: {
+      menuKeys: [
+        'insertTableRow',
+        'deleteTableRow',
+        'insertTableCol',
+        'deleteTableCol',
+        'tableHeader',
+        'tableFullWidth',
+        'deleteTable'
+      ]
     }
   }
 }
@@ -178,4 +192,5 @@ onBeforeUnmount(() => {
   font-size: 14px;
   line-height: 1.7;
 }
+
 </style>
