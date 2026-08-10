@@ -13,6 +13,11 @@ type HotelPrice struct {
 	HolidayRest      int `json:"holiday_rest"`
 }
 
+type HotelTag struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+}
+
 // Hotel represents the hotel database structure and JSON mapping
 type Hotel struct {
 	ID           string     `json:"id"`
@@ -34,6 +39,8 @@ type Hotel struct {
 	BookingLink  string     `json:"booking_link"`
 	IsDisabled   bool       `json:"is_disabled"`
 	Images       []string   `json:"images"`
+	TagIDs       []int      `json:"tag_ids"`
+	Tags         []HotelTag `json:"tags"`
 	CreatedAt    time.Time  `json:"created_at"`
 	UpdatedAt    time.Time  `json:"updated_at"`
 }

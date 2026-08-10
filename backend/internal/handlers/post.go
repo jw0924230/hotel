@@ -34,6 +34,69 @@ type PostUpsertRequest struct {
 	SEOTitle       string   `json:"seo_title"`
 	SEOKeywords    string   `json:"seo_keywords"`
 	SEODescription string   `json:"seo_description"`
+	ArticleTagIDs  *[]int   `json:"article_tag_ids"`
+}
+
+func (h *PostHandler) loadArticleTags(ctx context.Context, post *models.Post) error {
+	rows, err := h.DB.Pool.Query(ctx, `
+		SELECT c.id, c.name, COALESCE(c.external_code = 'latest_posts', FALSE)
+		FROM post_article_tags pat
+		JOIN categories c ON c.id = pat.article_tag_id AND c.type = 'article_tag'
+		WHERE pat.post_id = $1 ORDER BY pat.sort_order, c.id`, post.ID)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+	post.ArticleTags = []models.ArticleTag{}
+	post.ArticleTagIDs = []int{}
+	for rows.Next() {
+		var tag models.ArticleTag
+		if err := rows.Scan(&tag.ID, &tag.Name, &tag.IsSystem); err != nil {
+			return err
+		}
+		post.ArticleTags = append(post.ArticleTags, tag)
+		post.ArticleTagIDs = append(post.ArticleTagIDs, tag.ID)
+	}
+	return rows.Err()
+}
+
+func validateArticleTagIDs(ctx context.Context, tx pgx.Tx, ids []int) error {
+	if len(ids) > 5 {
+		return fmt.Errorf("文章標籤最多僅能設定五個")
+	}
+	seen := map[int]bool{}
+	for _, id := range ids {
+		if id <= 0 || seen[id] {
+			return fmt.Errorf("文章標籤不可重複或無效")
+		}
+		seen[id] = true
+	}
+	if len(ids) == 0 {
+		return nil
+	}
+	var count int
+	if err := tx.QueryRow(ctx, `SELECT COUNT(*) FROM categories WHERE type='article_tag' AND id = ANY($1)`, ids).Scan(&count); err != nil {
+		return err
+	}
+	if count != len(ids) {
+		return fmt.Errorf("包含無效的文章標籤")
+	}
+	return nil
+}
+
+func replacePostArticleTags(ctx context.Context, tx pgx.Tx, postID int, ids []int) error {
+	if err := validateArticleTagIDs(ctx, tx, ids); err != nil {
+		return err
+	}
+	if _, err := tx.Exec(ctx, `DELETE FROM post_article_tags WHERE post_id=$1`, postID); err != nil {
+		return err
+	}
+	for order, id := range ids {
+		if _, err := tx.Exec(ctx, `INSERT INTO post_article_tags(post_id,article_tag_id,sort_order) VALUES($1,$2,$3)`, postID, id, order); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // List retrieves a list of posts with pagination, search, and tag filters.
@@ -45,6 +108,8 @@ func (h *PostHandler) List(c *fiber.Ctx) error {
 	limit, _ := strconv.Atoi(c.Query("limit", "10"))
 	search := strings.TrimSpace(c.Query("search", ""))
 	tag := strings.TrimSpace(c.Query("tag", ""))
+	articleTagID, _ := strconv.Atoi(c.Query("article_tag_id", "0"))
+	excludeID, _ := strconv.Atoi(c.Query("exclude_id", "0"))
 
 	if page < 1 {
 		page = 1
@@ -68,6 +133,16 @@ func (h *PostHandler) List(c *fiber.Ctx) error {
 		tagJSON, _ := json.Marshal([]string{tag})
 		countQuery += fmt.Sprintf(" AND tags @> $%d::jsonb", argCount)
 		countArgs = append(countArgs, string(tagJSON))
+		argCount++
+	}
+	if articleTagID > 0 {
+		countQuery += fmt.Sprintf(" AND EXISTS (SELECT 1 FROM post_article_tags pat WHERE pat.post_id=posts.id AND pat.article_tag_id=$%d)", argCount)
+		countArgs = append(countArgs, articleTagID)
+		argCount++
+	}
+	if excludeID > 0 {
+		countQuery += fmt.Sprintf(" AND id <> $%d", argCount)
+		countArgs = append(countArgs, excludeID)
 		argCount++
 	}
 
@@ -96,8 +171,18 @@ func (h *PostHandler) List(c *fiber.Ctx) error {
 		selectArgs = append(selectArgs, string(tagJSON))
 		argSelectCount++
 	}
+	if articleTagID > 0 {
+		selectQuery += fmt.Sprintf(" AND EXISTS (SELECT 1 FROM post_article_tags pat WHERE pat.post_id=posts.id AND pat.article_tag_id=$%d)", argSelectCount)
+		selectArgs = append(selectArgs, articleTagID)
+		argSelectCount++
+	}
+	if excludeID > 0 {
+		selectQuery += fmt.Sprintf(" AND id <> $%d", argSelectCount)
+		selectArgs = append(selectArgs, excludeID)
+		argSelectCount++
+	}
 
-	selectQuery += fmt.Sprintf(" ORDER BY id DESC LIMIT $%d OFFSET $%d", argSelectCount, argSelectCount+1)
+	selectQuery += fmt.Sprintf(" ORDER BY created_at DESC, id DESC LIMIT $%d OFFSET $%d", argSelectCount, argSelectCount+1)
 	selectArgs = append(selectArgs, limit, offset)
 
 	rows, err := h.DB.Pool.Query(ctx, selectQuery, selectArgs...)
@@ -124,8 +209,16 @@ func (h *PostHandler) List(c *fiber.Ctx) error {
 		if post.Tags == nil {
 			post.Tags = []string{}
 		}
-
 		posts = append(posts, post)
+	}
+	if err := rows.Err(); err != nil {
+		return c.Status(500).JSON(fiber.Map{"error": "failed while reading posts"})
+	}
+	rows.Close()
+	for index := range posts {
+		if err := h.loadArticleTags(ctx, &posts[index]); err != nil {
+			return c.Status(500).JSON(fiber.Map{"error": "failed to load article tags"})
+		}
 	}
 
 	return c.JSON(fiber.Map{
@@ -170,6 +263,9 @@ func (h *PostHandler) Get(c *fiber.Ctx) error {
 	if post.Tags == nil {
 		post.Tags = []string{}
 	}
+	if err := h.loadArticleTags(ctx, &post); err != nil {
+		return c.Status(500).JSON(fiber.Map{"error": "failed to load article tags"})
+	}
 
 	return c.JSON(post)
 }
@@ -201,7 +297,7 @@ func (h *PostHandler) Create(c *fiber.Ctx) error {
 		}
 	}
 	if len(cleanTags) > 3 {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "分類標籤最多僅能設定三個"})
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "特色標籤最多僅能設定三個"})
 	}
 
 	tagsJSON, err := json.Marshal(cleanTags)
@@ -210,6 +306,11 @@ func (h *PostHandler) Create(c *fiber.Ctx) error {
 	}
 
 	ctx := context.Background()
+	tx, err := h.DB.Pool.Begin(ctx)
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{"error": "failed to begin transaction"})
+	}
+	defer tx.Rollback(ctx)
 	var post models.Post
 	query := `
 		INSERT INTO posts (
@@ -218,7 +319,7 @@ func (h *PostHandler) Create(c *fiber.Ctx) error {
 		RETURNING id, title, tags, image, content, ad_link, seo_title, seo_keywords, seo_description, created_at, updated_at`
 
 	var returnedTagsJSON []byte
-	err = h.DB.Pool.QueryRow(ctx, query,
+	err = tx.QueryRow(ctx, query,
 		req.Title, string(tagsJSON), req.Image, req.Content, req.AdLink,
 		req.SEOTitle, req.SEOKeywords, req.SEODescription,
 	).Scan(
@@ -229,9 +330,28 @@ func (h *PostHandler) Create(c *fiber.Ctx) error {
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to create post: %v", err)})
 	}
+	articleTagIDs := []int{}
+	if req.ArticleTagIDs == nil {
+		var latestID int
+		if err := tx.QueryRow(ctx, `SELECT id FROM categories WHERE type='article_tag' AND external_code='latest_posts'`).Scan(&latestID); err != nil {
+			return c.Status(500).JSON(fiber.Map{"error": "failed to load latest article tag"})
+		}
+		articleTagIDs = []int{latestID}
+	} else {
+		articleTagIDs = *req.ArticleTagIDs
+	}
+	if err := replacePostArticleTags(ctx, tx, post.ID, articleTagIDs); err != nil {
+		return c.Status(400).JSON(fiber.Map{"error": err.Error()})
+	}
+	if err := tx.Commit(ctx); err != nil {
+		return c.Status(500).JSON(fiber.Map{"error": "failed to commit post"})
+	}
 
 	if len(returnedTagsJSON) > 0 {
 		_ = json.Unmarshal(returnedTagsJSON, &post.Tags)
+	}
+	if err := h.loadArticleTags(ctx, &post); err != nil {
+		return c.Status(500).JSON(fiber.Map{"error": "failed to load article tags"})
 	}
 
 	return c.JSON(post)
@@ -269,7 +389,7 @@ func (h *PostHandler) Update(c *fiber.Ctx) error {
 		}
 	}
 	if len(cleanTags) > 3 {
-		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "分類標籤最多僅能設定三個"})
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "特色標籤最多僅能設定三個"})
 	}
 
 	tagsJSON, err := json.Marshal(cleanTags)
@@ -278,6 +398,11 @@ func (h *PostHandler) Update(c *fiber.Ctx) error {
 	}
 
 	ctx := context.Background()
+	tx, err := h.DB.Pool.Begin(ctx)
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{"error": "failed to begin transaction"})
+	}
+	defer tx.Rollback(ctx)
 	query := `
 		UPDATE posts SET
 			title = $1,
@@ -291,13 +416,24 @@ func (h *PostHandler) Update(c *fiber.Ctx) error {
 			updated_at = CURRENT_TIMESTAMP
 		WHERE id = $9`
 
-	_, err = h.DB.Pool.Exec(ctx, query,
+	result, err := tx.Exec(ctx, query,
 		req.Title, string(tagsJSON), req.Image, req.Content, req.AdLink,
 		req.SEOTitle, req.SEOKeywords, req.SEODescription, id,
 	)
 
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": fmt.Sprintf("failed to update post: %v", err)})
+	}
+	if result.RowsAffected() == 0 {
+		return c.Status(404).JSON(fiber.Map{"error": "post not found"})
+	}
+	if req.ArticleTagIDs != nil {
+		if err := replacePostArticleTags(ctx, tx, id, *req.ArticleTagIDs); err != nil {
+			return c.Status(400).JSON(fiber.Map{"error": err.Error()})
+		}
+	}
+	if err := tx.Commit(ctx); err != nil {
+		return c.Status(500).JSON(fiber.Map{"error": "failed to commit post"})
 	}
 
 	// Retrieve updated object
@@ -318,6 +454,9 @@ func (h *PostHandler) Update(c *fiber.Ctx) error {
 
 	if len(returnedTagsJSON) > 0 {
 		_ = json.Unmarshal(returnedTagsJSON, &post.Tags)
+	}
+	if err := h.loadArticleTags(ctx, &post); err != nil {
+		return c.Status(500).JSON(fiber.Map{"error": "failed to load article tags"})
 	}
 
 	return c.JSON(post)

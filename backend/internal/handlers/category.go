@@ -77,6 +77,9 @@ func (h *CategoryHandler) Create(c *fiber.Ctx) error {
 	if input.Type == "" || input.Name == "" {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "type and name are required"})
 	}
+	if input.Type == "hotel_tag" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "use /api/hotel-tags to manage hotel tags"})
+	}
 
 	ctx := context.Background()
 	var cat models.Category
@@ -116,6 +119,10 @@ func (h *CategoryHandler) Update(c *fiber.Ctx) error {
 	}
 
 	ctx := context.Background()
+	var categoryType string
+	if err := h.DB.Pool.QueryRow(ctx, `SELECT type FROM categories WHERE id = $1`, id).Scan(&categoryType); err == nil && categoryType == "hotel_tag" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "use /api/hotel-tags to manage hotel tags"})
+	}
 	result, err := h.DB.Pool.Exec(ctx,
 		`UPDATE categories SET name = $1, sort_order = $2 WHERE id = $3`,
 		input.Name, input.SortOrder, id,
@@ -141,6 +148,10 @@ func (h *CategoryHandler) Delete(c *fiber.Ctx) error {
 	}
 
 	ctx := context.Background()
+	var categoryType string
+	if err := h.DB.Pool.QueryRow(ctx, `SELECT type FROM categories WHERE id = $1`, id).Scan(&categoryType); err == nil && categoryType == "hotel_tag" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "use /api/hotel-tags to manage hotel tags"})
+	}
 	result, err := h.DB.Pool.Exec(ctx, `DELETE FROM categories WHERE id = $1`, id)
 
 	if err != nil {

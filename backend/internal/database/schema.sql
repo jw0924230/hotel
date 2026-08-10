@@ -241,6 +241,35 @@ DO UPDATE SET sort_order = EXCLUDED.sort_order;
 ALTER TABLE hotels ADD COLUMN IF NOT EXISTS township_category_id INT REFERENCES categories(id) ON DELETE SET NULL;
 CREATE INDEX IF NOT EXISTS idx_hotels_township_category_id ON hotels(township_category_id);
 
+-- Managed, reusable hotel tags. A hotel can reference up to five through the API.
+CREATE TABLE IF NOT EXISTS hotel_tags (
+    hotel_id VARCHAR(255) NOT NULL REFERENCES hotels(id) ON DELETE CASCADE,
+    tag_id INT NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
+    sort_order INT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (hotel_id, tag_id)
+);
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM information_schema.columns
+        WHERE table_name = 'hotel_tags' AND column_name = 'sort_order'
+    ) THEN
+        ALTER TABLE hotel_tags ADD COLUMN sort_order INT NOT NULL DEFAULT 0;
+        WITH ranked AS (
+            SELECT ht.hotel_id, ht.tag_id,
+                   ROW_NUMBER() OVER (PARTITION BY ht.hotel_id ORDER BY c.sort_order, c.id) - 1 AS position
+            FROM hotel_tags ht
+            JOIN categories c ON c.id = ht.tag_id
+        )
+        UPDATE hotel_tags ht
+        SET sort_order = ranked.position
+        FROM ranked
+        WHERE ht.hotel_id = ranked.hotel_id AND ht.tag_id = ranked.tag_id;
+    END IF;
+END $$;
+CREATE INDEX IF NOT EXISTS idx_hotel_tags_tag_id ON hotel_tags(tag_id, hotel_id);
+
 -- Seed hotel category data
 DELETE FROM categories
 WHERE type = 'hotel_category'
@@ -270,6 +299,39 @@ CREATE TABLE IF NOT EXISTS posts (
 
 -- Index for searching posts
 CREATE INDEX IF NOT EXISTS idx_posts_title ON posts(title);
+
+-- Managed article tags are distinct from posts.tags, which remains the legacy
+-- free-form article classification field.
+CREATE TABLE IF NOT EXISTS post_article_tags (
+    post_id INT NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
+    article_tag_id INT NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
+    sort_order INT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (post_id, article_tag_id)
+);
+CREATE INDEX IF NOT EXISTS idx_post_article_tags_tag_id
+ON post_article_tags(article_tag_id, post_id);
+
+INSERT INTO categories (type, name, external_code, sort_order)
+VALUES ('article_tag', '最新文章', 'latest_posts', 1)
+ON CONFLICT (external_code) WHERE external_code IS NOT NULL
+DO UPDATE SET type = 'article_tag', name = '最新文章';
+
+CREATE TABLE IF NOT EXISTS schema_migrations (
+    migration_key TEXT PRIMARY KEY,
+    applied_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+DO $$
+DECLARE latest_tag_id INT;
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM schema_migrations WHERE migration_key = 'backfill_latest_article_tag_v1') THEN
+        SELECT id INTO latest_tag_id FROM categories WHERE external_code = 'latest_posts';
+        INSERT INTO post_article_tags (post_id, article_tag_id, sort_order)
+        SELECT id, latest_tag_id, 0 FROM posts
+        ON CONFLICT DO NOTHING;
+        INSERT INTO schema_migrations (migration_key) VALUES ('backfill_latest_article_tag_v1');
+    END IF;
+END $$;
 
 -- Homepage featured hotels slots selection
 CREATE TABLE IF NOT EXISTS homepage_hotels (

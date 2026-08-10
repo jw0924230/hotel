@@ -90,7 +90,7 @@ func main() {
 		// Set default SEO TKD fields based on title and content excerpt
 		seoTitle := sa.Title
 		seoKeywords := strings.Join([]string{sa.Category, "飯店推薦", "汽車旅館休息"}, ",")
-		
+
 		excerpt := sa.Title
 		if len(sa.Content) > 150 {
 			excerpt = sa.Content[:150]
@@ -118,6 +118,13 @@ func main() {
 		if err != nil {
 			log.Printf("❌ Failed to import article %d: %v", idNum, err)
 		} else {
+			if _, tagErr := db.Pool.Exec(ctx, `
+				INSERT INTO post_article_tags (post_id, article_tag_id, sort_order)
+				SELECT $1, id, 0 FROM categories
+				WHERE type = 'article_tag' AND external_code = 'latest_posts'
+				ON CONFLICT DO NOTHING`, idNum); tagErr != nil {
+				log.Printf("❌ Failed to assign latest article tag to article %d: %v", idNum, tagErr)
+			}
 			log.Printf("✅ Imported post %d: %s", idNum, sa.Title)
 		}
 	}
@@ -130,7 +137,7 @@ func markdownToHTML(md string) string {
 	md = strings.ReplaceAll(md, "\r\n", "\n")
 	blocks := strings.Split(md, "\n\n")
 	var htmlBlocks []string
-	
+
 	inList := false
 	var listItems []string
 
@@ -208,10 +215,10 @@ func parseInlines(text string) string {
 		if imgEnd == -1 {
 			break
 		}
-		
+
 		alt := text[imgStart+2 : imgStart+imgMid]
 		url := text[imgStart+imgMid+2 : imgStart+imgMid+imgEnd]
-		
+
 		tag := fmt.Sprintf(`<img src="%s" alt="%s" />`, url, alt)
 		text = text[:imgStart] + tag + text[imgStart+imgMid+imgEnd+1:]
 	}
@@ -230,10 +237,10 @@ func parseInlines(text string) string {
 		if lnkEnd == -1 {
 			break
 		}
-		
+
 		val := text[lnkStart+1 : lnkStart+lnkMid]
 		url := text[lnkStart+lnkMid+2 : lnkStart+lnkMid+lnkEnd]
-		
+
 		tag := fmt.Sprintf(`<a href="%s" target="_blank">%s</a>`, url, val)
 		text = text[:lnkStart] + tag + text[lnkStart+lnkMid+lnkEnd+1:]
 	}

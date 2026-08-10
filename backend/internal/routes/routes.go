@@ -43,6 +43,23 @@ func Setup(app *fiber.App, db *database.DB) {
 	api.Put("/categories/:id", middleware.JWTMiddleware(), categoryHandler.Update)
 	api.Delete("/categories/:id", middleware.JWTMiddleware(), categoryHandler.Delete)
 
+	// Managed hotel tags. Anyone may read tags; only admins may mutate definitions.
+	hotelTagHandler := handlers.NewHotelTagHandler(db)
+	api.Get("/hotel-tags", hotelTagHandler.List)
+	api.Get("/hotel-tags/:id", hotelTagHandler.Get)
+	api.Get("/hotel-tags/:id/hotels", middleware.JWTMiddleware(), middleware.AdminOnly(), hotelTagHandler.Usage)
+	api.Post("/hotel-tags", middleware.JWTMiddleware(), middleware.AdminOnly(), hotelTagHandler.Create)
+	api.Put("/hotel-tags/:id", middleware.JWTMiddleware(), middleware.AdminOnly(), hotelTagHandler.Update)
+	api.Delete("/hotel-tags/:id", middleware.JWTMiddleware(), middleware.AdminOnly(), hotelTagHandler.Delete)
+
+	articleTagHandler := handlers.NewArticleTagHandler(db)
+	api.Get("/article-tags", articleTagHandler.List)
+	api.Get("/article-tags/:id", articleTagHandler.Get)
+	api.Get("/article-tags/:id/posts", middleware.JWTMiddleware(), middleware.AdminOnly(), articleTagHandler.Usage)
+	api.Post("/article-tags", middleware.JWTMiddleware(), middleware.AdminOnly(), articleTagHandler.Create)
+	api.Put("/article-tags/:id", middleware.JWTMiddleware(), middleware.AdminOnly(), articleTagHandler.Update)
+	api.Delete("/article-tags/:id", middleware.JWTMiddleware(), middleware.AdminOnly(), articleTagHandler.Delete)
+
 	// Protected routes (require JWT)
 	api.Put("/hotels/:id", middleware.JWTMiddleware(), hotelHandler.Upsert)
 
