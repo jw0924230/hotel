@@ -10,6 +10,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { joinURL } from "ufo";
+import { buildAreaSeoDescription } from "~/utils/seo";
 
 definePageMeta({ key: (route) => route.fullPath });
 
@@ -57,7 +58,7 @@ const result = computed(() => fetched.value || { hotels: [], total: 0 });
 
 useSeoMeta({
   title: computed(() => `${currentCity.value.name}飯店、商旅、汽車旅館住宿與休息推薦`),
-  description: computed(() => `${currentCity.value.name}飯店、商旅與汽車旅館推薦，依鄉鎮市區快速篩選住宿及休息方案。`),
+  description: computed(() => buildAreaSeoDescription(currentCity.value.name)),
 });
 
 useHead({
