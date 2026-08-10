@@ -23,10 +23,9 @@ func main() {
 	cfg := config.Load()
 
 	// Connect to database
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
-	db, err := database.Connect(ctx, cfg.DatabaseURL)
+	connectCtx, cancelConnect := context.WithTimeout(context.Background(), 10*time.Second)
+	db, err := database.Connect(connectCtx, cfg.DatabaseURL)
+	cancelConnect()
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
@@ -34,10 +33,15 @@ func main() {
 
 	log.Println("✅ Connected to PostgreSQL")
 
-	// Automatically run database initialization SQL
-	if err := db.InitSchema(ctx); err != nil {
+	// Production data migrations can take longer than the initial connection.
+	// Keep their deadline independent so connection time does not consume it.
+	log.Println("⏳ Initializing database schema")
+	schemaCtx, cancelSchema := context.WithTimeout(context.Background(), 3*time.Minute)
+	if err := db.InitSchema(schemaCtx); err != nil {
+		cancelSchema()
 		log.Fatalf("Failed to initialize database schema: %v", err)
 	}
+	cancelSchema()
 	log.Println("✅ Database schema initialized successfully")
 
 	// Create Fiber app
