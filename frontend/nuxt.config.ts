@@ -1,7 +1,21 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
-const getDynamicRoutes = async () => {
-  const routes = ['/blog']
+type RouteManifest = {
+  static: string[]
+  hotels: string[]
+  areas: string[]
+  articles: string[]
+  tags: string[]
+}
+
+const getRouteManifest = async (): Promise<RouteManifest> => {
+  const manifest: RouteManifest = {
+    static: ['/', '/blog'],
+    hotels: [],
+    areas: [],
+    articles: [],
+    tags: [],
+  }
   const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:8080'
   const buildToken = process.env.NEXT_PUBLIC_SSG_BUILD_TOKEN
   const headers: Record<string, string> = {}
@@ -10,22 +24,23 @@ const getDynamicRoutes = async () => {
   }
 
   try {
-    const [hotelsResponse, locationsResponse, postsResponse] = await Promise.all([
+    const [hotelsResponse, locationsResponse, postsResponse, tagsResponse, articleTagsResponse] = await Promise.all([
       fetch(`${backendUrl}/api/hotels?limit=10000`, { headers }),
       fetch(`${backendUrl}/api/regions/combined`, { headers }),
-      fetch(`${backendUrl}/api/posts?limit=10000`, { headers })
+      fetch(`${backendUrl}/api/posts?limit=10000`, { headers }),
+      fetch(`${backendUrl}/api/hotel-tags`, { headers }),
+      fetch(`${backendUrl}/api/article-tags`, { headers })
     ])
 
-    const requiredResponses = [hotelsResponse, locationsResponse, postsResponse]
+    const requiredResponses = [hotelsResponse, locationsResponse, postsResponse, tagsResponse, articleTagsResponse]
     if (requiredResponses.some(response => !response.ok)) {
       throw new Error(`Required API failed during SSG route discovery: ${requiredResponses.map(r => r.status).join(', ')}`)
     }
 
     const hotels = await hotelsResponse.json()
     for (const hotel of hotels.data || []) {
-      routes.push(`/detail/${hotel.id}`)
+      manifest.hotels.push(`/detail/${hotel.id}`)
     }
-
     const locations = await locationsResponse.json()
     const townships = (locations.cities || []).flatMap((city: any) => city.townships || [])
     if (townships.length !== 368) {
@@ -41,31 +56,52 @@ const getDynamicRoutes = async () => {
       const cityResult = await cityResponse.json()
       const cityPages = Math.max(1, Math.ceil((cityResult.total || 0) / 20))
       for (let page = 1; page <= cityPages; page++) {
-        routes.push(`/area/${city.id}/${page}`)
+        manifest.areas.push(`/area/${city.id}/${page}`)
       }
 
       for (const township of city.townships || []) {
         const townshipPages = Math.max(1, Math.ceil((township.hotel_count || 0) / 20))
         for (let page = 1; page <= townshipPages; page++) {
-          routes.push(`/area/${city.id}/${township.id}/${page}`)
+          manifest.areas.push(`/area/${city.id}/${township.id}/${page}`)
         }
       }
     }
 
     const posts = await postsResponse.json()
     for (const post of posts.data || []) {
-      routes.push(`/blog/${post.id}`)
+      manifest.articles.push(`/blog/${post.id}`)
+    }
+
+    const tags = await tagsResponse.json()
+    for (const tag of tags || []) {
+      const tagPages = Math.max(1, Math.ceil((tag.enabled_hotel_count || 0) / 20))
+      for (let page = 1; page <= tagPages; page++) {
+        manifest.tags.push(`/tag/${tag.id}/${page}`)
+      }
+    }
+
+    const articleTags = await articleTagsResponse.json()
+    for (const tag of articleTags || []) {
+      const tagPages = Math.max(1, Math.ceil((tag.post_count || 0) / 12))
+      for (let page = 1; page <= tagPages; page++) manifest.tags.push(`/blog/tag/${tag.id}/${page}`)
     }
   } catch (e) {
     if (process.env.BACKEND_API_URL) throw e
     console.warn('Dynamic API routes unavailable during local build:', e)
   }
 
-  return [...new Set(routes)]
+  for (const key of Object.keys(manifest) as Array<keyof RouteManifest>) {
+    manifest[key] = [...new Set(manifest[key])]
+  }
+  return manifest
 }
 
-let dynamicRoutesPromise: Promise<string[]> | undefined
-const resolveDynamicRoutes = () => dynamicRoutesPromise ||= getDynamicRoutes()
+let routeManifestPromise: Promise<RouteManifest> | undefined
+const resolveRouteManifest = () => routeManifestPromise ||= getRouteManifest()
+const resolvePrerenderRoutes = async () => {
+  const manifest = await resolveRouteManifest()
+  return [...new Set(Object.values(manifest).flat())]
+}
 
 export default defineNuxtConfig({
   devServer: {
@@ -87,7 +123,13 @@ export default defineNuxtConfig({
     name: '休息3小時'
   },
   sitemap: {
-    urls: () => resolveDynamicRoutes()
+    sitemaps: {
+      static: { includeAppSources: false, urls: async () => (await resolveRouteManifest()).static, chunks: 10000 },
+      hotels: { includeAppSources: false, urls: async () => (await resolveRouteManifest()).hotels, chunks: 10000 },
+      areas: { includeAppSources: false, urls: async () => (await resolveRouteManifest()).areas, chunks: 10000 },
+      articles: { includeAppSources: false, urls: async () => (await resolveRouteManifest()).articles, chunks: 10000 },
+      tags: { includeAppSources: false, urls: async () => (await resolveRouteManifest()).tags, chunks: 10000 },
+    },
   },
   nitro: {
     output: {
@@ -96,7 +138,7 @@ export default defineNuxtConfig({
     prerender: {
       failOnError: true,
       concurrency: 4,
-      routes: ['/'] // explicit root
+      routes: ['/', '/sitemap_index.xml']
     }
   },
   app: {
@@ -122,7 +164,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         return
       }
 
-      const routes = await resolveDynamicRoutes()
+      const routes = await resolvePrerenderRoutes()
 
       // Add to prerender routes
       // Add to prerender routes

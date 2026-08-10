@@ -25,7 +25,7 @@
     </section>
 
     <aside
-      v-show="showFloating"
+      v-show="enableFloating && showFloating"
       class="article-toc article-toc-floating"
       :class="`article-toc-floating-${context}`"
       aria-label="浮動文章目錄"
@@ -62,6 +62,10 @@ const props = defineProps({
   context: {
     type: String as PropType<'page' | 'modal'>,
     default: 'page'
+  },
+  enableFloating: {
+    type: Boolean,
+    default: true
   }
 })
 
@@ -221,19 +225,20 @@ onBeforeUnmount(() => {
   display: none;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1101px) {
   .article-toc-floating {
     position: fixed;
-    top: 100px;
+    top: 24px;
     z-index: 1010;
     display: block;
-    width: 190px;
-    max-height: calc(100vh - 130px);
+    width: 210px;
+    max-height: calc(100vh - 48px);
     overflow-y: auto;
   }
 
   .article-toc-floating-page {
-    right: calc(50% + 420px);
+    right: auto;
+    left: max(15px, calc(50% - 600px));
   }
 
   .article-toc-floating-modal {

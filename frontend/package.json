@@ -6,8 +6,9 @@
     "build": "nuxt build",
     "dev": "nuxt dev --port 3002",
     "generate": "nuxt generate",
+    "postgenerate": "node scripts/create-sitemap-alias.js",
     "validate:ssg": "node scripts/validate_ssg.js",
-    "preview": "nuxt preview",
+    "preview": "nuxt preview --port 3002",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {

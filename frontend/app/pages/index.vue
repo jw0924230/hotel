@@ -63,6 +63,13 @@
           </div>
         </section>
       </div>
+      <section v-if="latestPosts.length" class="latest-posts-section">
+        <div class="sec-header"><h2 class="city-title">最新文章</h2><NuxtLink v-if="latestTag" :to="`/blog/tag/${latestTag.id}/1`" class="more-link">查看全部 <span class="arrow">→</span></NuxtLink></div>
+        <div class="article-grid"><article v-for="post in latestPosts" :key="post.id" class="article-card">
+          <NuxtLink :to="`/blog/${post.id}`" class="card-link"><div class="article-image"><img v-if="post.image" :src="post.image" :alt="post.title" loading="lazy"><span>{{ post.tags?.[0] || '精選專欄' }}</span></div><div class="article-info"><time>{{ formatPostDate(post.created_at) }}</time><h3>{{ post.title }}</h3><p>{{ postExcerpt(post.content) }}</p></div></NuxtLink>
+          <div class="article-tags"><NuxtLink v-for="tag in post.article_tags || []" :key="tag.id" :to="`/blog/tag/${tag.id}/1`">{{ tag.name }}</NuxtLink></div>
+        </article></div>
+      </section>
     </div>
   </div>
 </template>
@@ -88,6 +95,18 @@ const { data: locationData } = await useAsyncData('locations', () =>
 )
 
 const regionCities = computed(() => locationData.value?.regions || [])
+
+const { data: latestData } = await useAsyncData('home-latest-posts', async () => {
+  const tags = await $fetch<any[]>(`${config.public.backendApiUrl}/api/article-tags`)
+  const latest = (tags || []).find(tag => tag.is_system)
+  if (!latest) return { tag: null, posts: [] }
+  const result = await $fetch<any>(`${config.public.backendApiUrl}/api/posts`, { query: { article_tag_id: latest.id, page: 1, limit: 3 } })
+  return { tag: latest, posts: result.data || [] }
+})
+const latestTag = computed(() => latestData.value?.tag || null)
+const latestPosts = computed(() => latestData.value?.posts || [])
+const formatPostDate = (value:string) => value ? value.split('T')[0] : ''
+const postExcerpt = (html:string) => (html || '').replace(/<[^>]+>/g, '').slice(0, 80)
 
 const { data: selectedCitiesData } = await useAsyncData('home-cities', async () => {
   let cities = locationData.value?.cities
@@ -231,6 +250,7 @@ const onDrag = (e: MouseEvent) => {
 }
 
 .city-section { margin-bottom: 50px; }
+.latest-posts-section{margin:20px 0 55px}.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.article-card{overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 4px 14px #0000000d}.article-image{position:relative;height:190px;background:#e2e8f0}.article-image img{width:100%;height:100%;object-fit:cover}.article-image span{position:absolute;top:14px;left:14px;border-radius:999px;background:#2c3e50dd;padding:5px 10px;color:#fff;font-size:12px}.article-info{padding:20px}.article-info time{color:#95a5a6;font-size:13px}.article-info h3{color:#2c3e50;line-height:1.4}.article-info p{color:#7f8c8d;line-height:1.6}.article-tags{display:flex;flex-wrap:wrap;gap:6px;padding:0 20px 20px}.article-tags a{border-radius:999px;background:#f1f5f9;padding:4px 9px;color:#64748b;font-size:11px;font-weight:700;text-decoration:none}@media(max-width:768px){.article-grid{grid-template-columns:1fr}}
 
 /* Header Styling */
 .sec-header { 

@@ -13,32 +13,28 @@
         </div>
       </div>
 
-      <nav class="township-filter" aria-label="鄉鎮市區篩選">
-        <button :class="{ active: !township }" type="button" @click="goCity">全部</button>
-        <button
-          v-for="item in city.townships || []"
-          :key="item.id"
-          :class="{ active: township?.id === item.id }"
-          type="button"
-          @click="goTownship(item)"
-        >
-          {{ item.name }}
-        </button>
-      </nav>
+      <TownshipSingleFilter
+        :city="city"
+        :selected-township-id="township ? Number(township.id) : null"
+        @select="goTownship"
+      />
 
       <div v-if="loading" class="loading-state">正在取得最新資料...</div>
       <div v-else-if="hotels.length" class="hotel-grid">
         <div v-for="hotel in hotels" :key="hotel.id" class="h-card">
-          <NuxtLink :to="`/detail/${hotel.id}`" class="card-link">
+          <NuxtLink :to="`/detail/${hotel.id}`" class="card-link h-image-link">
             <div class="h-img-wrapper">
               <img :src="hotel.image" :alt="hotel.name" loading="lazy" @error="handleImageError">
               <div v-if="hotel.price" class="price-tag">{{ hotel.price }}</div>
             </div>
-            <div class="h-info">
-              <h2 class="h-name">{{ hotel.name }}</h2>
-              <div class="h-address">{{ hotel.address }}</div>
-            </div>
           </NuxtLink>
+          <div class="h-info">
+            <NuxtLink :to="`/detail/${hotel.id}`" class="hotel-name-link"><h2 class="h-name">{{ hotel.name }}</h2></NuxtLink>
+            <div class="h-address">{{ hotel.address }}</div>
+            <div v-if="hotel.tags?.length" class="hotel-card-tags" aria-label="旅館標籤">
+              <NuxtLink v-for="tag in hotel.tags" :key="tag.id" :to="`/tag/${tag.id}/1`">{{ tag.name }}</NuxtLink>
+            </div>
+          </div>
         </div>
       </div>
       <div v-else class="not-found"><p>此分類目前沒有旅館資料</p></div>
@@ -66,7 +62,7 @@ const props = defineProps<{
 
 const config = useRuntimeConfig();
 const baseURL = config.app.baseURL;
-const { defaultImage, handleImageError } = useHotelData();
+const { handleImageError } = useHotelData();
 const hotels = ref(props.initialHotels);
 const total = ref(props.initialTotal);
 const loading = ref(false);
@@ -88,6 +84,7 @@ const mapHotels = (items: any[]) => items.map((hotel) => ({
     : joinURL(baseURL, `data/images/${hotel.id}.jpg`),
   price: hotel.price || "",
   address: hotel.address,
+  tags: hotel.tags || [],
 }));
 
 const fetchLiveAndNavigate = async (township: any | null, targetPage: number) => {
@@ -98,7 +95,7 @@ const fetchLiveAndNavigate = async (township: any | null, targetPage: number) =>
       limit: String(pageSize),
       area: props.city.name,
     });
-    if (township) params.set("township_id", String(township.id));
+    if (township) params.set("township_ids", String(township.id));
     const result = await $fetch<any>(`${config.public.backendApiUrl}/api/hotels?${params}`);
     const key = township
       ? `area-${props.city.id}-${township.id}-${targetPage}`
@@ -113,9 +110,9 @@ const fetchLiveAndNavigate = async (township: any | null, targetPage: number) =>
   }
 };
 
-const goTownship = (item: any) => {
-  if (props.township?.id === item.id && props.page === 1) return;
-  void fetchLiveAndNavigate(item, 1);
+const goTownship = (township: any | null) => {
+  if (!township && !props.township && props.page === 1) return;
+  void fetchLiveAndNavigate(township, 1);
 };
 const goCity = () => {
   if (!props.township && props.page === 1) return;
@@ -133,19 +130,20 @@ const goPage = (targetPage: number) => void fetchLiveAndNavigate(props.township 
 .breadcrumbs { color: #7f8c8d; font-size: 14px; }
 .breadcrumbs a, .breadcrumbs button { color: #2c3e50; text-decoration: none; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; }
 .breadcrumbs .active { color: #e74c3c; }
-.township-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-.township-filter button { border: 1px solid #e2e8f0; border-radius: 20px; background: white; color: #475569; padding: 7px 14px; cursor: pointer; }
-.township-filter button:hover, .township-filter button.active { background: #e74c3c; border-color: #e74c3c; color: white; }
 .hotel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .h-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,.05); transition: transform .2s; }
 .h-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,.1); }
 .card-link { text-decoration: none; color: inherit; display: block; }
+.hotel-name-link { color: inherit; text-decoration: none; }
 .h-img-wrapper { position: relative; height: 160px; overflow: hidden; }
 .h-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 .price-tag { position: absolute; bottom: 0; right: 0; background: rgba(231,76,60,.9); color: white; padding: 5px 10px; font-size: 13px; font-weight: 700; border-top-left-radius: 8px; }
 .h-info { padding: 15px; }
 .h-name { font-weight: 700; font-size: 16px; margin: 0 0 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .h-address { font-size: 13px; color: #7f8c8d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hotel-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.hotel-card-tags a { border-radius: 999px; background: #f1f5f9; padding: 4px 9px; color: #64748b; font-size: 11px; font-weight: 700; text-decoration: none; }
+.hotel-card-tags a:hover { background: #fee2e2; color: #c0392b; }
 .not-found, .loading-state { text-align: center; padding: 40px; color: #7f8c8d; }
 .pagination { display: flex; justify-content: center; align-items: center; margin-top: 40px; gap: 15px; }
 .page-btn { padding: 8px 16px; background: white; border: 1px solid #ddd; border-radius: 4px; color: #2c3e50; cursor: pointer; }

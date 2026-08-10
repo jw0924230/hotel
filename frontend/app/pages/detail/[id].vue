@@ -18,6 +18,8 @@
           </div>
         </div>
 
+        <KlookSearchWidget />
+
         <div class="detail-grid">
           <!-- Left Column: Image or Slider -->
           <div class="detail-left">
@@ -101,6 +103,13 @@
               <div class="pricing-row-single">
                 <h2 class="pricing-label">休息價格</h2>
                 <span class="pricing-val">{{ formatRestPricing(hotel) }}</span>
+              </div>
+
+              <div v-if="hotel.tags?.length" class="hotel-detail-tags" aria-label="旅館標籤">
+                <h2 class="pricing-label">特色分類</h2>
+                <div class="hotel-detail-tag-list">
+                  <NuxtLink v-for="tag in hotel.tags" :key="tag.id" :to="`/tag/${tag.id}/1`">{{ tag.name }}</NuxtLink>
+                </div>
               </div>
             </div>
 
@@ -633,6 +642,10 @@ useSeoMeta({
 .breadcrumbs .active {
   color: #e74c3c;
 }
+.hotel-detail-tags { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-top: 12px; }
+.hotel-detail-tag-list { display: flex; flex: 1; flex-wrap: wrap; justify-content: flex-start; gap: 8px; direction: rtl; }
+.hotel-detail-tags a { border-radius: 999px; background: #f1f5f9; padding: 6px 12px; color: #536273; font-size: 13px; font-weight: 700; text-decoration: none; }
+.hotel-detail-tags a:hover { background: #fee2e2; color: #c0392b; }
 
 /* Adjusted Grid */
 .detail-grid {

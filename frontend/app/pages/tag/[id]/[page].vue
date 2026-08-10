@@ -1,9 +1,10 @@
 <template>
-  <AreaResultsPage
-    :city="currentCity"
+  <TagResultsPage
+    :tag="tag"
     :page="currentPage"
     :initial-hotels="result.hotels"
     :initial-total="result.total"
+    :all-tags="allTags || []"
   />
 </template>
 
@@ -16,19 +17,18 @@ definePageMeta({ key: (route) => route.fullPath });
 const route = useRoute();
 const config = useRuntimeConfig();
 const baseURL = config.app.baseURL;
-const areaId = computed(() => String(route.params.id));
+const tagId = computed(() => String(route.params.id));
 const currentPage = computed(() => Number(route.params.page) || 1);
-const liveCache = useState<any>("area-live-result", () => null);
+const liveCache = useState<any>("tag-live-result", () => null);
 
-const { data: locations } = await useAsyncData("locations", () =>
-  $fetch<any>(`${config.public.backendApiUrl}/api/regions/combined`),
+const { data: fetchedTag } = await useAsyncData(`hotel-tag-${tagId.value}`, () =>
+  $fetch<any>(`${config.public.backendApiUrl}/api/hotel-tags/${tagId.value}`),
 );
-const currentCity = computed(() =>
-  (locations.value?.cities || []).find((city: any) => String(city.id) === areaId.value) ||
-  { id: Number(areaId.value), name: "未知地區", townships: [] },
+const { data: allTags } = await useAsyncData("hotel-tags-public", () =>
+  $fetch<any[]>(`${config.public.backendApiUrl}/api/hotel-tags`),
 );
-
-const key = computed(() => `area-${areaId.value}-${currentPage.value}`);
+const tag = computed(() => fetchedTag.value || { id: Number(tagId.value), name: "未知標籤" });
+const key = computed(() => `tag-${tagId.value}-${currentPage.value}`);
 const mapHotels = (items: any[]) => items.map((hotel: any) => ({
   id: hotel.id,
   name: hotel.name,
@@ -42,9 +42,8 @@ const mapHotels = (items: any[]) => items.map((hotel: any) => ({
 
 const { data: fetched } = await useAsyncData(key.value, async () => {
   if (liveCache.value?.key === key.value) return liveCache.value;
-  if (!currentCity.value.name || currentCity.value.name === "未知地區") return { hotels: [], total: 0 };
   const response = await $fetch<any>(`${config.public.backendApiUrl}/api/hotels`, {
-    query: { page: currentPage.value, limit: 20, area: currentCity.value.name },
+    query: { page: currentPage.value, limit: 20, tag_id: tagId.value },
   });
   return { hotels: mapHotels(response.data || []), total: response.total || 0 };
 }, {
@@ -56,8 +55,8 @@ const { data: fetched } = await useAsyncData(key.value, async () => {
 const result = computed(() => fetched.value || { hotels: [], total: 0 });
 
 useSeoMeta({
-  title: computed(() => `${currentCity.value.name}飯店、商旅、汽車旅館住宿與休息推薦`),
-  description: computed(() => `${currentCity.value.name}飯店、商旅與汽車旅館推薦，依鄉鎮市區快速篩選住宿及休息方案。`),
+  title: computed(() => `${tag.value.name}飯店、商旅、汽車旅館住宿與休息推薦`),
+  description: computed(() => `${tag.value.name}臨時需要假日休息、平日休息，還是規劃一趟輕旅行的假日住宿、平日住宿，這裡一次整理熱門的飯店、商旅與汽車旅館推薦清單，滿足不同族群與使用情境需求。從適合短暫放鬆的2小時、3小時休息方案，到高 CP 值的過夜住宿選擇，完整比較地點、價格與彈性時段，協助你快速找到最適合的住宿或休息空間，無論情侶約會、商務出差或臨時歇腳，都能安心入住、輕鬆選擇。`),
 });
 
 useHead({

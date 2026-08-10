@@ -64,7 +64,7 @@ onUnmounted(() => {
 html, body { margin: 0; padding: 0; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; padding: 0; margin: 0; }
-.layout-container { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
+.layout-container { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background: #f8f9fa; display: flex; flex-direction: column; min-height: 100vh; overflow-x: clip; }
 .container { width: 100%; padding: 0 15px; margin: 0 auto; }
 .container-wide { max-width: 1200px; }
 

@@ -88,6 +88,7 @@
       <aside class="admin-nav" v-if="userRole === 'admin'">
         <div class="nav-brand">CMS 控制台</div>
         <nav class="nav-links">
+          <div class="nav-section-label">旅館資料</div>
           <button
             :class="['nav-link', { active: activeSection === 'hotels' }]"
             @click="activeSection = 'hotels'"
@@ -108,10 +109,10 @@
             <span>旅館資料管理</span>
           </button>
           <button
-            :class="['nav-link', { active: activeSection === 'posts' }]"
+            :class="['nav-link', { active: activeSection === 'hotel-tags' }]"
             @click="
-              activeSection = 'posts';
-              fetchPosts();
+              activeSection = 'hotel-tags';
+              fetchHotelTags();
             "
           >
             <svg
@@ -127,8 +128,55 @@
                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
               />
             </svg>
-            <span>文章資料管理</span>
+            <span>旅館標籤</span>
           </button>
+          <div class="nav-section-label">文章資料</div>
+          <button
+            :class="['nav-link', { active: activeSection === 'posts' }]"
+            @click="
+              activeSection = 'posts';
+              fetchPosts();
+              fetchArticleTags();
+            "
+          >
+            <svg
+              class="nav-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M7 7h.01M3 11l8.6 8.6a2 2 0 0 0 2.8 0l5.2-5.2a2 2 0 0 0 0-2.8L11 3H5a2 2 0 0 0-2 2v6Z"
+              />
+            </svg>
+            <span>文章</span>
+          </button>
+          <button
+            :class="['nav-link', { active: activeSection === 'article-tags' }]"
+            @click="
+              activeSection = 'article-tags';
+              fetchArticleTags();
+            "
+          >
+            <svg
+              class="nav-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M7 7h.01M3 11l8.6 8.6a2 2 0 0 0 2.8 0l5.2-5.2a2 2 0 0 0 0-2.8L11 3H5a2 2 0 0 0-2 2v6Z"
+              />
+            </svg>
+            <span>文章分類標籤</span>
+          </button>
+          <div class="nav-section-label">網站管理</div>
           <button
             :class="['nav-link', { active: activeSection === 'homepage' }]"
             @click="
@@ -181,7 +229,9 @@
             :disabled="isBackfilling"
             @click="openBackfillModal"
           >
-            <span>{{ isBackfilling ? "分析中..." : "分析並回填鄉鎮市區" }}</span>
+            <span>{{
+              isBackfilling ? "分析中..." : "分析並回填鄉鎮市區"
+            }}</span>
           </button>
           <button
             v-if="token && userRole === 'admin'"
@@ -195,7 +245,7 @@
               viewBox="0 0 24 24"
               stroke="currentColor"
               stroke-width="2"
-              style="width: 16px; height: 16px;"
+              style="width: 16px; height: 16px"
             >
               <path
                 stroke-linecap="round"
@@ -444,16 +494,24 @@
                   {{ editForm.name }}
                   <span class="id-tag">ID: {{ editForm.id }}</span>
                 </h2>
-                <div class="actions" style="display: flex; gap: 8px; align-items: center;">
+                <div
+                  class="actions"
+                  style="display: flex; gap: 8px; align-items: center"
+                >
                   <button
                     type="button"
                     class="btn-preview"
                     @click="openHotelPreviewModal"
-                    style="margin: 0;"
+                    style="margin: 0"
                   >
                     預覽頁面
                   </button>
-                  <button class="btn-save" :disabled="saving" @click="saveHotel" style="margin: 0;">
+                  <button
+                    class="btn-save"
+                    :disabled="saving"
+                    @click="saveHotel"
+                    style="margin: 0"
+                  >
                     {{ saving ? "儲存中..." : "儲存變更" }}
                   </button>
                 </div>
@@ -614,7 +672,9 @@
                         :disabled="!editForm.area"
                         @change="markTownshipManual"
                       >
-                        <option :value="null">{{ editForm.area ? "尚未設定" : "請先選擇地區" }}</option>
+                        <option :value="null">
+                          {{ editForm.area ? "尚未設定" : "請先選擇地區" }}
+                        </option>
                         <option
                           v-for="township in availableTownships"
                           :key="township.id"
@@ -623,7 +683,9 @@
                           {{ township.name }}
                         </option>
                       </select>
-                      <small v-if="townshipSuggestion" class="field-hint">{{ townshipSuggestion }}</small>
+                      <small v-if="townshipSuggestion" class="field-hint">{{
+                        townshipSuggestion
+                      }}</small>
                     </div>
                   </div>
 
@@ -787,6 +849,149 @@
                   />
                 </div>
 
+                <!-- Card 6: Hotel Tags Manager -->
+                <div
+                  v-show="activeHotelTab === 'tags'"
+                  class="card hotel-tag-assignment-card"
+                >
+                  <div class="assignment-heading">
+                    <div>
+                      <h3>標籤管理</h3>
+                      <p>
+                        每間旅館最多設定 5 個標籤，右側順序會同步到前台顯示。
+                      </p>
+                    </div>
+                    <span
+                      class="status-badge"
+                      :class="{ valid: editForm.tag_ids.length > 0 }"
+                    >
+                      已選 {{ editForm.tag_ids.length }} / 5
+                    </span>
+                  </div>
+
+                  <div class="transfer-container hotel-tag-transfer">
+                    <section class="transfer-panel available-panel">
+                      <div class="panel-header-custom">
+                        <h3>所有標籤</h3>
+                        <div class="search-wrapper-custom">
+                          <input
+                            v-model="hotelTagAssignmentSearch"
+                            type="text"
+                            class="input-search-inline"
+                            placeholder="搜尋標籤名稱..."
+                          />
+                        </div>
+                      </div>
+                      <div class="panel-body scrollable-y">
+                        <div
+                          v-for="tag in availableHotelTags"
+                          :key="tag.id"
+                          class="transfer-item"
+                        >
+                          <div class="item-info">
+                            <strong class="item-name">{{ tag.name }}</strong>
+                          </div>
+                          <button
+                            type="button"
+                            class="btn-select-item"
+                            :disabled="editForm.tag_ids.length >= 5"
+                            @click="selectHotelTag(tag.id)"
+                          >
+                            選擇
+                          </button>
+                        </div>
+                        <div
+                          v-if="availableHotelTags.length === 0"
+                          class="empty-state-text"
+                        >
+                          {{
+                            hotelTags.length
+                              ? "沒有其他可選標籤"
+                              : "尚未建立旅館標籤"
+                          }}
+                        </div>
+                      </div>
+                    </section>
+
+                    <section class="transfer-panel selected-panel">
+                      <div class="panel-header-custom">
+                        <h3>已選擇標籤</h3>
+                        <span class="tag-order-hint"
+                          >拖拉或使用箭頭調整順序</span
+                        >
+                      </div>
+                      <div class="panel-body selected-tag-slots">
+                        <div
+                          v-for="slotIndex in 5"
+                          :key="slotIndex"
+                          :class="[
+                            'slot-row',
+                            {
+                              dragging: draggedHotelTagIndex === slotIndex - 1,
+                            },
+                          ]"
+                          :draggable="Boolean(selectedHotelTags[slotIndex - 1])"
+                          @dragstart="
+                            handleHotelTagDragStart($event, slotIndex - 1)
+                          "
+                          @dragover.prevent
+                          @drop="handleHotelTagDrop($event, slotIndex - 1)"
+                          @dragend="draggedHotelTagIndex = null"
+                        >
+                          <span class="slot-number-badge"
+                            >順序 {{ slotIndex }}</span
+                          >
+                          <div class="slot-content">
+                            <div
+                              v-if="selectedHotelTags[slotIndex - 1]"
+                              class="selected-hotel-display"
+                            >
+                              <strong class="display-name">{{
+                                selectedHotelTags[slotIndex - 1].name
+                              }}</strong>
+                              <div class="slot-actions">
+                                <button
+                                  type="button"
+                                  class="btn-order-move"
+                                  :disabled="slotIndex === 1"
+                                  aria-label="上移標籤"
+                                  @click="moveHotelTag(slotIndex - 1, -1)"
+                                >
+                                  ↑
+                                </button>
+                                <button
+                                  type="button"
+                                  class="btn-order-move"
+                                  :disabled="
+                                    slotIndex >= editForm.tag_ids.length
+                                  "
+                                  aria-label="下移標籤"
+                                  @click="moveHotelTag(slotIndex - 1, 1)"
+                                >
+                                  ↓
+                                </button>
+                                <span class="drag-handle" title="按住拖曳排序"
+                                  >☰</span
+                                >
+                                <button
+                                  type="button"
+                                  class="btn-slot-remove"
+                                  @click="removeHotelTag(slotIndex - 1)"
+                                >
+                                  移除
+                                </button>
+                              </div>
+                            </div>
+                            <div v-else class="empty-slot-placeholder">
+                              尚未選擇標籤
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+
                 <!-- Card 7: Images Manager -->
                 <div v-show="activeHotelTab === 'images'" class="card">
                   <h3>圖片管理 (meee 圖床連結，最多 10 張)</h3>
@@ -914,6 +1119,267 @@
               </div>
             </div>
           </main>
+        </div>
+
+        <!-- ==================== Hotel Tags Workspace (Admin Only) ==================== -->
+        <div
+          v-else-if="activeSection === 'hotel-tags' && userRole === 'admin'"
+          class="hotel-tags-workspace"
+        >
+          <div class="workspace-header">
+            <div>
+              <h2>旅館標籤管理</h2>
+              <p class="workspace-description">
+                建立可供旅館選用的標籤。資料異動後請部署前端網站，SSG
+                頁面才會更新。
+              </p>
+            </div>
+            <button class="btn-create-user" @click="startCreateHotelTag">
+              新增標籤
+            </button>
+          </div>
+
+          <div v-if="showHotelTagForm" class="hotel-tag-editor card">
+            <h3>{{ editingHotelTagId ? "編輯標籤" : "新增標籤" }}</h3>
+            <div class="hotel-tag-form-row">
+              <div class="form-group">
+                <label>標籤名稱</label>
+                <input
+                  v-model="hotelTagForm.name"
+                  type="text"
+                  class="hotel-tag-name-input"
+                  maxlength="30"
+                  placeholder="例如：寵物友善"
+                  @keyup.enter="saveHotelTag"
+                />
+              </div>
+              <div class="form-group">
+                <label>排序</label>
+                <IntegerInput v-model="hotelTagForm.sort_order" />
+              </div>
+              <div class="hotel-tag-form-actions">
+                <button
+                  class="btn-cancel"
+                  type="button"
+                  @click="cancelHotelTagEdit"
+                >
+                  取消
+                </button>
+                <button
+                  class="btn-save"
+                  type="button"
+                  :disabled="savingHotelTag"
+                  @click="saveHotelTag"
+                >
+                  {{ savingHotelTag ? "儲存中..." : "儲存標籤" }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div v-if="loadingHotelTags" class="loading-state">
+            載入標籤資料中...
+          </div>
+          <div v-else class="users-table-wrapper">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>標籤名稱</th>
+                  <th>排序</th>
+                  <th>使用旅館</th>
+                  <th>啟用旅館</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="tag in hotelTags" :key="tag.id">
+                  <td>
+                    <strong>{{ tag.name }}</strong>
+                  </td>
+                  <td>{{ tag.sort_order }}</td>
+                  <td>{{ tag.hotel_count }}</td>
+                  <td>{{ tag.enabled_hotel_count }}</td>
+                  <td class="hotel-tag-row-actions">
+                    <button
+                      class="btn-table-edit"
+                      type="button"
+                      @click="startEditHotelTag(tag)"
+                    >
+                      編輯
+                    </button>
+                    <button
+                      class="btn-table-delete"
+                      type="button"
+                      @click="openHotelTagDelete(tag)"
+                    >
+                      刪除
+                    </button>
+                  </td>
+                </tr>
+                <tr v-if="hotelTags.length === 0">
+                  <td colspan="5" class="empty-table-cell">
+                    目前尚未建立旅館標籤
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div
+            v-if="showHotelTagDeleteModal"
+            class="modal-overlay"
+            @click.self="closeHotelTagDelete"
+          >
+            <div class="modal-content hotel-tag-delete-modal">
+              <div class="modal-header">
+                <h3>確認刪除「{{ deletingHotelTag?.name }}」？</h3>
+              </div>
+              <div class="modal-body">
+                <p class="delete-warning">
+                  刪除後會自動從下列旅館解除標籤，且無法復原：
+                </p>
+                <div v-if="loadingHotelTagUsage" class="loading-state">
+                  讀取使用旅館中...
+                </div>
+                <ul
+                  v-else-if="hotelTagUsage.length"
+                  class="hotel-tag-usage-list"
+                >
+                  <li v-for="hotel in hotelTagUsage" :key="hotel.id">
+                    <span>{{ hotel.name }}（ID: {{ hotel.id }}）</span>
+                    <span v-if="hotel.is_disabled" class="disabled-badge"
+                      >已停用</span
+                    >
+                  </li>
+                </ul>
+                <p v-else class="field-hint">目前沒有旅館使用此標籤。</p>
+                <div class="form-group">
+                  <label>請輸入「確認刪除」以繼續</label>
+                  <input
+                    v-model="hotelTagDeleteConfirm"
+                    @keyup.enter="deleteHotelTag"
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  class="btn-cancel"
+                  type="button"
+                  @click="closeHotelTagDelete"
+                >
+                  取消
+                </button>
+                <button
+                  class="btn-submit"
+                  type="button"
+                  :disabled="
+                    hotelTagDeleteConfirm !== '確認刪除' ||
+                    deletingHotelTagNow ||
+                    loadingHotelTagUsage
+                  "
+                  style="background-color: #ef4444; color: white"
+                  @click="deleteHotelTag"
+                >
+                  {{ deletingHotelTagNow ? "刪除中..." : "確定刪除並解除關聯" }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          v-else-if="activeSection === 'article-tags' && userRole === 'admin'"
+          class="hotel-tags-workspace"
+        >
+          <div class="workspace-header">
+            <div>
+              <h2>文章分類標籤管理</h2>
+              <p class="workspace-description">
+                管理可供文章選用的標籤；「最新文章」為系統固定標籤。
+              </p>
+            </div>
+            <button class="btn-create-user" @click="startCreateArticleTag">
+              新增標籤
+            </button>
+          </div>
+          <div v-if="showArticleTagForm" class="hotel-tag-editor card">
+            <h3>{{ editingArticleTagId ? "編輯標籤" : "新增標籤" }}</h3>
+            <div class="hotel-tag-form-row">
+              <div class="form-group">
+                <label>標籤名稱</label
+                ><input
+                  v-model="articleTagForm.name"
+                  type="text"
+                  class="hotel-tag-name-input"
+                  maxlength="30"
+                  placeholder="例如：飯店推薦"
+                  @keyup.enter="saveArticleTag"
+                />
+              </div>
+              <div class="form-group">
+                <label>排序</label
+                ><IntegerInput v-model="articleTagForm.sort_order" />
+              </div>
+              <div class="hotel-tag-form-actions">
+                <button class="btn-cancel" @click="cancelArticleTagEdit">
+                  取消</button
+                ><button
+                  class="btn-save"
+                  :disabled="savingArticleTag"
+                  @click="saveArticleTag"
+                >
+                  儲存標籤
+                </button>
+              </div>
+            </div>
+          </div>
+          <div v-if="loadingArticleTags" class="loading-state">
+            載入標籤資料中...
+          </div>
+          <div v-else class="users-table-wrapper">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>標籤名稱</th>
+                  <th>排序</th>
+                  <th>使用文章</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="tag in articleTags" :key="tag.id">
+                  <td>
+                    <strong>{{ tag.name }}</strong>
+                    <span v-if="tag.is_system" class="disabled-badge"
+                      >系統固定</span
+                    >
+                  </td>
+                  <td>{{ tag.sort_order }}</td>
+                  <td>{{ tag.post_count }}</td>
+                  <td class="hotel-tag-row-actions">
+                    <template v-if="!tag.is_system"
+                      ><button
+                        class="btn-table-edit"
+                        @click="startEditArticleTag(tag)"
+                      >
+                        編輯</button
+                      ><button
+                        class="btn-table-delete"
+                        @click="deleteArticleTag(tag)"
+                      >
+                        刪除
+                      </button></template
+                    ><span v-else>不可編輯或刪除</span>
+                  </td>
+                </tr>
+                <tr v-if="!articleTags.length">
+                  <td colspan="4" class="empty-table-cell">
+                    目前尚未建立文章分類標籤
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- ==================== 2. Users Workspace (Admin Only) ==================== -->
@@ -1188,7 +1654,7 @@
 
                 <!-- Card 2: Categorization Tags -->
                 <div class="card">
-                  <h3>分類標籤 (最多三個)</h3>
+                  <h3>文章特色標籤（原功能，最多三個）</h3>
                   <div class="tags-input-container">
                     <div
                       class="tags-chips"
@@ -1227,9 +1693,36 @@
                       </button>
                     </div>
                     <small class="help-text"
-                      >標籤將作為文章的分類使用。最多僅能設定三個標籤。</small
+                      >標籤將作為文章特色顯示。最多僅能設定三個標籤。</small
                     >
                   </div>
+                </div>
+
+                <div class="card hotel-tag-assignment-card">
+                  <div class="assignment-heading">
+                    <div><h3>文章分類標籤</h3><p>每篇文章最多設定 5 個受管理分類，右側順序會同步到前台顯示。</p></div>
+                    <span class="status-badge" :class="{ valid: postEditForm.article_tag_ids.length > 0 }">已選 {{ postEditForm.article_tag_ids.length }} / 5</span>
+                  </div>
+                  <div class="transfer-container hotel-tag-transfer">
+                    <section class="transfer-panel available-panel">
+                      <div class="panel-header-custom"><h3>所有分類標籤</h3><div class="search-wrapper-custom"><input v-model="articleTagAssignmentSearch" type="text" class="input-search-inline" placeholder="搜尋分類標籤名稱..." /></div></div>
+                      <div class="panel-body scrollable-y">
+                        <div v-for="tag in availableArticleTags" :key="tag.id" class="transfer-item"><div class="item-info"><strong class="item-name">{{ tag.name }}</strong></div><button type="button" class="btn-select-item" :disabled="postEditForm.article_tag_ids.length >= 5" @click="selectArticleTag(tag.id)">選擇</button></div>
+                        <div v-if="!availableArticleTags.length" class="empty-state-text">{{ articleTags.length ? '沒有其他可選標籤' : '尚未建立文章分類標籤' }}</div>
+                      </div>
+                    </section>
+                    <section class="transfer-panel selected-panel">
+                      <div class="panel-header-custom"><h3>已選擇分類標籤</h3><span class="tag-order-hint">拖拉或使用箭頭調整順序</span></div>
+                      <div class="panel-body selected-tag-slots">
+                        <div v-for="slotIndex in 5" :key="slotIndex" :class="['slot-row',{dragging:draggedArticleTagIndex===slotIndex-1}]" :draggable="Boolean(selectedArticleTags[slotIndex-1])" @dragstart="handleArticleTagDragStart($event,slotIndex-1)" @dragover.prevent @drop="handleArticleTagDrop($event,slotIndex-1)" @dragend="draggedArticleTagIndex=null">
+                          <span class="slot-number-badge">順序 {{ slotIndex }}</span><div class="slot-content"><div v-if="selectedArticleTags[slotIndex-1]" class="selected-hotel-display"><strong class="display-name">{{ selectedArticleTags[slotIndex-1].name }}</strong><div class="slot-actions"><button type="button" class="btn-order-move" :disabled="slotIndex===1" aria-label="上移分類標籤" @click="moveArticleTag(slotIndex-1,-1)">↑</button><button type="button" class="btn-order-move" :disabled="slotIndex>=postEditForm.article_tag_ids.length" aria-label="下移分類標籤" @click="moveArticleTag(slotIndex-1,1)">↓</button><span class="drag-handle" title="按住拖曳排序">☰</span><button type="button" class="btn-slot-remove" @click="removeArticleTagFromPost(slotIndex-1)">移除</button></div></div><div v-else class="empty-slot-placeholder">尚未選擇標籤</div></div>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                  <small class="help-text"
+                    >「最新文章」預設會被選取，但可從單篇文章移除。</small
+                  >
                 </div>
 
                 <!-- Card 3: SEO TKD 設定 -->
@@ -1552,18 +2045,36 @@
       <div class="modal-content" style="max-width: 620px">
         <div class="modal-header">
           <h3>分析並回填鄉鎮市區</h3>
-          <button class="btn-close-modal" @click="closeBackfillModal" :disabled="isBackfilling">×</button>
+          <button
+            class="btn-close-modal"
+            @click="closeBackfillModal"
+            :disabled="isBackfilling"
+          >
+            ×
+          </button>
         </div>
-        <div class="modal-body" style="padding: 20px 0;">
-          <div v-if="backfillStatus === 'idle'" style="text-align: center; padding: 0 20px;">
-            <p style="font-weight: 600; margin-bottom: 8px;">只會處理鄉鎮市區尚未設定的旅館。</p>
-            <p style="color: #64748b; line-height: 1.6;">系統會依地區與完整地址判斷，既有人工設定不會被覆蓋；無法可靠辨識的資料會保持空白並列出。</p>
+        <div class="modal-body" style="padding: 20px 0">
+          <div
+            v-if="backfillStatus === 'idle'"
+            style="text-align: center; padding: 0 20px"
+          >
+            <p style="font-weight: 600; margin-bottom: 8px">
+              只會處理鄉鎮市區尚未設定的旅館。
+            </p>
+            <p style="color: #64748b; line-height: 1.6">
+              系統會依地區與完整地址判斷，既有人工設定不會被覆蓋；無法可靠辨識的資料會保持空白並列出。
+            </p>
           </div>
-          <div v-else-if="backfillStatus === 'loading'" style="text-align: center;">
-            <div class="deploy-spinner" style="margin: 20px auto;"></div>
+          <div
+            v-else-if="backfillStatus === 'loading'"
+            style="text-align: center"
+          >
+            <div class="deploy-spinner" style="margin: 20px auto"></div>
             <p>正在分析並寫入資料庫...</p>
           </div>
-          <div v-else-if="backfillStatus === 'error'" class="alert-danger">{{ backfillError }}</div>
+          <div v-else-if="backfillStatus === 'error'" class="alert-danger">
+            {{ backfillError }}
+          </div>
           <div v-else-if="backfillResult" class="backfill-result">
             <div class="backfill-stats">
               <span>分析 {{ backfillResult.analyzed }}</span>
@@ -1571,19 +2082,44 @@
               <span>略過 {{ backfillResult.skipped }}</span>
               <span>未辨識 {{ backfillResult.unmatched }}</span>
             </div>
-            <div v-if="backfillResult.unmatched_hotels?.length" class="backfill-unmatched">
-              <strong>未辨識資料{{ backfillResult.details_truncated ? '（僅顯示前 100 筆）' : '' }}</strong>
+            <div
+              v-if="backfillResult.unmatched_hotels?.length"
+              class="backfill-unmatched"
+            >
+              <strong
+                >未辨識資料{{
+                  backfillResult.details_truncated ? "（僅顯示前 100 筆）" : ""
+                }}</strong
+              >
               <ul>
-                <li v-for="hotel in backfillResult.unmatched_hotels" :key="hotel.id">
-                  <b>{{ hotel.id }} · {{ hotel.name }}</b><br>{{ hotel.address || '無地址' }}（{{ hotel.reason }}）
+                <li
+                  v-for="hotel in backfillResult.unmatched_hotels"
+                  :key="hotel.id"
+                >
+                  <b>{{ hotel.id }} · {{ hotel.name }}</b
+                  ><br />{{ hotel.address || "無地址" }}（{{ hotel.reason }}）
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="modal-footer" style="justify-content: center; gap: 12px;">
-          <button type="button" class="btn-cancel" @click="closeBackfillModal" :disabled="isBackfilling">{{ backfillStatus === 'idle' ? '取消' : '關閉' }}</button>
-          <button v-if="backfillStatus === 'idle'" type="button" class="btn-submit" @click="executeTownshipBackfill">開始回填</button>
+        <div class="modal-footer" style="justify-content: center; gap: 12px">
+          <button
+            type="button"
+            class="btn-cancel"
+            @click="closeBackfillModal"
+            :disabled="isBackfilling"
+          >
+            {{ backfillStatus === "idle" ? "取消" : "關閉" }}
+          </button>
+          <button
+            v-if="backfillStatus === 'idle'"
+            type="button"
+            class="btn-submit"
+            @click="executeTownshipBackfill"
+          >
+            開始回填
+          </button>
         </div>
       </div>
     </div>
@@ -1601,56 +2137,108 @@
             ×
           </button>
         </div>
-        <div class="modal-body" style="padding: 20px 0; text-align: center;">
+        <div class="modal-body" style="padding: 20px 0; text-align: center">
           <div v-if="deployStatus === 'idle'">
-            <div style="font-size: 40px; margin-bottom: 12px;">🚀</div>
-            <p style="font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #1e293b;">
+            <div style="font-size: 40px; margin-bottom: 12px">🚀</div>
+            <p
+              style="
+                font-size: 16px;
+                font-weight: 600;
+                margin-bottom: 8px;
+                color: #1e293b;
+              "
+            >
               您確定要觸發前端網站部署嗎？
             </p>
-            <p style="color: #64748b; font-size: 14px; line-height: 1.5; padding: 0 16px;">
-              這將觸發 GitHub Actions。系統會從後端重新抓取最新資料並編譯產生靜態網站，整個過程通常需要 3~5 分鐘。
+            <p
+              style="
+                color: #64748b;
+                font-size: 14px;
+                line-height: 1.5;
+                padding: 0 16px;
+              "
+            >
+              這將觸發 GitHub
+              Actions。系統會從後端重新抓取最新資料並編譯產生靜態網站，整個過程通常需要
+              3~5 分鐘。
             </p>
           </div>
           <div v-else-if="deployStatus === 'deploying'">
-            <div class="deploy-spinner" style="margin: 20px auto;"></div>
-            <p style="font-size: 16px; font-weight: 600; color: #3b82f6;">
+            <div class="deploy-spinner" style="margin: 20px auto"></div>
+            <p style="font-size: 16px; font-weight: 600; color: #3b82f6">
               正在發送部署請求...
             </p>
           </div>
           <div v-else-if="deployStatus === 'success'">
-            <div style="font-size: 40px; margin-bottom: 12px; color: #10b981;">✓</div>
-            <p style="font-size: 16px; font-weight: 600; color: #10b981; margin-bottom: 8px;">
+            <div style="font-size: 40px; margin-bottom: 12px; color: #10b981">
+              ✓
+            </div>
+            <p
+              style="
+                font-size: 16px;
+                font-weight: 600;
+                color: #10b981;
+                margin-bottom: 8px;
+              "
+            >
               已成功觸發部署！
             </p>
-            <p style="color: #64748b; font-size: 14px; line-height: 1.5; padding: 0 16px;">
+            <p
+              style="
+                color: #64748b;
+                font-size: 14px;
+                line-height: 1.5;
+                padding: 0 16px;
+              "
+            >
               {{ deployMessage }}
             </p>
           </div>
           <div v-else-if="deployStatus === 'error'">
-            <div style="font-size: 40px; margin-bottom: 12px; color: #ef4444;">⚠️</div>
-            <p style="font-size: 16px; font-weight: 600; color: #ef4444; margin-bottom: 8px;">
+            <div style="font-size: 40px; margin-bottom: 12px; color: #ef4444">
+              ⚠️
+            </div>
+            <p
+              style="
+                font-size: 16px;
+                font-weight: 600;
+                color: #ef4444;
+                margin-bottom: 8px;
+              "
+            >
               部署發送失敗
             </p>
-            <p style="color: #ef4444; font-size: 14px; line-height: 1.5; padding: 0 16px;">
+            <p
+              style="
+                color: #ef4444;
+                font-size: 14px;
+                line-height: 1.5;
+                padding: 0 16px;
+              "
+            >
               {{ deployMessage }}
             </p>
           </div>
         </div>
-        <div class="modal-footer" style="justify-content: center; gap: 12px;">
+        <div class="modal-footer" style="justify-content: center; gap: 12px">
           <button
             type="button"
             class="btn-cancel"
             @click="closeDeployModal"
-            v-if="deployStatus === 'idle' || deployStatus === 'success' || deployStatus === 'error'"
+            v-if="
+              deployStatus === 'idle' ||
+              deployStatus === 'success' ||
+              deployStatus === 'error'
+            "
           >
-            {{ deployStatus === 'idle' ? '取消' : '關閉' }}
+            {{ deployStatus === "idle" ? "取消" : "關閉" }}
           </button>
           <button
             type="button"
             class="btn-submit"
             @click="executeFrontendDeploy"
             v-if="deployStatus === 'idle'"
-            style="background-color: #3b82f6; color: white;"
+            style="background-color: #3b82f6; color: white"
           >
             確定部署
           </button>
@@ -1659,34 +2247,112 @@
     </div>
 
     <!-- Post CSR Preview Modal Overlay -->
-    <div class="modal-overlay" v-if="showPostPreviewModal" @click.self="showPostPreviewModal = false">
-      <div class="modal-content" style="max-width: 850px; width: 95%; max-height: 85vh; display: flex; flex-direction: column; padding: 0;">
-        <div class="modal-header" style="padding: 16px 24px; border-bottom: 1px solid #e2e8f0;">
-          <h3 style="margin: 0; font-size: 18px;">文章前台模擬預覽 (CSR 畫面)</h3>
-          <button class="btn-close-modal" @click="showPostPreviewModal = false">×</button>
+    <div
+      class="modal-overlay"
+      v-if="showPostPreviewModal"
+      @click.self="showPostPreviewModal = false"
+    >
+      <div
+        class="modal-content"
+        style="
+          max-width: 850px;
+          width: 95%;
+          max-height: 85vh;
+          display: flex;
+          flex-direction: column;
+          padding: 0;
+        "
+      >
+        <div
+          class="modal-header"
+          style="padding: 16px 24px; border-bottom: 1px solid #e2e8f0"
+        >
+          <h3 style="margin: 0; font-size: 18px">
+            文章前台模擬預覽 (CSR 畫面)
+          </h3>
+          <button class="btn-close-modal" @click="showPostPreviewModal = false">
+            ×
+          </button>
         </div>
-        <div ref="postPreviewScrollRoot" class="modal-body" style="padding: 30px; overflow-y: auto; background: #f8f9fa; flex: 1;">
-          <div style="max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
-            <div style="margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">
-              首頁 &gt; 部落格 &gt; <span style="color: #95a5a6;">{{ postEditForm.title || "未命名文章" }}</span>
+        <div
+          ref="postPreviewScrollRoot"
+          class="modal-body"
+          style="padding: 30px; overflow-y: auto; background: #f8f9fa; flex: 1"
+        >
+          <div
+            style="
+              max-width: 800px;
+              margin: 0 auto;
+              background: white;
+              padding: 40px;
+              border-radius: 12px;
+              box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            "
+          >
+            <div style="margin-bottom: 20px; color: #7f8c8d; font-size: 14px">
+              首頁 &gt; 部落格 &gt;
+              <span style="color: #95a5a6">{{
+                postEditForm.title || "未命名文章"
+              }}</span>
             </div>
-            
-            <header style="margin-bottom: 30px; text-align: left; border-bottom: 1px solid #f1f5f9; padding-bottom: 20px;">
-              <h1 style="font-size: 32px; color: #2C3E50; line-height: 1.4; margin: 0 0 15px 0; font-weight: 700;">
+
+            <header
+              style="
+                margin-bottom: 30px;
+                text-align: left;
+                border-bottom: 1px solid #f1f5f9;
+                padding-bottom: 20px;
+              "
+            >
+              <h1
+                style="
+                  font-size: 32px;
+                  color: #2c3e50;
+                  line-height: 1.4;
+                  margin: 0 0 15px 0;
+                  font-weight: 700;
+                "
+              >
                 {{ postEditForm.title || "請輸入文章標題" }}
               </h1>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="background: #E74C3C; color: white; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600;">
-                  {{ postEditForm.tags && postEditForm.tags.length > 0 ? postEditForm.tags[0] : '精選專欄' }}
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <span
+                  style="
+                    background: #e74c3c;
+                    color: white;
+                    padding: 4px 12px;
+                    border-radius: 20px;
+                    font-size: 13px;
+                    font-weight: 600;
+                  "
+                >
+                  {{
+                    postEditForm.tags && postEditForm.tags.length > 0
+                      ? postEditForm.tags[0]
+                      : "精選專欄"
+                  }}
                 </span>
-                <span style="color: #95A5A6; font-size: 14px;">
-                  {{ new Date().toISOString().split('T')[0] }}
+                <span style="color: #95a5a6; font-size: 14px">
+                  {{ new Date().toISOString().split("T")[0] }}
                 </span>
               </div>
             </header>
 
-            <div style="margin-bottom: 30px; border-radius: 8px; overflow: hidden;" v-if="postEditForm.image">
-              <img :src="postEditForm.image" alt="Featured Image" style="width: 100%; height: auto; display: block;" />
+            <div
+              style="margin-bottom: 30px; border-radius: 8px; overflow: hidden"
+              v-if="postEditForm.image"
+            >
+              <img
+                :src="postEditForm.image"
+                alt="Featured Image"
+                style="width: 100%; height: auto; display: block"
+              />
             </div>
 
             <ArticleTableOfContents
@@ -1699,129 +2365,512 @@
               ref="postPreviewContentRoot"
               class="article-preview-body rich-html-content"
               v-html="parsedPostArticle.html"
-              style="font-size: 18px; line-height: 1.8; color: #2c3e50;"
+              style="font-size: 18px; line-height: 1.8; color: #2c3e50"
             ></div>
-            
-            <div v-if="postEditForm.ad_link" style="margin-top: 30px; padding: 20px; background: #f8fafc; border-left: 4px solid #3b82f6; border-radius: 4px;" v-html="parsedAdLink"></div>
+
+            <div
+              v-if="postEditForm.ad_link"
+              style="
+                margin-top: 30px;
+                padding: 20px;
+                background: #f8fafc;
+                border-left: 4px solid #3b82f6;
+                border-radius: 4px;
+              "
+              v-html="parsedAdLink"
+            ></div>
           </div>
         </div>
-        <div class="modal-footer" style="padding: 16px 24px; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end;">
-          <button type="button" class="btn-cancel" @click="showPostPreviewModal = false" style="margin: 0;">關閉預覽</button>
+        <div
+          class="modal-footer"
+          style="
+            padding: 16px 24px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: flex-end;
+          "
+        >
+          <button
+            type="button"
+            class="btn-cancel"
+            @click="showPostPreviewModal = false"
+            style="margin: 0"
+          >
+            關閉預覽
+          </button>
         </div>
       </div>
     </div>
 
     <!-- Hotel CSR Preview Modal Overlay -->
-    <div class="modal-overlay" v-if="showHotelPreviewModal" @click.self="showHotelPreviewModal = false">
-      <div class="modal-content" style="max-width: 950px; width: 95%; max-height: 85vh; display: flex; flex-direction: column; padding: 0;">
-        <div class="modal-header" style="padding: 16px 24px; border-bottom: 1px solid #e2e8f0;">
-          <h3 style="margin: 0; font-size: 18px;">旅館前台模擬預覽 (CSR 畫面)</h3>
-          <button class="btn-close-modal" @click="showHotelPreviewModal = false">×</button>
+    <div
+      class="modal-overlay"
+      v-if="showHotelPreviewModal"
+      @click.self="showHotelPreviewModal = false"
+    >
+      <div
+        class="modal-content"
+        style="
+          max-width: 950px;
+          width: 95%;
+          max-height: 85vh;
+          display: flex;
+          flex-direction: column;
+          padding: 0;
+        "
+      >
+        <div
+          class="modal-header"
+          style="padding: 16px 24px; border-bottom: 1px solid #e2e8f0"
+        >
+          <h3 style="margin: 0; font-size: 18px">
+            旅館前台模擬預覽 (CSR 畫面)
+          </h3>
+          <button
+            class="btn-close-modal"
+            @click="showHotelPreviewModal = false"
+          >
+            ×
+          </button>
         </div>
-        <div class="modal-body" style="padding: 30px; overflow-y: auto; background: #f8f9fa; flex: 1;">
-          <div style="max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
-            
-            <div style="margin-bottom: 25px;">
-              <h1 style="font-size: 28px; color: #1e293b; font-weight: 700; margin: 0 0 10px 0;">{{ editForm.name || "未命名旅館" }}</h1>
-              <div style="color: #64748b; font-size: 14px;">
-                首頁 &gt; {{ editForm.area || "地區" }} <template v-if="selectedTownshipName">&gt; {{ selectedTownshipName }} </template>&gt; <span style="color: #94a3b8;">{{ editForm.name || "未命名旅館" }}</span>
+        <div
+          class="modal-body"
+          style="padding: 30px; overflow-y: auto; background: #f8f9fa; flex: 1"
+        >
+          <div
+            style="
+              max-width: 900px;
+              margin: 0 auto;
+              background: white;
+              padding: 30px;
+              border-radius: 12px;
+              box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            "
+          >
+            <div style="margin-bottom: 25px">
+              <h1
+                style="
+                  font-size: 28px;
+                  color: #1e293b;
+                  font-weight: 700;
+                  margin: 0 0 10px 0;
+                "
+              >
+                {{ editForm.name || "未命名旅館" }}
+              </h1>
+              <div style="color: #64748b; font-size: 14px">
+                首頁 &gt; {{ editForm.area || "地區" }}
+                <template v-if="selectedTownshipName"
+                  >&gt; {{ selectedTownshipName }} </template
+                >&gt;
+                <span style="color: #94a3b8">{{
+                  editForm.name || "未命名旅館"
+                }}</span>
               </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                margin-bottom: 30px;
+              "
+            >
               <div>
-                <div style="background: #f1f5f9; border-radius: 8px; overflow: hidden; height: 300px; display: flex; align-items: center; justify-content: center; position: relative;">
+                <div
+                  style="
+                    background: #f1f5f9;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    height: 300px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                  "
+                >
                   <img
                     v-if="editForm.images && editForm.images.length > 0"
                     :src="editForm.images[0]"
                     alt="Hotel Main Image"
-                    style="width: 100%; height: 100%; object-fit: cover;"
+                    style="width: 100%; height: 100%; object-fit: cover"
                   />
-                  <div v-else style="color: #94a3b8; font-size: 14px;">暫無圖片</div>
+                  <div v-else style="color: #94a3b8; font-size: 14px">
+                    暫無圖片
+                  </div>
                 </div>
-                <div style="display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; padding-bottom: 5px;" v-if="editForm.images && editForm.images.length > 1">
+                <div
+                  style="
+                    display: flex;
+                    gap: 8px;
+                    margin-top: 10px;
+                    overflow-x: auto;
+                    padding-bottom: 5px;
+                  "
+                  v-if="editForm.images && editForm.images.length > 1"
+                >
                   <div
                     v-for="(img, idx) in editForm.images.slice(1)"
                     :key="idx"
-                    style="width: 60px; height: 45px; border-radius: 4px; overflow: hidden; flex-shrink: 0; background: #e2e8f0;"
+                    style="
+                      width: 60px;
+                      height: 45px;
+                      border-radius: 4px;
+                      overflow: hidden;
+                      flex-shrink: 0;
+                      background: #e2e8f0;
+                    "
                   >
-                    <img :src="img" style="width: 100%; height: 100%; object-fit: cover;" />
+                    <img
+                      :src="img"
+                      style="width: 100%; height: 100%; object-fit: cover"
+                    />
                   </div>
                 </div>
               </div>
 
-              <div style="display: flex; flex-direction: column; gap: 20px;">
-                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px;">
-                  <div v-if="editForm.address" style="display: flex; font-size: 15px;">
-                    <span style="color: #64748b; font-weight: 600; width: 60px; flex-shrink: 0;">地址：</span>
-                    <span style="color: #334155;">{{ editForm.address }}</span>
+              <div style="display: flex; flex-direction: column; gap: 20px">
+                <div
+                  style="
+                    background: #f8fafc;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 8px;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                  "
+                >
+                  <div
+                    v-if="editForm.address"
+                    style="display: flex; font-size: 15px"
+                  >
+                    <span
+                      style="
+                        color: #64748b;
+                        font-weight: 600;
+                        width: 60px;
+                        flex-shrink: 0;
+                      "
+                      >地址：</span
+                    >
+                    <span style="color: #334155">{{ editForm.address }}</span>
                   </div>
-                  <div v-if="editForm.phone" style="display: flex; font-size: 15px;">
-                    <span style="color: #64748b; font-weight: 600; width: 60px; flex-shrink: 0;">電話：</span>
-                    <span style="color: #3b82f6; font-weight: 600;">{{ editForm.phone }}</span>
+                  <div
+                    v-if="editForm.phone"
+                    style="display: flex; font-size: 15px"
+                  >
+                    <span
+                      style="
+                        color: #64748b;
+                        font-weight: 600;
+                        width: 60px;
+                        flex-shrink: 0;
+                      "
+                      >電話：</span
+                    >
+                    <span style="color: #3b82f6; font-weight: 600">{{
+                      editForm.phone
+                    }}</span>
                   </div>
-                  <div v-if="editForm.website" style="display: flex; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                    <span style="color: #64748b; font-weight: 600; width: 60px; flex-shrink: 0;">網站：</span>
-                    <span style="color: #3b82f6;">{{ editForm.website }}</span>
+                  <div
+                    v-if="editForm.website"
+                    style="
+                      display: flex;
+                      font-size: 15px;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                    "
+                  >
+                    <span
+                      style="
+                        color: #64748b;
+                        font-weight: 600;
+                        width: 60px;
+                        flex-shrink: 0;
+                      "
+                      >網站：</span
+                    >
+                    <span style="color: #3b82f6">{{ editForm.website }}</span>
                   </div>
-                  <div v-if="editForm.email" style="display: flex; font-size: 15px;">
-                    <span style="color: #64748b; font-weight: 600; width: 60px; flex-shrink: 0;">信箱：</span>
-                    <span style="color: #334155;">{{ editForm.email }}</span>
+                  <div
+                    v-if="editForm.email"
+                    style="display: flex; font-size: 15px"
+                  >
+                    <span
+                      style="
+                        color: #64748b;
+                        font-weight: 600;
+                        width: 60px;
+                        flex-shrink: 0;
+                      "
+                      >信箱：</span
+                    >
+                    <span style="color: #334155">{{ editForm.email }}</span>
                   </div>
                 </div>
 
-                <div style="background: #fdf2f2; border: 1px solid #fde2e2; border-radius: 8px; padding: 20px;">
-                  <h3 style="font-size: 16px; color: #9b1c1c; font-weight: 700; margin: 0 0 12px 0; border-bottom: 1px solid #fcd2d2; padding-bottom: 8px;">價格資訊</h3>
-                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div
+                  style="
+                    background: #fdf2f2;
+                    border: 1px solid #fde2e2;
+                    border-radius: 8px;
+                    padding: 20px;
+                  "
+                >
+                  <h3
+                    style="
+                      font-size: 16px;
+                      color: #9b1c1c;
+                      font-weight: 700;
+                      margin: 0 0 12px 0;
+                      border-bottom: 1px solid #fcd2d2;
+                      padding-bottom: 8px;
+                    "
+                  >
+                    價格資訊
+                  </h3>
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: 1fr 1fr;
+                      gap: 12px;
+                    "
+                  >
                     <div>
-                      <div style="font-size: 13px; color: #7f8c8d;">平日住宿</div>
-                      <div style="font-size: 18px; font-weight: 700; color: #e74c3c;" v-if="editForm.pricing.weekday_stay">NT$ {{ editForm.pricing.weekday_stay }}</div>
-                      <div style="font-size: 16px; color: #95a5a6; font-weight: 600;" v-else>無資訊</div>
-                    </div>
-                    <div>
-                      <div style="font-size: 13px; color: #7f8c8d;">假日住宿</div>
-                      <div style="font-size: 18px; font-weight: 700; color: #e74c3c;" v-if="editForm.pricing.holiday_stay">NT$ {{ editForm.pricing.holiday_stay }}</div>
-                      <div style="font-size: 16px; color: #95a5a6; font-weight: 600;" v-else>無資訊</div>
-                    </div>
-                    <div>
-                      <div style="font-size: 13px; color: #7f8c8d;">平日休息</div>
-                      <div style="font-size: 16px; font-weight: 700; color: #2c3e50;" v-if="editForm.pricing.weekday_rest">
-                        NT$ {{ editForm.pricing.weekday_rest }} <span style="font-size: 12px; font-weight: normal; color: #7f8c8d;">({{ editForm.pricing.weekday_rest_hours }}小時)</span>
+                      <div style="font-size: 13px; color: #7f8c8d">
+                        平日住宿
                       </div>
-                      <div style="font-size: 16px; color: #95a5a6; font-weight: 600;" v-else>無資訊</div>
+                      <div
+                        style="
+                          font-size: 18px;
+                          font-weight: 700;
+                          color: #e74c3c;
+                        "
+                        v-if="editForm.pricing.weekday_stay"
+                      >
+                        NT$ {{ editForm.pricing.weekday_stay }}
+                      </div>
+                      <div
+                        style="
+                          font-size: 16px;
+                          color: #95a5a6;
+                          font-weight: 600;
+                        "
+                        v-else
+                      >
+                        無資訊
+                      </div>
                     </div>
                     <div>
-                      <div style="font-size: 13px; color: #7f8c8d;">假日休息</div>
-                      <div style="font-size: 16px; font-weight: 700; color: #2c3e50;" v-if="editForm.pricing.holiday_rest">
-                        NT$ {{ editForm.pricing.holiday_rest }} <span style="font-size: 12px; font-weight: normal; color: #7f8c8d;">({{ editForm.pricing.holiday_rest_hours }}小時)</span>
+                      <div style="font-size: 13px; color: #7f8c8d">
+                        假日住宿
                       </div>
-                      <div style="font-size: 16px; color: #95a5a6; font-weight: 600;" v-else>無資訊</div>
+                      <div
+                        style="
+                          font-size: 18px;
+                          font-weight: 700;
+                          color: #e74c3c;
+                        "
+                        v-if="editForm.pricing.holiday_stay"
+                      >
+                        NT$ {{ editForm.pricing.holiday_stay }}
+                      </div>
+                      <div
+                        style="
+                          font-size: 16px;
+                          color: #95a5a6;
+                          font-weight: 600;
+                        "
+                        v-else
+                      >
+                        無資訊
+                      </div>
+                    </div>
+                    <div>
+                      <div style="font-size: 13px; color: #7f8c8d">
+                        平日休息
+                      </div>
+                      <div
+                        style="
+                          font-size: 16px;
+                          font-weight: 700;
+                          color: #2c3e50;
+                        "
+                        v-if="editForm.pricing.weekday_rest"
+                      >
+                        NT$ {{ editForm.pricing.weekday_rest }}
+                        <span
+                          style="
+                            font-size: 12px;
+                            font-weight: normal;
+                            color: #7f8c8d;
+                          "
+                          >({{ editForm.pricing.weekday_rest_hours }}小時)</span
+                        >
+                      </div>
+                      <div
+                        style="
+                          font-size: 16px;
+                          color: #95a5a6;
+                          font-weight: 600;
+                        "
+                        v-else
+                      >
+                        無資訊
+                      </div>
+                    </div>
+                    <div>
+                      <div style="font-size: 13px; color: #7f8c8d">
+                        假日休息
+                      </div>
+                      <div
+                        style="
+                          font-size: 16px;
+                          font-weight: 700;
+                          color: #2c3e50;
+                        "
+                        v-if="editForm.pricing.holiday_rest"
+                      >
+                        NT$ {{ editForm.pricing.holiday_rest }}
+                        <span
+                          style="
+                            font-size: 12px;
+                            font-weight: normal;
+                            color: #7f8c8d;
+                          "
+                          >({{ editForm.pricing.holiday_rest_hours }}小時)</span
+                        >
+                      </div>
+                      <div
+                        style="
+                          font-size: 16px;
+                          color: #95a5a6;
+                          font-weight: 600;
+                        "
+                        v-else
+                      >
+                        無資訊
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div style="margin-bottom: 30px;">
-              <h3 style="font-size: 18px; color: #2c3e50; font-weight: 700; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; margin-bottom: 15px;">入住及退房資訊</h3>
-              <p style="font-size: 15px; color: #475569; line-height: 1.6; white-space: pre-line; margin: 0 0 20px 0;" v-if="editForm.stay_info">{{ editForm.stay_info }}</p>
-              <p style="font-size: 15px; color: #94a3b8; font-style: italic;" v-else>未設定入住退房資訊</p>
+            <div style="margin-bottom: 30px">
+              <h3
+                style="
+                  font-size: 18px;
+                  color: #2c3e50;
+                  font-weight: 700;
+                  border-bottom: 2px solid #3b82f6;
+                  padding-bottom: 8px;
+                  margin-bottom: 15px;
+                "
+              >
+                入住及退房資訊
+              </h3>
+              <p
+                style="
+                  font-size: 15px;
+                  color: #475569;
+                  line-height: 1.6;
+                  white-space: pre-line;
+                  margin: 0 0 20px 0;
+                "
+                v-if="editForm.stay_info"
+              >
+                {{ editForm.stay_info }}
+              </p>
+              <p
+                style="font-size: 15px; color: #94a3b8; font-style: italic"
+                v-else
+              >
+                未設定入住退房資訊
+              </p>
 
-              <h3 style="font-size: 18px; color: #2c3e50; font-weight: 700; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; margin-bottom: 15px;">住宿須知</h3>
-              <div v-if="editForm.housing_rules" class="hotel-preview-richtext rich-html-content" v-html="editForm.housing_rules"></div>
-              <p style="font-size: 15px; color: #94a3b8; font-style: italic;" v-else>未設定住宿須知</p>
+              <h3
+                style="
+                  font-size: 18px;
+                  color: #2c3e50;
+                  font-weight: 700;
+                  border-bottom: 2px solid #3b82f6;
+                  padding-bottom: 8px;
+                  margin-bottom: 15px;
+                "
+              >
+                住宿須知
+              </h3>
+              <div
+                v-if="editForm.housing_rules"
+                class="hotel-preview-richtext rich-html-content"
+                v-html="editForm.housing_rules"
+              ></div>
+              <p
+                style="font-size: 15px; color: #94a3b8; font-style: italic"
+                v-else
+              >
+                未設定住宿須知
+              </p>
             </div>
 
-            <div style="background: #f8fafc; padding: 25px; border-radius: 8px; border: 1px dashed #cbd5e1;">
-              <h3 style="font-size: 18px; color: #2c3e50; font-weight: 700; margin: 0 0 12px 0;">旅館簡介</h3>
-              <div v-if="editForm.description" class="hotel-preview-richtext rich-html-content" v-html="editForm.description"></div>
-              <p style="font-size: 15px; color: #94a3b8; font-style: italic; margin: 0;" v-else>未輸入旅館簡介</p>
+            <div
+              style="
+                background: #f8fafc;
+                padding: 25px;
+                border-radius: 8px;
+                border: 1px dashed #cbd5e1;
+              "
+            >
+              <h3
+                style="
+                  font-size: 18px;
+                  color: #2c3e50;
+                  font-weight: 700;
+                  margin: 0 0 12px 0;
+                "
+              >
+                旅館簡介
+              </h3>
+              <div
+                v-if="editForm.description"
+                class="hotel-preview-richtext rich-html-content"
+                v-html="editForm.description"
+              ></div>
+              <p
+                style="
+                  font-size: 15px;
+                  color: #94a3b8;
+                  font-style: italic;
+                  margin: 0;
+                "
+                v-else
+              >
+                未輸入旅館簡介
+              </p>
             </div>
-
           </div>
         </div>
-        <div class="modal-footer" style="padding: 16px 24px; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end;">
-          <button type="button" class="btn-cancel" @click="showHotelPreviewModal = false" style="margin: 0;">關閉預覽</button>
+        <div
+          class="modal-footer"
+          style="
+            padding: 16px 24px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: flex-end;
+          "
+        >
+          <button
+            type="button"
+            class="btn-cancel"
+            @click="showHotelPreviewModal = false"
+            style="margin: 0"
+          >
+            關閉預覽
+          </button>
         </div>
       </div>
     </div>
@@ -1872,6 +2921,26 @@ const showSnackbar = (
 const cities = ref<any[]>([]);
 const hotelCategories = ref<any[]>([]);
 const townships = ref<any[]>([]);
+const hotelTags = ref<any[]>([]);
+const loadingHotelTags = ref(false);
+const showHotelTagForm = ref(false);
+const editingHotelTagId = ref<number | null>(null);
+const savingHotelTag = ref(false);
+const hotelTagForm = ref({ name: "", sort_order: 0 });
+const showHotelTagDeleteModal = ref(false);
+const deletingHotelTag = ref<any>(null);
+const hotelTagUsage = ref<any[]>([]);
+const loadingHotelTagUsage = ref(false);
+const hotelTagDeleteConfirm = ref("");
+const deletingHotelTagNow = ref(false);
+const articleTags = ref<any[]>([]);
+const loadingArticleTags = ref(false);
+const showArticleTagForm = ref(false);
+const editingArticleTagId = ref<number | null>(null);
+const savingArticleTag = ref(false);
+const articleTagForm = ref({ name: "", sort_order: 0 });
+const articleTagAssignmentSearch = ref("");
+const draggedArticleTagIndex = ref<number | null>(null);
 
 // Homepage selector states
 const homepageSelections = ref<Record<string, string[]>>({
@@ -2041,7 +3110,10 @@ const executeTownshipBackfill = async () => {
   try {
     const res = await fetch(`${backendAPI}/api/hotels/backfill-townships`, {
       method: "POST",
-      headers: { Authorization: `Bearer ${token.value}`, "Content-Type": "application/json" },
+      headers: {
+        Authorization: `Bearer ${token.value}`,
+        "Content-Type": "application/json",
+      },
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "回填失敗");
@@ -2113,17 +3185,23 @@ const parsedPostArticle = computed(() => {
   const content = postEditForm.value.content || "";
   const isHtml = /<(?:p|h[1-6]|ul|ol|table)\b/i.test(content);
   let rendered = isHtml ? content : md.render(content);
-  
+
   // Replace naked image links converted to anchors by linkify
-  rendered = rendered.replace(/<a href="(https:\/\/(?:i\.imgur\.com|i\.meee\.com\.tw)\/[^"]+)">[^<]+<\/a>/g, (match, url) => {
-    return `<img src="${url}" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0;" />`;
-  });
-  
+  rendered = rendered.replace(
+    /<a href="(https:\/\/(?:i\.imgur\.com|i\.meee\.com\.tw)\/[^"]+)">[^<]+<\/a>/g,
+    (match, url) => {
+      return `<img src="${url}" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0;" />`;
+    },
+  );
+
   // Replace remaining naked image links not in attributes
-  rendered = rendered.replace(/(?<!["'(\/])(https:\/\/(?:i\.imgur\.com|i\.meee\.com\.tw)\/[a-zA-Z0-9._-]+)(?!["'])/g, (match) => {
-    return `<img src="${match}" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0;" />`;
-  });
-  
+  rendered = rendered.replace(
+    /(?<!["'(\/])(https:\/\/(?:i\.imgur\.com|i\.meee\.com\.tw)\/[a-zA-Z0-9._-]+)(?!["'])/g,
+    (match) => {
+      return `<img src="${match}" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 20px 0;" />`;
+    },
+  );
+
   return buildArticleToc(rendered);
 });
 
@@ -2161,6 +3239,7 @@ interface PostEditForm {
   seo_title: string;
   seo_keywords: string;
   seo_description: string;
+  article_tag_ids: number[];
 }
 
 const postEditForm = ref<PostEditForm>({
@@ -2172,7 +3251,54 @@ const postEditForm = ref<PostEditForm>({
   seo_title: "",
   seo_keywords: "",
   seo_description: "",
+  article_tag_ids: [],
 });
+
+const selectedArticleTags = computed(() =>
+  postEditForm.value.article_tag_ids
+    .map((id) => articleTags.value.find((tag) => Number(tag.id) === Number(id)))
+    .filter(Boolean),
+);
+const availableArticleTags = computed(() => {
+  const selected = new Set(postEditForm.value.article_tag_ids.map(Number));
+  const query = articleTagAssignmentSearch.value.trim().toLowerCase();
+  return articleTags.value.filter(
+    (tag) =>
+      !selected.has(Number(tag.id)) &&
+      (!query || String(tag.name).toLowerCase().includes(query)),
+  );
+});
+const selectArticleTag = (id: number) => {
+  if (
+    postEditForm.value.article_tag_ids.length < 5 &&
+    !postEditForm.value.article_tag_ids.includes(Number(id))
+  )
+    postEditForm.value.article_tag_ids.push(Number(id));
+};
+const removeArticleTagFromPost = (index: number) =>
+  postEditForm.value.article_tag_ids.splice(index, 1);
+const moveArticleTag = (index: number, direction: number) => {
+  const target = index + direction;
+  if (target < 0 || target >= postEditForm.value.article_tag_ids.length) return;
+  const ids = [...postEditForm.value.article_tag_ids];
+  [ids[index], ids[target]] = [ids[target], ids[index]];
+  postEditForm.value.article_tag_ids = ids;
+};
+const handleArticleTagDragStart = (event: DragEvent, index: number) => {
+  if (!selectedArticleTags.value[index]) { event.preventDefault(); return; }
+  draggedArticleTagIndex.value = index;
+  event.dataTransfer?.setData("text/plain", String(index));
+  if (event.dataTransfer) event.dataTransfer.effectAllowed = "move";
+};
+const handleArticleTagDrop = (event: DragEvent, targetIndex: number) => {
+  const sourceIndex = draggedArticleTagIndex.value ?? Number(event.dataTransfer?.getData("text/plain"));
+  if (!Number.isInteger(sourceIndex) || sourceIndex < 0 || sourceIndex >= postEditForm.value.article_tag_ids.length || targetIndex >= postEditForm.value.article_tag_ids.length || sourceIndex === targetIndex) { draggedArticleTagIndex.value = null; return; }
+  const ids = [...postEditForm.value.article_tag_ids];
+  const [moved] = ids.splice(sourceIndex, 1);
+  if (moved !== undefined) ids.splice(targetIndex, 0, moved);
+  postEditForm.value.article_tag_ids = ids;
+  draggedArticleTagIndex.value = null;
+};
 
 const addTag = () => {
   const val = newTagText.value.trim();
@@ -2181,7 +3307,7 @@ const addTag = () => {
     postEditForm.value.tags = [];
   }
   if (postEditForm.value.tags.length >= 3) {
-    alert("分類標籤最多只能設定三個");
+    alert("特色標籤最多只能設定三個");
     return;
   }
   if (!postEditForm.value.tags.includes(val)) {
@@ -2226,6 +3352,7 @@ const hotelEditorTabs = [
   { id: "basic", label: "基本資料" },
   { id: "content", label: "住宿內容" },
   { id: "booking", label: "價格與訂房" },
+  { id: "tags", label: "標籤管理" },
   { id: "images", label: "圖片管理" },
 ];
 const activeHotelTab = ref("basic");
@@ -2271,6 +3398,7 @@ interface EditForm {
   booking_link: string;
   is_disabled: boolean;
   images: string[];
+  tag_ids: number[];
 }
 
 const editForm = ref<EditForm>({
@@ -2298,7 +3426,66 @@ const editForm = ref<EditForm>({
   booking_link: "",
   is_disabled: false,
   images: [],
+  tag_ids: [],
 });
+
+const hotelTagAssignmentSearch = ref("");
+const draggedHotelTagIndex = ref<number | null>(null);
+const selectedHotelTags = computed(() =>
+  editForm.value.tag_ids
+    .map((id) => hotelTags.value.find((tag) => Number(tag.id) === Number(id)))
+    .filter(Boolean),
+);
+const availableHotelTags = computed(() => {
+  const selected = new Set(editForm.value.tag_ids.map(Number));
+  const query = hotelTagAssignmentSearch.value.trim().toLowerCase();
+  return hotelTags.value.filter(
+    (tag) =>
+      !selected.has(Number(tag.id)) &&
+      (!query || String(tag.name).toLowerCase().includes(query)),
+  );
+});
+const selectHotelTag = (tagId: number) => {
+  if (
+    editForm.value.tag_ids.length >= 5 ||
+    editForm.value.tag_ids.includes(tagId)
+  )
+    return;
+  editForm.value.tag_ids.push(tagId);
+};
+const removeHotelTag = (index: number) =>
+  editForm.value.tag_ids.splice(index, 1);
+const moveHotelTag = (index: number, direction: number) => {
+  const target = index + direction;
+  if (target < 0 || target >= editForm.value.tag_ids.length) return;
+  const values = [...editForm.value.tag_ids];
+  [values[index], values[target]] = [values[target], values[index]];
+  editForm.value.tag_ids = values;
+};
+const handleHotelTagDragStart = (event: DragEvent, index: number) => {
+  if (!selectedHotelTags.value[index]) {
+    event.preventDefault();
+    return;
+  }
+  draggedHotelTagIndex.value = index;
+  event.dataTransfer?.setData("text/plain", String(index));
+  if (event.dataTransfer) event.dataTransfer.effectAllowed = "move";
+};
+const handleHotelTagDrop = (event: DragEvent, targetIndex: number) => {
+  event.preventDefault();
+  const sourceIndex = draggedHotelTagIndex.value;
+  if (
+    sourceIndex === null ||
+    sourceIndex === targetIndex ||
+    targetIndex >= editForm.value.tag_ids.length
+  )
+    return;
+  const values = [...editForm.value.tag_ids];
+  const [moved] = values.splice(sourceIndex, 1);
+  values.splice(targetIndex, 0, moved);
+  editForm.value.tag_ids = values;
+  draggedHotelTagIndex.value = null;
+};
 
 const townshipManuallySelected = ref(false);
 const townshipSuggestion = ref("");
@@ -2309,8 +3496,11 @@ const availableTownships = computed(() => {
     (township) => Number(township.parent_id) === Number(city.categoryId),
   );
 });
-const selectedTownshipName = computed(() =>
-  townships.value.find((township) => Number(township.id) === Number(editForm.value.township_id))?.name || "",
+const selectedTownshipName = computed(
+  () =>
+    townships.value.find(
+      (township) => Number(township.id) === Number(editForm.value.township_id),
+    )?.name || "",
 );
 
 const markTownshipManual = () => {
@@ -2326,7 +3516,8 @@ const suggestTownship = async () => {
     !editForm.value.area ||
     !editForm.value.address.trim() ||
     !token.value
-  ) return;
+  )
+    return;
 
   try {
     const res = await fetch(`${backendAPI}/api/hotels/analyze-township`, {
@@ -2335,7 +3526,10 @@ const suggestTownship = async () => {
         Authorization: `Bearer ${token.value}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ area: editForm.value.area, address: editForm.value.address }),
+      body: JSON.stringify({
+        area: editForm.value.area,
+        address: editForm.value.address,
+      }),
     });
     const data = await res.json();
     if (res.ok && data.matched && data.township) {
@@ -2382,6 +3576,223 @@ const fetchCategories = async () => {
     }
   } catch (e) {
     console.error("Failed to fetch categories from DB.", e);
+  }
+};
+
+const fetchHotelTags = async () => {
+  loadingHotelTags.value = true;
+  try {
+    const res = await fetch(`${backendAPI}/api/hotel-tags`);
+    const data = await res.json();
+    if (res.ok && Array.isArray(data)) {
+      hotelTags.value = data;
+    }
+  } catch (error) {
+    console.error("Failed to fetch hotel tags:", error);
+  } finally {
+    loadingHotelTags.value = false;
+  }
+};
+
+const fetchArticleTags = async () => {
+  loadingArticleTags.value = true;
+  try {
+    const res = await fetch(`${backendAPI}/api/article-tags`);
+    const data = await res.json();
+    if (res.ok && Array.isArray(data)) articleTags.value = data;
+  } catch (error) {
+    console.error("Failed to fetch article tags:", error);
+  } finally {
+    loadingArticleTags.value = false;
+  }
+};
+const startCreateArticleTag = () => {
+  editingArticleTagId.value = null;
+  articleTagForm.value = { name: "", sort_order: articleTags.value.length + 1 };
+  showArticleTagForm.value = true;
+};
+const startEditArticleTag = (tag: any) => {
+  if (tag.is_system) return;
+  editingArticleTagId.value = Number(tag.id);
+  articleTagForm.value = {
+    name: tag.name,
+    sort_order: Number(tag.sort_order) || 0,
+  };
+  showArticleTagForm.value = true;
+};
+const cancelArticleTagEdit = () => {
+  showArticleTagForm.value = false;
+  editingArticleTagId.value = null;
+  articleTagForm.value = { name: "", sort_order: 0 };
+};
+const saveArticleTag = async () => {
+  const name = articleTagForm.value.name.trim();
+  if (!name || [...name].length > 30) {
+    showSnackbar("標籤名稱必須為 1 至 30 個字", "error");
+    return;
+  }
+  savingArticleTag.value = true;
+  try {
+    const url = editingArticleTagId.value
+      ? `${backendAPI}/api/article-tags/${editingArticleTagId.value}`
+      : `${backendAPI}/api/article-tags`;
+    const res = await fetch(url, {
+      method: editingArticleTagId.value ? "PUT" : "POST",
+      headers: {
+        Authorization: `Bearer ${token.value}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(articleTagForm.value),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      showSnackbar(data.error || "儲存標籤失敗", "error");
+      return;
+    }
+    cancelArticleTagEdit();
+    await fetchArticleTags();
+    showSnackbar("文章分類標籤已儲存");
+  } catch (error) {
+    showSnackbar(`儲存標籤失敗：${error}`, "error");
+  } finally {
+    savingArticleTag.value = false;
+  }
+};
+const deleteArticleTag = async (tag: any) => {
+  if (
+    tag.is_system ||
+    !confirm(
+      `確定刪除「${tag.name}」？這會從 ${tag.post_count || 0} 篇文章解除此標籤。`,
+    )
+  )
+    return;
+  const res = await fetch(
+    `${backendAPI}/api/article-tags/${tag.id}?confirm=true`,
+    { method: "DELETE", headers: { Authorization: `Bearer ${token.value}` } },
+  );
+  const data = await res.json();
+  if (!res.ok) {
+    showSnackbar(data.error || "刪除標籤失敗", "error");
+    return;
+  }
+  await fetchArticleTags();
+  showSnackbar("文章分類標籤已刪除");
+};
+
+const startCreateHotelTag = () => {
+  editingHotelTagId.value = null;
+  hotelTagForm.value = { name: "", sort_order: hotelTags.value.length + 1 };
+  showHotelTagForm.value = true;
+};
+
+const startEditHotelTag = (tag: any) => {
+  editingHotelTagId.value = Number(tag.id);
+  hotelTagForm.value = {
+    name: tag.name,
+    sort_order: Number(tag.sort_order) || 0,
+  };
+  showHotelTagForm.value = true;
+};
+
+const cancelHotelTagEdit = () => {
+  showHotelTagForm.value = false;
+  editingHotelTagId.value = null;
+  hotelTagForm.value = { name: "", sort_order: 0 };
+};
+
+const saveHotelTag = async () => {
+  const name = hotelTagForm.value.name.trim();
+  if (!name || [...name].length > 30) {
+    showSnackbar("標籤名稱必須為 1 至 30 個字", "error");
+    return;
+  }
+  savingHotelTag.value = true;
+  try {
+    const url = editingHotelTagId.value
+      ? `${backendAPI}/api/hotel-tags/${editingHotelTagId.value}`
+      : `${backendAPI}/api/hotel-tags`;
+    const res = await fetch(url, {
+      method: editingHotelTagId.value ? "PUT" : "POST",
+      headers: {
+        Authorization: `Bearer ${token.value}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, sort_order: hotelTagForm.value.sort_order }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      showSnackbar(data.error || "儲存標籤失敗", "error");
+      return;
+    }
+    showSnackbar("標籤已儲存，部署前端後會更新 SSG 頁面");
+    cancelHotelTagEdit();
+    await fetchHotelTags();
+  } catch (error) {
+    showSnackbar(`儲存標籤失敗：${error}`, "error");
+  } finally {
+    savingHotelTag.value = false;
+  }
+};
+
+const openHotelTagDelete = async (tag: any) => {
+  deletingHotelTag.value = tag;
+  hotelTagUsage.value = [];
+  hotelTagDeleteConfirm.value = "";
+  showHotelTagDeleteModal.value = true;
+  loadingHotelTagUsage.value = true;
+  try {
+    const res = await fetch(`${backendAPI}/api/hotel-tags/${tag.id}/hotels`, {
+      headers: { Authorization: `Bearer ${token.value}` },
+    });
+    const data = await res.json();
+    if (res.ok) {
+      hotelTagUsage.value = data.hotels || [];
+    } else {
+      showSnackbar(data.error || "無法讀取標籤使用狀況", "error");
+    }
+  } catch (error) {
+    showSnackbar(`無法讀取標籤使用狀況：${error}`, "error");
+  } finally {
+    loadingHotelTagUsage.value = false;
+  }
+};
+
+const closeHotelTagDelete = () => {
+  if (deletingHotelTagNow.value) return;
+  showHotelTagDeleteModal.value = false;
+  deletingHotelTag.value = null;
+  hotelTagUsage.value = [];
+  hotelTagDeleteConfirm.value = "";
+};
+
+const deleteHotelTag = async () => {
+  if (!deletingHotelTag.value || hotelTagDeleteConfirm.value !== "確認刪除")
+    return;
+  deletingHotelTagNow.value = true;
+  try {
+    const res = await fetch(
+      `${backendAPI}/api/hotel-tags/${deletingHotelTag.value.id}?confirm=true`,
+      {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token.value}` },
+      },
+    );
+    const data = await res.json();
+    if (!res.ok) {
+      showSnackbar(data.error || "刪除標籤失敗", "error");
+      return;
+    }
+    showSnackbar(
+      `標籤已刪除，已解除 ${data.detached_hotels || 0} 間旅館；請部署前端`,
+    );
+    deletingHotelTagNow.value = false;
+    closeHotelTagDelete();
+    await fetchHotelTags();
+    if (selectedHotel.value) await selectHotel(selectedHotel.value.id);
+  } catch (error) {
+    showSnackbar(`刪除標籤失敗：${error}`, "error");
+  } finally {
+    deletingHotelTagNow.value = false;
   }
 };
 
@@ -2568,6 +3979,7 @@ const populateForm = (data: any) => {
     booking_link: data.booking_link || "",
     is_disabled: !!data.is_disabled,
     images: data.images || [],
+    tag_ids: Array.isArray(data.tag_ids) ? data.tag_ids.map(Number) : [],
   };
   townshipManuallySelected.value = editForm.value.township_id !== null;
   townshipSuggestion.value = "";
@@ -2643,14 +4055,20 @@ const handleThumbnailError = (e: Event) => {
 
 const isImgurLink = (url: string) => {
   if (!url) return false;
-  return url.toLowerCase().includes("meee.com.tw") || url.toLowerCase().includes("imgur.com");
+  return (
+    url.toLowerCase().includes("meee.com.tw") ||
+    url.toLowerCase().includes("imgur.com")
+  );
 };
 
 const validateAndFormatImgur = (index: number) => {
   let url = editForm.value.images[index].trim();
   if (!url) return;
 
-  if (!url.toLowerCase().includes("meee.com.tw") && !url.toLowerCase().includes("imgur.com")) {
+  if (
+    !url.toLowerCase().includes("meee.com.tw") &&
+    !url.toLowerCase().includes("imgur.com")
+  ) {
     alert("圖片連結僅支援 meee 圖床 (i.meee.com.tw)！");
     editForm.value.images[index] = "";
     return;
@@ -2664,11 +4082,11 @@ const validateAndFormatImgur = (index: number) => {
 };
 
 const selectEditArea = (city: string) => {
-	if (editForm.value.area !== city) {
-		editForm.value.township_id = null;
-		townshipManuallySelected.value = false;
-		townshipSuggestion.value = "";
-	}
+  if (editForm.value.area !== city) {
+    editForm.value.township_id = null;
+    townshipManuallySelected.value = false;
+    townshipSuggestion.value = "";
+  }
   editForm.value.area = city;
   showEditRegionPicker.value = false;
   void suggestTownship();
@@ -2708,6 +4126,7 @@ const initNewHotel = () => {
     booking_link: "",
     is_disabled: false,
     images: [],
+    tag_ids: [],
   };
   activeHotelTab.value = "basic";
   successMsg.value = "";
@@ -2726,12 +4145,20 @@ const saveHotel = async () => {
   successMsg.value = "";
   errorMsg.value = "";
 
+  if (editForm.value.tag_ids.length > 5) {
+    errorMsg.value = "每間旅館最多只能設定五個標籤。";
+    return;
+  }
+
   // Validate images before save
   if (editForm.value.images && editForm.value.images.length > 0) {
     for (let i = 0; i < editForm.value.images.length; i++) {
       const url = editForm.value.images[i].trim();
       if (!url) continue;
-      if (!url.toLowerCase().includes("meee.com.tw") && !url.toLowerCase().includes("imgur.com")) {
+      if (
+        !url.toLowerCase().includes("meee.com.tw") &&
+        !url.toLowerCase().includes("imgur.com")
+      ) {
         errorMsg.value = `第 ${i + 1} 張圖片連結非 meee 圖床網址，請確認！`;
         return;
       }
@@ -2961,6 +4388,7 @@ const selectPost = async (id: number) => {
         seo_title: data.seo_title || "",
         seo_keywords: data.seo_keywords || "",
         seo_description: data.seo_description || "",
+        article_tag_ids: (data.article_tag_ids || []).map(Number),
       };
     }
   } catch (e) {
@@ -2972,6 +4400,8 @@ const openCreatePost = async () => {
   postSuccessMsg.value = "";
   postErrorMsg.value = "";
   selectedPost.value = { id: 0 };
+  if (!articleTags.value.length) await fetchArticleTags();
+  const latestTag = articleTags.value.find((tag) => tag.is_system);
   postEditForm.value = {
     title: "",
     tags: [],
@@ -2981,6 +4411,7 @@ const openCreatePost = async () => {
     seo_title: "",
     seo_keywords: "",
     seo_description: "",
+    article_tag_ids: latestTag ? [Number(latestTag.id)] : [],
   };
 };
 
@@ -3225,20 +4656,23 @@ onMounted(() => {
     const originalFetch = window.fetch;
     window.fetch = async (input, init) => {
       const res = await originalFetch(input, init);
-      
+
       // Auto-extract refresh token from X-Refresh-Token header if available
       if (res.headers && typeof res.headers.get === "function") {
-        const refreshToken = res.headers.get("x-refresh-token") || res.headers.get("X-Refresh-Token");
+        const refreshToken =
+          res.headers.get("x-refresh-token") ||
+          res.headers.get("X-Refresh-Token");
         if (refreshToken) {
           token.value = refreshToken;
           localStorage.setItem("admin_token", refreshToken);
         }
       }
-      
+
       // If 401 Unauthorized or 403 Forbidden is returned, kick the user out to login screen
       if (res.status === 401 || res.status === 403) {
         // Skip for the login page itself to avoid alerting on incorrect credentials
-        const isLoginUrl = typeof input === "string" && input.includes("/api/auth/login");
+        const isLoginUrl =
+          typeof input === "string" && input.includes("/api/auth/login");
         if (!isLoginUrl) {
           token.value = "";
           userRole.value = "vendor";
@@ -3260,6 +4694,7 @@ onMounted(() => {
   }
 
   fetchCategories();
+  fetchHotelTags();
   fetchRegions();
   if (token.value) {
     fetchHotels();
@@ -3290,6 +4725,7 @@ onMounted(() => {
 .admin-sidebar::-webkit-scrollbar,
 .admin-main::-webkit-scrollbar,
 .users-workspace::-webkit-scrollbar,
+.hotel-tags-workspace::-webkit-scrollbar,
 .rich-editor::-webkit-scrollbar,
 textarea::-webkit-scrollbar {
   width: 6px;
@@ -3298,20 +4734,23 @@ textarea::-webkit-scrollbar {
 
 .admin-sidebar::-webkit-scrollbar-track,
 .admin-main::-webkit-scrollbar-track,
-.users-workspace::-webkit-scrollbar-track {
+.users-workspace::-webkit-scrollbar-track,
+.hotel-tags-workspace::-webkit-scrollbar-track {
   background: transparent;
 }
 
 .admin-sidebar::-webkit-scrollbar-thumb,
 .admin-main::-webkit-scrollbar-thumb,
-.users-workspace::-webkit-scrollbar-thumb {
+.users-workspace::-webkit-scrollbar-thumb,
+.hotel-tags-workspace::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 3px;
 }
 
 .admin-sidebar::-webkit-scrollbar-thumb:hover,
 .admin-main::-webkit-scrollbar-thumb:hover,
-.users-workspace::-webkit-scrollbar-thumb:hover {
+.users-workspace::-webkit-scrollbar-thumb:hover,
+.hotel-tags-workspace::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
 
@@ -3466,13 +4905,42 @@ textarea::-webkit-scrollbar {
   cursor: pointer;
 }
 
-.btn-backfill:hover:not(:disabled) { background: #115e59; }
-.btn-backfill:disabled { opacity: 0.6; cursor: not-allowed; }
-.backfill-result { padding: 0 20px; }
-.backfill-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
-.backfill-stats span { padding: 10px; border-radius: 6px; background: #f1f5f9; text-align: center; font-size: 13px; font-weight: 700; }
-.backfill-unmatched ul { max-height: 260px; overflow-y: auto; margin-top: 10px; padding-left: 20px; }
-.backfill-unmatched li { margin-bottom: 10px; color: #475569; font-size: 13px; line-height: 1.5; }
+.btn-backfill:hover:not(:disabled) {
+  background: #115e59;
+}
+.btn-backfill:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.backfill-result {
+  padding: 0 20px;
+}
+.backfill-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.backfill-stats span {
+  padding: 10px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+.backfill-unmatched ul {
+  max-height: 260px;
+  overflow-y: auto;
+  margin-top: 10px;
+  padding-left: 20px;
+}
+.backfill-unmatched li {
+  margin-bottom: 10px;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.5;
+}
 
 /* Spinner and Animation for Deploying state */
 .deploy-spinner {
@@ -3486,8 +4954,12 @@ textarea::-webkit-scrollbar {
 }
 
 @keyframes spin-deploy {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* ------------------- MAIN WRAPPER ------------------- */
@@ -3526,7 +4998,13 @@ textarea::-webkit-scrollbar {
   padding: 0 12px;
   gap: 6px;
 }
-
+.nav-section-label {
+  margin: 14px 16px 2px;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
 .nav-link {
   background: transparent;
   border: none;
@@ -3572,7 +5050,7 @@ textarea::-webkit-scrollbar {
 
 .hotel-editor-tabs {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 8px;
   padding: 14px 24px;
   background: #ffffff;
@@ -4338,7 +5816,66 @@ textarea::-webkit-scrollbar {
   resize: vertical;
 }
 
-.field-hint { display: block; margin-top: 6px; color: #64748b; line-height: 1.4; }
+.field-hint {
+  display: block;
+  margin-top: 6px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.assignment-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.assignment-heading h3 {
+  margin-bottom: 6px;
+}
+.assignment-heading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+.hotel-tag-transfer {
+  margin-top: 0;
+}
+.hotel-tag-transfer .transfer-panel {
+  height: 470px;
+  min-width: 0;
+}
+.selected-tag-slots {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+.tag-order-hint {
+  color: #64748b;
+  font-size: 12px;
+}
+.btn-order-move {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+  color: #475569;
+  cursor: pointer;
+}
+.btn-order-move:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.hotel-tag-transfer .drag-handle {
+  margin: 0 4px;
+  color: #94a3b8;
+  font-size: 16px;
+  cursor: grab;
+  user-select: none;
+}
 
 /* Grids */
 .form-grid-2 {
@@ -4598,7 +6135,8 @@ textarea::-webkit-scrollbar {
 }
 
 /* ------------------- USERS MANAGEMENT ------------------- */
-.users-workspace {
+.users-workspace,
+.hotel-tags-workspace {
   flex: 1;
   height: 100%;
   overflow-y: auto;
@@ -4606,6 +6144,130 @@ textarea::-webkit-scrollbar {
   background-color: #f8fafc;
   box-sizing: border-box;
   transition: all 0.3s;
+}
+
+.workspace-description {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+.hotel-tag-editor {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+.hotel-tag-editor h3 {
+  margin-bottom: 18px;
+}
+.hotel-tag-form-row {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 160px auto;
+  gap: 16px;
+  align-items: end;
+}
+.hotel-tag-form-row .form-group {
+  min-width: 0;
+  margin: 0;
+}
+.hotel-tag-form-row .form-group input {
+  display: block;
+  width: 100%;
+  min-height: 42px;
+  box-sizing: border-box;
+}
+.hotel-tag-form-row .hotel-tag-name-input {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px 12px;
+  color: #0f172a;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.hotel-tag-form-row .hotel-tag-name-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+.dark-mode .hotel-tag-form-row .hotel-tag-name-input {
+  border-color: #475569;
+  background: #1e293b;
+  color: #f8fafc;
+}
+.hotel-tag-form-actions {
+  min-height: 42px;
+}
+.hotel-tag-form-actions button {
+  min-height: 42px;
+  margin: 0;
+  white-space: nowrap;
+}
+.hotel-tag-form-actions,
+.hotel-tag-row-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.empty-table-cell {
+  text-align: center;
+  color: #64748b;
+}
+.hotel-tag-delete-modal {
+  width: min(620px, 92vw);
+}
+.delete-warning {
+  color: #b91c1c;
+  font-weight: 700;
+}
+.hotel-tag-usage-list {
+  max-height: 230px;
+  overflow-y: auto;
+  margin: 12px 0 18px;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  list-style: none;
+}
+.hotel-tag-usage-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 13px;
+}
+.hotel-tag-usage-list li:last-child {
+  border-bottom: 0;
+}
+.disabled-badge {
+  flex: 0 0 auto;
+  color: #b45309;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .hotel-tag-form-row {
+    grid-template-columns: 1fr;
+  }
+  .hotel-tags-workspace {
+    padding: 18px;
+  }
+  .workspace-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .assignment-heading {
+    flex-direction: column;
+  }
+  .hotel-tag-transfer {
+    flex-direction: column;
+  }
+  .hotel-tag-transfer .transfer-panel {
+    height: 360px;
+    width: 100%;
+  }
 }
 
 .workspace-header {
@@ -5460,6 +7122,30 @@ textarea::-webkit-scrollbar {
 
 .dark-mode .users-workspace {
   background-color: #0b0f19;
+}
+
+.dark-mode .hotel-tags-workspace {
+  background-color: #0f172a;
+}
+
+.dark-mode .hotel-tag-option {
+  border-color: #334155;
+  background: #1e293b;
+  color: #cbd5e1;
+}
+
+.dark-mode .hotel-tag-option.selected {
+  border-color: #f87171;
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+}
+
+.dark-mode .hotel-tag-usage-list {
+  border-color: #334155;
+}
+
+.dark-mode .hotel-tag-usage-list li {
+  border-bottom-color: #334155;
 }
 
 .dark-mode .workspace-header {

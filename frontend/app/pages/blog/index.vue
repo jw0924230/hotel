@@ -21,6 +21,9 @@
                <div class="meta">{{ article.date }}</div>
                <h2 class="title">{{ article.title }}</h2>
                <p class="excerpt">{{ getExcerpt(article.content) }}...</p>
+               <div v-if="article.articleTags.length" class="managed-tags">
+                 <NuxtLink v-for="tag in article.articleTags" :key="tag.id" :to="`/blog/tag/${tag.id}/1`" @click.stop>{{ tag.name }}</NuxtLink>
+               </div>
                <span class="read-more">閱讀更多 &rarr;</span>
              </div>
            </NuxtLink>
@@ -44,7 +47,8 @@ const { data: articles } = await useAsyncData('blog-posts', async () => {
     date: formatDate(post.created_at),
     category: post.tags && post.tags.length > 0 ? post.tags[0] : '精選專欄',
     image: post.image,
-    content: post.content
+    content: post.content,
+    articleTags: post.article_tags || []
   }))
 })
 
@@ -97,4 +101,6 @@ function formatDate(dateStr: string) {
 .title { font-size: 20px; font-weight: 700; color: #2C3E50; margin: 0 0 15px 0; line-height: 1.4; }
 .excerpt { font-size: 15px; color: #7F8C8D; line-height: 1.6; margin-bottom: 20px; flex: 1; }
 .read-more { color: #E74C3C; font-weight: 600; font-size: 14px; }
+.managed-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; }
+.managed-tags a { border-radius:999px; background:#f1f5f9; padding:4px 9px; color:#64748b; font-size:11px; font-weight:700; text-decoration:none; }
 </style>

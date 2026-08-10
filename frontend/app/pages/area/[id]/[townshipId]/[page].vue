@@ -43,6 +43,7 @@ const mapHotels = (items: any[]) => items.map((hotel: any) => ({
     : joinURL(baseURL, `data/images/${hotel.id}.jpg`),
   price: hotel.price || "",
   address: hotel.address,
+  tags: hotel.tags || [],
 }));
 
 const { data: fetched } = await useAsyncData(key.value, async () => {
@@ -52,7 +53,7 @@ const { data: fetched } = await useAsyncData(key.value, async () => {
       page: currentPage.value,
       limit: 20,
       area: currentCity.value.name,
-      township_id: currentTownship.value.id,
+      township_ids: String(currentTownship.value.id),
     },
   });
   return { hotels: mapHotels(response.data || []), total: response.total || 0 };
@@ -67,5 +68,12 @@ const result = computed(() => fetched.value || { hotels: [], total: 0 });
 useSeoMeta({
   title: computed(() => `${currentCity.value.name}${currentTownship.value.name}飯店、商旅、汽車旅館住宿與休息推薦`),
   description: computed(() => `${currentCity.value.name}${currentTownship.value.name}飯店、商旅與汽車旅館推薦，整理住宿及休息方案、地址與價格資訊。`),
+});
+
+useHead({
+  link: [{
+    rel: "canonical",
+    href: computed(() => `https://www.qk3houronline.com${route.path}`),
+  }],
 });
 </script>
