@@ -19,6 +19,12 @@
         @select="goTownship"
       />
 
+      <KlookDealsWidget
+        v-if="klookCityId"
+        :key="klookCityId"
+        :city-id="klookCityId"
+      />
+
       <div v-if="loading" class="loading-state">正在取得最新資料...</div>
       <div v-else-if="hotels.length" class="hotel-grid">
         <div v-for="hotel in hotels" :key="hotel.id" class="h-card">
@@ -51,6 +57,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { joinURL } from "ufo";
+import { resolveKlookCityId } from "~/utils/klook";
 
 const props = defineProps<{
   city: any;
@@ -68,6 +75,10 @@ const total = ref(props.initialTotal);
 const loading = ref(false);
 const pageSize = 20;
 const liveCache = useState<any>("area-live-result", () => null);
+
+const klookCityId = computed(() =>
+  resolveKlookCityId(props.city.name, props.township?.name),
+);
 
 const heading = computed(() =>
   props.township

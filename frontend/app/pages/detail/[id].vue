@@ -163,6 +163,13 @@
             </div>
           </div>
         </div>
+
+        <div v-if="klookCityId" class="detail-klook-deals">
+          <KlookDealsWidget
+            :key="klookCityId"
+            :city-id="klookCityId"
+          />
+        </div>
       </div>
       <div v-else class="not-found">
         <div class="hotel-door" aria-hidden="true">
@@ -206,6 +213,7 @@ import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 
 import { joinURL } from "ufo";
+import { resolveKlookCityId } from "~/utils/klook";
 
 const route = useRoute();
 const config = useRuntimeConfig();
@@ -321,6 +329,9 @@ const cityName = computed(
   () => cityData.value?.name || hotel.value?.address?.substring(0, 3) || "",
 );
 const cityId = computed(() => cityData.value?.sort_order || cityData.value?.id);
+const klookCityId = computed(() =>
+  resolveKlookCityId(hotel.value?.area, hotel.value?.township),
+);
 
 // Format helpers
 const formatText = (text: string) => {
@@ -980,6 +991,10 @@ useSeoMeta({
   border-left: 4px solid #e74c3c;
   padding-left: 10px;
   font-size: 18px;
+}
+
+.detail-klook-deals {
+  margin-top: 32px;
 }
 
 .not-found {
