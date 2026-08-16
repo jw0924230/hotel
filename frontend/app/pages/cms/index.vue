@@ -2881,6 +2881,12 @@
 definePageMeta({
   layout: false,
 });
+
+useSeoMeta({
+  robots: "noindex, nofollow, noarchive",
+  googlebot: "noindex, nofollow, noarchive",
+});
+
 import { ref, onMounted, watch, computed } from "vue";
 import { joinURL } from "ufo";
 import MarkdownIt from "markdown-it";

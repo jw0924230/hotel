@@ -38,16 +38,27 @@
                 <NuxtLink to="/blog" class="btn-back">← 返回文章列表</NuxtLink>
             </div>
         </article>
-        <aside v-if="relatedCategories.length" class="category-sidebar" aria-label="文章分類快速連結">
-          <h2>文章分類</h2>
-          <div v-for="item in relatedCategories" :key="item.id" class="category-group">
-            <div class="category-heading"><span class="category-name">{{ item.name }}</span><NuxtLink :to="`/blog/tag/${item.id}/1`" class="category-more">看更多 <span aria-hidden="true">→</span></NuxtLink></div>
-            <NuxtLink v-if="item.post" :to="`/blog/${item.post.id}`" class="related-link">
-              <strong>{{ item.post.title }}</strong>
-              <time>{{ formatDate(item.post.created_at) }}</time>
-            </NuxtLink>
-            <span v-else class="no-related">目前沒有其他相關文章</span>
-          </div>
+        <aside class="article-sidebar" aria-label="最新文章與文章分類">
+          <section class="sidebar-section">
+            <h2>最新文章</h2>
+            <nav v-if="latestPosts.length" class="latest-post-list" aria-label="最新文章">
+              <NuxtLink v-for="post in latestPosts" :key="post.id" :to="`/blog/${post.id}`">
+                {{ post.title }}
+              </NuxtLink>
+            </nav>
+            <p v-else class="sidebar-empty">目前沒有其他文章</p>
+          </section>
+
+          <section class="sidebar-section category-section">
+            <h2>文章分類</h2>
+            <nav v-if="articleCategories.length" class="category-list" aria-label="文章分類">
+              <NuxtLink v-for="category in articleCategories" :key="category.id" :to="`/blog/tag/${category.id}/1`">
+                <span>{{ category.name }}</span>
+                <span :aria-label="`${category.post_count} 篇文章`">({{ category.post_count }})</span>
+              </NuxtLink>
+            </nav>
+            <p v-else class="sidebar-empty">目前沒有文章分類</p>
+          </section>
         </aside>
         </div>
 
@@ -109,21 +120,19 @@ const { data: article } = await useAsyncData(`blog-post-${id}`, async () => {
     adLink: post.ad_link,
     seo_title: post.seo_title,
     seo_keywords: post.seo_keywords,
-    seo_description: post.seo_description,
-    categories: post.article_tags || []
+    seo_description: post.seo_description
   }
 })
 
-const { data: relatedCategoryData } = await useAsyncData(`blog-related-categories-${id}`, async () => {
-  const categories = article.value?.categories || []
-  return Promise.all(categories.map(async (category: any) => {
-    const result = await $fetch<any>(`${config.public.backendApiUrl}/api/posts`, {
-      query: { article_tag_id: category.id, exclude_id: id, page: 1, limit: 1 }
-    })
-    return { id: category.id, name: category.name, post: result.data?.[0] || null }
-  }))
-})
-const relatedCategories = computed(() => relatedCategoryData.value || [])
+const [{ data: latestPostData }, { data: articleTagData }] = await Promise.all([
+  useAsyncData(`blog-latest-posts-${id}`, () => $fetch<any>(`${config.public.backendApiUrl}/api/posts`, {
+    query: { exclude_id: id, page: 1, limit: 5 }
+  })),
+  useAsyncData('blog-sidebar-article-tags', () => $fetch<any[]>(`${config.public.backendApiUrl}/api/article-tags`))
+])
+
+const latestPosts = computed(() => latestPostData.value?.data || [])
+const articleCategories = computed(() => (articleTagData.value || []).filter((category: any) => !category.is_system))
 
 function formatDate(dateStr: string) {
   if (!dateStr) return ''
@@ -203,23 +212,23 @@ useSeoMeta({
 .btn-back:hover { border-color: #2C3E50; color: #2C3E50; background: transparent; }
 
 .not-found { text-align: center; padding: 50px; }
-.category-sidebar { position:sticky; top:24px; align-self:start; border-radius:12px; background:#fff; padding:18px; box-shadow:0 5px 20px rgba(0,0,0,.05); }
-.category-sidebar h2 { margin:0 0 18px; color:#2c3e50; font-size:20px; }
-.category-group { padding:16px 0; border-top:1px solid #eef2f6; }
-.category-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
-.category-name { display:inline-block; border-radius:999px; background:#e74c3c; padding:5px 11px; color:#fff; font-size:12px; font-weight:700; }
-.category-more { flex-shrink:0; color:#e74c3c; font-size:12px; font-weight:700; text-decoration:none; }
-.category-more:hover { text-decoration:underline; text-underline-offset:3px; }
-.related-link { display:flex; flex-direction:column; gap:7px; color:#2c3e50; line-height:1.5; text-decoration:none; }
-.related-link:hover strong { color:#e74c3c; }
-.related-link time,.no-related { color:#94a3b8; font-size:12px; }
+.article-sidebar { position:sticky; top:24px; align-self:start; border-radius:12px; background:#fff; padding:22px 18px; box-shadow:0 5px 20px rgba(0,0,0,.05); }
+.sidebar-section + .sidebar-section { margin-top:30px; padding-top:26px; border-top:1px solid #eef2f6; }
+.sidebar-section h2 { margin:0 0 16px; color:#2c3e50; font-size:20px; line-height:1.35; }
+.latest-post-list,.category-list { display:flex; flex-direction:column; }
+.latest-post-list { gap:14px; }
+.latest-post-list a { color:#465567; font-size:15px; line-height:1.55; text-decoration:none; overflow-wrap:anywhere; }
+.latest-post-list a:hover,.category-list a:hover { color:#e74c3c; }
+.category-list { gap:11px; }
+.category-list a { display:flex; flex-wrap:wrap; gap:5px; color:#465567; font-size:15px; line-height:1.45; text-decoration:none; }
+.sidebar-empty { margin:0; color:#94a3b8; font-size:14px; line-height:1.5; }
 
 @media(max-width: 1100px) {
     .article-layout { grid-template-columns:1fr; }
     .article-layout.without-toc { grid-template-columns:1fr; }
     .toc-rail { display:none; }
     .mobile-inline-toc { display:block; }
-    .category-sidebar { position:static; max-height:none; overflow:visible; }
+    .article-sidebar { position:static; max-height:none; overflow:visible; }
     .article-detail { padding: 25px; }
     .main-title { font-size: 24px; }
 }

@@ -8,6 +8,29 @@ type RouteManifest = {
   tags: string[]
 }
 
+const fetchRequiredApi = async (url: string, headers: Record<string, string>) => {
+  const maxAttempts = 4
+  let lastError: unknown
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const response = await fetch(url, { headers })
+      if (response.ok) return response
+
+      lastError = new Error(`${response.status} ${response.statusText}`)
+      if (response.status < 500 || attempt === maxAttempts) break
+    } catch (error) {
+      lastError = error
+      if (attempt === maxAttempts) break
+    }
+
+    await new Promise(resolve => setTimeout(resolve, attempt * 1000))
+  }
+
+  const message = lastError instanceof Error ? lastError.message : String(lastError)
+  throw new Error(`Required API failed during SSG route discovery: ${url} (${message})`)
+}
+
 const getRouteManifest = async (): Promise<RouteManifest> => {
   const manifest: RouteManifest = {
     static: ['/', '/blog'],
@@ -25,17 +48,12 @@ const getRouteManifest = async (): Promise<RouteManifest> => {
 
   try {
     const [hotelsResponse, locationsResponse, postsResponse, tagsResponse, articleTagsResponse] = await Promise.all([
-      fetch(`${backendUrl}/api/hotels?limit=10000`, { headers }),
-      fetch(`${backendUrl}/api/regions/combined`, { headers }),
-      fetch(`${backendUrl}/api/posts?limit=10000`, { headers }),
-      fetch(`${backendUrl}/api/hotel-tags`, { headers }),
-      fetch(`${backendUrl}/api/article-tags`, { headers })
+      fetchRequiredApi(`${backendUrl}/api/hotels?limit=10000`, headers),
+      fetchRequiredApi(`${backendUrl}/api/regions/combined`, headers),
+      fetchRequiredApi(`${backendUrl}/api/posts?limit=10000`, headers),
+      fetchRequiredApi(`${backendUrl}/api/hotel-tags`, headers),
+      fetchRequiredApi(`${backendUrl}/api/article-tags`, headers)
     ])
-
-    const requiredResponses = [hotelsResponse, locationsResponse, postsResponse, tagsResponse, articleTagsResponse]
-    if (requiredResponses.some(response => !response.ok)) {
-      throw new Error(`Required API failed during SSG route discovery: ${requiredResponses.map(r => r.status).join(', ')}`)
-    }
 
     const hotels = await hotelsResponse.json()
     for (const hotel of hotels.data || []) {
@@ -48,11 +66,10 @@ const getRouteManifest = async (): Promise<RouteManifest> => {
     }
 
     for (const city of locations.cities || []) {
-      const cityResponse = await fetch(
+      const cityResponse = await fetchRequiredApi(
         `${backendUrl}/api/hotels?limit=1&area=${encodeURIComponent(city.name)}`,
-        { headers }
+        headers
       )
-      if (!cityResponse.ok) throw new Error(`Failed to count hotels for city ${city.name}`)
       const cityResult = await cityResponse.json()
       const cityPages = Math.max(1, Math.ceil((cityResult.total || 0) / 20))
       for (let page = 1; page <= cityPages; page++) {
@@ -123,6 +140,7 @@ export default defineNuxtConfig({
     name: '休息3小時'
   },
   sitemap: {
+    exclude: ['/cms', '/cms/**'],
     sitemaps: {
       static: { includeAppSources: false, urls: async () => (await resolveRouteManifest()).static, chunks: 10000 },
       hotels: { includeAppSources: false, urls: async () => (await resolveRouteManifest()).hotels, chunks: 10000 },
@@ -130,6 +148,14 @@ export default defineNuxtConfig({
       articles: { includeAppSources: false, urls: async () => (await resolveRouteManifest()).articles, chunks: 10000 },
       tags: { includeAppSources: false, urls: async () => (await resolveRouteManifest()).tags, chunks: 10000 },
     },
+  },
+  routeRules: {
+    '/cms': {
+      headers: { 'X-Robots-Tag': 'noindex, nofollow, noarchive' }
+    },
+    '/cms/**': {
+      headers: { 'X-Robots-Tag': 'noindex, nofollow, noarchive' }
+    }
   },
   nitro: {
     output: {
