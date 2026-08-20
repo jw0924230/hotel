@@ -11,5 +11,4 @@ const [{data:tagData},{data:allTags},{data:postsData}]=await Promise.all([
 ]);
 const tag=computed(()=>tagData.value||{id:Number(id),name:'文章標籤'}); const result=computed(()=>postsData.value||{data:[],total:0});
 useSeoMeta({title:computed(()=>`${tag.value.name}文章推薦｜住宿、休息與旅遊攻略`),description:computed(()=>`整理「${tag.value.name}」相關的住宿、休息與旅遊文章，提供飯店選擇、行程規劃與實用攻略，快速找到符合需求的資訊。`)});
-useHead({link:[{rel:'canonical',href:`https://www.qk3houronline.com/blog/tag/${id}/${page}`}]});
 </script>

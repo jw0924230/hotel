@@ -59,10 +59,4 @@ useSeoMeta({
   description: computed(() => `${tag.value.name}臨時需要假日休息、平日休息，還是規劃一趟輕旅行的假日住宿、平日住宿，這裡一次整理熱門的飯店、商旅與汽車旅館推薦清單，滿足不同族群與使用情境需求。從適合短暫放鬆的2小時、3小時休息方案，到高 CP 值的過夜住宿選擇，完整比較地點、價格與彈性時段，協助你快速找到最適合的住宿或休息空間，無論情侶約會、商務出差或臨時歇腳，都能安心入住、輕鬆選擇。`),
 });
 
-useHead({
-  link: [{
-    rel: "canonical",
-    href: computed(() => `https://www.qk3houronline.com${route.path}`),
-  }],
-});
 </script>

@@ -71,10 +71,4 @@ useSeoMeta({
   description: computed(() => buildAreaSeoDescription(`${currentCity.value.name}${currentTownship.value.name}`)),
 });
 
-useHead({
-  link: [{
-    rel: "canonical",
-    href: computed(() => `https://www.qk3houronline.com${route.path}`),
-  }],
-});
 </script>

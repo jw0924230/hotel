@@ -130,7 +130,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       backendApiUrl: process.env.BACKEND_API_URL || 'http://localhost:8080',
-      ssgBuildToken: process.env.NEXT_PUBLIC_SSG_BUILD_TOKEN || ''
+      ssgBuildToken: process.env.NEXT_PUBLIC_SSG_BUILD_TOKEN || '',
+      siteUrl: 'https://www.qk3houronline.com'
     }
   },
   css: ['~/assets/css/reset.css'],

@@ -5,3 +5,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <NuxtPage />
   </NuxtLayout>
 </template>
+
+<script setup lang="ts">
+const route = useRoute()
+const config = useRuntimeConfig()
+
+useHead({
+  link: [
+    {
+      key: 'canonical',
+      rel: 'canonical',
+      href: computed(() => `${config.public.siteUrl}${route.path}`),
+    },
+  ],
+})
+</script>
