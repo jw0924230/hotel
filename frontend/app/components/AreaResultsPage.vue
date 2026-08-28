@@ -113,8 +113,8 @@ const fetchLiveAndNavigate = async (township: any | null, targetPage: number) =>
       : `area-${props.city.id}-${targetPage}`;
     liveCache.value = { key, hotels: mapHotels(result.data || []), total: result.total || 0 };
     const path = township
-      ? `/area/${props.city.id}/${township.id}/${targetPage}`
-      : `/area/${props.city.id}/${targetPage}`;
+      ? `/area/${props.city.id}/${township.id}/${targetPage}/`
+      : `/area/${props.city.id}/${targetPage}/`;
     await navigateTo(path);
   } finally {
     loading.value = false;

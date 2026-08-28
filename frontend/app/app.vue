@@ -9,13 +9,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script setup lang="ts">
 const route = useRoute()
 const config = useRuntimeConfig()
+const canonicalPath = computed(() => route.path === '/' ? '/' : `${route.path.replace(/\/+$/, '')}/`)
 
 useHead({
   link: [
     {
       key: 'canonical',
       rel: 'canonical',
-      href: computed(() => `${config.public.siteUrl}${route.path}`),
+      href: computed(() => `${config.public.siteUrl}${canonicalPath.value}`),
     },
   ],
 })

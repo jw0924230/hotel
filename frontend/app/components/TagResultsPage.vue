@@ -99,7 +99,7 @@ const goPage = async (targetPage: number) => {
       hotels: mapHotels(result.data || []),
       total: result.total || 0,
     };
-    await navigateTo(`/tag/${props.tag.id}/${targetPage}`);
+    await navigateTo(`/tag/${props.tag.id}/${targetPage}/`);
   } finally {
     loading.value = false;
   }

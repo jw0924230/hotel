@@ -138,7 +138,15 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/sitemap'],
   site: {
     url: 'https://www.qk3houronline.com/',
-    name: '休息3小時'
+    name: '休息3小時',
+    trailingSlash: true
+  },
+  experimental: {
+    defaults: {
+      nuxtLink: {
+        trailingSlash: 'append'
+      }
+    }
   },
   sitemap: {
     exclude: ['/cms', '/cms/**'],

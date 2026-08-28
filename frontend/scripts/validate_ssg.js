@@ -38,7 +38,8 @@ const dist = path.resolve("dist");
 const missing = [];
 const invalid = [];
 const canonicalOrigin = "https://www.qk3houronline.com";
-const expectedSitemapRoutes = new Set(["/", "/blog"]);
+const withTrailingSlash = (route) => route === "/" ? "/" : `${route.replace(/\/+$/, "")}/`;
+const expectedSitemapRoutes = new Set(["/", "/blog/"]);
 const checkPage = (relativePath, expectedText) => {
   const file = path.join(dist, relativePath, "index.html");
   if (!fs.existsSync(file)) {
@@ -59,19 +60,19 @@ for (const city of locations.cities || []) {
   const cityPages = Math.max(1, Math.ceil(Number(cityResult.total || 0) / 20));
   for (let page = 1; page <= cityPages; page++) {
     const relativePath = path.join("area", String(city.id), String(page));
-    expectedSitemapRoutes.add(`/area/${city.id}/${page}`);
+    expectedSitemapRoutes.add(`/area/${city.id}/${page}/`);
     checkPage(relativePath, `${city.name}住宿與休息推薦`);
     const file = path.join(dist, relativePath, "index.html");
     if (fs.existsSync(file)) {
       const html = fs.readFileSync(file, "utf8");
-      const route = `/area/${city.id}/${page}`;
+      const route = `/area/${city.id}/${page}/`;
       if (!html.includes(`rel="canonical" href="${canonicalOrigin}${route}"`)) {
         invalid.push(`${relativePath}:canonical`);
       }
       if (html.includes('href="/search/')) invalid.push(`${relativePath}:search-link`);
       if (page === 1) {
         for (const township of city.townships || []) {
-          if (!html.includes(`href="/area/${city.id}/${township.id}/1"`)) {
+          if (!html.includes(`href="/area/${city.id}/${township.id}/1/"`)) {
             invalid.push(`${relativePath}:missing-township-${township.id}`);
           }
         }
@@ -82,12 +83,12 @@ for (const city of locations.cities || []) {
 for (const township of townships) {
   const pages = Math.max(1, Math.ceil(Number(township.hotel_count || 0) / 20));
   for (let page = 1; page <= pages; page++) {
-    expectedSitemapRoutes.add(`/area/${township.city.id}/${township.id}/${page}`);
+    expectedSitemapRoutes.add(`/area/${township.city.id}/${township.id}/${page}/`);
     checkPage(
       path.join("area", String(township.city.id), String(township.id), String(page)),
       `${township.city.name}${township.name}住宿與休息推薦`,
     );
-    const route = `/area/${township.city.id}/${township.id}/${page}`;
+    const route = `/area/${township.city.id}/${township.id}/${page}/`;
     const file = path.join(dist, route, "index.html");
     if (fs.existsSync(file)) {
       const html = fs.readFileSync(file, "utf8");
@@ -101,13 +102,13 @@ for (const township of townships) {
 for (const tag of tags) {
   const pages = Math.max(1, Math.ceil(Number(tag.enabled_hotel_count || 0) / 20));
   for (let page = 1; page <= pages; page++) {
-    expectedSitemapRoutes.add(`/tag/${tag.id}/${page}`);
+    expectedSitemapRoutes.add(`/tag/${tag.id}/${page}/`);
     const relativePath = path.join("tag", String(tag.id), String(page));
     checkPage(relativePath, `${tag.name}旅館推薦`);
     const file = path.join(dist, relativePath, "index.html");
     if (fs.existsSync(file)) {
       const html = fs.readFileSync(file, "utf8");
-      const route = `/tag/${tag.id}/${page}`;
+      const route = `/tag/${tag.id}/${page}/`;
       if (!html.includes(`rel="canonical" href="${canonicalOrigin}${route}"`)) {
         invalid.push(`${relativePath}:canonical`);
       }
@@ -119,7 +120,7 @@ for (const tag of tags) {
     const html = fs.readFileSync(firstPageFile, "utf8");
     if (!html.includes("特色分類")) invalid.push(`tag/${tag.id}/1:missing-feature-category-heading`);
     for (const option of tags) {
-      if (!html.includes(`/tag/${option.id}/1`)) {
+      if (!html.includes(`/tag/${option.id}/1/`)) {
         invalid.push(`tag/${tag.id}/1:missing-tag-option-${option.id}`);
       }
     }
@@ -128,20 +129,20 @@ for (const tag of tags) {
 for (const tag of articleTags) {
   const pages = Math.max(1, Math.ceil(Number(tag.post_count || 0) / 12));
   for (let page = 1; page <= pages; page++) {
-    expectedSitemapRoutes.add(`/blog/tag/${tag.id}/${page}`);
+    expectedSitemapRoutes.add(`/blog/tag/${tag.id}/${page}/`);
     const relativePath = path.join("blog", "tag", String(tag.id), String(page));
     checkPage(relativePath, `${tag.name}文章推薦`);
     const file = path.join(dist, relativePath, "index.html");
     if (fs.existsSync(file)) {
       const html = fs.readFileSync(file, "utf8");
-      const route = `/blog/tag/${tag.id}/${page}`;
+      const route = `/blog/tag/${tag.id}/${page}/`;
       if (!html.includes(`rel="canonical" href="${canonicalOrigin}${route}"`)) invalid.push(`${relativePath}:canonical`);
-      if (page === 1) for (const option of articleTags) if (!html.includes(`/blog/tag/${option.id}/1`)) invalid.push(`${relativePath}:missing-article-tag-${option.id}`);
+      if (page === 1) for (const option of articleTags) if (!html.includes(`/blog/tag/${option.id}/1/`)) invalid.push(`${relativePath}:missing-article-tag-${option.id}`);
     }
   }
 }
-for (const hotel of hotelsResult.data || []) expectedSitemapRoutes.add(`/detail/${hotel.id}`);
-for (const post of postsResult.data || []) expectedSitemapRoutes.add(`/blog/${post.id}`);
+for (const hotel of hotelsResult.data || []) expectedSitemapRoutes.add(`/detail/${hotel.id}/`);
+for (const post of postsResult.data || []) expectedSitemapRoutes.add(`/blog/${post.id}/`);
 
 const decodeXml = (value) => value
   .replaceAll("&amp;", "&")
@@ -203,6 +204,9 @@ for (const childLocation of canonicalChildren) {
       continue;
     }
     actualSitemapRoutes.push(url.pathname);
+    if (url.pathname !== withTrailingSlash(url.pathname)) {
+      invalid.push(`${childUrl.pathname}:missing-trailing-slash-${url.pathname}`);
+    }
   }
 }
 
@@ -230,7 +234,7 @@ const latestTag = articleTags.find((tag) => tag.is_system);
 const homeFile = path.join(dist, "index.html");
 if (latestTag && fs.existsSync(homeFile)) {
   const home = fs.readFileSync(homeFile, "utf8");
-  if (!home.includes("最新文章") || !home.includes(`/blog/tag/${latestTag.id}/1`)) invalid.push("home:latest-articles");
+  if (!home.includes("最新文章") || !home.includes(`/blog/tag/${latestTag.id}/1/`)) invalid.push("home:latest-articles");
 }
 
 if (missing.length || invalid.length) {
